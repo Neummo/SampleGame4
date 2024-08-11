@@ -1,0 +1,78 @@
+[gd_scene load_steps=12 format=3 uid="uid://fiwrh12yuw8n"]
+
+[ext_resource type="Script" path="res://Attacks/beam.gd" id="1_34dgp"]
+[ext_resource type="Texture2D" uid="uid://dwvibgl671con" path="res://Assets/white.png" id="2_7a0ue"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_e445c"]
+size = Vector2(100, 50)
+
+[sub_resource type="Gradient" id="Gradient_cw05r"]
+offsets = PackedFloat32Array(0, 0.540984, 1)
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_ki8vo"]
+gradient = SubResource("Gradient_cw05r")
+
+[sub_resource type="Curve" id="Curve_2naxh"]
+_data = [Vector2(0, 0.131868), 0.0, 0.0, 0, 0, Vector2(0.99999, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_q2wvp"]
+width = 34
+curve = SubResource("Curve_2naxh")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_7ygxh"]
+particle_flag_disable_z = true
+initial_velocity_min = 50.0
+initial_velocity_max = 50.0
+gravity = Vector3(0, 0, 0)
+scale_min = 0.1
+scale_max = 0.1
+scale_curve = SubResource("CurveTexture_q2wvp")
+color_ramp = SubResource("GradientTexture1D_ki8vo")
+
+[sub_resource type="Curve" id="Curve_kt8it"]
+_data = [Vector2(0.0133333, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_eh3gc"]
+curve = SubResource("Curve_kt8it")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_61j8i"]
+particle_flag_disable_z = true
+emission_shape = 3
+emission_box_extents = Vector3(1, 1, 1)
+gravity = Vector3(0, 0, 0)
+tangential_accel_min = 100.0
+tangential_accel_max = 100.0
+scale_min = 0.01
+scale_max = 0.01
+scale_curve = SubResource("CurveTexture_eh3gc")
+
+[node name="Beam" type="ShapeCast2D" node_paths=PackedStringArray("line", "casting_particles", "beam_particles")]
+shape = SubResource("RectangleShape2D_e445c")
+target_position = Vector2(500, 0)
+collide_with_areas = true
+collide_with_bodies = false
+script = ExtResource("1_34dgp")
+line = NodePath("Line2D")
+casting_particles = NodePath("CastingParticles")
+beam_particles = NodePath("BeamParticles")
+
+[node name="Line2D" type="Line2D" parent="."]
+points = PackedVector2Array(0, 0, 10, 0)
+width = 0.0
+default_color = Color(1, 0.964706, 1, 1)
+
+[node name="CastingParticles" type="GPUParticles2D" parent="."]
+emitting = false
+process_material = SubResource("ParticleProcessMaterial_7ygxh")
+texture = ExtResource("2_7a0ue")
+lifetime = 0.3
+
+[node name="BeamParticles" type="GPUParticles2D" parent="."]
+emitting = false
+amount = 32
+process_material = SubResource("ParticleProcessMaterial_61j8i")
+texture = ExtResource("2_7a0ue")
+lifetime = 0.3

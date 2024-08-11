@@ -1,0 +1,44 @@
+[gd_scene load_steps=8 format=3 uid="uid://eqepyc06y8ey"]
+
+[ext_resource type="Script" path="res://Attacks/rocket.gd" id="1_i4ptm"]
+[ext_resource type="Script" path="res://Attacks/Components/attack_area.gd" id="2_kthkf"]
+[ext_resource type="PackedScene" uid="uid://b58vw44glay4i" path="res://move_trail.tscn" id="3_h3fvp"]
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_584wa"]
+
+[sub_resource type="CanvasTexture" id="CanvasTexture_13rs4"]
+resource_local_to_scene = true
+specular_texture = SubResource("NoiseTexture2D_584wa")
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_t8834"]
+size = Vector2(5, 15)
+
+[sub_resource type="Curve" id="Curve_yv3g8"]
+resource_local_to_scene = true
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[node name="Rocket" type="CharacterBody2D"]
+collision_layer = 4
+script = ExtResource("1_i4ptm")
+
+[node name="Sprite" type="Sprite2D" parent="."]
+scale = Vector2(5, 15)
+texture = SubResource("CanvasTexture_13rs4")
+
+[node name="AttackArea" type="Area2D" parent="." node_paths=PackedStringArray("projectile")]
+collision_layer = 4
+script = ExtResource("2_kthkf")
+projectile = NodePath("..")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AttackArea"]
+shape = SubResource("RectangleShape2D_t8834")
+
+[node name="Trail" type="Node2D" parent="."]
+position = Vector2(0, 7)
+
+[node name="MoveTrail" parent="Trail" instance=ExtResource("3_h3fvp")]
+points = PackedVector2Array(0, 0)
+width_curve = SubResource("Curve_yv3g8")
+
+[connection signal="area_entered" from="AttackArea" to="AttackArea" method="_on_area_entered"]

@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://b58vw44glay4i"]
+
+[ext_resource type="Script" path="res://MoveTrail.gd" id="1_6oau4"]
+
+[node name="MoveTrail" type="Line2D"]
+width = 3.0
+script = ExtResource("1_6oau4")

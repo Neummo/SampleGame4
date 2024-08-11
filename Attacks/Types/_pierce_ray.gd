@@ -1,0 +1,3 @@
+extends PierceRayAttackType
+class_name PierceRay
+

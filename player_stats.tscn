@@ -1,0 +1,265 @@
+[gd_scene load_steps=3 format=3 uid="uid://ccasosye1po2m"]
+
+[ext_resource type="Script" path="res://player_stats.gd" id="1_dnerw"]
+[ext_resource type="LabelSettings" uid="uid://cro6habyr70oa" path="res://Assets/stat_label_font.tres" id="2_qqcyd"]
+
+[node name="PlayerStats" type="Node2D" node_paths=PackedStringArray("turret_damage_label", "turret_reload_speed_label", "turret_range_label", "rocket_damage_label", "rocket_reload_speed_label", "laser_damage_label", "laser_reload_speed_label", "acceleration_label", "max_speed_label", "max_health_label", "health_regen_label", "level_label")]
+script = ExtResource("1_dnerw")
+turret_damage_label = NodePath("Control/Turret/Values/Container/DamageValue")
+turret_reload_speed_label = NodePath("Control/Turret/Values/Container/ReloadSpeedValue")
+turret_range_label = NodePath("Control/Turret/Values/Container/RangeValue")
+rocket_damage_label = NodePath("Control/Rocket/Values/Container/DamageValue")
+rocket_reload_speed_label = NodePath("Control/Rocket/Values/Container/ReloadSpeedValue")
+laser_damage_label = NodePath("Control/Laser/Values/Container/DamageValue")
+laser_reload_speed_label = NodePath("Control/Laser/Values/Container/ReloadSpeedValue")
+acceleration_label = NodePath("Control/Base/Values/Container/AccelerationValue")
+max_speed_label = NodePath("Control/Base/Values/Container/MaxSpeedValue")
+max_health_label = NodePath("Control/Base/Values/Container/MaxHealthValue")
+health_regen_label = NodePath("Control/Base/Values/Container/HealthRegenValue")
+level_label = NodePath("Control/Base/Values/Container/LevelValue")
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 10.0
+offset_top = 18.0
+offset_right = 50.0
+offset_bottom = 58.0
+
+[node name="Turret" type="HBoxContainer" parent="Control"]
+layout_mode = 0
+offset_right = 150.0
+offset_bottom = 68.0
+
+[node name="Names" type="HBoxContainer" parent="Control/Turret"]
+layout_mode = 2
+
+[node name="Sections" type="VBoxContainer" parent="Control/Turret/Names"]
+layout_mode = 2
+
+[node name="Names" type="VBoxContainer" parent="Control/Turret/Names/Sections"]
+layout_mode = 2
+
+[node name="Damage" type="Label" parent="Control/Turret/Names/Sections/Names"]
+layout_mode = 2
+text = "DMG:"
+label_settings = ExtResource("2_qqcyd")
+
+[node name="Range" type="Label" parent="Control/Turret/Names/Sections/Names"]
+layout_mode = 2
+text = "RNG:"
+label_settings = ExtResource("2_qqcyd")
+
+[node name="ReloadSpeed" type="Label" parent="Control/Turret/Names/Sections/Names"]
+layout_mode = 2
+text = "CD:"
+label_settings = ExtResource("2_qqcyd")
+
+[node name="Title" type="VBoxContainer" parent="Control/Turret/Names/Sections"]
+layout_mode = 2
+
+[node name="GunName" type="Label" parent="Control/Turret/Names/Sections/Title"]
+layout_mode = 2
+text = "Turret"
+label_settings = ExtResource("2_qqcyd")
+
+[node name="Values" type="HBoxContainer" parent="Control/Turret"]
+layout_mode = 2
+
+[node name="Container" type="VBoxContainer" parent="Control/Turret/Values"]
+layout_mode = 2
+
+[node name="DamageValue" type="Label" parent="Control/Turret/Values/Container"]
+layout_mode = 2
+text = "0"
+label_settings = ExtResource("2_qqcyd")
+
+[node name="RangeValue" type="Label" parent="Control/Turret/Values/Container"]
+layout_mode = 2
+text = "0"
+label_settings = ExtResource("2_qqcyd")
+
+[node name="ReloadSpeedValue" type="Label" parent="Control/Turret/Values/Container"]
+layout_mode = 2
+text = "0"
+label_settings = ExtResource("2_qqcyd")
+vertical_alignment = 1
+
+[node name="Rocket" type="HBoxContainer" parent="Control"]
+layout_mode = 0
+offset_top = 90.0
+offset_right = 150.0
+offset_bottom = 158.0
+
+[node name="Names" type="HBoxContainer" parent="Control/Rocket"]
+layout_mode = 2
+
+[node name="Sections" type="VBoxContainer" parent="Control/Rocket/Names"]
+layout_mode = 2
+
+[node name="Names" type="VBoxContainer" parent="Control/Rocket/Names/Sections"]
+layout_mode = 2
+
+[node name="Damage" type="Label" parent="Control/Rocket/Names/Sections/Names"]
+layout_mode = 2
+text = "DMG:"
+label_settings = ExtResource("2_qqcyd")
+
+[node name="ReloadSpeed" type="Label" parent="Control/Rocket/Names/Sections/Names"]
+layout_mode = 2
+text = "CD:"
+label_settings = ExtResource("2_qqcyd")
+
+[node name="Title" type="VBoxContainer" parent="Control/Rocket/Names/Sections"]
+layout_mode = 2
+
+[node name="GunName" type="Label" parent="Control/Rocket/Names/Sections/Title"]
+layout_mode = 2
+text = "Rocket"
+label_settings = ExtResource("2_qqcyd")
+
+[node name="Values" type="HBoxContainer" parent="Control/Rocket"]
+layout_mode = 2
+
+[node name="Container" type="VBoxContainer" parent="Control/Rocket/Values"]
+layout_mode = 2
+
+[node name="DamageValue" type="Label" parent="Control/Rocket/Values/Container"]
+layout_mode = 2
+text = "0"
+label_settings = ExtResource("2_qqcyd")
+
+[node name="ReloadSpeedValue" type="Label" parent="Control/Rocket/Values/Container"]
+layout_mode = 2
+text = "0"
+label_settings = ExtResource("2_qqcyd")
+vertical_alignment = 1
+
+[node name="Laser" type="HBoxContainer" parent="Control"]
+layout_mode = 0
+offset_top = 160.0
+offset_right = 150.0
+offset_bottom = 228.0
+
+[node name="Names" type="HBoxContainer" parent="Control/Laser"]
+layout_mode = 2
+
+[node name="Sections" type="VBoxContainer" parent="Control/Laser/Names"]
+layout_mode = 2
+
+[node name="Names" type="VBoxContainer" parent="Control/Laser/Names/Sections"]
+layout_mode = 2
+
+[node name="Damage" type="Label" parent="Control/Laser/Names/Sections/Names"]
+layout_mode = 2
+text = "DMG:"
+label_settings = ExtResource("2_qqcyd")
+
+[node name="ReloadSpeed" type="Label" parent="Control/Laser/Names/Sections/Names"]
+layout_mode = 2
+text = "CD:"
+label_settings = ExtResource("2_qqcyd")
+
+[node name="Title" type="VBoxContainer" parent="Control/Laser/Names/Sections"]
+layout_mode = 2
+
+[node name="GunName" type="Label" parent="Control/Laser/Names/Sections/Title"]
+layout_mode = 2
+text = "Laser"
+label_settings = ExtResource("2_qqcyd")
+
+[node name="Values" type="HBoxContainer" parent="Control/Laser"]
+layout_mode = 2
+
+[node name="Container" type="VBoxContainer" parent="Control/Laser/Values"]
+layout_mode = 2
+
+[node name="DamageValue" type="Label" parent="Control/Laser/Values/Container"]
+layout_mode = 2
+text = "0"
+label_settings = ExtResource("2_qqcyd")
+
+[node name="ReloadSpeedValue" type="Label" parent="Control/Laser/Values/Container"]
+layout_mode = 2
+text = "0"
+label_settings = ExtResource("2_qqcyd")
+vertical_alignment = 1
+
+[node name="Base" type="HBoxContainer" parent="Control"]
+layout_mode = 0
+offset_top = 230.0
+offset_right = 150.0
+offset_bottom = 316.0
+
+[node name="Names" type="HBoxContainer" parent="Control/Base"]
+layout_mode = 2
+
+[node name="Sections" type="VBoxContainer" parent="Control/Base/Names"]
+layout_mode = 2
+
+[node name="Names" type="VBoxContainer" parent="Control/Base/Names/Sections"]
+layout_mode = 2
+
+[node name="Acceleration" type="Label" parent="Control/Base/Names/Sections/Names"]
+layout_mode = 2
+text = "ACL:"
+label_settings = ExtResource("2_qqcyd")
+
+[node name="MaxSpeed" type="Label" parent="Control/Base/Names/Sections/Names"]
+layout_mode = 2
+text = "SPD:"
+label_settings = ExtResource("2_qqcyd")
+
+[node name="MaxHealth" type="Label" parent="Control/Base/Names/Sections/Names"]
+layout_mode = 2
+text = "HP:"
+label_settings = ExtResource("2_qqcyd")
+
+[node name="HealthRegen" type="Label" parent="Control/Base/Names/Sections/Names"]
+layout_mode = 2
+text = "HPS:"
+label_settings = ExtResource("2_qqcyd")
+
+[node name="Level" type="Label" parent="Control/Base/Names/Sections/Names"]
+layout_mode = 2
+text = "LVL:"
+label_settings = ExtResource("2_qqcyd")
+
+[node name="Title" type="VBoxContainer" parent="Control/Base/Names/Sections"]
+layout_mode = 2
+
+[node name="GunName" type="Label" parent="Control/Base/Names/Sections/Title"]
+layout_mode = 2
+text = "Base"
+label_settings = ExtResource("2_qqcyd")
+
+[node name="Values" type="HBoxContainer" parent="Control/Base"]
+layout_mode = 2
+
+[node name="Container" type="VBoxContainer" parent="Control/Base/Values"]
+layout_mode = 2
+
+[node name="AccelerationValue" type="Label" parent="Control/Base/Values/Container"]
+layout_mode = 2
+text = "0"
+label_settings = ExtResource("2_qqcyd")
+
+[node name="MaxSpeedValue" type="Label" parent="Control/Base/Values/Container"]
+layout_mode = 2
+text = "0"
+label_settings = ExtResource("2_qqcyd")
+
+[node name="MaxHealthValue" type="Label" parent="Control/Base/Values/Container"]
+layout_mode = 2
+text = "0"
+label_settings = ExtResource("2_qqcyd")
+
+[node name="HealthRegenValue" type="Label" parent="Control/Base/Values/Container"]
+layout_mode = 2
+text = "0"
+label_settings = ExtResource("2_qqcyd")
+
+[node name="LevelValue" type="Label" parent="Control/Base/Values/Container"]
+layout_mode = 2
+text = "0"
+label_settings = ExtResource("2_qqcyd")

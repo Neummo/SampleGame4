@@ -1,0 +1,2 @@
+extends AreaAttackType
+class_name AreaBeam

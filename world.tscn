@@ -1,0 +1,47 @@
+[gd_scene load_steps=4 format=3 uid="uid://ch3bfb2jxxujv"]
+
+[ext_resource type="PackedScene" uid="uid://70snqg3xty42" path="res://player.tscn" id="1_xg6cr"]
+[ext_resource type="PackedScene" uid="uid://cosl5ticiw0ni" path="res://spawner.tscn" id="3_f7sdh"]
+[ext_resource type="Texture2D" uid="uid://qtrb1xq1yyom" path="res://Assets/icon.svg" id="3_jsug4"]
+
+[node name="World" type="Node2D"]
+
+[node name="Player" parent="." instance=ExtResource("1_xg6cr")]
+position = Vector2(615, 298)
+
+[node name="Spawner" parent="." instance=ExtResource("3_f7sdh")]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+show_behind_parent = true
+z_index = -5
+position = Vector2(239.5, 155.5)
+scale = Vector2(1.39844, 1.22656)
+texture = ExtResource("3_jsug4")
+
+[node name="Sprite2D2" type="Sprite2D" parent="."]
+show_behind_parent = true
+z_index = -5
+position = Vector2(522, 512)
+scale = Vector2(0.984375, 1)
+texture = ExtResource("3_jsug4")
+
+[node name="Sprite2D3" type="Sprite2D" parent="."]
+show_behind_parent = true
+z_index = -5
+position = Vector2(1104, 573)
+scale = Vector2(1.48437, 1.32813)
+texture = ExtResource("3_jsug4")
+
+[node name="Sprite2D4" type="Sprite2D" parent="."]
+show_behind_parent = true
+z_index = -5
+position = Vector2(244, 471)
+scale = Vector2(0.625, 0.640625)
+texture = ExtResource("3_jsug4")
+
+[node name="Sprite2D5" type="Sprite2D" parent="."]
+show_behind_parent = true
+z_index = -5
+position = Vector2(1028, 93)
+scale = Vector2(0.640625, 0.59375)
+texture = ExtResource("3_jsug4")
