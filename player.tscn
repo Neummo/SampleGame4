@@ -1,0 +1,111 @@
+[gd_scene load_steps=19 format=3 uid="uid://70snqg3xty42"]
+
+[ext_resource type="Script" path="res://player.gd" id="1_b6t1o"]
+[ext_resource type="PackedScene" uid="uid://cg200evxgwx7b" path="res://range_indicator.tscn" id="2_cibuv"]
+[ext_resource type="Shader" path="res://Shaders/damageFlash.gdshader" id="2_h3i2p"]
+[ext_resource type="Script" path="res://HealthComponent.gd" id="3_mv8ni"]
+[ext_resource type="Script" path="res://HitboxComponent.gd" id="4_2d3ll"]
+[ext_resource type="PackedScene" uid="uid://dtbe3d6tdnt30" path="res://progression_manager.tscn" id="4_eu5q1"]
+[ext_resource type="PackedScene" uid="uid://ccasosye1po2m" path="res://player_stats.tscn" id="4_gnofj"]
+[ext_resource type="PackedScene" uid="uid://b58vw44glay4i" path="res://move_trail.tscn" id="5_1rq2q"]
+[ext_resource type="PackedScene" uid="uid://3se37hf2b3nl" path="res://damage_flash_player.tscn" id="5_phtlw"]
+[ext_resource type="PackedScene" uid="uid://cx65mwov3fgjd" path="res://health_bar.tscn" id="7_ra7d7"]
+[ext_resource type="Texture2D" uid="uid://b507vmtrwmkcs" path="res://Assets/Main Ship - Base - Full health.png" id="8_7fnv4"]
+[ext_resource type="PackedScene" uid="uid://c4xqvl6jfb7d0" path="res://Guns/melee_gun.tscn" id="9_4b7n7"]
+[ext_resource type="PackedScene" uid="uid://cuid0d5mm6d8u" path="res://Guns/ranged_gun.tscn" id="10_peajn"]
+[ext_resource type="PackedScene" uid="uid://cegx3mkaarwf6" path="res://Guns/big_gun.tscn" id="11_nhf5f"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_miqcf"]
+resource_local_to_scene = true
+shader = ExtResource("2_h3i2p")
+shader_parameter/flash_color = Color(1, 1, 1, 1)
+shader_parameter/flash_value = 0.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3idnx"]
+size = Vector2(26, 30)
+
+[sub_resource type="Curve" id="Curve_cw8br"]
+resource_local_to_scene = true
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Curve" id="Curve_3o3jj"]
+resource_local_to_scene = true
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("progression_manager", "stats", "health_bar", "health", "body", "melee_gun", "ranged_gun", "big_gun", "range_indicator") groups=["Player"]]
+collision_layer = 2
+script = ExtResource("1_b6t1o")
+progression_manager = NodePath("ProgressionManager")
+stats = NodePath("Stats")
+health_bar = NodePath("HealthBar")
+health = NodePath("Body/HealthComponent")
+body = NodePath("Body")
+melee_gun = NodePath("MeleeGun")
+ranged_gun = NodePath("RangedGun")
+big_gun = NodePath("BigGun")
+range_indicator = NodePath("RangeIndicator")
+
+[node name="RangeIndicator" parent="." instance=ExtResource("2_cibuv")]
+
+[node name="Camera2D" type="Camera2D" parent="."]
+process_callback = 0
+limit_smoothed = true
+editor_draw_limits = true
+
+[node name="HealthBar" parent="." instance=ExtResource("7_ra7d7")]
+offset_left = -562.0
+offset_top = 299.0
+offset_right = -362.0
+offset_bottom = 306.0
+
+[node name="ProgressionManager" parent="." instance=ExtResource("4_eu5q1")]
+
+[node name="Stats" parent="." instance=ExtResource("4_gnofj")]
+position = Vector2(-571, -333)
+
+[node name="RangedGun" parent="." instance=ExtResource("10_peajn")]
+
+[node name="MeleeGun" parent="." instance=ExtResource("9_4b7n7")]
+
+[node name="BigGun" parent="." instance=ExtResource("11_nhf5f")]
+
+[node name="Body" type="Node2D" parent="."]
+
+[node name="Sprite" type="Sprite2D" parent="Body"]
+material = SubResource("ShaderMaterial_miqcf")
+texture = ExtResource("8_7fnv4")
+
+[node name="DamageFlashPlayer" parent="Body/Sprite" instance=ExtResource("5_phtlw")]
+
+[node name="HitboxComponent" type="Area2D" parent="Body" node_paths=PackedStringArray("health_component")]
+collision_layer = 2
+script = ExtResource("4_2d3ll")
+health_component = NodePath("../HealthComponent")
+possesor = "Player"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Body/HitboxComponent"]
+shape = SubResource("RectangleShape2D_3idnx")
+
+[node name="HealthComponent" type="Node2D" parent="Body" node_paths=PackedStringArray("health_bar", "damage_flash_player")]
+script = ExtResource("3_mv8ni")
+health_bar = NodePath("../../HealthBar")
+possesor = "Player"
+damage_flash_player = NodePath("../Sprite/DamageFlashPlayer")
+
+[node name="LeftWing" type="Node2D" parent="Body"]
+position = Vector2(-10, -14)
+
+[node name="MoveTrail" parent="Body/LeftWing" instance=ExtResource("5_1rq2q")]
+z_index = -1
+width_curve = SubResource("Curve_cw8br")
+length = 100
+
+[node name="RightWing" type="Node2D" parent="Body"]
+position = Vector2(-10, 14)
+
+[node name="MoveTrail" parent="Body/RightWing" instance=ExtResource("5_1rq2q")]
+z_index = -1
+width_curve = SubResource("Curve_3o3jj")
+length = 100

@@ -1,0 +1,107 @@
+[gd_scene load_steps=15 format=3 uid="uid://70snqg3xty42"]
+
+[ext_resource type="Script" path="res://player.gd" id="1_b6t1o"]
+[ext_resource type="Texture2D" uid="uid://b7180lkc3pvmy" path="res://Main Ship - Base - Full health - player.png" id="2_2bmg1"]
+[ext_resource type="Shader" path="res://damageFlash.gdshader" id="2_h3i2p"]
+[ext_resource type="Script" path="res://HealthComponent.gd" id="3_mv8ni"]
+[ext_resource type="Script" path="res://HitboxComponent.gd" id="4_2d3ll"]
+[ext_resource type="PackedScene" uid="uid://b58vw44glay4i" path="res://move_trail.tscn" id="5_1rq2q"]
+[ext_resource type="PackedScene" uid="uid://3se37hf2b3nl" path="res://damage_flash_player.tscn" id="5_phtlw"]
+[ext_resource type="PackedScene" uid="uid://m24wltpp2rb" path="res://laser.tscn" id="8_11rhk"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_miqcf"]
+shader = ExtResource("2_h3i2p")
+shader_parameter/flash_color = Color(1, 1, 1, 1)
+shader_parameter/flash_value = 0.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3idnx"]
+size = Vector2(6, 6)
+
+[sub_resource type="CanvasTexture" id="CanvasTexture_rthv8"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_1ag11"]
+
+[sub_resource type="Curve" id="Curve_mpxbw"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Curve" id="Curve_e11so"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("auto_gun_timer", "auto_gun_range", "auto_gun_shape", "auto_gun_turret", "manual_gun_timer", "manual_gun_turret", "laser") groups=["Player"]]
+script = ExtResource("1_b6t1o")
+AUTO_GUN_RANGE = 50.0
+auto_gun_timer = NodePath("AutoGunTurret/AutoGunTimer")
+auto_gun_range = NodePath("AutoGunTurret/AutoGunRange")
+auto_gun_shape = NodePath("AutoGunTurret/AutoGunRange/CollisionShape2D")
+auto_gun_turret = NodePath("AutoGunTurret")
+manual_gun_timer = NodePath("ManualGunTurret/ManualGunTimer")
+manual_gun_turret = NodePath("ManualGunTurret")
+laser = NodePath("Laser")
+
+[node name="Sprite" type="Sprite2D" parent="."]
+material = SubResource("ShaderMaterial_miqcf")
+scale = Vector2(0.166667, 0.166667)
+texture = ExtResource("2_2bmg1")
+
+[node name="DamageFlashPlayer" parent="Sprite" instance=ExtResource("5_phtlw")]
+
+[node name="Camera2D" type="Camera2D" parent="."]
+zoom = Vector2(7, 7)
+process_callback = 0
+limit_smoothed = true
+position_smoothing_enabled = true
+rotation_smoothing_enabled = true
+
+[node name="HitboxComponent" type="Area2D" parent="." node_paths=PackedStringArray("health_component")]
+script = ExtResource("4_2d3ll")
+health_component = NodePath("../HealthComponent")
+possesor = "Player"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HitboxComponent"]
+shape = SubResource("RectangleShape2D_3idnx")
+
+[node name="HealthComponent" type="Node2D" parent="." node_paths=PackedStringArray("damage_flash_player")]
+script = ExtResource("3_mv8ni")
+damage_flash_player = NodePath("../Sprite/DamageFlashPlayer")
+
+[node name="AutoGunTurret" type="Sprite2D" parent="."]
+texture = SubResource("CanvasTexture_rthv8")
+
+[node name="AutoGunRange" type="Area2D" parent="AutoGunTurret"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AutoGunTurret/AutoGunRange"]
+shape = SubResource("CircleShape2D_1ag11")
+
+[node name="AutoGunTimer" type="Timer" parent="AutoGunTurret"]
+wait_time = 0.1
+
+[node name="ManualGunTurret" type="Sprite2D" parent="."]
+texture = SubResource("CanvasTexture_rthv8")
+
+[node name="ManualGunTimer" type="Timer" parent="ManualGunTurret"]
+wait_time = 0.1
+
+[node name="LeftWing" type="Node2D" parent="."]
+position = Vector2(-2, 1)
+
+[node name="MoveTrail" parent="LeftWing" instance=ExtResource("5_1rq2q")]
+z_index = -1
+width = 0.5
+width_curve = SubResource("Curve_mpxbw")
+length = 100
+
+[node name="RightWing" type="Node2D" parent="."]
+position = Vector2(2, 1)
+
+[node name="MoveTrail" parent="RightWing" instance=ExtResource("5_1rq2q")]
+z_index = -1
+width = 0.5
+width_curve = SubResource("Curve_e11so")
+length = 100
+
+[node name="Laser" parent="." instance=ExtResource("8_11rhk")]
+
+[connection signal="timeout" from="AutoGunTurret/AutoGunTimer" to="." method="_on_auto_gun_timer_timeout"]
+[connection signal="timeout" from="ManualGunTurret/ManualGunTimer" to="." method="_on_auto_gun_timer_timeout"]

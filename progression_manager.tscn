@@ -1,0 +1,159 @@
+[gd_scene load_steps=6 format=3 uid="uid://dtbe3d6tdnt30"]
+
+[ext_resource type="Script" path="res://progression_manager.gd" id="1_boseb"]
+[ext_resource type="Texture2D" uid="uid://co0a622mi6nqh" path="res://Assets/placeholder_button.tres" id="3_llpj6"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_bh07k"]
+bg_color = Color(0.137255, 0.137255, 0.137255, 1)
+expand_margin_left = 1.0
+expand_margin_top = 1.0
+expand_margin_right = 1.0
+expand_margin_bottom = 1.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7t642"]
+bg_color = Color(0.294118, 0.254902, 0.756863, 1)
+
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_8k0ed"]
+size = Vector2(50, 50)
+
+[node name="ProgressionManager" type="Node2D" node_paths=PackedStringArray("exp_bar", "skill_button", "skill_category_button", "turret_skill_button", "rocket_skill_button", "laser_skill_button", "base_skill_button")]
+script = ExtResource("1_boseb")
+exp_bar = NodePath("ExpBar")
+skill_button = NodePath("SkillButton")
+skill_category_button = NodePath("SkillCategory")
+turret_skill_button = NodePath("Turret")
+rocket_skill_button = NodePath("Rocket")
+laser_skill_button = NodePath("Laser")
+base_skill_button = NodePath("Base")
+
+[node name="ExpBar" type="ProgressBar" parent="."]
+z_index = 1
+offset_left = -562.0
+offset_top = 309.0
+offset_right = -362.0
+offset_bottom = 316.0
+theme_override_styles/background = SubResource("StyleBoxFlat_bh07k")
+theme_override_styles/fill = SubResource("StyleBoxFlat_7t642")
+step = 1.0
+show_percentage = false
+
+[node name="SkillButton" type="TextureButton" parent="."]
+offset_left = 503.0
+offset_top = -166.0
+offset_right = 553.0
+offset_bottom = -116.0
+shortcut_feedback = false
+shortcut_in_tooltip = false
+texture_normal = SubResource("PlaceholderTexture2D_8k0ed")
+
+[node name="SkillCategory" type="HBoxContainer" parent="."]
+offset_left = 341.0
+offset_top = -111.0
+offset_right = 553.0
+offset_bottom = -61.0
+mouse_filter = 2
+
+[node name="Turret" type="TextureButton" parent="SkillCategory"]
+layout_mode = 2
+texture_normal = ExtResource("3_llpj6")
+
+[node name="Rocket" type="TextureButton" parent="SkillCategory"]
+layout_mode = 2
+texture_normal = ExtResource("3_llpj6")
+
+[node name="Laser" type="TextureButton" parent="SkillCategory"]
+layout_mode = 2
+texture_normal = ExtResource("3_llpj6")
+
+[node name="Base" type="TextureButton" parent="SkillCategory"]
+layout_mode = 2
+texture_normal = ExtResource("3_llpj6")
+
+[node name="Turret" type="HBoxContainer" parent="."]
+offset_left = 395.0
+offset_top = -56.0
+offset_right = 553.0
+offset_bottom = -6.0
+mouse_filter = 2
+
+[node name="TurretDamage" type="TextureButton" parent="Turret"]
+layout_mode = 2
+texture_normal = ExtResource("3_llpj6")
+
+[node name="TurretAttackSpeed" type="TextureButton" parent="Turret"]
+layout_mode = 2
+texture_normal = ExtResource("3_llpj6")
+
+[node name="TurretRange" type="TextureButton" parent="Turret"]
+layout_mode = 2
+texture_normal = ExtResource("3_llpj6")
+
+[node name="Rocket" type="HBoxContainer" parent="."]
+offset_left = 449.0
+offset_top = -56.0
+offset_right = 553.0
+offset_bottom = -6.0
+mouse_filter = 2
+
+[node name="RocketDamage" type="TextureButton" parent="Rocket"]
+layout_mode = 2
+texture_normal = ExtResource("3_llpj6")
+
+[node name="RocketAttackSpeed" type="TextureButton" parent="Rocket"]
+layout_mode = 2
+texture_normal = ExtResource("3_llpj6")
+
+[node name="Laser" type="HBoxContainer" parent="."]
+offset_left = 449.0
+offset_top = -56.0
+offset_right = 553.0
+offset_bottom = -6.0
+mouse_filter = 2
+
+[node name="LaserDamage" type="TextureButton" parent="Laser"]
+layout_mode = 2
+texture_normal = ExtResource("3_llpj6")
+
+[node name="LaserAttackSpeed" type="TextureButton" parent="Laser"]
+layout_mode = 2
+texture_normal = ExtResource("3_llpj6")
+
+[node name="Base" type="HBoxContainer" parent="."]
+offset_left = 341.0
+offset_top = -56.0
+offset_right = 553.0
+offset_bottom = -6.0
+mouse_filter = 2
+
+[node name="Acceleration" type="TextureButton" parent="Base"]
+layout_mode = 2
+texture_normal = ExtResource("3_llpj6")
+
+[node name="Speed" type="TextureButton" parent="Base"]
+layout_mode = 2
+texture_normal = ExtResource("3_llpj6")
+
+[node name="MaxHealth" type="TextureButton" parent="Base"]
+layout_mode = 2
+texture_normal = ExtResource("3_llpj6")
+
+[node name="HealthRegen" type="TextureButton" parent="Base"]
+layout_mode = 2
+texture_normal = ExtResource("3_llpj6")
+
+[connection signal="pressed" from="SkillButton" to="." method="_on_skill_button_pressed"]
+[connection signal="pressed" from="SkillCategory/Turret" to="." method="_on_turret_pressed"]
+[connection signal="pressed" from="SkillCategory/Rocket" to="." method="_on_rocket_pressed"]
+[connection signal="pressed" from="SkillCategory/Laser" to="." method="_on_laser_pressed"]
+[connection signal="pressed" from="SkillCategory/Base" to="." method="_on_base_pressed"]
+[connection signal="pressed" from="Turret/TurretDamage" to="." method="_on_turret_damage_pressed"]
+[connection signal="pressed" from="Turret/TurretAttackSpeed" to="." method="_on_turret_attack_speed_pressed"]
+[connection signal="pressed" from="Turret/TurretRange" to="." method="_on_turret_range_pressed"]
+[connection signal="pressed" from="Rocket/RocketDamage" to="." method="_on_rocket_damage_pressed"]
+[connection signal="pressed" from="Rocket/RocketAttackSpeed" to="." method="_on_rocket_attack_speed_pressed"]
+[connection signal="pressed" from="Laser/LaserDamage" to="." method="_on_laser_damage_pressed"]
+[connection signal="pressed" from="Laser/LaserAttackSpeed" to="." method="_on_laser_attack_speed_pressed"]
+[connection signal="pressed" from="Base/Acceleration" to="." method="_on_acceleration_pressed"]
+[connection signal="pressed" from="Base/Speed" to="." method="_on_speed_pressed"]
+[connection signal="pressed" from="Base/MaxHealth" to="." method="_on_max_health_pressed"]
+[connection signal="pressed" from="Base/HealthRegen" to="." method="_on_health_regen_pressed"]

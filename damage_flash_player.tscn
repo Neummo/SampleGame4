@@ -1,0 +1,44 @@
+[gd_scene load_steps=4 format=3 uid="uid://3se37hf2b3nl"]
+
+[sub_resource type="Animation" id="Animation_gqnd1"]
+length = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:material:shader_parameter/flash_value")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [0.0, 1.0, 0.0]
+}
+
+[sub_resource type="Animation" id="Animation_fxa25"]
+resource_name = "damage_flash"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:material:shader_parameter/flash_value")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2),
+"transitions": PackedFloat32Array(1e-05, 3.15938e-05, 1e-05),
+"update": 0,
+"values": [0.0, 1.0, 0.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_hufu1"]
+_data = {
+"RESET": SubResource("Animation_gqnd1"),
+"damage_flash": SubResource("Animation_fxa25")
+}
+
+[node name="DamageFlashPlayer" type="AnimationPlayer"]
+reset_on_save = false
+libraries = {
+"": SubResource("AnimationLibrary_hufu1")
+}

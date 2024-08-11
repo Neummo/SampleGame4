@@ -1,0 +1,12 @@
+[gd_scene load_steps=2 format=3 uid="uid://cuid0d5mm6d8u"]
+
+[ext_resource type="Script" path="res://Guns/ranged_gun.gd" id="1_jg8vy"]
+
+[node name="RangedGun" type="Node2D" node_paths=PackedStringArray("gun_timer")]
+script = ExtResource("1_jg8vy")
+gun_timer = NodePath("GunTimer")
+
+[node name="GunTimer" type="Timer" parent="."]
+one_shot = true
+
+[connection signal="timeout" from="GunTimer" to="." method="_on_gun_timer_timeout"]

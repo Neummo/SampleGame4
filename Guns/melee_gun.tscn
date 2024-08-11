@@ -1,0 +1,24 @@
+[gd_scene load_steps=3 format=3 uid="uid://c4xqvl6jfb7d0"]
+
+[ext_resource type="Script" path="res://Guns/melee_gun.gd" id="1_pclyu"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_1ag11"]
+radius = 200.0
+
+[node name="MeleeGun" type="Node2D" node_paths=PackedStringArray("gun_timer", "gun_range_indicator", "gun_range_shape")]
+script = ExtResource("1_pclyu")
+gun_timer = NodePath("GunTimer")
+gun_range_indicator = NodePath("GunRange")
+gun_range_shape = NodePath("GunRange/CollisionShape2D")
+
+[node name="GunRange" type="Area2D" parent="."]
+collision_layer = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="GunRange"]
+shape = SubResource("CircleShape2D_1ag11")
+
+[node name="GunTimer" type="Timer" parent="."]
+wait_time = 0.1
+one_shot = true
+
+[connection signal="timeout" from="GunTimer" to="." method="_on_gun_timer_timeout"]
