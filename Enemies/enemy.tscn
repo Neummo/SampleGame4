@@ -1,8 +1,9 @@
-[gd_scene load_steps=13 format=3 uid="uid://dvjw6fr5rxisq"]
+[gd_scene load_steps=14 format=3 uid="uid://dvjw6fr5rxisq"]
 
-[ext_resource type="Script" path="res://enemy.gd" id="1_ruyqy"]
+[ext_resource type="Script" path="res://Enemies/enemy.gd" id="1_ruyqy"]
 [ext_resource type="Shader" path="res://Shaders/damageFlash.gdshader" id="2_vrrtg"]
 [ext_resource type="Script" path="res://HealthComponent.gd" id="3_c76pw"]
+[ext_resource type="PackedScene" uid="uid://cbdpjw3txwo5h" path="res://Enemies/enemy_stats.tscn" id="3_eeq3k"]
 [ext_resource type="Texture2D" uid="uid://b507vmtrwmkcs" path="res://Assets/Main Ship - Base - Full health.png" id="4_0335n"]
 [ext_resource type="Script" path="res://HitboxComponent.gd" id="4_nrd7a"]
 [ext_resource type="PackedScene" uid="uid://3se37hf2b3nl" path="res://damage_flash_player.tscn" id="5_0htun"]
@@ -18,21 +19,22 @@ shader_parameter/flash_value = 0.0
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_h40vo"]
 size = Vector2(26, 30)
 
-[sub_resource type="Curve" id="Curve_ykwck"]
+[sub_resource type="Curve" id="Curve_dn5cu"]
 resource_local_to_scene = true
 _data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
 point_count = 2
 
-[sub_resource type="Curve" id="Curve_r2xsh"]
+[sub_resource type="Curve" id="Curve_8jtla"]
 resource_local_to_scene = true
 _data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
 point_count = 2
 
-[node name="Enemy" type="CharacterBody2D" node_paths=PackedStringArray("shoot_timer", "health", "health_bar", "body")]
+[node name="Enemy" type="CharacterBody2D" node_paths=PackedStringArray("shoot_timer", "health_component", "stats", "health_bar", "body")]
 collision_mask = 2
 script = ExtResource("1_ruyqy")
 shoot_timer = NodePath("Body/ShootTimer")
-health = NodePath("Body/HealthComponent")
+health_component = NodePath("Body/HealthComponent")
+stats = NodePath("EnemyStats")
 health_bar = NodePath("HealthBar")
 body = NodePath("Body")
 
@@ -41,6 +43,8 @@ offset_left = -12.0
 offset_top = -19.0
 offset_right = 13.0
 offset_bottom = -17.0
+
+[node name="EnemyStats" parent="." instance=ExtResource("3_eeq3k")]
 
 [node name="Body" type="Node2D" parent="."]
 
@@ -73,7 +77,7 @@ position = Vector2(-10, -14)
 
 [node name="MoveTrail" parent="Body/LeftWing" instance=ExtResource("7_5m7ei")]
 z_index = -1
-width_curve = SubResource("Curve_ykwck")
+width_curve = SubResource("Curve_dn5cu")
 length = 20
 
 [node name="RightWing" type="Node2D" parent="Body"]
@@ -81,7 +85,7 @@ position = Vector2(-10, 14)
 
 [node name="MoveTrail" parent="Body/RightWing" instance=ExtResource("7_5m7ei")]
 z_index = -1
-width_curve = SubResource("Curve_r2xsh")
+width_curve = SubResource("Curve_8jtla")
 length = 20
 
 [connection signal="timeout" from="Body/ShootTimer" to="." method="_on_shoot_timer_timeout"]

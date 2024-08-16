@@ -1,7 +1,7 @@
 extends Gun
 class_name RangedGun
 
-@export var homing: bool = true
+@export var homing: bool = false
 @export var gun_timer: Timer
 var gun_switch: bool = true
 
@@ -12,6 +12,7 @@ func _ready():
 
 func update_stats() -> void:
 	gun_timer.set_wait_time(Values.player_manual_gun_cooldown)
+	homing = Values.manual_gun_homing
 
 func shoot():
 	if !gun_switch or !cooldown_passed:
@@ -28,7 +29,7 @@ func spawn_projectile():
 	var angle = player.global_position.direction_to(player.get_global_mouse_position()).angle() + 1.57079633
 	instance.target = "Enemy"
 	instance.spawn_position = player.global_position + Vector2(0, -5).rotated(angle)
-	instance.spawn_rotation = angle
+	instance.spawn_rotation = player.body.global_position.direction_to(player.closest_enemy.global_position).angle()  + 1.57079633
 	get_tree().current_scene.add_child.call_deferred(instance)
 	gun_timer.start()
 

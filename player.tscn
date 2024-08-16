@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://70snqg3xty42"]
+[gd_scene load_steps=20 format=3 uid="uid://70snqg3xty42"]
 
 [ext_resource type="Script" path="res://player.gd" id="1_b6t1o"]
 [ext_resource type="PackedScene" uid="uid://cg200evxgwx7b" path="res://range_indicator.tscn" id="2_cibuv"]
@@ -15,6 +15,9 @@
 [ext_resource type="PackedScene" uid="uid://cuid0d5mm6d8u" path="res://Guns/ranged_gun.tscn" id="10_peajn"]
 [ext_resource type="PackedScene" uid="uid://cegx3mkaarwf6" path="res://Guns/big_gun.tscn" id="11_nhf5f"]
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_2q0kj"]
+radius = 500.0
+
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_miqcf"]
 resource_local_to_scene = true
 shader = ExtResource("2_h3i2p")
@@ -24,17 +27,17 @@ shader_parameter/flash_value = 0.0
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_3idnx"]
 size = Vector2(26, 30)
 
-[sub_resource type="Curve" id="Curve_cw8br"]
+[sub_resource type="Curve" id="Curve_cwny5"]
 resource_local_to_scene = true
 _data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
 point_count = 2
 
-[sub_resource type="Curve" id="Curve_3o3jj"]
+[sub_resource type="Curve" id="Curve_q2kj1"]
 resource_local_to_scene = true
 _data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
 point_count = 2
 
-[node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("progression_manager", "stats", "health_bar", "health", "body", "melee_gun", "ranged_gun", "big_gun", "range_indicator") groups=["Player"]]
+[node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("progression_manager", "stats", "health_bar", "health", "body", "melee_gun", "ranged_gun", "big_gun", "range", "range_indicator") groups=["Player"]]
 collision_layer = 2
 script = ExtResource("1_b6t1o")
 progression_manager = NodePath("ProgressionManager")
@@ -45,14 +48,21 @@ body = NodePath("Body")
 melee_gun = NodePath("MeleeGun")
 ranged_gun = NodePath("RangedGun")
 big_gun = NodePath("BigGun")
+range = NodePath("Range")
 range_indicator = NodePath("RangeIndicator")
 
 [node name="RangeIndicator" parent="." instance=ExtResource("2_cibuv")]
 
 [node name="Camera2D" type="Camera2D" parent="."]
 process_callback = 0
+limit_left = -11000
+limit_top = -11000
+limit_right = 11000
+limit_bottom = 11000
 limit_smoothed = true
+position_smoothing_enabled = true
 editor_draw_limits = true
+editor_draw_drag_margin = true
 
 [node name="HealthBar" parent="." instance=ExtResource("7_ra7d7")]
 offset_left = -562.0
@@ -70,6 +80,11 @@ position = Vector2(-571, -333)
 [node name="MeleeGun" parent="." instance=ExtResource("9_4b7n7")]
 
 [node name="BigGun" parent="." instance=ExtResource("11_nhf5f")]
+
+[node name="Range" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Range"]
+shape = SubResource("CircleShape2D_2q0kj")
 
 [node name="Body" type="Node2D" parent="."]
 
@@ -99,7 +114,7 @@ position = Vector2(-10, -14)
 
 [node name="MoveTrail" parent="Body/LeftWing" instance=ExtResource("5_1rq2q")]
 z_index = -1
-width_curve = SubResource("Curve_cw8br")
+width_curve = SubResource("Curve_cwny5")
 length = 100
 
 [node name="RightWing" type="Node2D" parent="Body"]
@@ -107,5 +122,5 @@ position = Vector2(-10, 14)
 
 [node name="MoveTrail" parent="Body/RightWing" instance=ExtResource("5_1rq2q")]
 z_index = -1
-width_curve = SubResource("Curve_3o3jj")
+width_curve = SubResource("Curve_q2kj1")
 length = 100

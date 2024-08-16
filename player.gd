@@ -14,35 +14,59 @@ var max_speed: float
 @export var melee_gun: MeleeGun
 @export var ranged_gun: RangedGun
 @export var big_gun: BigGun
-
+@export var range: Area2D
 @export var range_indicator: Line2D
+var closest_enemy: Area2D
 
 func _ready():
+	health_bar.init_health(Values.player_max_health)
 	motion_mode = CharacterBody2D.MOTION_MODE_FLOATING
 	set_stats()
 
 func _physics_process(delta):
+	stats.coords.set_text(str(snapped(global_position.x, 1), " ", snapped(global_position.y, 1)))
 	movement(delta)
 	#simple_movement(delta)
 	guns()
 	move_and_slide()
 
-func rotate_to_direction(delta):
-	var direction = Input.get_axis("rotate_left", "rotate_right")
-	body.rotate(sign(direction) * delta * get_rotation_speed())
+func rotate_to_direction(_delta):
+	#var direction = Input.get_axis("rotate_left", "rotate_right")
+	#body.rotate(sign(direction) * delta * get_rotation_speed())
+	body.look_at(get_global_mouse_position())
 	
 func get_rotation_speed() -> float:
 	#print((maxf(abs(velocity.x), abs(velocity.y)) - (max_speed * 2)) / -max_speed)
 	return rotate_speed
 	
 func guns() -> void:
-	if Input.is_action_just_pressed("shoot_ult"):
-		big_gun.shoot()
+	#if Input.is_action_just_pressed("shoot_ult"):
 		
-	if Input.is_action_just_pressed("shoot"):
-		ranged_gun.shoot()
+	#if Input.is_action_just_pressed("shoot"):
 	
-	melee_gun.shoot()
+	get_closest_enemy()
+	if closest_enemy:
+		if Values.ult_gun_unlocked:
+			big_gun.auto_shoot()
+		if Values.manual_gun_unlocked:
+			ranged_gun.shoot()
+		if Values.melee_gun_unlocked:
+			melee_gun.shoot()
+
+func get_closest_enemy() -> Area2D:
+	var overlapping_areas: Array[Area2D] = range.get_overlapping_areas()
+	var min_distance: float
+	closest_enemy = null
+	for area in overlapping_areas:
+		if area is HitboxComponent and area.possesor != "Player":
+			var distance_to_enemy: float = global_position.distance_squared_to(area.global_position)
+			if not closest_enemy:
+				min_distance = global_position.distance_squared_to(area.global_position)
+				closest_enemy = area
+			if distance_to_enemy < min_distance:
+				min_distance = distance_to_enemy
+				closest_enemy = area
+	return closest_enemy
 
 func movement(delta: float) -> void:
 	rotate_to_direction(delta)
@@ -71,14 +95,18 @@ func simple_movement(delta: float) -> void:
 		velocity -= (Vector2(velocity.x, velocity.y) * delta)
 	velocity = velocity.limit_length(max_speed)
 	body.look_at(get_global_mouse_position())
-	
+
+func heal() -> void:
+	health.health = Values.player_max_health
+	health_bar.health = Values.player_max_health
+
 func set_stats() -> void:
-	range_indicator.radius = Values.player_melee_gun_range
+	range_indicator.radius = 500
 	range_indicator.spawn_position = global_position
 	range_indicator.draw_range_indicator()
 	acceleration = Values.player_acceleration
 	max_speed = Values.player_max_speed
-	health.MAX_HEALTH = Values.player_max_health
+	health.health = Values.player_max_health
 	health_bar.update_max_health(Values.player_max_health)
 	
 	melee_gun.update_stats()
@@ -90,7 +118,7 @@ func set_stats() -> void:
 		max_speed = Values.player_max_speed,
 		max_health = Values.player_max_health,
 		health_regen = Values.player_health_regen,
-		level = progression_manager.level,
+		currency = Values.currency,
 		
 		turret = {
 			damage = Values.player_melee_gun_damage,
@@ -106,3 +134,11 @@ func set_stats() -> void:
 			reload_speed = Values.player_ult_gun_cooldown,
 		},
 	})
+
+func _on_atmosphere_area_entered(area):
+	if area is HitboxComponent and area.possesor == "Player":
+		progression_manager.upgrade_menu.set_visible(true)
+
+func _on_atmosphere_area_exited(area):
+	if area is HitboxComponent and area.possesor == "Player":
+		progression_manager.upgrade_menu.set_visible(false)

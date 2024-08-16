@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://player_stats.gd" id="1_dnerw"]
 [ext_resource type="LabelSettings" uid="uid://cro6habyr70oa" path="res://Assets/stat_label_font.tres" id="2_qqcyd"]
 
-[node name="PlayerStats" type="Node2D" node_paths=PackedStringArray("turret_damage_label", "turret_reload_speed_label", "turret_range_label", "rocket_damage_label", "rocket_reload_speed_label", "laser_damage_label", "laser_reload_speed_label", "acceleration_label", "max_speed_label", "max_health_label", "health_regen_label", "level_label")]
+[node name="PlayerStats" type="Node2D" node_paths=PackedStringArray("turret_damage_label", "turret_reload_speed_label", "turret_range_label", "rocket_damage_label", "rocket_reload_speed_label", "laser_damage_label", "laser_reload_speed_label", "acceleration_label", "max_speed_label", "max_health_label", "currency_label", "coords")]
 script = ExtResource("1_dnerw")
 turret_damage_label = NodePath("Control/Turret/Values/Container/DamageValue")
 turret_reload_speed_label = NodePath("Control/Turret/Values/Container/ReloadSpeedValue")
@@ -15,8 +15,8 @@ laser_reload_speed_label = NodePath("Control/Laser/Values/Container/ReloadSpeedV
 acceleration_label = NodePath("Control/Base/Values/Container/AccelerationValue")
 max_speed_label = NodePath("Control/Base/Values/Container/MaxSpeedValue")
 max_health_label = NodePath("Control/Base/Values/Container/MaxHealthValue")
-health_regen_label = NodePath("Control/Base/Values/Container/HealthRegenValue")
-level_label = NodePath("Control/Base/Values/Container/LevelValue")
+currency_label = NodePath("Control/Base/Values/Container/CurrencyValue")
+coords = NodePath("Control/Coords")
 
 [node name="Control" type="Control" parent="."]
 layout_mode = 3
@@ -215,14 +215,9 @@ layout_mode = 2
 text = "HP:"
 label_settings = ExtResource("2_qqcyd")
 
-[node name="HealthRegen" type="Label" parent="Control/Base/Names/Sections/Names"]
+[node name="Currency" type="Label" parent="Control/Base/Names/Sections/Names"]
 layout_mode = 2
-text = "HPS:"
-label_settings = ExtResource("2_qqcyd")
-
-[node name="Level" type="Label" parent="Control/Base/Names/Sections/Names"]
-layout_mode = 2
-text = "LVL:"
+text = "Currency:"
 label_settings = ExtResource("2_qqcyd")
 
 [node name="Title" type="VBoxContainer" parent="Control/Base/Names/Sections"]
@@ -254,12 +249,15 @@ layout_mode = 2
 text = "0"
 label_settings = ExtResource("2_qqcyd")
 
-[node name="HealthRegenValue" type="Label" parent="Control/Base/Values/Container"]
+[node name="CurrencyValue" type="Label" parent="Control/Base/Values/Container"]
 layout_mode = 2
 text = "0"
 label_settings = ExtResource("2_qqcyd")
 
-[node name="LevelValue" type="Label" parent="Control/Base/Values/Container"]
-layout_mode = 2
+[node name="Coords" type="Label" parent="Control"]
+layout_mode = 0
+offset_left = 961.0
+offset_right = 967.0
+offset_bottom = 14.0
 text = "0"
 label_settings = ExtResource("2_qqcyd")

@@ -9,20 +9,26 @@ class_name Laser
 @export var collision_particles: GPUParticles2D
 @export var beam_particles: GPUParticles2D
 var is_casting: bool = false
+var closest_enemy: Area2D
+var last_collision_location: Vector2
 var damaged: bool = false
 var is_aoe: bool = false
-var aoe_radius: float = 50.0
 var gun_name: String = "Laser"
+var player: CharacterBody2D
 
 func _ready():
+	player = get_tree().get_first_node_in_group("Player")
 	set_physics_process(false)
 	line.points[1] = Vector2.ZERO
-	aoe_shape.get_shape().set_radius(aoe_radius)
+	aoe_shape.get_shape().set_radius(Values.ult_gun_aoe_radius)
 
 func _physics_process(_delta: float) -> void:
+	if is_instance_valid(closest_enemy):
+		rotation = player.body.global_position.direction_to(closest_enemy.global_position).angle()
+		last_collision_location = to_local(closest_enemy.global_position)
 	var cast_point: Vector2 = target_position
 	force_raycast_update()
-	collision_particles.emitting = is_colliding()
+	collision_particles.emitting = is_colliding() and is_casting
 	if is_colliding():
 		if not damaged:
 			var collider: Area2D = get_collider()
@@ -38,20 +44,19 @@ func _physics_process(_delta: float) -> void:
 		collision_particles.global_rotation = get_collision_normal().angle()
 		collision_particles.position = cast_point
 	
-	if cast_point:
-		line.points[1] = cast_point
-	else:
-		line.points[1] = target_position
+	cast_point = last_collision_location
+	target_position = cast_point
+	line.points[1] = cast_point
 	beam_particles.position = cast_point * 0.5
 	beam_particles.process_material.emission_box_extents.x = cast_point.length() * 0.5
 	
 func aoe_damage(impact_position: Vector2):
 	range_indicator.spawn_position = aoe_shape.global_position
-	range_indicator.radius = aoe_radius
-	range_indicator.width = 1.0
+	range_indicator.radius = Values.ult_gun_aoe_radius
+	range_indicator.width = 2.0
 	range_indicator.draw_range_indicator()
 	var tween = create_tween()
-	tween.tween_property(range_indicator, "width", 0, 0.6)
+	tween.tween_property(range_indicator, "width", 0, 0.2)
 	
 	aoe.global_position = impact_position
 	var physics_params: PhysicsShapeQueryParameters2D = PhysicsShapeQueryParameters2D.new()
@@ -82,15 +87,17 @@ func set_is_casting(cast: bool) -> void:
 	else:
 		collision_particles.emitting = false
 		disappear()
-	set_physics_process(is_casting)
 	
 func appear() -> void:
+	set_physics_process(true)
 	var tween = create_tween()
-	tween.tween_property(line, "width", 5.0, 0.1)
+	tween.tween_property(line, "width", 3.0, 0.1)
 	await tween.finished
 	set_is_casting(false)
 	
 func disappear() -> void:
 	var tween = create_tween()
-	tween.tween_property(line, "width", 0, 0.1)
+	tween.tween_property(line, "width", 0, clampf(Values.player_ult_gun_cooldown / 2, 0.1, 0.5))
+	await tween.finished
+	set_physics_process(false)
 	damaged = false

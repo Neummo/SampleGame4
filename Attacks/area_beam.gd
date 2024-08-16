@@ -7,6 +7,7 @@ extends AreaBeam
 var is_casting: bool = false
 var damaged: bool = false
 var gun_name: String = "AreaBeam"
+var closest_enemy: Area2D
 
 func _ready():
 	damage = Values.player_ult_gun_damage
@@ -44,5 +45,5 @@ func appear() -> void:
 	
 func disappear() -> void:
 	var tween = create_tween()
-	tween.tween_property(line, "width", 0, 0.1)
+	tween.tween_property(line, "width", 0, clampf(Values.player_ult_gun_cooldown / 2, 0.1, 0.5))
 	damaged = false

@@ -14,8 +14,9 @@ class_name PlayerStats
 @export var acceleration_label: Label
 @export var max_speed_label: Label
 @export var max_health_label: Label
-@export var health_regen_label: Label
-@export var level_label: Label
+@export var currency_label: Label
+
+@export var coords: Label
 
 var turret_damage: int
 var turret_reload_speed: float
@@ -27,14 +28,13 @@ var rocket_reload_speed: float
 var laser_damage: int
 var laser_reload_speed: float
 
-var level: int
+var currency: int
 
 func set_stats(stats: Dictionary) -> void:
 	acceleration = stats.acceleration
 	max_speed = stats.max_speed
 	max_health = stats.max_health
-	health_regen = stats.health_regen
-	level = stats.level
+	currency = stats.currency
 	
 	turret_damage = stats.turret.damage
 	turret_reload_speed = stats.turret.reload_speed
@@ -62,5 +62,4 @@ func reload_labels() -> void:
 	acceleration_label.set_text(str(acceleration))
 	max_speed_label.set_text(str(max_speed))
 	max_health_label.set_text(str(max_health))
-	health_regen_label.set_text(str(health_regen))
-	level_label.set_text(str(level))
+	currency_label.set_text(str(currency))
