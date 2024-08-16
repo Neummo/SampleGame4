@@ -1,30 +1,33 @@
-extends CharacterBody2D
+extends Enemy
 
 @export var shoot_timer: Timer
-@export var ACCELERATION: float = 50.0
-@export var MAX_SPEED: float = 50.0
-@export var ROTATE_SPEED: float = 10
 
-@export var health: HealthComponent
-var player: CharacterBody2D
+@onready var directions: Array = [-stats.acceleration, stats.acceleration]
+
+var rotation_speed: float = 10
 var shooting: bool = false
-var directions: Array = [-ACCELERATION, ACCELERATION]
 var direction: int
 
-@export var health_bar: ProgressBar
-@export var body: Node2D
-
 func _ready():
-	health.MAX_HEALTH = Values.enemy_health
-	health_bar.init_health(Values.enemy_health) 
-	motion_mode = CharacterBody2D.MOTION_MODE_FLOATING
+	stats.set_stats({
+		"acceleration": Values.enemy_acceleration / 2,
+		"max_speed": Values.enemy_speed / 2,
+		"max_health": Values.enemy_health
+	})
 	player = get_tree().get_first_node_in_group("Player")
+	motion_mode = CharacterBody2D.MOTION_MODE_FLOATING
+	health_component.health = stats.max_health
+	health_bar.init_health(stats.max_health) 
 	direction = directions[randi() % directions.size()]
 	
 func _physics_process(delta):
+	despawn()
+	move_and_slide()
+	if Values.safe_zone:
+		run(delta)
+		return
 	rotate_to_target(player, delta)
 	behavior(delta)
-	move_and_slide()
 
 func shoot():
 	var projectile = load("res://Attacks/enemy_laser_projectile.tscn")
@@ -36,7 +39,7 @@ func shoot():
 func rotate_to_target(target, delta):
 	var dir = (target.global_position - global_position)
 	var angle_to = body.transform.x.angle_to(dir)
-	body.rotate(sign(angle_to) * min(delta * ROTATE_SPEED, abs(angle_to)))
+	body.rotate(sign(angle_to) * min(delta * rotation_speed, abs(angle_to)))
 	
 func behavior(delta: float) -> void:
 	if abs(body.get_angle_to(player.global_position)) >= 0.17:
@@ -52,10 +55,10 @@ func behavior(delta: float) -> void:
 			shooting = true
 			shoot_timer.start()
 		if global_position.distance_to(player.global_position) <= Values.enemy_range / 2:
-			velocity += (Vector2(0, direction).rotated(body.rotation)).normalized() * delta * ACCELERATION
+			velocity += (Vector2(0, direction).rotated(body.rotation)).normalized() * delta * stats.acceleration
 		else:
-			velocity += (Vector2(ACCELERATION, 0).rotated(body.rotation)).normalized() * delta * ACCELERATION
-	velocity = velocity.limit_length(MAX_SPEED)
+			velocity += (Vector2(stats.acceleration, 0).rotated(body.rotation)).normalized() * delta * stats.acceleration
+	velocity = velocity.limit_length(stats.max_speed)
 	
 func _on_shoot_timer_timeout():
 	direction = directions[randi() % directions.size()]

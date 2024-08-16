@@ -1,7 +1,11 @@
-[gd_scene load_steps=12 format=3 uid="uid://1370ehbnvt4b"]
+[gd_scene load_steps=13 format=3 uid="uid://1370ehbnvt4b"]
 
 [ext_resource type="Script" path="res://Attacks/area_beam.gd" id="1_7yssc"]
 [ext_resource type="Texture2D" uid="uid://dwvibgl671con" path="res://Assets/white.png" id="2_64aky"]
+
+[sub_resource type="Curve" id="Curve_n04aj"]
+_data = [Vector2(0, 0.123524), 0.0, 0.0, 0, 0, Vector2(0.256614, 0.144388), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 3
 
 [sub_resource type="Gradient" id="Gradient_me00n"]
 offsets = PackedFloat32Array(0, 0.540984, 1)
@@ -61,7 +65,7 @@ shape = NodePath("CollisionShape2D")
 
 [node name="Line2D" type="Line2D" parent="."]
 points = PackedVector2Array(0, 0, 10, 0)
-width = 0.0
+width_curve = SubResource("Curve_n04aj")
 default_color = Color(1, 0.964706, 1, 1)
 
 [node name="CastingParticles" type="GPUParticles2D" parent="."]

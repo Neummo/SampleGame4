@@ -17,19 +17,12 @@ func _ready():
 
 func _physics_process(_delta):
 	if closest_enemy == null:
-		get_closest_enemy()
+		closest_enemy = get_closest_enemy()
 	acceleration += seek()
 	velocity += acceleration * _delta
 	velocity = velocity.limit_length(speed)
 	rotation = velocity.angle() + 1.57079633
 	move_and_slide()
-
-func seek():
-	var steer: Vector2 = Vector2(0, -speed).rotated(spawn_rotation)
-	if closest_enemy:
-		var desired = (closest_enemy.global_position - global_position).normalized() * speed
-		steer = (desired - velocity).normalized() * steer_force
-	return steer
 
 func get_closest_enemy() -> Area2D:
 	var overlapping_areas: Array[Area2D] = gun_range_indicator.get_overlapping_areas()
@@ -37,12 +30,18 @@ func get_closest_enemy() -> Area2D:
 	closest_enemy = null
 	for area in overlapping_areas:
 		if area is HitboxComponent and area.possesor != "Player":
-			var distance_to_enemy: float = player.global_position.distance_squared_to(area.global_position)
+			var distance_to_enemy: float = global_position.distance_squared_to(area.global_position)
 			if not closest_enemy:
-				min_distance = player.global_position.distance_squared_to(area.global_position)
+				min_distance = global_position.distance_squared_to(area.global_position)
 				closest_enemy = area
 			if distance_to_enemy < min_distance:
 				min_distance = distance_to_enemy
 				closest_enemy = area
-	
 	return closest_enemy
+
+func seek():
+	var steer: Vector2 = Vector2(0, -speed).rotated(spawn_rotation)
+	if closest_enemy:
+		var desired = (closest_enemy.global_position - global_position).normalized() * speed
+		steer = (desired - velocity).normalized() * steer_force
+	return steer

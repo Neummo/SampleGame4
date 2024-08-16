@@ -5,11 +5,9 @@
 [sub_resource type="CircleShape2D" id="CircleShape2D_1ag11"]
 radius = 200.0
 
-[node name="MeleeGun" type="Node2D" node_paths=PackedStringArray("gun_timer", "gun_range_indicator", "gun_range_shape")]
+[node name="MeleeGun" type="Node2D" node_paths=PackedStringArray("gun_timer")]
 script = ExtResource("1_pclyu")
 gun_timer = NodePath("GunTimer")
-gun_range_indicator = NodePath("GunRange")
-gun_range_shape = NodePath("GunRange/CollisionShape2D")
 
 [node name="GunRange" type="Area2D" parent="."]
 collision_layer = 2

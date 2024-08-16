@@ -2,11 +2,62 @@
 
 [ext_resource type="Script" path="res://spawner.gd" id="1_38tls"]
 
-[node name="Spawner" type="Node2D"]
+[node name="Spawner" type="Node2D" node_paths=PackedStringArray("spawn_timer", "first", "second", "third", "fourth", "fifth", "sixth", "seventh", "eighth", "ninth", "tenth")]
 script = ExtResource("1_38tls")
+spawn_timer = NodePath("SpawnTimer")
+first = NodePath("First")
+second = NodePath("Second")
+third = NodePath("Third")
+fourth = NodePath("Fourth")
+fifth = NodePath("Fifth")
+sixth = NodePath("Sixth")
+seventh = NodePath("Seventh")
+eighth = NodePath("Eighth")
+ninth = NodePath("Ninth")
+tenth = NodePath("Tenth")
 
 [node name="SpawnTimer" type="Timer" parent="."]
 wait_time = 0.5
 autostart = true
+
+[node name="First" type="Line2D" parent="."]
+width = 2.0
+default_color = Color(1, 1, 1, 0.196078)
+
+[node name="Second" type="Line2D" parent="."]
+width = 2.0
+default_color = Color(5.19812e-06, 0.705235, 0.905258, 0.196078)
+
+[node name="Third" type="Line2D" parent="."]
+width = 2.0
+default_color = Color(3.85046e-07, 0.783546, 0.579623, 0.196078)
+
+[node name="Fourth" type="Line2D" parent="."]
+width = 2.0
+default_color = Color(8.90419e-07, 0.618552, 0.258261, 0.196078)
+
+[node name="Fifth" type="Line2D" parent="."]
+width = 2.0
+default_color = Color(1, 1, 0, 0.196078)
+
+[node name="Sixth" type="Line2D" parent="."]
+width = 2.0
+default_color = Color(1, 0.784314, 0, 0.196078)
+
+[node name="Seventh" type="Line2D" parent="."]
+width = 2.0
+default_color = Color(1, 0.521569, 0, 0.196078)
+
+[node name="Eighth" type="Line2D" parent="."]
+width = 2.0
+default_color = Color(1, 0.313726, 0, 0.196078)
+
+[node name="Ninth" type="Line2D" parent="."]
+width = 2.0
+default_color = Color(1, 0.207843, 0, 0.196078)
+
+[node name="Tenth" type="Line2D" parent="."]
+width = 2.0
+default_color = Color(1, 0, 0, 0.196078)
 
 [connection signal="timeout" from="SpawnTimer" to="." method="_on_spawn_timer_timeout"]

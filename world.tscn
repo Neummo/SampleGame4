@@ -1,13 +1,17 @@
-[gd_scene load_steps=4 format=3 uid="uid://ch3bfb2jxxujv"]
+[gd_scene load_steps=6 format=3 uid="uid://ch3bfb2jxxujv"]
 
 [ext_resource type="PackedScene" uid="uid://70snqg3xty42" path="res://player.tscn" id="1_xg6cr"]
 [ext_resource type="PackedScene" uid="uid://cosl5ticiw0ni" path="res://spawner.tscn" id="3_f7sdh"]
 [ext_resource type="Texture2D" uid="uid://qtrb1xq1yyom" path="res://Assets/icon.svg" id="3_jsug4"]
+[ext_resource type="Texture2D" uid="uid://delsvcw1mb0qu" path="res://Assets/1760677435.png" id="4_gkeib"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_7aek3"]
+radius = 300.0
 
 [node name="World" type="Node2D"]
 
 [node name="Player" parent="." instance=ExtResource("1_xg6cr")]
-position = Vector2(615, 298)
+position = Vector2(0, 55)
 
 [node name="Spawner" parent="." instance=ExtResource("3_f7sdh")]
 
@@ -45,3 +49,17 @@ z_index = -5
 position = Vector2(1028, 93)
 scale = Vector2(0.640625, 0.59375)
 texture = ExtResource("3_jsug4")
+
+[node name="Base" type="Sprite2D" parent="." groups=["Base"]]
+z_index = -1
+texture = ExtResource("4_gkeib")
+
+[node name="Atmosphere" type="Area2D" parent="Base"]
+collision_layer = 4
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Base/Atmosphere"]
+shape = SubResource("CircleShape2D_7aek3")
+
+[connection signal="area_entered" from="Base/Atmosphere" to="Player" method="_on_atmosphere_area_entered"]
+[connection signal="area_exited" from="Base/Atmosphere" to="Player" method="_on_atmosphere_area_exited"]

@@ -23,8 +23,8 @@ func init_health(_health):
 	damage_bar.value = health
 
 func update_max_health(_health):
-	max_value = health
-	damage_bar.max_value = health
+	max_value = _health
+	damage_bar.max_value = _health
 
 func _on_timer_timeout():
 	damage_bar.value = health
