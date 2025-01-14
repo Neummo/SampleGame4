@@ -1,0 +1,698 @@
+[gd_scene load_steps=3 format=3 uid="uid://dw3btbuscjgyh"]
+
+[ext_resource type="Script" path="res://UI/BasePanel/part_display.gd" id="1_f2i33"]
+[ext_resource type="PackedScene" uid="uid://bs1gy6ltc7q38" path="res://UI/BasePanel/part_upgrade_button.tscn" id="1_r3eqw"]
+
+[node name="PartDisplay" type="Control" node_paths=PackedStringArray("first_node", "first_tree", "ft1", "ft2", "ft3", "ft9", "ft10", "ft11", "ft12", "ft13", "ft14", "ft15", "ft16", "ft17", "ft18", "ft19", "ft20", "ft21", "ft22", "ft23", "ft24", "ft25", "ft26", "ft27", "second_tree", "st1", "st2", "st3", "st9", "st10", "st11", "st12", "st13", "st14", "st15", "st16", "st17", "st18", "st19", "st20", "st21", "st22", "st23", "st24", "st25", "st26", "st27", "third_tree", "tt1", "tt2", "tt3", "tt9", "tt10", "tt11", "tt12", "tt13", "tt14", "tt15", "tt16", "tt17", "tt18", "tt19", "tt20", "tt21", "tt22", "tt23", "tt24", "tt25", "tt26", "tt27", "fourth_tree", "ht1", "ht2", "ht3", "ht9", "ht10", "ht11", "ht12", "ht13", "ht14", "ht15", "ht16", "ht17", "ht18", "ht19", "ht20", "ht21", "ht22", "ht23", "ht24", "ht25", "ht26", "ht27") groups=["PartDisplay"]]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("1_f2i33")
+first_node = NodePath("FirstNode")
+first_tree = NodePath("FirstNode/FirstTree")
+ft1 = NodePath("FirstNode/FirstTree/FT1")
+ft2 = NodePath("FirstNode/FirstTree/FT1/FT2")
+ft3 = NodePath("FirstNode/FirstTree/FT1/FT2/FT3")
+ft9 = NodePath("FirstNode/FirstTree/FT1/FT2/FT3/FT9")
+ft10 = NodePath("FirstNode/FirstTree/FT1/FT2/FT3/FT9/FT10")
+ft11 = NodePath("FirstNode/FirstTree/FT1/FT2/FT3/FT9/FT10/FT11")
+ft12 = NodePath("FirstNode/FirstTree/FT1/FT2/FT3/FT9/FT10/FT11/FT12")
+ft13 = NodePath("FirstNode/FirstTree/FT1/FT2/FT3/FT13")
+ft14 = NodePath("FirstNode/FirstTree/FT1/FT2/FT3/FT13/FT14")
+ft15 = NodePath("FirstNode/FirstTree/FT1/FT2/FT3/FT13/FT14/FT15")
+ft16 = NodePath("FirstNode/FirstTree/FT1/FT2/FT3/FT13/FT14/FT15/FT16")
+ft17 = NodePath("FirstNode/FirstTree/FT1/FT2/FT17")
+ft18 = NodePath("FirstNode/FirstTree/FT1/FT2/FT17/FT18")
+ft19 = NodePath("FirstNode/FirstTree/FT1/FT2/FT17/FT18/FT19")
+ft20 = NodePath("FirstNode/FirstTree/FT1/FT2/FT17/FT18/FT19/FT20")
+ft21 = NodePath("FirstNode/FirstTree/FT1/FT2/FT17/FT18/FT19/FT20/FT21")
+ft22 = NodePath("FirstNode/FirstTree/FT1/FT2/FT17/FT18/FT22")
+ft23 = NodePath("FirstNode/FirstTree/FT1/FT2/FT17/FT18/FT22/FT23")
+ft24 = NodePath("FirstNode/FirstTree/FT1/FT2/FT17/FT18/FT22/FT23/FT24")
+ft25 = NodePath("FirstNode/FirstTree/FT1/FT2/FT17/FT18/FT25")
+ft26 = NodePath("FirstNode/FirstTree/FT1/FT2/FT17/FT18/FT25/FT26")
+ft27 = NodePath("FirstNode/FirstTree/FT1/FT2/FT17/FT18/FT25/FT26/FT27")
+second_tree = NodePath("FirstNode/SecondTree")
+st1 = NodePath("FirstNode/SecondTree/ST1")
+st2 = NodePath("FirstNode/SecondTree/ST1/ST2")
+st3 = NodePath("FirstNode/SecondTree/ST1/ST2/ST3")
+st9 = NodePath("FirstNode/SecondTree/ST1/ST2/ST3/ST9")
+st10 = NodePath("FirstNode/SecondTree/ST1/ST2/ST3/ST9/ST10")
+st11 = NodePath("FirstNode/SecondTree/ST1/ST2/ST3/ST9/ST10/ST11")
+st12 = NodePath("FirstNode/SecondTree/ST1/ST2/ST3/ST9/ST10/ST11/ST12")
+st13 = NodePath("FirstNode/SecondTree/ST1/ST2/ST3/ST13")
+st14 = NodePath("FirstNode/SecondTree/ST1/ST2/ST3/ST13/ST14")
+st15 = NodePath("FirstNode/SecondTree/ST1/ST2/ST3/ST13/ST14/ST15")
+st16 = NodePath("FirstNode/SecondTree/ST1/ST2/ST3/ST13/ST14/ST15/ST16")
+st17 = NodePath("FirstNode/SecondTree/ST1/ST2/ST17")
+st18 = NodePath("FirstNode/SecondTree/ST1/ST2/ST17/ST18")
+st19 = NodePath("FirstNode/SecondTree/ST1/ST2/ST17/ST18/ST19")
+st20 = NodePath("FirstNode/SecondTree/ST1/ST2/ST17/ST18/ST19/ST20")
+st21 = NodePath("FirstNode/SecondTree/ST1/ST2/ST17/ST18/ST19/ST20/ST21")
+st22 = NodePath("FirstNode/SecondTree/ST1/ST2/ST17/ST18/ST22")
+st23 = NodePath("FirstNode/SecondTree/ST1/ST2/ST17/ST18/ST22/ST23")
+st24 = NodePath("FirstNode/SecondTree/ST1/ST2/ST17/ST18/ST22/ST23/ST24")
+st25 = NodePath("FirstNode/SecondTree/ST1/ST2/ST17/ST18/ST25")
+st26 = NodePath("FirstNode/SecondTree/ST1/ST2/ST17/ST18/ST25/ST26")
+st27 = NodePath("FirstNode/SecondTree/ST1/ST2/ST17/ST18/ST25/ST26/ST27")
+third_tree = NodePath("FirstNode/ThirdTree")
+tt1 = NodePath("FirstNode/ThirdTree/TT1")
+tt2 = NodePath("FirstNode/ThirdTree/TT1/TT2")
+tt3 = NodePath("FirstNode/ThirdTree/TT1/TT2/TT3")
+tt9 = NodePath("FirstNode/ThirdTree/TT1/TT2/TT3/TT9")
+tt10 = NodePath("FirstNode/ThirdTree/TT1/TT2/TT3/TT9/TT10")
+tt11 = NodePath("FirstNode/ThirdTree/TT1/TT2/TT3/TT9/TT10/TT11")
+tt12 = NodePath("FirstNode/ThirdTree/TT1/TT2/TT3/TT9/TT10/TT11/TT12")
+tt13 = NodePath("FirstNode/ThirdTree/TT1/TT2/TT3/TT13")
+tt14 = NodePath("FirstNode/ThirdTree/TT1/TT2/TT3/TT13/TT14")
+tt15 = NodePath("FirstNode/ThirdTree/TT1/TT2/TT3/TT13/TT14/TT15")
+tt16 = NodePath("FirstNode/ThirdTree/TT1/TT2/TT3/TT13/TT14/TT15/TT16")
+tt17 = NodePath("FirstNode/ThirdTree/TT1/TT2/TT17")
+tt18 = NodePath("FirstNode/ThirdTree/TT1/TT2/TT17/TT18")
+tt19 = NodePath("FirstNode/ThirdTree/TT1/TT2/TT17/TT18/TT19")
+tt20 = NodePath("FirstNode/ThirdTree/TT1/TT2/TT17/TT18/TT19/TT20")
+tt21 = NodePath("FirstNode/ThirdTree/TT1/TT2/TT17/TT18/TT19/TT20/TT21")
+tt22 = NodePath("FirstNode/ThirdTree/TT1/TT2/TT17/TT18/TT22")
+tt23 = NodePath("FirstNode/ThirdTree/TT1/TT2/TT17/TT18/TT22/TT23")
+tt24 = NodePath("FirstNode/ThirdTree/TT1/TT2/TT17/TT18/TT22/TT23/TT24")
+tt25 = NodePath("FirstNode/ThirdTree/TT1/TT2/TT17/TT18/TT25")
+tt26 = NodePath("FirstNode/ThirdTree/TT1/TT2/TT17/TT18/TT25/TT26")
+tt27 = NodePath("FirstNode/ThirdTree/TT1/TT2/TT17/TT18/TT25/TT26/TT27")
+fourth_tree = NodePath("FirstNode/FourthTree")
+ht1 = NodePath("FirstNode/FourthTree/HT1")
+ht2 = NodePath("FirstNode/FourthTree/HT1/HT2")
+ht3 = NodePath("FirstNode/FourthTree/HT1/HT2/HT3")
+ht9 = NodePath("FirstNode/FourthTree/HT1/HT2/HT3/HT9")
+ht10 = NodePath("FirstNode/FourthTree/HT1/HT2/HT3/HT9/HT10")
+ht11 = NodePath("FirstNode/FourthTree/HT1/HT2/HT3/HT9/HT10/HT11")
+ht12 = NodePath("FirstNode/FourthTree/HT1/HT2/HT3/HT9/HT10/HT11/HT12")
+ht13 = NodePath("FirstNode/FourthTree/HT1/HT2/HT3/HT13")
+ht14 = NodePath("FirstNode/FourthTree/HT1/HT2/HT3/HT13/HT14")
+ht15 = NodePath("FirstNode/FourthTree/HT1/HT2/HT3/HT13/HT14/HT15")
+ht16 = NodePath("FirstNode/FourthTree/HT1/HT2/HT3/HT13/HT14/HT15/HT16")
+ht17 = NodePath("FirstNode/FourthTree/HT1/HT2/HT17")
+ht18 = NodePath("FirstNode/FourthTree/HT1/HT2/HT17/HT18")
+ht19 = NodePath("FirstNode/FourthTree/HT1/HT2/HT17/HT18/HT19")
+ht20 = NodePath("FirstNode/FourthTree/HT1/HT2/HT17/HT18/HT19/HT20")
+ht21 = NodePath("FirstNode/FourthTree/HT1/HT2/HT17/HT18/HT19/HT20/HT21")
+ht22 = NodePath("FirstNode/FourthTree/HT1/HT2/HT17/HT18/HT22")
+ht23 = NodePath("FirstNode/FourthTree/HT1/HT2/HT17/HT18/HT22/HT23")
+ht24 = NodePath("FirstNode/FourthTree/HT1/HT2/HT17/HT18/HT22/HT23/HT24")
+ht25 = NodePath("FirstNode/FourthTree/HT1/HT2/HT17/HT18/HT25")
+ht26 = NodePath("FirstNode/FourthTree/HT1/HT2/HT17/HT18/HT25/HT26")
+ht27 = NodePath("FirstNode/FourthTree/HT1/HT2/HT17/HT18/HT25/HT26/HT27")
+
+[node name="FirstNode" parent="." instance=ExtResource("1_r3eqw")]
+layout_mode = 0
+offset_right = 15.0
+offset_bottom = 15.0
+
+[node name="FirstTree" parent="FirstNode" instance=ExtResource("1_r3eqw")]
+layout_mode = 0
+offset_left = -25.0
+offset_top = 25.0
+offset_right = -10.0
+offset_bottom = 40.0
+
+[node name="FT1" parent="FirstNode/FirstTree" instance=ExtResource("1_r3eqw")]
+layout_mode = 0
+offset_left = -25.0
+offset_top = 25.0
+offset_right = -10.0
+offset_bottom = 40.0
+
+[node name="FT2" parent="FirstNode/FirstTree/FT1" instance=ExtResource("1_r3eqw")]
+layout_mode = 0
+offset_left = -25.0
+offset_top = 25.0
+offset_right = -10.0
+offset_bottom = 40.0
+
+[node name="FT3" parent="FirstNode/FirstTree/FT1/FT2" instance=ExtResource("1_r3eqw")]
+layout_mode = 0
+offset_top = 30.0
+offset_right = 15.0
+offset_bottom = 45.0
+
+[node name="FT9" parent="FirstNode/FirstTree/FT1/FT2/FT3" instance=ExtResource("1_r3eqw")]
+layout_mode = 0
+offset_left = -26.0
+offset_right = -11.0
+offset_bottom = 15.0
+
+[node name="FT10" parent="FirstNode/FirstTree/FT1/FT2/FT3/FT9" instance=ExtResource("1_r3eqw")]
+layout_mode = 0
+offset_left = -25.0
+offset_top = 15.0
+offset_right = -10.0
+offset_bottom = 30.0
+
+[node name="FT11" parent="FirstNode/FirstTree/FT1/FT2/FT3/FT9/FT10" instance=ExtResource("1_r3eqw")]
+layout_mode = 0
+offset_left = -25.0
+offset_top = 15.0
+offset_right = -10.0
+offset_bottom = 30.0
+
+[node name="FT12" parent="FirstNode/FirstTree/FT1/FT2/FT3/FT9/FT10/FT11" instance=ExtResource("1_r3eqw")]
+layout_mode = 0
+offset_left = -25.0
+offset_top = 15.0
+offset_right = -10.0
+offset_bottom = 30.0
+
+[node name="FT13" parent="FirstNode/FirstTree/FT1/FT2/FT3" instance=ExtResource("1_r3eqw")]
+layout_mode = 0
+offset_top = 25.0
+offset_right = 15.0
+offset_bottom = 40.0
+
+[node name="FT14" parent="FirstNode/FirstTree/FT1/FT2/FT3/FT13" instance=ExtResource("1_r3eqw")]
+layout_mode = 0
+offset_left = -25.0
+offset_top = 15.0
+offset_right = -10.0
+offset_bottom = 30.0
+
+[node name="FT15" parent="FirstNode/FirstTree/FT1/FT2/FT3/FT13/FT14" instance=ExtResource("1_r3eqw")]
+layout_mode = 0
+offset_left = -25.0
+offset_top = 15.0
+offset_right = -10.0
+offset_bottom = 30.0
+
+[node name="FT16" parent="FirstNode/FirstTree/FT1/FT2/FT3/FT13/FT14/FT15" instance=ExtResource("1_r3eqw")]
+layout_mode = 0
+offset_left = -25.0
+offset_top = 15.0
+offset_right = -10.0
+offset_bottom = 30.0
+
+[node name="FT17" parent="FirstNode/FirstTree/FT1/FT2" instance=ExtResource("1_r3eqw")]
+layout_mode = 0
+offset_left = -25.0
+offset_top = -25.0
+offset_right = -10.0
+offset_bottom = -10.0
+
+[node name="FT18" parent="FirstNode/FirstTree/FT1/FT2/FT17" instance=ExtResource("1_r3eqw")]
+layout_mode = 0
+offset_left = -25.0
+offset_top = -25.0
+offset_right = -10.0
+offset_bottom = -10.0
+
+[node name="FT19" parent="FirstNode/FirstTree/FT1/FT2/FT17/FT18" instance=ExtResource("1_r3eqw")]
+layout_mode = 0
+offset_left = 25.0
+offset_right = 40.0
+offset_bottom = 15.0
+
+[node name="FT20" parent="FirstNode/FirstTree/FT1/FT2/FT17/FT18/FT19" instance=ExtResource("1_r3eqw")]
+layout_mode = 0
+offset_left = 25.0
+offset_right = 40.0
+offset_bottom = 15.0
+
+[node name="FT21" parent="FirstNode/FirstTree/FT1/FT2/FT17/FT18/FT19/FT20" instance=ExtResource("1_r3eqw")]
+layout_mode = 0
+offset_top = 25.0
+offset_right = 15.0
+offset_bottom = 40.0
+
+[node name="FT22" parent="FirstNode/FirstTree/FT1/FT2/FT17/FT18" instance=ExtResource("1_r3eqw")]
+layout_mode = 0
+offset_left = -25.0
+offset_right = -10.0
+offset_bottom = 15.0
+
+[node name="FT23" parent="FirstNode/FirstTree/FT1/FT2/FT17/FT18/FT22" instance=ExtResource("1_r3eqw")]
+layout_mode = 0
+offset_left = -25.0
+offset_right = -10.0
+offset_bottom = 15.0
+
+[node name="FT24" parent="FirstNode/FirstTree/FT1/FT2/FT17/FT18/FT22/FT23" instance=ExtResource("1_r3eqw")]
+layout_mode = 0
+offset_top = 25.0
+offset_right = 15.0
+offset_bottom = 40.0
+
+[node name="FT25" parent="FirstNode/FirstTree/FT1/FT2/FT17/FT18" instance=ExtResource("1_r3eqw")]
+layout_mode = 0
+offset_top = 25.0
+offset_right = 15.0
+offset_bottom = 40.0
+
+[node name="FT26" parent="FirstNode/FirstTree/FT1/FT2/FT17/FT18/FT25" instance=ExtResource("1_r3eqw")]
+layout_mode = 0
+offset_left = -25.0
+offset_right = -10.0
+offset_bottom = 15.0
+
+[node name="FT27" parent="FirstNode/FirstTree/FT1/FT2/FT17/FT18/FT25/FT26" instance=ExtResource("1_r3eqw")]
+layout_mode = 0
+offset_top = 25.0
+offset_right = 15.0
+offset_bottom = 40.0
+
+[node name="SecondTree" parent="FirstNode" instance=ExtResource("1_r3eqw")]
+layout_mode = 0
+offset_left = 25.0
+offset_top = 25.0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="ST1" parent="FirstNode/SecondTree" instance=ExtResource("1_r3eqw")]
+layout_mode = 0
+offset_left = 25.0
+offset_top = 25.0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="ST2" parent="FirstNode/SecondTree/ST1" instance=ExtResource("1_r3eqw")]
+layout_mode = 0
+offset_left = 25.0
+offset_top = 25.0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="ST3" parent="FirstNode/SecondTree/ST1/ST2" instance=ExtResource("1_r3eqw")]
+layout_mode = 0
+offset_top = 30.0
+offset_right = 15.0
+offset_bottom = 45.0
+
+[node name="ST9" parent="FirstNode/SecondTree/ST1/ST2/ST3" instance=ExtResource("1_r3eqw")]
+layout_mode = 0
+offset_left = 25.0
+offset_right = 40.0
+offset_bottom = 15.0
+
+[node name="ST10" parent="FirstNode/SecondTree/ST1/ST2/ST3/ST9" instance=ExtResource("1_r3eqw")]
+layout_mode = 0
+offset_left = 24.0
+offset_top = 15.0
+offset_right = 39.0
+offset_bottom = 30.0
+
+[node name="ST11" parent="FirstNode/SecondTree/ST1/ST2/ST3/ST9/ST10" instance=ExtResource("1_r3eqw")]
+layout_mode = 0
+offset_left = 25.0
+offset_top = 15.0
+offset_right = 40.0
+offset_bottom = 30.0
+
+[node name="ST12" parent="FirstNode/SecondTree/ST1/ST2/ST3/ST9/ST10/ST11" instance=ExtResource("1_r3eqw")]
+layout_mode = 0
+offset_left = 22.0
+offset_top = 16.0
+offset_right = 37.0
+offset_bottom = 31.0
+
+[node name="ST13" parent="FirstNode/SecondTree/ST1/ST2/ST3" instance=ExtResource("1_r3eqw")]
+layout_mode = 0
+offset_top = 25.0
+offset_right = 15.0
+offset_bottom = 40.0
+
+[node name="ST14" parent="FirstNode/SecondTree/ST1/ST2/ST3/ST13" instance=ExtResource("1_r3eqw")]
+layout_mode = 0
+offset_left = 25.0
+offset_top = 15.0
+offset_right = 40.0
+offset_bottom = 30.0
+
+[node name="ST15" parent="FirstNode/SecondTree/ST1/ST2/ST3/ST13/ST14" instance=ExtResource("1_r3eqw")]
+layout_mode = 0
+offset_left = 25.0
+offset_top = 15.0
+offset_right = 40.0
+offset_bottom = 30.0
+
+[node name="ST16" parent="FirstNode/SecondTree/ST1/ST2/ST3/ST13/ST14/ST15" instance=ExtResource("1_r3eqw")]
+layout_mode = 0
+offset_left = 24.0
+offset_top = 15.0
+offset_right = 39.0
+offset_bottom = 30.0
+
+[node name="ST17" parent="FirstNode/SecondTree/ST1/ST2" instance=ExtResource("1_r3eqw")]
+layout_mode = 0
+offset_left = 25.0
+offset_top = -25.0
+offset_right = 40.0
+offset_bottom = -10.0
+
+[node name="ST18" parent="FirstNode/SecondTree/ST1/ST2/ST17" instance=ExtResource("1_r3eqw")]
+layout_mode = 0
+offset_left = 25.0
+offset_top = -25.0
+offset_right = 40.0
+offset_bottom = -10.0
+
+[node name="ST19" parent="FirstNode/SecondTree/ST1/ST2/ST17/ST18" instance=ExtResource("1_r3eqw")]
+layout_mode = 0
+offset_left = -25.0
+offset_right = -10.0
+offset_bottom = 15.0
+
+[node name="ST20" parent="FirstNode/SecondTree/ST1/ST2/ST17/ST18/ST19" instance=ExtResource("1_r3eqw")]
+layout_mode = 0
+offset_left = -25.0
+offset_right = -10.0
+offset_bottom = 15.0
+
+[node name="ST21" parent="FirstNode/SecondTree/ST1/ST2/ST17/ST18/ST19/ST20" instance=ExtResource("1_r3eqw")]
+layout_mode = 0
+offset_top = 25.0
+offset_right = 15.0
+offset_bottom = 40.0
+
+[node name="ST22" parent="FirstNode/SecondTree/ST1/ST2/ST17/ST18" instance=ExtResource("1_r3eqw")]
+layout_mode = 0
+offset_left = 25.0
+offset_right = 40.0
+offset_bottom = 15.0
+
+[node name="ST23" parent="FirstNode/SecondTree/ST1/ST2/ST17/ST18/ST22" instance=ExtResource("1_r3eqw")]
+layout_mode = 0
+offset_left = 25.0
+offset_right = 40.0
+offset_bottom = 15.0
+
+[node name="ST24" parent="FirstNode/SecondTree/ST1/ST2/ST17/ST18/ST22/ST23" instance=ExtResource("1_r3eqw")]
+layout_mode = 0
+offset_top = 25.0
+offset_right = 15.0
+offset_bottom = 40.0
+
+[node name="ST25" parent="FirstNode/SecondTree/ST1/ST2/ST17/ST18" instance=ExtResource("1_r3eqw")]
+layout_mode = 0
+offset_top = 25.0
+offset_right = 15.0
+offset_bottom = 40.0
+
+[node name="ST26" parent="FirstNode/SecondTree/ST1/ST2/ST17/ST18/ST25" instance=ExtResource("1_r3eqw")]
+layout_mode = 0
+offset_left = 25.0
+offset_right = 40.0
+offset_bottom = 15.0
+
+[node name="ST27" parent="FirstNode/SecondTree/ST1/ST2/ST17/ST18/ST25/ST26" instance=ExtResource("1_r3eqw")]
+layout_mode = 0
+offset_top = 25.0
+offset_right = 15.0
+offset_bottom = 40.0
+
+[node name="ThirdTree" parent="FirstNode" instance=ExtResource("1_r3eqw")]
+layout_mode = 0
+offset_left = -25.0
+offset_top = -25.0
+offset_right = -10.0
+offset_bottom = -10.0
+
+[node name="TT1" parent="FirstNode/ThirdTree" instance=ExtResource("1_r3eqw")]
+layout_mode = 0
+offset_left = -25.0
+offset_top = -25.0
+offset_right = -10.0
+offset_bottom = -10.0
+
+[node name="TT2" parent="FirstNode/ThirdTree/TT1" instance=ExtResource("1_r3eqw")]
+layout_mode = 0
+offset_left = -25.0
+offset_top = -25.0
+offset_right = -10.0
+offset_bottom = -10.0
+
+[node name="TT3" parent="FirstNode/ThirdTree/TT1/TT2" instance=ExtResource("1_r3eqw")]
+layout_mode = 0
+offset_top = -30.0
+offset_right = 15.0
+offset_bottom = -15.0
+
+[node name="TT9" parent="FirstNode/ThirdTree/TT1/TT2/TT3" instance=ExtResource("1_r3eqw")]
+layout_mode = 0
+offset_top = -25.0
+offset_right = 15.0
+offset_bottom = -10.0
+
+[node name="TT10" parent="FirstNode/ThirdTree/TT1/TT2/TT3/TT9" instance=ExtResource("1_r3eqw")]
+layout_mode = 0
+offset_left = -26.0
+offset_top = -15.0
+offset_right = -11.0
+
+[node name="TT11" parent="FirstNode/ThirdTree/TT1/TT2/TT3/TT9/TT10" instance=ExtResource("1_r3eqw")]
+layout_mode = 0
+offset_left = -25.0
+offset_top = -15.0
+offset_right = -10.0
+
+[node name="TT12" parent="FirstNode/ThirdTree/TT1/TT2/TT3/TT9/TT10/TT11" instance=ExtResource("1_r3eqw")]
+layout_mode = 0
+offset_left = -28.0
+offset_top = -14.0
+offset_right = -13.0
+offset_bottom = 1.0
+
+[node name="TT13" parent="FirstNode/ThirdTree/TT1/TT2/TT3" instance=ExtResource("1_r3eqw")]
+layout_mode = 0
+offset_left = -25.0
+offset_right = -10.0
+offset_bottom = 15.0
+
+[node name="TT14" parent="FirstNode/ThirdTree/TT1/TT2/TT3/TT13" instance=ExtResource("1_r3eqw")]
+layout_mode = 0
+offset_left = -25.0
+offset_top = -15.0
+offset_right = -10.0
+
+[node name="TT15" parent="FirstNode/ThirdTree/TT1/TT2/TT3/TT13/TT14" instance=ExtResource("1_r3eqw")]
+layout_mode = 0
+offset_left = -25.0
+offset_top = -15.0
+offset_right = -10.0
+
+[node name="TT16" parent="FirstNode/ThirdTree/TT1/TT2/TT3/TT13/TT14/TT15" instance=ExtResource("1_r3eqw")]
+layout_mode = 0
+offset_left = -26.0
+offset_top = -15.0
+offset_right = -11.0
+
+[node name="TT17" parent="FirstNode/ThirdTree/TT1/TT2" instance=ExtResource("1_r3eqw")]
+layout_mode = 0
+offset_left = -25.0
+offset_top = 25.0
+offset_right = -10.0
+offset_bottom = 40.0
+
+[node name="TT18" parent="FirstNode/ThirdTree/TT1/TT2/TT17" instance=ExtResource("1_r3eqw")]
+layout_mode = 0
+offset_left = -25.0
+offset_top = 25.0
+offset_right = -10.0
+offset_bottom = 40.0
+
+[node name="TT19" parent="FirstNode/ThirdTree/TT1/TT2/TT17/TT18" instance=ExtResource("1_r3eqw")]
+layout_mode = 0
+offset_left = 25.0
+offset_right = 40.0
+offset_bottom = 15.0
+
+[node name="TT20" parent="FirstNode/ThirdTree/TT1/TT2/TT17/TT18/TT19" instance=ExtResource("1_r3eqw")]
+layout_mode = 0
+offset_left = 25.0
+offset_right = 40.0
+offset_bottom = 15.0
+
+[node name="TT21" parent="FirstNode/ThirdTree/TT1/TT2/TT17/TT18/TT19/TT20" instance=ExtResource("1_r3eqw")]
+layout_mode = 0
+offset_top = -25.0
+offset_right = 15.0
+offset_bottom = -10.0
+
+[node name="TT22" parent="FirstNode/ThirdTree/TT1/TT2/TT17/TT18" instance=ExtResource("1_r3eqw")]
+layout_mode = 0
+offset_left = -25.0
+offset_right = -10.0
+offset_bottom = 15.0
+
+[node name="TT23" parent="FirstNode/ThirdTree/TT1/TT2/TT17/TT18/TT22" instance=ExtResource("1_r3eqw")]
+layout_mode = 0
+offset_left = -25.0
+offset_right = -10.0
+offset_bottom = 15.0
+
+[node name="TT24" parent="FirstNode/ThirdTree/TT1/TT2/TT17/TT18/TT22/TT23" instance=ExtResource("1_r3eqw")]
+layout_mode = 0
+offset_top = -25.0
+offset_right = 15.0
+offset_bottom = -10.0
+
+[node name="TT25" parent="FirstNode/ThirdTree/TT1/TT2/TT17/TT18" instance=ExtResource("1_r3eqw")]
+layout_mode = 0
+offset_top = -25.0
+offset_right = 15.0
+offset_bottom = -10.0
+
+[node name="TT26" parent="FirstNode/ThirdTree/TT1/TT2/TT17/TT18/TT25" instance=ExtResource("1_r3eqw")]
+layout_mode = 0
+offset_left = -25.0
+offset_right = -10.0
+offset_bottom = 15.0
+
+[node name="TT27" parent="FirstNode/ThirdTree/TT1/TT2/TT17/TT18/TT25/TT26" instance=ExtResource("1_r3eqw")]
+layout_mode = 0
+offset_top = -25.0
+offset_right = 15.0
+offset_bottom = -10.0
+
+[node name="FourthTree" parent="FirstNode" instance=ExtResource("1_r3eqw")]
+layout_mode = 0
+offset_left = 25.0
+offset_top = -25.0
+offset_right = 40.0
+offset_bottom = -10.0
+
+[node name="HT1" parent="FirstNode/FourthTree" instance=ExtResource("1_r3eqw")]
+layout_mode = 0
+offset_left = 25.0
+offset_top = -25.0
+offset_right = 40.0
+offset_bottom = -10.0
+
+[node name="HT2" parent="FirstNode/FourthTree/HT1" instance=ExtResource("1_r3eqw")]
+layout_mode = 0
+offset_left = 25.0
+offset_top = -25.0
+offset_right = 40.0
+offset_bottom = -10.0
+
+[node name="HT3" parent="FirstNode/FourthTree/HT1/HT2" instance=ExtResource("1_r3eqw")]
+layout_mode = 0
+offset_top = -30.0
+offset_right = 15.0
+offset_bottom = -15.0
+
+[node name="HT9" parent="FirstNode/FourthTree/HT1/HT2/HT3" instance=ExtResource("1_r3eqw")]
+layout_mode = 0
+offset_left = 25.0
+offset_top = -1.0
+offset_right = 40.0
+offset_bottom = 14.0
+
+[node name="HT10" parent="FirstNode/FourthTree/HT1/HT2/HT3/HT9" instance=ExtResource("1_r3eqw")]
+layout_mode = 0
+offset_left = 24.0
+offset_top = -14.0
+offset_right = 39.0
+offset_bottom = 1.0
+
+[node name="HT11" parent="FirstNode/FourthTree/HT1/HT2/HT3/HT9/HT10" instance=ExtResource("1_r3eqw")]
+layout_mode = 0
+offset_left = 25.0
+offset_top = -15.0
+offset_right = 40.0
+
+[node name="HT12" parent="FirstNode/FourthTree/HT1/HT2/HT3/HT9/HT10/HT11" instance=ExtResource("1_r3eqw")]
+layout_mode = 0
+offset_left = 22.0
+offset_top = -15.0
+offset_right = 37.0
+
+[node name="HT13" parent="FirstNode/FourthTree/HT1/HT2/HT3" instance=ExtResource("1_r3eqw")]
+layout_mode = 0
+offset_top = -26.0
+offset_right = 15.0
+offset_bottom = -11.0
+
+[node name="HT14" parent="FirstNode/FourthTree/HT1/HT2/HT3/HT13" instance=ExtResource("1_r3eqw")]
+layout_mode = 0
+offset_left = 25.0
+offset_top = -14.0
+offset_right = 40.0
+offset_bottom = 1.0
+
+[node name="HT15" parent="FirstNode/FourthTree/HT1/HT2/HT3/HT13/HT14" instance=ExtResource("1_r3eqw")]
+layout_mode = 0
+offset_left = 25.0
+offset_top = -15.0
+offset_right = 40.0
+
+[node name="HT16" parent="FirstNode/FourthTree/HT1/HT2/HT3/HT13/HT14/HT15" instance=ExtResource("1_r3eqw")]
+layout_mode = 0
+offset_left = 24.0
+offset_top = -14.0
+offset_right = 39.0
+offset_bottom = 1.0
+
+[node name="HT17" parent="FirstNode/FourthTree/HT1/HT2" instance=ExtResource("1_r3eqw")]
+layout_mode = 0
+offset_left = 25.0
+offset_top = 25.0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="HT18" parent="FirstNode/FourthTree/HT1/HT2/HT17" instance=ExtResource("1_r3eqw")]
+layout_mode = 0
+offset_left = 25.0
+offset_top = 25.0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="HT19" parent="FirstNode/FourthTree/HT1/HT2/HT17/HT18" instance=ExtResource("1_r3eqw")]
+layout_mode = 0
+offset_left = -25.0
+offset_right = -10.0
+offset_bottom = 15.0
+
+[node name="HT20" parent="FirstNode/FourthTree/HT1/HT2/HT17/HT18/HT19" instance=ExtResource("1_r3eqw")]
+layout_mode = 0
+offset_left = -25.0
+offset_right = -10.0
+offset_bottom = 15.0
+
+[node name="HT21" parent="FirstNode/FourthTree/HT1/HT2/HT17/HT18/HT19/HT20" instance=ExtResource("1_r3eqw")]
+layout_mode = 0
+offset_top = -25.0
+offset_right = 15.0
+offset_bottom = -10.0
+
+[node name="HT22" parent="FirstNode/FourthTree/HT1/HT2/HT17/HT18" instance=ExtResource("1_r3eqw")]
+layout_mode = 0
+offset_left = 25.0
+offset_right = 40.0
+offset_bottom = 15.0
+
+[node name="HT23" parent="FirstNode/FourthTree/HT1/HT2/HT17/HT18/HT22" instance=ExtResource("1_r3eqw")]
+layout_mode = 0
+offset_left = 25.0
+offset_right = 40.0
+offset_bottom = 15.0
+
+[node name="HT24" parent="FirstNode/FourthTree/HT1/HT2/HT17/HT18/HT22/HT23" instance=ExtResource("1_r3eqw")]
+layout_mode = 0
+offset_top = -25.0
+offset_right = 15.0
+offset_bottom = -10.0
+
+[node name="HT25" parent="FirstNode/FourthTree/HT1/HT2/HT17/HT18" instance=ExtResource("1_r3eqw")]
+layout_mode = 0
+offset_top = -25.0
+offset_right = 15.0
+offset_bottom = -10.0
+
+[node name="HT26" parent="FirstNode/FourthTree/HT1/HT2/HT17/HT18/HT25" instance=ExtResource("1_r3eqw")]
+layout_mode = 0
+offset_left = 25.0
+offset_right = 40.0
+offset_bottom = 15.0
+
+[node name="HT27" parent="FirstNode/FourthTree/HT1/HT2/HT17/HT18/HT25/HT26" instance=ExtResource("1_r3eqw")]
+layout_mode = 0
+offset_top = -25.0
+offset_right = 15.0
+offset_bottom = -10.0

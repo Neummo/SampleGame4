@@ -1,0 +1,21 @@
+[gd_scene load_steps=4 format=3 uid="uid://cavrfxvsfdmbl"]
+
+[ext_resource type="Script" path="res://Pickups/part.gd" id="1_waw8a"]
+[ext_resource type="Texture2D" uid="uid://dwvibgl671con" path="res://Assets/white.png" id="2_prlic"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_pfk2o"]
+size = Vector2(16, 16)
+
+[node name="Part" type="Area2D"]
+collision_layer = 2
+collision_mask = 2
+script = ExtResource("1_waw8a")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.0133333, 0.0133333)
+texture = ExtResource("2_prlic")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_pfk2o")
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]

@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://Attacks/laser.gd" id="1_hr3ho"]
 [ext_resource type="Texture2D" uid="uid://dwvibgl671con" path="res://Assets/white.png" id="2_r6je6"]
-[ext_resource type="PackedScene" uid="uid://cg200evxgwx7b" path="res://range_indicator.tscn" id="3_xjafg"]
+[ext_resource type="PackedScene" uid="uid://cg200evxgwx7b" path="res://Environment/range_indicator.tscn" id="3_xjafg"]
 
 [sub_resource type="Curve" id="Curve_kk88v"]
 _data = [Vector2(0, 0.482653), 0.0, 0.0, 0, 0, Vector2(0.505291, 1), 0.0, 0.0, 0, 0, Vector2(1, 0.462755), 0.0, 0.0, 0, 0]
@@ -106,6 +106,7 @@ lifetime = 0.3
 collision_layer = 2
 
 [node name="RangeIndicator" parent="Aoe" instance=ExtResource("3_xjafg")]
+width = 2.0
 default_color = Color(0.772549, 0.345098, 0.388235, 0.776471)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Aoe"]

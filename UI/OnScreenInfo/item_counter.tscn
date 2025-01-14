@@ -1,0 +1,21 @@
+[gd_scene load_steps=3 format=3 uid="uid://dy34tffuy5cnn"]
+
+[ext_resource type="Script" path="res://UI/OnScreenInfo/item_counter.gd" id="1_8c4oa"]
+[ext_resource type="Texture2D" uid="uid://btgu04c78sn0g" path="res://Assets/asfdgAds_1ss.png" id="1_kgpb7"]
+
+[node name="ItemCounter" type="TextureRect"]
+offset_right = 20.0
+offset_bottom = 20.0
+texture = ExtResource("1_kgpb7")
+expand_mode = 2
+script = ExtResource("1_8c4oa")
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 0
+offset_left = -2.0
+offset_top = 7.0
+offset_right = 19.0
+offset_bottom = 23.0
+theme_override_font_sizes/font_size = 11
+text = "0"
+horizontal_alignment = 2

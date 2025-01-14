@@ -1,0 +1,279 @@
+[gd_scene load_steps=4 format=3 uid="uid://ccasosye1po2m"]
+
+[ext_resource type="Script" path="res://UI/OnScreenInfo/player_stats.gd" id="1_dnerw"]
+[ext_resource type="LabelSettings" uid="uid://cro6habyr70oa" path="res://Assets/stat_label_font.tres" id="2_qqcyd"]
+[ext_resource type="PackedScene" uid="uid://cn8l6n3cs42gg" path="res://UI/OnScreenInfo/ability_cooldown_visualiser.tscn" id="3_5plx3"]
+
+[node name="PlayerStats" type="Control" node_paths=PackedStringArray("acceleration_label", "max_speed_label", "max_health_label", "hps_label", "leech_label", "damage_reduction_label", "damage_mitigation_label", "range_label", "magnet_strengh_label", "critical_chance_label", "critical_damage_label", "damage_multiplier_label", "as_multiplier_label", "salvage_drop_rate_label", "part_drop_rate_label", "credit_multiplier_label", "credits_label", "parts_label", "dash_cooldown", "hyper_cooldown", "bounty", "coords", "zone")]
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_dnerw")
+acceleration_label = NodePath("Base/Values/Container/AccelerationValue")
+max_speed_label = NodePath("Base/Values/Container/MaxSpeedValue")
+max_health_label = NodePath("Base/Values/Container/MaxHealthValue")
+hps_label = NodePath("Base/Values/Container/HpsValue")
+leech_label = NodePath("Base/Values/Container/LeechValue")
+damage_reduction_label = NodePath("Base/Values/Container/DamageReductionValue")
+damage_mitigation_label = NodePath("Base/Values/Container/DamageMitigationValue")
+range_label = NodePath("Base/Values/Container/RangeValue")
+magnet_strengh_label = NodePath("Base/Values/Container/MagnetStrenghValue")
+critical_chance_label = NodePath("Base/Values/Container/CriticalChanceValue")
+critical_damage_label = NodePath("Base/Values/Container/CriticalDamageValue")
+damage_multiplier_label = NodePath("Base/Values/Container/DamageMultiplierValue")
+as_multiplier_label = NodePath("Base/Values/Container/ASMultiplierValue")
+salvage_drop_rate_label = NodePath("Base/Values/Container/SalvageDropRateValue")
+part_drop_rate_label = NodePath("Base/Values/Container/PartDropRateValue")
+credit_multiplier_label = NodePath("Base/Values/Container/CreditMultiplierValue")
+credits_label = NodePath("Base/Values/Container/CreditsValue")
+parts_label = NodePath("Base/Values/Container/PartsValue")
+dash_cooldown = NodePath("Values2/DashCooldown")
+hyper_cooldown = NodePath("Values2/HyperCooldown")
+bounty = NodePath("Values3/Title/Bounty")
+coords = NodePath("Values3/Title/Coords")
+zone = NodePath("Values3/Title/Zone")
+
+[node name="Base" type="HBoxContainer" parent="."]
+layout_mode = 0
+offset_left = 10.0
+offset_top = 262.0
+offset_right = 120.0
+offset_bottom = 566.0
+
+[node name="Names" type="HBoxContainer" parent="Base"]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+
+[node name="Sections" type="VBoxContainer" parent="Base/Names"]
+layout_mode = 2
+
+[node name="Names" type="VBoxContainer" parent="Base/Names/Sections"]
+layout_mode = 2
+
+[node name="MaxHealth" type="Label" parent="Base/Names/Sections/Names"]
+layout_mode = 2
+text = "Shield:"
+label_settings = ExtResource("2_qqcyd")
+
+[node name="Hps" type="Label" parent="Base/Names/Sections/Names"]
+layout_mode = 2
+text = "Shield Regen:"
+label_settings = ExtResource("2_qqcyd")
+
+[node name="DamageReduction" type="Label" parent="Base/Names/Sections/Names"]
+layout_mode = 2
+text = "Shield Resilience:"
+label_settings = ExtResource("2_qqcyd")
+
+[node name="DamageMitigation" type="Label" parent="Base/Names/Sections/Names"]
+layout_mode = 2
+text = "Mitigate Chance:"
+label_settings = ExtResource("2_qqcyd")
+
+[node name="Leech" type="Label" parent="Base/Names/Sections/Names"]
+layout_mode = 2
+text = "Leech:"
+label_settings = ExtResource("2_qqcyd")
+
+[node name="Acceleration" type="Label" parent="Base/Names/Sections/Names"]
+layout_mode = 2
+text = "Acceleration:"
+label_settings = ExtResource("2_qqcyd")
+
+[node name="MaxSpeed" type="Label" parent="Base/Names/Sections/Names"]
+layout_mode = 2
+text = "Speed:"
+label_settings = ExtResource("2_qqcyd")
+
+[node name="MagnetStrengh" type="Label" parent="Base/Names/Sections/Names"]
+layout_mode = 2
+text = "Magnet Strengh:"
+label_settings = ExtResource("2_qqcyd")
+
+[node name="Range" type="Label" parent="Base/Names/Sections/Names"]
+layout_mode = 2
+text = "Range:"
+label_settings = ExtResource("2_qqcyd")
+
+[node name="CriticalChance" type="Label" parent="Base/Names/Sections/Names"]
+layout_mode = 2
+text = "Critical Chance:"
+label_settings = ExtResource("2_qqcyd")
+
+[node name="CriticalDamage" type="Label" parent="Base/Names/Sections/Names"]
+layout_mode = 2
+text = "Critical Damage:"
+label_settings = ExtResource("2_qqcyd")
+
+[node name="DamageMultiplier" type="Label" parent="Base/Names/Sections/Names"]
+layout_mode = 2
+text = "Damage Multiplier:"
+label_settings = ExtResource("2_qqcyd")
+
+[node name="ASMultiplier" type="Label" parent="Base/Names/Sections/Names"]
+layout_mode = 2
+text = "Rate of Fire Multiplier:"
+label_settings = ExtResource("2_qqcyd")
+
+[node name="SalvageDropRate" type="Label" parent="Base/Names/Sections/Names"]
+layout_mode = 2
+text = "Salvage Drop Rate:"
+label_settings = ExtResource("2_qqcyd")
+
+[node name="Part Drop Rate" type="Label" parent="Base/Names/Sections/Names"]
+layout_mode = 2
+text = "Part Drop Rate:"
+label_settings = ExtResource("2_qqcyd")
+
+[node name="CreditMultiplier" type="Label" parent="Base/Names/Sections/Names"]
+layout_mode = 2
+text = "Credit Multiplier:"
+label_settings = ExtResource("2_qqcyd")
+
+[node name="Credits" type="Label" parent="Base/Names/Sections/Names"]
+layout_mode = 2
+text = "Credits:"
+label_settings = ExtResource("2_qqcyd")
+
+[node name="Parts" type="Label" parent="Base/Names/Sections/Names"]
+layout_mode = 2
+text = "Parts:"
+label_settings = ExtResource("2_qqcyd")
+
+[node name="Values" type="HBoxContainer" parent="Base"]
+layout_mode = 2
+
+[node name="Container" type="VBoxContainer" parent="Base/Values"]
+layout_mode = 2
+
+[node name="MaxHealthValue" type="Label" parent="Base/Values/Container"]
+layout_mode = 2
+text = "0"
+label_settings = ExtResource("2_qqcyd")
+
+[node name="HpsValue" type="Label" parent="Base/Values/Container"]
+layout_mode = 2
+text = "0:"
+label_settings = ExtResource("2_qqcyd")
+
+[node name="DamageReductionValue" type="Label" parent="Base/Values/Container"]
+layout_mode = 2
+text = "0"
+label_settings = ExtResource("2_qqcyd")
+
+[node name="DamageMitigationValue" type="Label" parent="Base/Values/Container"]
+layout_mode = 2
+text = "0"
+label_settings = ExtResource("2_qqcyd")
+
+[node name="LeechValue" type="Label" parent="Base/Values/Container"]
+layout_mode = 2
+text = "0"
+label_settings = ExtResource("2_qqcyd")
+
+[node name="AccelerationValue" type="Label" parent="Base/Values/Container"]
+layout_mode = 2
+text = "0"
+label_settings = ExtResource("2_qqcyd")
+
+[node name="MaxSpeedValue" type="Label" parent="Base/Values/Container"]
+layout_mode = 2
+text = "0"
+label_settings = ExtResource("2_qqcyd")
+
+[node name="MagnetStrenghValue" type="Label" parent="Base/Values/Container"]
+layout_mode = 2
+text = "0"
+label_settings = ExtResource("2_qqcyd")
+
+[node name="RangeValue" type="Label" parent="Base/Values/Container"]
+layout_mode = 2
+text = "0"
+label_settings = ExtResource("2_qqcyd")
+
+[node name="CriticalChanceValue" type="Label" parent="Base/Values/Container"]
+layout_mode = 2
+text = "0"
+label_settings = ExtResource("2_qqcyd")
+
+[node name="CriticalDamageValue" type="Label" parent="Base/Values/Container"]
+layout_mode = 2
+text = "0"
+label_settings = ExtResource("2_qqcyd")
+
+[node name="DamageMultiplierValue" type="Label" parent="Base/Values/Container"]
+layout_mode = 2
+text = "0"
+label_settings = ExtResource("2_qqcyd")
+
+[node name="ASMultiplierValue" type="Label" parent="Base/Values/Container"]
+layout_mode = 2
+text = "0"
+label_settings = ExtResource("2_qqcyd")
+
+[node name="SalvageDropRateValue" type="Label" parent="Base/Values/Container"]
+layout_mode = 2
+text = "0"
+label_settings = ExtResource("2_qqcyd")
+
+[node name="PartDropRateValue" type="Label" parent="Base/Values/Container"]
+layout_mode = 2
+text = "0"
+label_settings = ExtResource("2_qqcyd")
+
+[node name="CreditMultiplierValue" type="Label" parent="Base/Values/Container"]
+layout_mode = 2
+text = "0"
+label_settings = ExtResource("2_qqcyd")
+
+[node name="CreditsValue" type="Label" parent="Base/Values/Container"]
+layout_mode = 2
+text = "0"
+label_settings = ExtResource("2_qqcyd")
+
+[node name="PartsValue" type="Label" parent="Base/Values/Container"]
+layout_mode = 2
+text = "0"
+label_settings = ExtResource("2_qqcyd")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Base"]
+layout_mode = 2
+
+[node name="Values3" type="HBoxContainer" parent="."]
+layout_mode = 2
+offset_left = 14.0
+offset_top = 104.0
+offset_right = 31.0
+offset_bottom = 241.0
+
+[node name="Title" type="VBoxContainer" parent="Values3"]
+layout_mode = 2
+
+[node name="Coords" type="Label" parent="Values3/Title"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 20
+text = "0"
+
+[node name="Bounty" type="Label" parent="Values3/Title"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.346577, 0.280009, 1)
+theme_override_font_sizes/font_size = 20
+
+[node name="Zone" type="Label" parent="Values3/Title"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 20
+text = "0"
+
+[node name="Values2" type="HBoxContainer" parent="."]
+layout_mode = 2
+offset_left = 11.0
+offset_top = 27.0
+offset_right = 323.0
+offset_bottom = 77.0
+
+[node name="DashCooldown" parent="Values2" instance=ExtResource("3_5plx3")]
+visible = false
+layout_mode = 2
+
+[node name="HyperCooldown" parent="Values2" instance=ExtResource("3_5plx3")]
+visible = false
+layout_mode = 2

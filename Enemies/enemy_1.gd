@@ -1,26 +1,18 @@
 extends Enemy
 
-var rotation_speed: float = 50
-
+var rotation_speed: float = 0.5
+	
 func _ready():
-	stats.set_stats({
-		"acceleration": Values.enemy_acceleration * 2,
-		"max_speed": Values.enemy_speed * 2,
-		"max_health": Values.enemy_health / 2
-	})
 	player = get_tree().get_first_node_in_group("Player")
 	motion_mode = CharacterBody2D.MOTION_MODE_FLOATING
+	stats.set_stats({
+		"acceleration": Values.enemy_acceleration * 4,
+		"max_speed": randf_range(Values.enemy_speed * 2 - 50, Values.enemy_speed * 2),
+		"max_health": int(floor(Values.enemy_health / 2))
+	})
 	health_component.health = stats.max_health
+	health_component.value = 2
 	health_bar.init_health(stats.max_health) 
-
-func _physics_process(delta):
-	despawn()
-	move_and_slide()
-	if Values.safe_zone:
-		run(delta)
-		return
-	rotate_to_target(player, delta)
-	behavior(delta)
 
 func rotate_to_target(target, delta):
 	var dir = (target.global_position - global_position)
@@ -37,5 +29,12 @@ func _on_hitbox_component_area_entered(area: Area2D) -> void:
 		attack.attack_damage = Values.enemy_damage * 3
 		area.damage(attack)
 		var self_destruck: Attack = Attack.new()
-		attack.attack_damage = stats.max_health
-		health_component.damage(attack)
+		self_destruck.attack_damage = stats.max_health
+		health_component.damage(self_destruck)
+
+func _on_timer_timeout() -> void:
+	var damage = maxi(1, int(floor(dot_pool * 0.1)))
+	dot_pool -= damage
+	var attack: Attack = Attack.new()
+	attack.attack_damage = damage
+	health_component.damage(attack)

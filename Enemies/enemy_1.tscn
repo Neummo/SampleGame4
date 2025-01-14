@@ -1,14 +1,15 @@
-[gd_scene load_steps=14 format=3 uid="uid://mcxt5lqgxj5s"]
+[gd_scene load_steps=28 format=3 uid="uid://mcxt5lqgxj5s"]
 
 [ext_resource type="Script" path="res://Enemies/enemy_1.gd" id="1_bnglh"]
-[ext_resource type="PackedScene" uid="uid://cx65mwov3fgjd" path="res://health_bar.tscn" id="2_auakb"]
+[ext_resource type="PackedScene" uid="uid://cx65mwov3fgjd" path="res://UI/OnScreenInfo/health_bar.tscn" id="2_auakb"]
 [ext_resource type="PackedScene" uid="uid://cbdpjw3txwo5h" path="res://Enemies/enemy_stats.tscn" id="3_rv433"]
 [ext_resource type="Shader" path="res://Shaders/damageFlash.gdshader" id="4_l1xs8"]
 [ext_resource type="Texture2D" uid="uid://rkyd75b4w6cr" path="res://Assets/Ship_3.png" id="5_r4dnm"]
 [ext_resource type="PackedScene" uid="uid://3se37hf2b3nl" path="res://damage_flash_player.tscn" id="6_mf22p"]
-[ext_resource type="Script" path="res://HealthComponent.gd" id="7_6n767"]
-[ext_resource type="Script" path="res://HitboxComponent.gd" id="8_qgdte"]
-[ext_resource type="PackedScene" uid="uid://b58vw44glay4i" path="res://move_trail.tscn" id="9_sd6iw"]
+[ext_resource type="Script" path="res://health_component.gd" id="7_6n767"]
+[ext_resource type="Script" path="res://hitbox_component.gd" id="8_qgdte"]
+[ext_resource type="PackedScene" uid="uid://b58vw44glay4i" path="res://Environment/move_trail.tscn" id="9_sd6iw"]
+[ext_resource type="Texture2D" uid="uid://cfy8mw22pj3df" path="res://Assets/Free Smoke Fx  Pixel 06.png" id="10_nb2pp"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_wrke3"]
 resource_local_to_scene = true
@@ -19,20 +20,112 @@ shader_parameter/flash_value = 0.0
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_h40vo"]
 size = Vector2(30, 28)
 
-[sub_resource type="Curve" id="Curve_4v81f"]
+[sub_resource type="Curve" id="Curve_q7af4"]
 resource_local_to_scene = true
 _data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
 point_count = 2
 
-[sub_resource type="Curve" id="Curve_kuqwg"]
+[sub_resource type="Curve" id="Curve_t2bdh"]
 resource_local_to_scene = true
 _data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
 point_count = 2
 
-[node name="Enemy" type="CharacterBody2D" node_paths=PackedStringArray("health_component", "stats", "health_bar", "body")]
+[sub_resource type="AtlasTexture" id="AtlasTexture_2j7i3"]
+atlas = ExtResource("10_nb2pp")
+region = Rect2(0, 256, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7hopx"]
+atlas = ExtResource("10_nb2pp")
+region = Rect2(64, 256, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_etj8r"]
+atlas = ExtResource("10_nb2pp")
+region = Rect2(128, 256, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kmbok"]
+atlas = ExtResource("10_nb2pp")
+region = Rect2(192, 256, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_417yc"]
+atlas = ExtResource("10_nb2pp")
+region = Rect2(256, 256, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ypbpc"]
+atlas = ExtResource("10_nb2pp")
+region = Rect2(320, 256, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_46qcl"]
+atlas = ExtResource("10_nb2pp")
+region = Rect2(384, 256, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ti5em"]
+atlas = ExtResource("10_nb2pp")
+region = Rect2(448, 256, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_v0kt6"]
+atlas = ExtResource("10_nb2pp")
+region = Rect2(512, 256, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_siugg"]
+atlas = ExtResource("10_nb2pp")
+region = Rect2(576, 256, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_imkjl"]
+atlas = ExtResource("10_nb2pp")
+region = Rect2(640, 256, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7d4up"]
+atlas = ExtResource("10_nb2pp")
+region = Rect2(704, 256, 64, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_73gj2"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2j7i3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7hopx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_etj8r")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kmbok")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_417yc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ypbpc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_46qcl")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ti5em")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_v0kt6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_siugg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_imkjl")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7d4up")
+}],
+"loop": false,
+"name": &"death",
+"speed": 12.0
+}]
+
+[node name="Enemy" type="CharacterBody2D" node_paths=PackedStringArray("health_component", "stats", "health_bar", "body") groups=["Grunt"]]
 collision_mask = 2
 script = ExtResource("1_bnglh")
-health_component = NodePath("Body/HealthComponent")
+health_component = NodePath("HealthComponent")
 stats = NodePath("EnemyStats")
 health_bar = NodePath("HealthBar")
 body = NodePath("Body")
@@ -45,6 +138,12 @@ offset_bottom = -17.0
 
 [node name="EnemyStats" parent="." instance=ExtResource("3_rv433")]
 
+[node name="HealthComponent" type="Node2D" parent="." node_paths=PackedStringArray("health_bar", "damage_flash_player")]
+script = ExtResource("7_6n767")
+health_bar = NodePath("../HealthBar")
+possesor = "Enemy"
+damage_flash_player = NodePath("../Body/Sprite/DamageFlashPlayer")
+
 [node name="Body" type="Node2D" parent="."]
 
 [node name="Sprite" type="Sprite2D" parent="Body"]
@@ -54,28 +153,24 @@ texture = ExtResource("5_r4dnm")
 
 [node name="DamageFlashPlayer" parent="Body/Sprite" instance=ExtResource("6_mf22p")]
 
-[node name="HealthComponent" type="Node2D" parent="Body" node_paths=PackedStringArray("health_bar", "damage_flash_player")]
-script = ExtResource("7_6n767")
-health_bar = NodePath("../../HealthBar")
-possesor = "Enemy"
-damage_flash_player = NodePath("../Sprite/DamageFlashPlayer")
-
 [node name="HitboxComponent" type="Area2D" parent="Body" node_paths=PackedStringArray("health_component")]
 collision_mask = 2
 script = ExtResource("8_qgdte")
-health_component = NodePath("../HealthComponent")
+health_component = NodePath("../../HealthComponent")
 possesor = "Enemy"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Body/HitboxComponent"]
 position = Vector2(1, 0)
 shape = SubResource("RectangleShape2D_h40vo")
 
+[node name="Timer" type="Timer" parent="Body/HitboxComponent"]
+
 [node name="LeftWing" type="Node2D" parent="Body"]
 position = Vector2(-12, -3)
 
 [node name="MoveTrail" parent="Body/LeftWing" instance=ExtResource("9_sd6iw")]
 z_index = -1
-width_curve = SubResource("Curve_4v81f")
+width_curve = SubResource("Curve_q7af4")
 length = 20
 
 [node name="RightWing" type="Node2D" parent="Body"]
@@ -83,7 +178,16 @@ position = Vector2(-12, 3)
 
 [node name="MoveTrail" parent="Body/RightWing" instance=ExtResource("9_sd6iw")]
 z_index = -1
-width_curve = SubResource("Curve_kuqwg")
+width_curve = SubResource("Curve_t2bdh")
 length = 20
 
+[node name="Death" type="AnimatedSprite2D" parent="Body"]
+sprite_frames = SubResource("SpriteFrames_73gj2")
+animation = &"death"
+frame = 11
+frame_progress = 1.0
+
+[node name="Timer" type="Timer" parent="."]
+
 [connection signal="area_entered" from="Body/HitboxComponent" to="." method="_on_hitbox_component_area_entered"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

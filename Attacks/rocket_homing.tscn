@@ -1,19 +1,20 @@
-[gd_scene load_steps=9 format=3 uid="uid://4dg82cx2rxwp"]
+[gd_scene load_steps=11 format=3 uid="uid://4dg82cx2rxwp"]
 
 [ext_resource type="Script" path="res://Attacks/rocket_homing.gd" id="1_4g10y"]
 [ext_resource type="Script" path="res://Attacks/Components/attack_area.gd" id="2_rb01w"]
-[ext_resource type="PackedScene" uid="uid://b58vw44glay4i" path="res://move_trail.tscn" id="3_clwes"]
+[ext_resource type="PackedScene" uid="uid://b58vw44glay4i" path="res://Environment/move_trail.tscn" id="3_clwes"]
+[ext_resource type="PackedScene" uid="uid://cg200evxgwx7b" path="res://Environment/range_indicator.tscn" id="4_kb2i2"]
 
-[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_voxxw"]
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_it728"]
 
 [sub_resource type="CanvasTexture" id="CanvasTexture_44sr6"]
 resource_local_to_scene = true
-specular_texture = SubResource("NoiseTexture2D_voxxw")
+specular_texture = SubResource("NoiseTexture2D_it728")
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_bifld"]
 size = Vector2(5, 15)
 
-[sub_resource type="Curve" id="Curve_fgolo"]
+[sub_resource type="Curve" id="Curve_676mb"]
 resource_local_to_scene = true
 _data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
 point_count = 2
@@ -21,9 +22,15 @@ point_count = 2
 [sub_resource type="CircleShape2D" id="CircleShape2D_w3ind"]
 radius = 500.0
 
-[node name="RocketHoming" type="CharacterBody2D" node_paths=PackedStringArray("gun_range_indicator")]
+[sub_resource type="CircleShape2D" id="CircleShape2D_j3sdn"]
+
+[node name="RocketHoming" type="CharacterBody2D" node_paths=PackedStringArray("aoe", "aoe_shape", "range_indicator", "gun_range_indicator", "sprite")]
 script = ExtResource("1_4g10y")
+aoe = NodePath("Aoe")
+aoe_shape = NodePath("Aoe/CollisionShape2D")
+range_indicator = NodePath("Aoe/RangeIndicator")
 gun_range_indicator = NodePath("GunRange")
+sprite = NodePath("Sprite")
 
 [node name="Sprite" type="Sprite2D" parent="."]
 scale = Vector2(5, 15)
@@ -42,7 +49,7 @@ position = Vector2(0, 7)
 
 [node name="MoveTrail" parent="Trail" instance=ExtResource("3_clwes")]
 points = PackedVector2Array(0, 0)
-width_curve = SubResource("Curve_fgolo")
+width_curve = SubResource("Curve_676mb")
 length = 20
 
 [node name="GunRange" type="Area2D" parent="."]
@@ -51,4 +58,18 @@ collision_layer = 2
 [node name="CollisionShape2D" type="CollisionShape2D" parent="GunRange"]
 shape = SubResource("CircleShape2D_w3ind")
 
+[node name="Aoe" type="Area2D" parent="."]
+collision_layer = 2
+
+[node name="RangeIndicator" parent="Aoe" instance=ExtResource("4_kb2i2")]
+default_color = Color(0.772549, 0.345098, 0.388235, 0.776471)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Aoe"]
+shape = SubResource("CircleShape2D_j3sdn")
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 0.2
+one_shot = true
+
 [connection signal="area_entered" from="AttackArea" to="AttackArea" method="_on_area_entered"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

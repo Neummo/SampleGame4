@@ -4,8 +4,8 @@
 [ext_resource type="Texture2D" uid="uid://dwvibgl671con" path="res://Assets/white.png" id="2_64aky"]
 
 [sub_resource type="Curve" id="Curve_n04aj"]
-_data = [Vector2(0, 0.123524), 0.0, 0.0, 0, 0, Vector2(0.256614, 0.144388), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
-point_count = 3
+_data = [Vector2(0, 0.678682), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 2
 
 [sub_resource type="Gradient" id="Gradient_me00n"]
 offsets = PackedFloat32Array(0, 0.540984, 1)

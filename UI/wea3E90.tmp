@@ -1,0 +1,19 @@
+[gd_scene load_steps=3 format=3 uid="uid://ckk0snomqtyae"]
+
+[ext_resource type="Script" path="res://UI/weapon_slot.gd" id="1_3p8h3"]
+
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_kiqve"]
+size = Vector2(50, 50)
+
+[node name="WeaponSlot" type="TextureButton"]
+texture_normal = SubResource("PlaceholderTexture2D_kiqve")
+script = ExtResource("1_3p8h3")
+
+[node name="WeaponList" type="HBoxContainer" parent="."]
+layout_mode = 0
+offset_top = -21.0
+offset_right = 146.0
+offset_bottom = -1.0
+
+[connection signal="focus_exited" from="." to="." method="_on_focus_exited"]
+[connection signal="pressed" from="." to="." method="_on_pressed"]

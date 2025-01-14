@@ -6,24 +6,76 @@ class_name Enemy
 @export var health_bar: ProgressBar
 @export var body: Node2D
 
+@onready var dot_pool: int = 0
+@onready var timer: Timer = $Timer
+@onready var death: AnimatedSprite2D = $Body/Death
+@onready var hitbox: HitboxComponent = $Body/HitboxComponent
+@onready var hitbox_shape: CollisionShape2D = $Body/HitboxComponent/CollisionShape2D
+@onready var sprite: Sprite2D = $Body/Sprite
+
 var player: CharacterBody2D
+var arrived: bool = false
+var dying: bool = false
+
+func _physics_process(delta):
+	despawn()
+	move_and_slide()
+	
+	if Values.player_can_dot:
+		tick_dot()
+	if Values.zone == 0:
+		run(delta)
+		return
+	if arrived:
+		behavior(delta)
+		rotate_to_target(player, delta)
+	else:
+		arrive(delta)
+		body.look_at(player.global_position)
+
+func tick_dot() -> void:
+	if dot_pool <= 0:
+		timer.stop()
+		return
+	if not timer.is_stopped():
+		return
+	else:
+		timer.start()
 
 func despawn() -> void:
-	if get_player_distance() > 5000:
+	if get_player_distance() > 3000:
+		#Values.enemy_count -= 1
 		queue_free()
 
-func rotate_to_target(target, delta):
+func rotate_to_target(_target, _delta):
 	pass
 
 func run(_delta: float) -> void:
-	var dir = (player.global_position - global_position)
-	var angle_to = body.transform.x.angle_to(dir)
-	body.rotate(sign(-angle_to) * min(_delta * 2, abs(angle_to)))
-	var vector: Vector2 = Vector2(stats.acceleration * 3, 0)
-	velocity += (vector.rotated(body.rotation)).normalized() * _delta * stats.acceleration * 2
+	var dir = player.global_position - global_position
+	body.look_at(global_position - dir)
+	var vector: Vector2 = Vector2(stats.acceleration * 10, 0)
+	velocity += (vector.rotated(body.rotation)).normalized() * _delta * stats.acceleration * 10
 
 func get_player_distance() -> float:
 	return snapped(global_position.distance_to(player.global_position), 1)
 
-func behavior(delta: float) -> void:
+func behavior(_delta: float) -> void:
 	pass
+
+func arrive(delta: float) -> void:
+	if global_position.distance_to(player.global_position) > Values.player_range * 3:
+		velocity = (Vector2(stats.acceleration * 200000, 0).rotated(body.rotation)).normalized() * delta * 200000
+	else:
+		arrived = true
+
+func die() -> void:
+	dying = true
+	sprite.set_visible(false)
+	health_bar.set_visible(false)
+	set_process(false)
+	set_physics_process(false)
+	hitbox.set_deferred("monitorable", false)
+	hitbox.set_deferred("monitoring", false)
+	death.play("death")
+	await death.animation_finished
+	queue_free()

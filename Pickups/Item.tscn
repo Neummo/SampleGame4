@@ -1,0 +1,22 @@
+[gd_scene load_steps=4 format=3 uid="uid://cj6kwql165rjv"]
+
+[ext_resource type="Script" path="res://Pickups/item.gd" id="1_d3vv6"]
+[ext_resource type="Texture2D" uid="uid://dgti6ogkdywhv" path="res://Assets/kate2.png" id="2_wnatt"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8jk4t"]
+size = Vector2(16, 14)
+
+[node name="Item" type="Area2D"]
+collision_layer = 2
+collision_mask = 2
+script = ExtResource("1_d3vv6")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.24, 0.26)
+texture = ExtResource("2_wnatt")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -1)
+shape = SubResource("RectangleShape2D_8jk4t")
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]

@@ -1,0 +1,10 @@
+remove currency scaling (WATCH)
+float currency (WATCH)
+
+save function (careful for exploits) (MAYBE NOT)
+area objects (MAYBE)
+intro, tutorial
+weapon basic info labels
+tab disabled when item picked up
+neutral_count remake with groups
+pause

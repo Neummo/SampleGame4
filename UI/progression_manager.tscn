@@ -1,0 +1,743 @@
+[gd_scene load_steps=14 format=3 uid="uid://dtbe3d6tdnt30"]
+
+[ext_resource type="Script" path="res://UI/progression_manager.gd" id="1_boseb"]
+[ext_resource type="PackedScene" uid="uid://dw3btbuscjgyh" path="res://UI/BasePanel/part_display.tscn" id="2_mn78g"]
+[ext_resource type="LabelSettings" uid="uid://cro6habyr70oa" path="res://Assets/stat_label_font.tres" id="2_mp5ci"]
+[ext_resource type="Texture2D" uid="uid://co0a622mi6nqh" path="res://Assets/placeholder_button.tres" id="3_llpj6"]
+[ext_resource type="Script" path="res://Attacks/Components/_upgrade_button.gd" id="4_75ix6"]
+[ext_resource type="PackedScene" uid="uid://ckk0snomqtyae" path="res://UI/BasePanel/weapon_slot.tscn" id="6_mtkrx"]
+[ext_resource type="PackedScene" uid="uid://e8je7elgras7" path="res://UI/BasePanel/big_upgrade_tree_button.tscn" id="6_ut5g0"]
+[ext_resource type="Script" path="res://UI/BasePanel/display_toggle.gd" id="7_v0e4h"]
+[ext_resource type="Script" path="res://UI/BasePanel/bounty.gd" id="9_h30cn"]
+
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_xle6s"]
+size = Vector2(40, 40)
+
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_x3gql"]
+size = Vector2(50, 50)
+
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_va2n2"]
+size = Vector2(50, 50)
+
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_67qvi"]
+size = Vector2(40, 40)
+
+[node name="ProgressionManager" type="Node2D" node_paths=PackedStringArray("part_display", "upgrade_menu", "repair_button", "salvage_button", "turret_unlock_button", "turret_upgrade1_button", "turret_upgrade11_button", "turret_upgrade111_button", "turret_upgrade21_button", "turret_upgrade31_button", "rocket_unlock_button", "rocket_upgrade3_button", "rocket_upgrade31_button", "rocket_upgrade311_button", "rocket_upgrade32_button", "rocket_upgrade321_button", "laser_unlock_button", "laser_upgrade1_button", "laser_upgrade11_button", "laser_upgrade2_button", "laser_upgrade21_button", "field_unlock_button", "field_upgrade1_button", "field_upgrade11_button", "field_upgrade12_button", "field_upgrade13_button", "seeker_unlock_button", "seeker_upgrade3_button", "seeker_upgrade31_button", "seeker_upgrade311_button", "seeker_upgrade312_button") groups=["pm"]]
+process_mode = 2
+position = Vector2(1, -1)
+script = ExtResource("1_boseb")
+part_display = NodePath("UpgradeContainer/PartDisplay")
+upgrade_menu = NodePath("UpgradeContainer")
+repair_button = NodePath("UpgradeContainer/Repair")
+salvage_button = NodePath("UpgradeContainer/Salvage")
+turret_unlock_button = NodePath("UpgradeContainer/WeaponDisplay/TurretUnlockTreeButton")
+turret_upgrade1_button = NodePath("UpgradeContainer/WeaponDisplay/TurretUnlockTreeButton/TurretUpgrade11TreeButton/TurretUpgrade1TreeButton")
+turret_upgrade11_button = NodePath("UpgradeContainer/WeaponDisplay/TurretUnlockTreeButton/TurretUpgrade11TreeButton")
+turret_upgrade111_button = NodePath("UpgradeContainer/WeaponDisplay/TurretUnlockTreeButton/TurretUpgrade11TreeButton/TurretUpgrade1TreeButton/TurretUpgrade111TreeButton")
+turret_upgrade21_button = NodePath("UpgradeContainer/WeaponDisplay/TurretUnlockTreeButton/TurretUpgrade21TreeButton")
+turret_upgrade31_button = NodePath("UpgradeContainer/WeaponDisplay/TurretUnlockTreeButton/TurretUpgrade31TreeButton")
+rocket_unlock_button = NodePath("UpgradeContainer/WeaponDisplay/RocketUnlockTreeButton")
+rocket_upgrade3_button = NodePath("UpgradeContainer/WeaponDisplay/RocketUnlockTreeButton/RocketUpgrade3TreeButton")
+rocket_upgrade31_button = NodePath("UpgradeContainer/WeaponDisplay/RocketUnlockTreeButton/RocketUpgrade3TreeButton/RocketUpgrade31TreeButton")
+rocket_upgrade311_button = NodePath("UpgradeContainer/WeaponDisplay/RocketUnlockTreeButton/RocketUpgrade3TreeButton/RocketUpgrade31TreeButton/RocketUpgrade311TreeButton")
+rocket_upgrade32_button = NodePath("UpgradeContainer/WeaponDisplay/RocketUnlockTreeButton/RocketUpgrade3TreeButton/RocketUpgrade32TreeButton")
+rocket_upgrade321_button = NodePath("UpgradeContainer/WeaponDisplay/RocketUnlockTreeButton/RocketUpgrade3TreeButton/RocketUpgrade32TreeButton/RocketUpgrade321TreeButton")
+laser_unlock_button = NodePath("UpgradeContainer/WeaponDisplay/LaserUnlockTreeButton")
+laser_upgrade1_button = NodePath("UpgradeContainer/WeaponDisplay/LaserUnlockTreeButton/LaserUpgrade1TreeButton")
+laser_upgrade11_button = NodePath("UpgradeContainer/WeaponDisplay/LaserUnlockTreeButton/LaserUpgrade1TreeButton/LaserUpgrade11TreeButton")
+laser_upgrade2_button = NodePath("UpgradeContainer/WeaponDisplay/LaserUnlockTreeButton/LaserUpgrade2TreeButton")
+laser_upgrade21_button = NodePath("UpgradeContainer/WeaponDisplay/LaserUnlockTreeButton/LaserUpgrade2TreeButton/LaserUpgrade21TreeButton")
+field_unlock_button = NodePath("UpgradeContainer/WeaponDisplay/FieldUnlockTreeButton")
+field_upgrade1_button = NodePath("UpgradeContainer/WeaponDisplay/FieldUnlockTreeButton/FieldUpgrade1TreeButton")
+field_upgrade11_button = NodePath("UpgradeContainer/WeaponDisplay/FieldUnlockTreeButton/FieldUpgrade1TreeButton/FieldUpgrade11TreeButton")
+field_upgrade12_button = NodePath("UpgradeContainer/WeaponDisplay/FieldUnlockTreeButton/FieldUpgrade1TreeButton/FieldUpgrade12TreeButton")
+field_upgrade13_button = NodePath("UpgradeContainer/WeaponDisplay/FieldUnlockTreeButton/FieldUpgrade1TreeButton/FieldUpgrade13TreeButton")
+seeker_unlock_button = NodePath("UpgradeContainer/WeaponDisplay/SeekerUnlockTreeButton")
+seeker_upgrade3_button = NodePath("UpgradeContainer/WeaponDisplay/SeekerUnlockTreeButton/SeekerUpgrade3TreeButton")
+seeker_upgrade31_button = NodePath("UpgradeContainer/WeaponDisplay/SeekerUnlockTreeButton/SeekerUpgrade3TreeButton/SeekerUpgrade31TreeButton")
+seeker_upgrade311_button = NodePath("UpgradeContainer/WeaponDisplay/SeekerUnlockTreeButton/SeekerUpgrade3TreeButton/SeekerUpgrade31TreeButton/SeekerUpgrade311TreeButton")
+seeker_upgrade312_button = NodePath("UpgradeContainer/WeaponDisplay/SeekerUnlockTreeButton/SeekerUpgrade3TreeButton/SeekerUpgrade31TreeButton/SeekerUpgrade312TreeButton")
+
+[node name="UpgradeContainer" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_left = -219.0
+offset_right = -179.0
+offset_bottom = 40.0
+
+[node name="Panel" type="Panel" parent="UpgradeContainer"]
+layout_mode = 1
+anchors_preset = -1
+offset_left = -144.0
+offset_top = -314.0
+offset_right = 615.0
+offset_bottom = 333.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="PartDisplay" parent="UpgradeContainer" instance=ExtResource("2_mn78g")]
+visible = false
+offset_left = 219.0
+offset_top = 1.0
+offset_right = 259.0
+offset_bottom = 41.0
+
+[node name="WeaponDisplay" type="Control" parent="UpgradeContainer"]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Panel" type="Panel" parent="UpgradeContainer/WeaponDisplay"]
+layout_mode = 1
+anchors_preset = -1
+offset_left = -123.0
+offset_top = -298.0
+offset_right = 473.0
+offset_bottom = 318.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TurretUnlockTreeButton" parent="UpgradeContainer/WeaponDisplay" instance=ExtResource("6_ut5g0")]
+visible = false
+layout_mode = 1
+anchors_preset = -1
+anchor_left = -1.075
+anchor_top = -5.275
+anchor_right = -1.075
+anchor_bottom = -5.275
+offset_left = 0.0
+offset_top = -1.0
+offset_right = 30.0
+offset_bottom = 29.0
+max_level = 1
+description = "- Unlock laser turret"
+
+[node name="TurretUpgrade11TreeButton" parent="UpgradeContainer/WeaponDisplay/TurretUnlockTreeButton" instance=ExtResource("6_ut5g0")]
+layout_mode = 0
+offset_left = 51.0
+offset_top = -44.0
+offset_right = 81.0
+offset_bottom = -14.0
+disabled = true
+max_level = 5
+description = "- Projectile Speed Increase"
+
+[node name="TurretUpgrade1TreeButton" parent="UpgradeContainer/WeaponDisplay/TurretUnlockTreeButton/TurretUpgrade11TreeButton" instance=ExtResource("6_ut5g0")]
+layout_mode = 0
+offset_left = 54.0
+offset_top = 0.0
+offset_right = 84.0
+offset_bottom = 30.0
+disabled = true
+max_level = 1
+description = "- Double Projectile Base Speed"
+
+[node name="TurretUpgrade111TreeButton" parent="UpgradeContainer/WeaponDisplay/TurretUnlockTreeButton/TurretUpgrade11TreeButton/TurretUpgrade1TreeButton" instance=ExtResource("6_ut5g0")]
+layout_mode = 0
+offset_left = 52.0
+offset_top = 0.0
+offset_right = 82.0
+offset_bottom = 30.0
+disabled = true
+max_level = 1
+description = "- Homing Projectiles"
+
+[node name="TurretUpgrade21TreeButton" parent="UpgradeContainer/WeaponDisplay/TurretUnlockTreeButton" instance=ExtResource("6_ut5g0")]
+layout_mode = 0
+offset_left = 51.0
+offset_top = 0.0
+offset_right = 81.0
+offset_bottom = 30.0
+disabled = true
+max_level = 1
+description = "- Projectile Size +50% and Damage +50"
+
+[node name="TurretUpgrade31TreeButton" parent="UpgradeContainer/WeaponDisplay/TurretUnlockTreeButton" instance=ExtResource("6_ut5g0")]
+layout_mode = 0
+offset_left = 51.0
+offset_top = 44.0
+offset_right = 81.0
+offset_bottom = 74.0
+disabled = true
+max_level = 1
+description = "- Second Laser Turret"
+
+[node name="RocketUnlockTreeButton" parent="UpgradeContainer/WeaponDisplay" instance=ExtResource("6_ut5g0")]
+visible = false
+layout_mode = 1
+anchors_preset = -1
+anchor_left = -1.075
+anchor_top = -5.275
+anchor_right = -1.075
+anchor_bottom = -5.275
+offset_left = 0.0
+offset_top = -1.0
+offset_right = 30.0
+offset_bottom = 29.0
+max_level = 1
+description = "- Unlock Rockets"
+
+[node name="RocketUpgrade3TreeButton" parent="UpgradeContainer/WeaponDisplay/RocketUnlockTreeButton" instance=ExtResource("6_ut5g0")]
+layout_mode = 0
+offset_left = 51.0
+offset_top = 0.0
+offset_right = 81.0
+offset_bottom = 30.0
+disabled = true
+max_level = 1
+description = "- Rockets become homing"
+
+[node name="RocketUpgrade31TreeButton" parent="UpgradeContainer/WeaponDisplay/RocketUnlockTreeButton/RocketUpgrade3TreeButton" instance=ExtResource("6_ut5g0")]
+layout_mode = 0
+offset_left = 54.0
+offset_top = 19.0
+offset_right = 84.0
+offset_bottom = 49.0
+disabled = true
+max_level = 1
+description = "- Double Base Projectile Speed"
+
+[node name="RocketUpgrade311TreeButton" parent="UpgradeContainer/WeaponDisplay/RocketUnlockTreeButton/RocketUpgrade3TreeButton/RocketUpgrade31TreeButton" instance=ExtResource("6_ut5g0")]
+layout_mode = 0
+offset_left = 54.0
+offset_top = 0.0
+offset_right = 84.0
+offset_bottom = 30.0
+disabled = true
+max_level = 5
+description = "- Projectile Speed Increase"
+
+[node name="RocketUpgrade32TreeButton" parent="UpgradeContainer/WeaponDisplay/RocketUnlockTreeButton/RocketUpgrade3TreeButton" instance=ExtResource("6_ut5g0")]
+layout_mode = 0
+offset_left = 54.0
+offset_top = -20.0
+offset_right = 84.0
+offset_bottom = 10.0
+disabled = true
+max_level = 1
+description = "- Impact Explodes"
+
+[node name="RocketUpgrade321TreeButton" parent="UpgradeContainer/WeaponDisplay/RocketUnlockTreeButton/RocketUpgrade3TreeButton/RocketUpgrade32TreeButton" instance=ExtResource("6_ut5g0")]
+layout_mode = 0
+offset_left = 54.0
+offset_top = 0.0
+offset_right = 84.0
+offset_bottom = 30.0
+disabled = true
+max_level = 5
+description = "- Explosion Area Increase"
+
+[node name="SeekerUnlockTreeButton" parent="UpgradeContainer/WeaponDisplay" instance=ExtResource("6_ut5g0")]
+visible = false
+layout_mode = 1
+anchors_preset = -1
+anchor_left = -1.075
+anchor_top = -5.275
+anchor_right = -1.075
+anchor_bottom = -5.275
+offset_left = 0.0
+offset_top = -1.0
+offset_right = 30.0
+offset_bottom = 29.0
+max_level = 1
+description = "- Unlock Seeker"
+
+[node name="SeekerUpgrade3TreeButton" parent="UpgradeContainer/WeaponDisplay/SeekerUnlockTreeButton" instance=ExtResource("6_ut5g0")]
+layout_mode = 0
+offset_left = 51.0
+offset_top = 0.0
+offset_right = 81.0
+offset_bottom = 30.0
+disabled = true
+max_level = 1
+description = "- Double Base Projectile Speed"
+
+[node name="SeekerUpgrade31TreeButton" parent="UpgradeContainer/WeaponDisplay/SeekerUnlockTreeButton/SeekerUpgrade3TreeButton" instance=ExtResource("6_ut5g0")]
+layout_mode = 0
+offset_left = 54.0
+offset_top = 0.0
+offset_right = 84.0
+offset_bottom = 30.0
+disabled = true
+max_level = 5
+description = "-  Damage Increase +10"
+
+[node name="SeekerUpgrade311TreeButton" parent="UpgradeContainer/WeaponDisplay/SeekerUnlockTreeButton/SeekerUpgrade3TreeButton/SeekerUpgrade31TreeButton" instance=ExtResource("6_ut5g0")]
+layout_mode = 0
+offset_left = 54.0
+offset_top = 20.0
+offset_right = 84.0
+offset_bottom = 50.0
+disabled = true
+max_level = 1
+description = "- Second Seeker"
+
+[node name="SeekerUpgrade312TreeButton" parent="UpgradeContainer/WeaponDisplay/SeekerUnlockTreeButton/SeekerUpgrade3TreeButton/SeekerUpgrade31TreeButton" instance=ExtResource("6_ut5g0")]
+layout_mode = 0
+offset_left = 54.0
+offset_top = -20.0
+offset_right = 84.0
+offset_bottom = 10.0
+disabled = true
+max_level = 1
+description = "- Seekers do not return"
+
+[node name="LaserUnlockTreeButton" parent="UpgradeContainer/WeaponDisplay" instance=ExtResource("6_ut5g0")]
+visible = false
+layout_mode = 1
+anchors_preset = -1
+anchor_left = -1.075
+anchor_top = -5.275
+anchor_right = -1.075
+anchor_bottom = -5.275
+offset_left = 0.0
+offset_top = -1.0
+offset_right = 30.0
+offset_bottom = 29.0
+max_level = 1
+description = "- Unlock laser beam"
+
+[node name="LaserUpgrade1TreeButton" parent="UpgradeContainer/WeaponDisplay/LaserUnlockTreeButton" instance=ExtResource("6_ut5g0")]
+layout_mode = 0
+offset_left = 51.0
+offset_top = -20.0
+offset_right = 81.0
+offset_bottom = 10.0
+disabled = true
+max_level = 1
+description = "- Impact Explodes"
+
+[node name="LaserUpgrade11TreeButton" parent="UpgradeContainer/WeaponDisplay/LaserUnlockTreeButton/LaserUpgrade1TreeButton" instance=ExtResource("6_ut5g0")]
+layout_mode = 0
+offset_left = 54.0
+offset_top = 0.0
+offset_right = 84.0
+offset_bottom = 30.0
+disabled = true
+max_level = 5
+description = "- Explosion Area Increase"
+
+[node name="LaserUpgrade2TreeButton" parent="UpgradeContainer/WeaponDisplay/LaserUnlockTreeButton" instance=ExtResource("6_ut5g0")]
+layout_mode = 0
+offset_left = 51.0
+offset_top = 20.0
+offset_right = 81.0
+offset_bottom = 50.0
+disabled = true
+max_level = 1
+description = "- Laser Beam Becomes Piercing"
+
+[node name="LaserUpgrade21TreeButton" parent="UpgradeContainer/WeaponDisplay/LaserUnlockTreeButton/LaserUpgrade2TreeButton" instance=ExtResource("6_ut5g0")]
+layout_mode = 0
+offset_left = 54.0
+offset_top = 0.0
+offset_right = 84.0
+offset_bottom = 30.0
+disabled = true
+max_level = 5
+description = "- Beam Size Increase"
+
+[node name="FieldUnlockTreeButton" parent="UpgradeContainer/WeaponDisplay" instance=ExtResource("6_ut5g0")]
+visible = false
+layout_mode = 1
+anchors_preset = -1
+anchor_left = -1.075
+anchor_top = -5.275
+anchor_right = -1.075
+anchor_bottom = -5.275
+offset_left = 0.0
+offset_top = -1.0
+offset_right = 30.0
+offset_bottom = 29.0
+max_level = 1
+description = "- Unlock static field"
+
+[node name="FieldUpgrade1TreeButton" parent="UpgradeContainer/WeaponDisplay/FieldUnlockTreeButton" instance=ExtResource("6_ut5g0")]
+layout_mode = 0
+offset_left = 51.0
+offset_top = 0.0
+offset_right = 81.0
+offset_bottom = 30.0
+disabled = true
+max_level = 1
+description = "- Double Base Range"
+
+[node name="FieldUpgrade11TreeButton" parent="UpgradeContainer/WeaponDisplay/FieldUnlockTreeButton/FieldUpgrade1TreeButton" instance=ExtResource("6_ut5g0")]
+layout_mode = 0
+offset_left = 54.0
+offset_top = -39.0
+offset_right = 84.0
+offset_bottom = -9.0
+disabled = true
+max_level = 1
+description = "- 2x Damage Entering, No Damage Exiting"
+
+[node name="FieldUpgrade12TreeButton" parent="UpgradeContainer/WeaponDisplay/FieldUnlockTreeButton/FieldUpgrade1TreeButton" instance=ExtResource("6_ut5g0")]
+layout_mode = 0
+offset_left = 54.0
+offset_top = 0.0
+offset_right = 84.0
+offset_bottom = 30.0
+disabled = true
+max_level = 1
+description = "- Double Base Range"
+
+[node name="FieldUpgrade13TreeButton" parent="UpgradeContainer/WeaponDisplay/FieldUnlockTreeButton/FieldUpgrade1TreeButton" instance=ExtResource("6_ut5g0")]
+layout_mode = 0
+offset_left = 54.0
+offset_top = 39.0
+offset_right = 84.0
+offset_bottom = 69.0
+disabled = true
+max_level = 1
+description = "- 4x Damage Exiting, No Damage Entering"
+
+[node name="WeaponSlot" parent="UpgradeContainer/WeaponDisplay" node_paths=PackedStringArray("weapon_tree", "weapon_tree_2", "weapon_tree_3", "weapon_tree_4", "weapon_tree_5") groups=["Slots"] instance=ExtResource("6_mtkrx")]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = -2.625
+anchor_top = -5.325
+anchor_right = -2.625
+anchor_bottom = -5.325
+offset_top = -11.0
+offset_right = 50.0
+offset_bottom = 39.0
+weapon_tree = NodePath("../TurretUnlockTreeButton")
+weapon_tree_2 = NodePath("../RocketUnlockTreeButton")
+weapon_tree_3 = NodePath("../LaserUnlockTreeButton")
+weapon_tree_4 = NodePath("../SeekerUnlockTreeButton")
+weapon_tree_5 = NodePath("../FieldUnlockTreeButton")
+
+[node name="WeaponSlot2" parent="UpgradeContainer/WeaponDisplay/WeaponSlot" groups=["Slots"] instance=ExtResource("6_mtkrx")]
+visible = false
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 2.7
+anchor_bottom = 2.7
+offset_top = -35.0
+offset_right = 50.0
+offset_bottom = 15.0
+
+[node name="WeaponSlot3" parent="UpgradeContainer/WeaponDisplay/WeaponSlot" groups=["Slots"] instance=ExtResource("6_mtkrx")]
+visible = false
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 5.0
+anchor_bottom = 5.0
+offset_top = -50.0
+offset_right = 50.0
+
+[node name="WeaponSlot4" parent="UpgradeContainer/WeaponDisplay/WeaponSlot" groups=["Slots"] instance=ExtResource("6_mtkrx")]
+visible = false
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 7.3
+anchor_bottom = 7.3
+offset_top = -65.0
+offset_right = 50.0
+offset_bottom = -15.0
+
+[node name="WeaponSlot5" parent="UpgradeContainer/WeaponDisplay/WeaponSlot" groups=["Slots"] instance=ExtResource("6_mtkrx")]
+visible = false
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 9.6
+anchor_bottom = 9.6
+offset_top = -80.0
+offset_right = 50.0
+offset_bottom = -30.0
+
+[node name="Panel2" type="Panel" parent="UpgradeContainer/WeaponDisplay"]
+layout_mode = 1
+anchors_preset = -1
+offset_left = 184.0
+offset_top = -298.0
+offset_right = 473.0
+offset_bottom = 318.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="BaseDamage" parent="UpgradeContainer/WeaponDisplay" instance=ExtResource("6_ut5g0")]
+layout_mode = 0
+offset_left = 241.0
+offset_top = -173.0
+offset_right = 271.0
+offset_bottom = -143.0
+disabled = true
+max_level = 10
+description = "-  Base Damage +5"
+
+[node name="RateOfFire" parent="UpgradeContainer/WeaponDisplay" instance=ExtResource("6_ut5g0")]
+layout_mode = 0
+offset_left = 291.0
+offset_top = -173.0
+offset_right = 321.0
+offset_bottom = -143.0
+disabled = true
+max_level = 10
+description = "- Rate of Fire +5%"
+
+[node name="ProjectileSpeed" parent="UpgradeContainer/WeaponDisplay" instance=ExtResource("6_ut5g0")]
+layout_mode = 0
+offset_left = 341.0
+offset_top = -173.0
+offset_right = 371.0
+offset_bottom = -143.0
+disabled = true
+max_level = 10
+description = "- Projectile Speed +10%"
+
+[node name="BaseShields" parent="UpgradeContainer/WeaponDisplay" instance=ExtResource("6_ut5g0")]
+layout_mode = 0
+offset_left = 391.0
+offset_top = -173.0
+offset_right = 421.0
+offset_bottom = -143.0
+disabled = true
+max_level = 10
+description = "- Base Shields +10"
+
+[node name="Damage" parent="UpgradeContainer/WeaponDisplay" instance=ExtResource("6_ut5g0")]
+layout_mode = 0
+offset_left = 241.0
+offset_top = -123.0
+offset_right = 271.0
+offset_bottom = -93.0
+disabled = true
+max_level = 10
+description = "- Damage +10%"
+
+[node name="BaseSpeed" parent="UpgradeContainer/WeaponDisplay" instance=ExtResource("6_ut5g0")]
+layout_mode = 0
+offset_left = 291.0
+offset_top = -123.0
+offset_right = 321.0
+offset_bottom = -93.0
+disabled = true
+max_level = 10
+description = "- Base Speed +10"
+
+[node name="BaseAcceleration" parent="UpgradeContainer/WeaponDisplay" instance=ExtResource("6_ut5g0")]
+layout_mode = 0
+offset_left = 341.0
+offset_top = -123.0
+offset_right = 371.0
+offset_bottom = -93.0
+disabled = true
+max_level = 10
+description = "- Base Acceleration +10"
+
+[node name="ShieldRegen" parent="UpgradeContainer/WeaponDisplay" instance=ExtResource("6_ut5g0")]
+layout_mode = 0
+offset_left = 391.0
+offset_top = -123.0
+offset_right = 421.0
+offset_bottom = -93.0
+disabled = true
+max_level = 10
+description = "- Shield Renegeration +1/s"
+
+[node name="Panel3" type="Panel" parent="UpgradeContainer/WeaponDisplay"]
+layout_mode = 1
+anchors_preset = -1
+offset_left = 184.0
+offset_top = -1.0
+offset_right = 473.0
+offset_bottom = 318.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Repair" type="TextureButton" parent="UpgradeContainer" node_paths=PackedStringArray("label", "price_label")]
+layout_mode = 0
+offset_left = 535.0
+offset_top = -250.0
+offset_right = 585.0
+offset_bottom = -200.0
+texture_normal = ExtResource("3_llpj6")
+texture_disabled = SubResource("PlaceholderTexture2D_xle6s")
+script = ExtResource("4_75ix6")
+label = NodePath("../RPLBL")
+price_label = NodePath("../RPPLBL")
+
+[node name="RPLBL" type="Label" parent="UpgradeContainer"]
+layout_mode = 0
+offset_left = 536.0
+offset_top = -264.0
+offset_right = 552.0
+offset_bottom = -250.0
+label_settings = ExtResource("2_mp5ci")
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="RPPLBL" type="Label" parent="UpgradeContainer"]
+layout_mode = 0
+offset_left = 573.0
+offset_top = -250.0
+offset_right = 582.0
+offset_bottom = -236.0
+label_settings = ExtResource("2_mp5ci")
+horizontal_alignment = 2
+
+[node name="Salvage" type="TextureButton" parent="UpgradeContainer" node_paths=PackedStringArray("label", "price_label") groups=["SalvageButton"]]
+layout_mode = 0
+offset_left = 535.0
+offset_top = -178.0
+offset_right = 585.0
+offset_bottom = -128.0
+texture_normal = ExtResource("3_llpj6")
+texture_disabled = SubResource("PlaceholderTexture2D_xle6s")
+script = ExtResource("4_75ix6")
+label = NodePath("../SalvageLabel")
+price_label = NodePath("../SalvagePriceLabel")
+
+[node name="SalvageLabel" type="Label" parent="UpgradeContainer"]
+layout_mode = 0
+offset_left = 536.0
+offset_top = -192.0
+offset_right = 552.0
+offset_bottom = -178.0
+label_settings = ExtResource("2_mp5ci")
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="SalvagePriceLabel" type="Label" parent="UpgradeContainer"]
+layout_mode = 0
+offset_left = 573.0
+offset_top = -178.0
+offset_right = 582.0
+offset_bottom = -164.0
+text = "0"
+label_settings = ExtResource("2_mp5ci")
+horizontal_alignment = 2
+
+[node name="WeaponSlotBuy" type="TextureButton" parent="UpgradeContainer" node_paths=PackedStringArray("label", "price_label")]
+layout_mode = 0
+offset_left = 535.0
+offset_top = -107.0
+offset_right = 585.0
+offset_bottom = -57.0
+texture_normal = ExtResource("3_llpj6")
+texture_disabled = SubResource("PlaceholderTexture2D_xle6s")
+script = ExtResource("4_75ix6")
+label = NodePath("../WeaponSlotBuyLabel")
+price_label = NodePath("../WeaponSlotBuyPriceLabel")
+
+[node name="WeaponSlotBuyLabel" type="Label" parent="UpgradeContainer"]
+layout_mode = 0
+offset_left = 536.0
+offset_top = -121.0
+offset_right = 597.0
+offset_bottom = -107.0
+text = "Weapon Slot"
+label_settings = ExtResource("2_mp5ci")
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="WeaponSlotBuyPriceLabel" type="Label" parent="UpgradeContainer"]
+layout_mode = 0
+offset_left = 573.0
+offset_top = -107.0
+offset_right = 582.0
+offset_bottom = -93.0
+text = "0"
+label_settings = ExtResource("2_mp5ci")
+horizontal_alignment = 2
+
+[node name="DisplayToggle" type="TextureButton" parent="UpgradeContainer"]
+layout_mode = 0
+offset_left = 535.0
+offset_top = 221.0
+offset_right = 585.0
+offset_bottom = 271.0
+texture_normal = SubResource("PlaceholderTexture2D_x3gql")
+script = ExtResource("7_v0e4h")
+
+[node name="DisplayToggleLabel" type="Label" parent="UpgradeContainer"]
+layout_mode = 0
+offset_left = 535.0
+offset_top = 206.0
+offset_right = 604.0
+offset_bottom = 220.0
+text = "Part Upgrades"
+label_settings = ExtResource("2_mp5ci")
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="Description" type="RichTextLabel" parent="UpgradeContainer" groups=["Description"]]
+layout_mode = 0
+offset_left = 194.0
+offset_top = 206.0
+offset_right = 465.0
+offset_bottom = 311.0
+mouse_filter = 2
+
+[node name="Bounty" type="TextureButton" parent="UpgradeContainer"]
+layout_mode = 0
+offset_left = 536.0
+offset_top = -35.0
+offset_right = 586.0
+offset_bottom = 15.0
+texture_normal = SubResource("PlaceholderTexture2D_va2n2")
+texture_disabled = SubResource("PlaceholderTexture2D_67qvi")
+script = ExtResource("9_h30cn")
+
+[node name="BountyLabel" type="Label" parent="UpgradeContainer/Bounty"]
+layout_mode = 0
+offset_left = -1.0
+offset_top = -14.0
+offset_right = 60.0
+text = "Bounty"
+label_settings = ExtResource("2_mp5ci")
+vertical_alignment = 1
+
+[node name="BountryPriceLabel" type="Label" parent="UpgradeContainer/Bounty"]
+layout_mode = 0
+offset_left = 37.0
+offset_top = 4.0
+offset_right = 46.0
+offset_bottom = 18.0
+text = "0"
+label_settings = ExtResource("2_mp5ci")
+horizontal_alignment = 2
+
+[connection signal="pressed" from="UpgradeContainer/WeaponDisplay/TurretUnlockTreeButton" to="." method="_on_turret_unlock_tree_button_pressed"]
+[connection signal="pressed" from="UpgradeContainer/WeaponDisplay/TurretUnlockTreeButton/TurretUpgrade11TreeButton" to="." method="_on_turret_upgrade_11_tree_button_pressed"]
+[connection signal="pressed" from="UpgradeContainer/WeaponDisplay/TurretUnlockTreeButton/TurretUpgrade11TreeButton/TurretUpgrade1TreeButton" to="." method="_on_turret_upgrade_1_tree_button_pressed"]
+[connection signal="pressed" from="UpgradeContainer/WeaponDisplay/TurretUnlockTreeButton/TurretUpgrade11TreeButton/TurretUpgrade1TreeButton/TurretUpgrade111TreeButton" to="." method="_on_turret_upgrade_111_tree_button_pressed"]
+[connection signal="pressed" from="UpgradeContainer/WeaponDisplay/TurretUnlockTreeButton/TurretUpgrade21TreeButton" to="." method="_on_turret_upgrade_21_tree_button_pressed"]
+[connection signal="pressed" from="UpgradeContainer/WeaponDisplay/TurretUnlockTreeButton/TurretUpgrade31TreeButton" to="." method="_on_turret_upgrade_31_tree_button_pressed"]
+[connection signal="pressed" from="UpgradeContainer/WeaponDisplay/RocketUnlockTreeButton" to="." method="_on_rocket_unlock_tree_button_pressed"]
+[connection signal="pressed" from="UpgradeContainer/WeaponDisplay/RocketUnlockTreeButton/RocketUpgrade3TreeButton" to="." method="_on_rocket_upgrade_3_tree_button_pressed"]
+[connection signal="pressed" from="UpgradeContainer/WeaponDisplay/RocketUnlockTreeButton/RocketUpgrade3TreeButton/RocketUpgrade31TreeButton" to="." method="_on_rocket_upgrade_31_tree_button_pressed"]
+[connection signal="pressed" from="UpgradeContainer/WeaponDisplay/RocketUnlockTreeButton/RocketUpgrade3TreeButton/RocketUpgrade31TreeButton/RocketUpgrade311TreeButton" to="." method="_on_rocket_upgrade_311_tree_button_pressed"]
+[connection signal="pressed" from="UpgradeContainer/WeaponDisplay/RocketUnlockTreeButton/RocketUpgrade3TreeButton/RocketUpgrade32TreeButton" to="." method="_on_rocket_upgrade_32_tree_button_pressed"]
+[connection signal="pressed" from="UpgradeContainer/WeaponDisplay/RocketUnlockTreeButton/RocketUpgrade3TreeButton/RocketUpgrade32TreeButton/RocketUpgrade321TreeButton" to="." method="_on_rocket_upgrade_321_tree_button_pressed"]
+[connection signal="pressed" from="UpgradeContainer/WeaponDisplay/SeekerUnlockTreeButton" to="." method="_on_seeker_unlock_tree_button_pressed"]
+[connection signal="pressed" from="UpgradeContainer/WeaponDisplay/SeekerUnlockTreeButton/SeekerUpgrade3TreeButton" to="." method="_on_seeker_upgrade_3_tree_button_pressed"]
+[connection signal="pressed" from="UpgradeContainer/WeaponDisplay/SeekerUnlockTreeButton/SeekerUpgrade3TreeButton/SeekerUpgrade31TreeButton" to="." method="_on_seeker_upgrade_31_tree_button_pressed"]
+[connection signal="pressed" from="UpgradeContainer/WeaponDisplay/SeekerUnlockTreeButton/SeekerUpgrade3TreeButton/SeekerUpgrade31TreeButton/SeekerUpgrade311TreeButton" to="." method="_on_seeker_upgrade_311_tree_button_pressed"]
+[connection signal="pressed" from="UpgradeContainer/WeaponDisplay/SeekerUnlockTreeButton/SeekerUpgrade3TreeButton/SeekerUpgrade31TreeButton/SeekerUpgrade312TreeButton" to="." method="_on_seeker_upgrade_312_tree_button_pressed"]
+[connection signal="pressed" from="UpgradeContainer/WeaponDisplay/LaserUnlockTreeButton" to="." method="_on_laser_unlock_tree_button_pressed"]
+[connection signal="pressed" from="UpgradeContainer/WeaponDisplay/LaserUnlockTreeButton/LaserUpgrade1TreeButton" to="." method="_on_laser_upgrade_1_tree_button_pressed"]
+[connection signal="pressed" from="UpgradeContainer/WeaponDisplay/LaserUnlockTreeButton/LaserUpgrade1TreeButton/LaserUpgrade11TreeButton" to="." method="_on_laser_upgrade_11_tree_button_pressed"]
+[connection signal="pressed" from="UpgradeContainer/WeaponDisplay/LaserUnlockTreeButton/LaserUpgrade2TreeButton" to="." method="_on_laser_upgrade_2_tree_button_pressed"]
+[connection signal="pressed" from="UpgradeContainer/WeaponDisplay/LaserUnlockTreeButton/LaserUpgrade2TreeButton/LaserUpgrade21TreeButton" to="." method="_on_laser_upgrade_21_tree_button_pressed"]
+[connection signal="pressed" from="UpgradeContainer/WeaponDisplay/FieldUnlockTreeButton" to="." method="_on_field_unlock_tree_button_pressed"]
+[connection signal="pressed" from="UpgradeContainer/WeaponDisplay/FieldUnlockTreeButton/FieldUpgrade1TreeButton" to="." method="_on_field_upgrade_1_tree_button_pressed"]
+[connection signal="pressed" from="UpgradeContainer/WeaponDisplay/FieldUnlockTreeButton/FieldUpgrade1TreeButton/FieldUpgrade11TreeButton" to="." method="_on_field_upgrade_11_tree_button_pressed"]
+[connection signal="pressed" from="UpgradeContainer/WeaponDisplay/FieldUnlockTreeButton/FieldUpgrade1TreeButton/FieldUpgrade12TreeButton" to="." method="_on_field_upgrade_12_tree_button_pressed"]
+[connection signal="pressed" from="UpgradeContainer/WeaponDisplay/FieldUnlockTreeButton/FieldUpgrade1TreeButton/FieldUpgrade13TreeButton" to="." method="_on_field_upgrade_13_tree_button_pressed"]
+[connection signal="pressed" from="UpgradeContainer/WeaponDisplay/BaseDamage" to="." method="_on_base_damage_pressed"]
+[connection signal="pressed" from="UpgradeContainer/WeaponDisplay/RateOfFire" to="." method="_on_rate_of_fire_pressed"]
+[connection signal="pressed" from="UpgradeContainer/WeaponDisplay/ProjectileSpeed" to="." method="_on_projectile_speed_pressed"]
+[connection signal="pressed" from="UpgradeContainer/WeaponDisplay/BaseShields" to="." method="_on_base_shields_pressed"]
+[connection signal="pressed" from="UpgradeContainer/WeaponDisplay/Damage" to="." method="_on_damage_pressed"]
+[connection signal="pressed" from="UpgradeContainer/WeaponDisplay/BaseSpeed" to="." method="_on_base_speed_pressed"]
+[connection signal="pressed" from="UpgradeContainer/WeaponDisplay/BaseAcceleration" to="." method="_on_base_acceleration_pressed"]
+[connection signal="pressed" from="UpgradeContainer/WeaponDisplay/ShieldRegen" to="." method="_on_shield_regen_pressed"]
+[connection signal="pressed" from="UpgradeContainer/Repair" to="." method="_on_repair_pressed"]
+[connection signal="pressed" from="UpgradeContainer/Salvage" to="." method="_on_salvage_pressed"]
+[connection signal="pressed" from="UpgradeContainer/WeaponSlotBuy" to="." method="_on_weapon_slot_buy_pressed"]
+[connection signal="pressed" from="UpgradeContainer/DisplayToggle" to="UpgradeContainer/DisplayToggle" method="_on_pressed"]
+[connection signal="pressed" from="UpgradeContainer/Bounty" to="." method="_on_bounty_pressed"]
+[connection signal="pressed" from="UpgradeContainer/Bounty" to="UpgradeContainer/Bounty" method="_on_pressed"]

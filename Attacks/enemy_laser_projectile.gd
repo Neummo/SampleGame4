@@ -4,7 +4,7 @@ class_name EnemyLaserProjectile
 func _ready():
 	target = "Player"
 	damage = Values.enemy_damage
-	speed = Values.enemy_projectile_speed
+	speed = Values.enemy_projectile_speed * 2
 	global_position = spawn_position
 	global_rotation = spawn_rotation
 

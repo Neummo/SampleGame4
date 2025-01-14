@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://cah7g18jq4v2f"]
+
+[ext_resource type="Script" path="res://Guns/seeker_gun.gd" id="1_lvlal"]
+
+[node name="SeekerGun" type="Node2D"]
+script = ExtResource("1_lvlal")
+
+[node name="GunTimer" type="Timer" parent="."]
+wait_time = 0.2
+one_shot = true

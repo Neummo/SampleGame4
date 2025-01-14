@@ -1,0 +1,64 @@
+[gd_scene load_steps=5 format=3 uid="uid://e8je7elgras7"]
+
+[ext_resource type="Script" path="res://UI/BasePanel/_big_upgrade_tree_button.gd" id="1_b3auo"]
+[ext_resource type="LabelSettings" uid="uid://cro6habyr70oa" path="res://Assets/stat_label_font.tres" id="2_66ibg"]
+
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_b0drk"]
+size = Vector2(30, 30)
+
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_tte2w"]
+size = Vector2(20, 20)
+
+[node name="BigUpgradeTreeButton" type="TextureButton" node_paths=PackedStringArray("price_label")]
+offset_left = 28.0
+offset_top = -86.0
+offset_right = 58.0
+offset_bottom = -56.0
+texture_normal = SubResource("PlaceholderTexture2D_b0drk")
+texture_disabled = SubResource("PlaceholderTexture2D_tte2w")
+script = ExtResource("1_b3auo")
+price_label = NodePath("BigUpgradeTreePriceLabel")
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 0
+offset_left = -2.0
+offset_top = -2.0
+offset_right = 32.0
+offset_bottom = 32.0
+mouse_filter = 2
+
+[node name="BigUpgradeTreePriceLabel" type="Label" parent="."]
+layout_mode = 0
+offset_left = 22.0
+offset_top = -2.0
+offset_right = 29.0
+offset_bottom = 12.0
+text = "0"
+label_settings = ExtResource("2_66ibg")
+horizontal_alignment = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 0
+offset_left = -1.0
+offset_top = 2.0
+offset_right = 29.0
+offset_bottom = 32.0
+
+[node name="Label" type="Label" parent="MarginContainer"]
+layout_mode = 2
+size_flags_vertical = 8
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 12
+text = "0"
+horizontal_alignment = 2
+vertical_alignment = 2
+
+[node name="Line2D" type="Line2D" parent="."]
+top_level = true
+z_index = -1
+width = 3.0
+default_color = Color(0.237539, 0.237539, 0.237539, 1)
+
+[connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]
+[connection signal="pressed" from="." to="." method="_on_pressed"]

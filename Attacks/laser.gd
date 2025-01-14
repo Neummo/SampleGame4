@@ -30,19 +30,18 @@ func _physics_process(_delta: float) -> void:
 	force_raycast_update()
 	collision_particles.emitting = is_colliding() and is_casting
 	if is_colliding():
-		if not damaged:
-			var collider: Area2D = get_collider()
-			if collider is HitboxComponent:
-				if is_aoe:
-					aoe_damage(collider.global_position)
-				else:
-					var attack: Attack = Attack.new()
-					attack.attack_damage = damage
-					collider.damage(attack)
-				damaged = true
-		cast_point = to_local(get_collision_point())
-		collision_particles.global_rotation = get_collision_normal().angle()
-		collision_particles.position = cast_point
+		var collider: Area2D = get_collider()
+		if not damaged and is_instance_valid(collider) and collider is HitboxComponent and not collider.owner.dying:
+			if is_aoe:
+				aoe_damage(collider.global_position)
+			else:
+				var attack: Attack = Attack.new()
+				attack.attack_damage = damage
+				collider.damage(attack)
+			damaged = true
+			cast_point = to_local(get_collision_point())
+			collision_particles.global_rotation = get_collision_normal().angle()
+			collision_particles.position = cast_point
 	
 	cast_point = last_collision_location
 	target_position = cast_point
@@ -56,9 +55,10 @@ func aoe_damage(impact_position: Vector2):
 	range_indicator.width = 2.0
 	range_indicator.draw_range_indicator()
 	var tween = create_tween()
-	tween.tween_property(range_indicator, "width", 0, 0.2)
-	
+	tween.tween_property(range_indicator, "width", 0, clampf(Values.player_ult_gun_cooldown / 2, 0.1, 0.5))
 	aoe.global_position = impact_position
+	await tween.finished
+	
 	var physics_params: PhysicsShapeQueryParameters2D = PhysicsShapeQueryParameters2D.new()
 	var physics_space_state: PhysicsDirectSpaceState2D
 	physics_space_state = get_world_2d().direct_space_state
@@ -91,13 +91,13 @@ func set_is_casting(cast: bool) -> void:
 func appear() -> void:
 	set_physics_process(true)
 	var tween = create_tween()
-	tween.tween_property(line, "width", 3.0, 0.1)
+	tween.tween_property(line, "width", 5.0, 0.1)
 	await tween.finished
 	set_is_casting(false)
 	
 func disappear() -> void:
 	var tween = create_tween()
-	tween.tween_property(line, "width", 0, clampf(Values.player_ult_gun_cooldown / 2, 0.1, 0.5))
+	tween.tween_property(line, "width", 0, clampf(Values.player_ult_gun_cooldown / 2, 0.1, 0.4))
 	await tween.finished
 	set_physics_process(false)
 	damaged = false

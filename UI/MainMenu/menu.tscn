@@ -1,0 +1,228 @@
+[gd_scene load_steps=11 format=3 uid="uid://cwdxxuaq47cbl"]
+
+[ext_resource type="Script" path="res://UI/MainMenu/menu.gd" id="1_73rd5"]
+[ext_resource type="Texture2D" uid="uid://3y6r70xv5jd7" path="res://Assets/3137991.jpg" id="2_dmk1x"]
+[ext_resource type="Texture2D" uid="uid://c6b1uq55qw2ob" path="res://Assets/Ship_1.png" id="3_23i6j"]
+[ext_resource type="PackedScene" uid="uid://cqot74uybmmas" path="res://UI/MainMenu/volume_slider.tscn" id="3_expyy"]
+[ext_resource type="Script" path="res://UI/MainMenu/armory_panel.gd" id="3_tym80"]
+[ext_resource type="Texture2D" uid="uid://iatrcxfqkrue" path="res://Assets/Ship_2.png" id="4_gccxr"]
+[ext_resource type="Script" path="res://UI/MainMenu/volume_slider.gd" id="4_ogc24"]
+[ext_resource type="Texture2D" uid="uid://rkyd75b4w6cr" path="res://Assets/Ship_3.png" id="5_dejmv"]
+[ext_resource type="Texture2D" uid="uid://cts47eo6n4sla" path="res://Assets/Ship_4.png" id="6_7fwmh"]
+[ext_resource type="Texture2D" uid="uid://gg2hm1r6438k" path="res://Assets/Ship_5.png" id="7_cwnx5"]
+
+[node name="Menu" type="Control"]
+layout_mode = 3
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -648.0
+offset_bottom = -648.0
+grow_vertical = 0
+script = ExtResource("1_73rd5")
+
+[node name="ParallaxBackground" type="ParallaxBackground" parent="."]
+follow_viewport_enabled = true
+
+[node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground"]
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer"]
+position = Vector2(-43, -50)
+scale = Vector2(0.7315, 0.7315)
+texture = ExtResource("2_dmk1x")
+centered = false
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 77.0
+offset_top = 440.0
+offset_right = 216.0
+offset_bottom = 578.0
+grow_vertical = 0
+theme_override_constants/separation = 10
+alignment = 1
+
+[node name="Start" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+focus_neighbor_top = NodePath("../Quit")
+text = "New Game"
+
+[node name="Armory" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+text = "Armory"
+
+[node name="Options" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+text = "Options"
+
+[node name="Quit" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+focus_neighbor_bottom = NodePath("../Start")
+text = "Quit"
+
+[node name="ArmoryPanel" type="Panel" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 336.0
+offset_top = 132.0
+offset_right = 834.0
+offset_bottom = 467.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("3_tym80")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="ArmoryPanel"]
+layout_mode = 0
+offset_left = 46.0
+offset_top = 55.0
+offset_right = 86.0
+offset_bottom = 95.0
+
+[node name="WeaponUnlockButton" type="TextureButton" parent="ArmoryPanel/VBoxContainer"]
+layout_mode = 2
+texture_normal = ExtResource("3_23i6j")
+texture_disabled = ExtResource("3_23i6j")
+
+[node name="Description" type="Label" parent="ArmoryPanel/VBoxContainer/WeaponUnlockButton"]
+layout_mode = 0
+offset_left = 38.0
+offset_top = 3.0
+offset_right = 300.0
+offset_bottom = 26.0
+text = "Laser projectile emitter - 100.000┌"
+
+[node name="WeaponUnlockButton2" type="TextureButton" parent="ArmoryPanel/VBoxContainer"]
+layout_mode = 2
+texture_normal = ExtResource("4_gccxr")
+texture_disabled = ExtResource("4_gccxr")
+
+[node name="Description" type="Label" parent="ArmoryPanel/VBoxContainer/WeaponUnlockButton2"]
+layout_mode = 0
+offset_left = 38.0
+offset_top = 3.0
+offset_right = 300.0
+offset_bottom = 26.0
+text = "Missile launcher - 100.000┌"
+
+[node name="WeaponUnlockButton3" type="TextureButton" parent="ArmoryPanel/VBoxContainer"]
+layout_mode = 2
+texture_normal = ExtResource("5_dejmv")
+texture_disabled = ExtResource("5_dejmv")
+
+[node name="Description" type="Label" parent="ArmoryPanel/VBoxContainer/WeaponUnlockButton3"]
+layout_mode = 0
+offset_left = 38.0
+offset_top = 3.0
+offset_right = 300.0
+offset_bottom = 26.0
+text = "Heavy duty laser beam - 100.000┌"
+
+[node name="WeaponUnlockButton4" type="TextureButton" parent="ArmoryPanel/VBoxContainer"]
+layout_mode = 2
+texture_normal = ExtResource("6_7fwmh")
+texture_disabled = ExtResource("6_7fwmh")
+
+[node name="Description" type="Label" parent="ArmoryPanel/VBoxContainer/WeaponUnlockButton4"]
+layout_mode = 0
+offset_left = 38.0
+offset_top = 3.0
+offset_right = 300.0
+offset_bottom = 26.0
+text = "Seeker drone - 100.000┌"
+
+[node name="WeaponUnlockButton5" type="TextureButton" parent="ArmoryPanel/VBoxContainer"]
+layout_mode = 2
+texture_normal = ExtResource("7_cwnx5")
+texture_disabled = ExtResource("7_cwnx5")
+
+[node name="Description" type="Label" parent="ArmoryPanel/VBoxContainer/WeaponUnlockButton5"]
+layout_mode = 0
+offset_left = 38.0
+offset_top = 3.0
+offset_right = 300.0
+offset_bottom = 26.0
+text = "Area field generator- 100.000┌"
+
+[node name="Currency" type="Label" parent="ArmoryPanel"]
+layout_mode = 0
+offset_left = 169.0
+offset_top = 18.0
+offset_right = 239.0
+offset_bottom = 41.0
+text = "Balance: "
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="OptionsPanel" type="Panel" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 336.0
+offset_top = 132.0
+offset_right = 834.0
+offset_bottom = 467.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MasterVolume" type="Label" parent="OptionsPanel"]
+layout_mode = 0
+offset_left = 28.0
+offset_top = 37.0
+offset_right = 68.0
+offset_bottom = 60.0
+text = "Master Volume"
+
+[node name="VolumeSlider" parent="OptionsPanel/MasterVolume" instance=ExtResource("3_expyy")]
+layout_mode = 0
+offset_left = 0.0
+offset_top = 34.0
+offset_right = 421.0
+offset_bottom = 50.0
+tick_count = 10
+ticks_on_borders = false
+script = ExtResource("4_ogc24")
+
+[node name="Controls" type="Label" parent="OptionsPanel"]
+layout_mode = 0
+offset_left = 30.0
+offset_top = 121.0
+offset_right = 148.0
+offset_bottom = 144.0
+text = "Controls"
+
+[node name="VBoxContainer" type="VBoxContainer" parent="OptionsPanel/Controls"]
+layout_mode = 0
+offset_left = 13.0
+offset_top = 32.0
+offset_right = 79.0
+offset_bottom = 82.0
+
+[node name="Controls2" type="Label" parent="OptionsPanel/Controls/VBoxContainer"]
+layout_mode = 2
+text = "W - Propel in the aimed direction"
+
+[node name="Controls3" type="Label" parent="OptionsPanel/Controls/VBoxContainer"]
+layout_mode = 2
+text = "S - Proceed to come to a stop"
+
+[connection signal="pressed" from="VBoxContainer/Start" to="." method="_on_start_pressed"]
+[connection signal="pressed" from="VBoxContainer/Armory" to="." method="_on_armory_pressed"]
+[connection signal="pressed" from="VBoxContainer/Options" to="." method="_on_options_pressed"]
+[connection signal="pressed" from="VBoxContainer/Quit" to="." method="_on_quit_pressed"]
+[connection signal="pressed" from="ArmoryPanel/VBoxContainer/WeaponUnlockButton" to="ArmoryPanel" method="_on_weapon_unlock_button_pressed"]
+[connection signal="pressed" from="ArmoryPanel/VBoxContainer/WeaponUnlockButton2" to="ArmoryPanel" method="_on_weapon_unlock_button_2_pressed"]
+[connection signal="pressed" from="ArmoryPanel/VBoxContainer/WeaponUnlockButton3" to="ArmoryPanel" method="_on_weapon_unlock_button_3_pressed"]
+[connection signal="pressed" from="ArmoryPanel/VBoxContainer/WeaponUnlockButton4" to="ArmoryPanel" method="_on_weapon_unlock_button_4_pressed"]
+[connection signal="pressed" from="ArmoryPanel/VBoxContainer/WeaponUnlockButton5" to="ArmoryPanel" method="_on_weapon_unlock_button_5_pressed"]

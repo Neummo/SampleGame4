@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://cg200evxgwx7b"]
+
+[ext_resource type="Script" path="res://Environment/range_indicator.gd" id="1_gpv6i"]
+
+[node name="RangeIndicator" type="Line2D"]
+position = Vector2(-1, 0)
+width = 1.0
+default_color = Color(1, 1, 1, 0.196078)
+script = ExtResource("1_gpv6i")

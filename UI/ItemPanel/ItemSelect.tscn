@@ -1,0 +1,48 @@
+[gd_scene load_steps=3 format=3 uid="uid://dqeqcj3v4gf3a"]
+
+[ext_resource type="Script" path="res://UI/ItemPanel/item_select.gd" id="1_veaoj"]
+[ext_resource type="PackedScene" uid="uid://c5oqvny0hdlbc" path="res://UI/ItemPanel/item_button.tscn" id="2_4rbba"]
+
+[node name="ItemSelect" type="Control"]
+process_mode = 2
+layout_mode = 3
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_veaoj")
+
+[node name="Panel" type="Panel" parent="."]
+visible = false
+layout_mode = 0
+offset_left = -266.0
+offset_top = -125.0
+offset_right = 265.0
+offset_bottom = 130.0
+
+[node name="ItemButton" parent="Panel" instance=ExtResource("2_4rbba")]
+layout_mode = 0
+offset_left = 26.0
+offset_top = 26.0
+offset_right = 166.0
+offset_bottom = 226.0
+
+[node name="ItemButton2" parent="Panel" instance=ExtResource("2_4rbba")]
+layout_mode = 0
+offset_left = 198.0
+offset_top = 26.0
+offset_right = 338.0
+offset_bottom = 226.0
+
+[node name="ItemButton3" parent="Panel" instance=ExtResource("2_4rbba")]
+layout_mode = 0
+offset_left = 367.0
+offset_top = 24.0
+offset_right = 507.0
+offset_bottom = 224.0
+
+[connection signal="pressed" from="Panel/ItemButton" to="." method="_on_item_button_pressed"]
+[connection signal="pressed" from="Panel/ItemButton2" to="." method="_on_item_button_2_pressed"]
+[connection signal="pressed" from="Panel/ItemButton3" to="." method="_on_item_button_3_pressed"]

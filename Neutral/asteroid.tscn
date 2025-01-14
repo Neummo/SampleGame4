@@ -1,0 +1,153 @@
+[gd_scene load_steps=24 format=3 uid="uid://dups4dou6tfm"]
+
+[ext_resource type="Script" path="res://Neutral/asteroid.gd" id="1_mjl3h"]
+[ext_resource type="PackedScene" uid="uid://cx65mwov3fgjd" path="res://UI/OnScreenInfo/health_bar.tscn" id="2_cgc7n"]
+[ext_resource type="Texture2D" uid="uid://d1sf262dsssmd" path="res://Assets/asteroids.png" id="4_2lods"]
+[ext_resource type="Shader" path="res://Shaders/damageFlash.gdshader" id="4_ne1ii"]
+[ext_resource type="PackedScene" uid="uid://3se37hf2b3nl" path="res://damage_flash_player.tscn" id="6_im2h3"]
+[ext_resource type="Script" path="res://health_component.gd" id="7_h37iv"]
+[ext_resource type="Script" path="res://hitbox_component.gd" id="8_66sqs"]
+[ext_resource type="Texture2D" uid="uid://cfy8mw22pj3df" path="res://Assets/Free Smoke Fx  Pixel 06.png" id="8_tc8og"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_wrke3"]
+resource_local_to_scene = true
+shader = ExtResource("4_ne1ii")
+shader_parameter/flash_color = Color(1, 1, 1, 1)
+shader_parameter/flash_value = 0.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_h40vo"]
+size = Vector2(44, 54)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2j7i3"]
+atlas = ExtResource("8_tc8og")
+region = Rect2(0, 256, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7hopx"]
+atlas = ExtResource("8_tc8og")
+region = Rect2(64, 256, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_etj8r"]
+atlas = ExtResource("8_tc8og")
+region = Rect2(128, 256, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kmbok"]
+atlas = ExtResource("8_tc8og")
+region = Rect2(192, 256, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_417yc"]
+atlas = ExtResource("8_tc8og")
+region = Rect2(256, 256, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ypbpc"]
+atlas = ExtResource("8_tc8og")
+region = Rect2(320, 256, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_46qcl"]
+atlas = ExtResource("8_tc8og")
+region = Rect2(384, 256, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ti5em"]
+atlas = ExtResource("8_tc8og")
+region = Rect2(448, 256, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_v0kt6"]
+atlas = ExtResource("8_tc8og")
+region = Rect2(512, 256, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_siugg"]
+atlas = ExtResource("8_tc8og")
+region = Rect2(576, 256, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_imkjl"]
+atlas = ExtResource("8_tc8og")
+region = Rect2(640, 256, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7d4up"]
+atlas = ExtResource("8_tc8og")
+region = Rect2(704, 256, 64, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_upb6k"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2j7i3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7hopx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_etj8r")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kmbok")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_417yc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ypbpc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_46qcl")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ti5em")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_v0kt6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_siugg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_imkjl")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7d4up")
+}],
+"loop": false,
+"name": &"death",
+"speed": 12.0
+}]
+
+[node name="Asteroid" type="CharacterBody2D" node_paths=PackedStringArray("health_component", "health_bar")]
+collision_mask = 2
+script = ExtResource("1_mjl3h")
+health_component = NodePath("Body/HealthComponent")
+health_bar = NodePath("HealthBar")
+
+[node name="HealthBar" parent="." instance=ExtResource("2_cgc7n")]
+offset_left = -24.0
+offset_top = -35.0
+offset_right = 26.0
+offset_bottom = -31.0
+
+[node name="Body" type="Node2D" parent="."]
+
+[node name="Sprite" type="Sprite2D" parent="Body"]
+material = SubResource("ShaderMaterial_wrke3")
+texture = ExtResource("4_2lods")
+region_enabled = true
+region_rect = Rect2(0, 0, 64, 64)
+
+[node name="DamageFlashPlayer" parent="Body/Sprite" instance=ExtResource("6_im2h3")]
+
+[node name="HealthComponent" type="Node2D" parent="Body" node_paths=PackedStringArray("health_bar", "damage_flash_player")]
+script = ExtResource("7_h37iv")
+health_bar = NodePath("../../HealthBar")
+possesor = "Neutral"
+damage_flash_player = NodePath("../Sprite/DamageFlashPlayer")
+
+[node name="HitboxComponent" type="Area2D" parent="Body" node_paths=PackedStringArray("health_component")]
+position = Vector2(0, -1)
+collision_mask = 2
+script = ExtResource("8_66sqs")
+health_component = NodePath("../HealthComponent")
+possesor = "Enemy"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Body/HitboxComponent"]
+shape = SubResource("RectangleShape2D_h40vo")
+
+[node name="Death" type="AnimatedSprite2D" parent="Body"]
+sprite_frames = SubResource("SpriteFrames_upb6k")
+animation = &"death"

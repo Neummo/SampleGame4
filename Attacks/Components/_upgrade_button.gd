@@ -32,6 +32,7 @@ func on_select() -> void:
 	if maxed:
 		return
 	Values.currency -= price
+	Values.update_saved_currency(price)
 	price += price_increase
 	upgrades += 1
 	update_price_label()

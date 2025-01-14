@@ -6,7 +6,7 @@ var acceleration: float = 200
 func _ready():
 	target = "Enemy"
 	damage = Values.player_manual_gun_damage
-	speed = Values.player_manual_gun_speed
+	speed = Values.player_manual_gun_speed * Values.projectile_speed_modifier
 	global_position = spawn_position
 	global_rotation = spawn_rotation
 

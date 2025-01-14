@@ -1,0 +1,9 @@
+[gd_scene format=3 uid="uid://cqot74uybmmas"]
+
+[node name="VolumeSlider" type="HSlider"]
+offset_left = 36.0
+offset_top = 66.0
+offset_right = 457.0
+offset_bottom = 82.0
+tick_count = 100
+ticks_on_borders = true

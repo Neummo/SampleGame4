@@ -1,0 +1,28 @@
+[gd_scene load_steps=4 format=3 uid="uid://bxms6m6e8cijf"]
+
+[ext_resource type="Script" path="res://Attacks/enemy_area_beam.gd" id="1_ucfav"]
+
+[sub_resource type="Curve" id="Curve_n04aj"]
+_data = [Vector2(0, 0.678682), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_g5wlj"]
+resource_local_to_scene = true
+size = Vector2(500, 15)
+
+[node name="EnemyAreaBeam" type="Area2D" node_paths=PackedStringArray("line", "shape")]
+collision_layer = 4
+collision_mask = 2
+script = ExtResource("1_ucfav")
+line = NodePath("Line2D")
+shape = NodePath("CollisionShape2D")
+
+[node name="Line2D" type="Line2D" parent="."]
+points = PackedVector2Array(0, 0, 10, 0)
+width = 15.0
+width_curve = SubResource("Curve_n04aj")
+default_color = Color(1, 0.261655, 0.445993, 1)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(250, 0)
+shape = SubResource("RectangleShape2D_g5wlj")

@@ -1,0 +1,84 @@
+{
+	"0": {
+		"data": {
+			"0": {
+				"title": "Shield",
+				"description": "Increases Shield strengh",
+				"icon": "res://Assets/aaa.png"
+			},
+			"1": {
+				"title": "Plate",
+				"description": "Reduces damage taken",
+				"icon": "res://Assets/asfdgAds_1ss.png"
+			},
+			"2": {
+				"title": "Engine",
+				"description": "Increases Max Speed",
+				"icon": "res://Assets/kate2.png"
+			},
+			"3": {
+				"title": "High Grade Fuel",
+				"description": "Increases Acceleration",
+				"icon": "res://Assets/kate2.png"
+			}
+		}
+	},
+	"1": {
+		"data": {
+			"0": {
+				"title": "Reflective Plates",
+				"description": "Reflects damage based on the number of Plates",
+				"icon": "res://Assets/kate3.png"
+			},
+			"1": {
+				"title": "Magnet",
+				"description": "Increases magnet strengh",
+				"icon": "res://Assets/kate3.png"
+			},
+			"2": {
+				"title": "Communicator",
+				"description": "Increases range",
+				"icon": "res://Assets/aaa.png"
+			},
+			"3": {
+				"title": "Light Build",
+				"description": "Increases Speed and Acceleration",
+				"icon": "res://Assets/aaa.png"
+			},
+			"4": {
+				"title": "Generator",
+				"description": "Increases Shield strenh and damage resistance",
+				"icon": "res://Assets/aaa.png"
+			}
+		}
+	},
+	"2": {
+		"data": {
+			"0": {
+				"title": "Absorbtion Reactor",
+				"description": "Experimental tech which grants a chance to mitigate an instance of damage",
+				"icon": "res://Assets/kate3.png"
+			},
+			"1": {
+				"title": "Energy Leech Beam",
+				"description": "Eliminations recharge shield",
+				"icon": "res://Assets/kate3.png"
+			},
+			"2": {
+				"title": "Sonar",
+				"description": "Increases part drop rate",
+				"icon": "res://Assets/kate2.png"
+			},
+			"3": {
+				"title": "Energy Condensator",
+				"description": "Percentage Shield strengh increase",
+				"icon": "res://Assets/kate2.png"
+			},
+			"4": {
+				"title": "Custom Build",
+				"description": "Percentage Agility increase",
+				"icon": "res://Assets/kate2.png"
+			}
+		}
+	},
+}

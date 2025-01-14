@@ -1,0 +1,50 @@
+[gd_scene load_steps=8 format=3 uid="uid://dvqll3i3c8c8y"]
+
+[ext_resource type="Script" path="res://Attacks/seeker.gd" id="1_1wgpf"]
+[ext_resource type="Script" path="res://Attacks/Components/attack_area.gd" id="2_xq7mr"]
+[ext_resource type="Texture2D" uid="uid://cts47eo6n4sla" path="res://Assets/Ship_4.png" id="3_4dsbi"]
+[ext_resource type="PackedScene" uid="uid://b58vw44glay4i" path="res://Environment/move_trail.tscn" id="3_h43ih"]
+
+[sub_resource type="Curve" id="Curve_ywypb"]
+resource_local_to_scene = true
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ayf23"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_vvvoc"]
+radius = 500.0
+
+[node name="Seeker" type="CharacterBody2D" node_paths=PackedStringArray("gun_range_indicator", "attack_area")]
+script = ExtResource("1_1wgpf")
+gun_range_indicator = NodePath("GunRange")
+attack_area = NodePath("AttackArea")
+
+[node name="Trail" type="Node2D" parent="."]
+
+[node name="MoveTrail" parent="Trail" instance=ExtResource("3_h43ih")]
+points = PackedVector2Array(0, 0)
+width_curve = SubResource("Curve_ywypb")
+default_color = Color(0.729412, 0.956863, 0.243137, 1)
+length = 20
+
+[node name="Sprite" type="Sprite2D" parent="."]
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("3_4dsbi")
+
+[node name="AttackArea" type="Area2D" parent="." node_paths=PackedStringArray("projectile")]
+collision_layer = 4
+collision_mask = 3
+script = ExtResource("2_xq7mr")
+projectile = NodePath("..")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AttackArea"]
+shape = SubResource("CircleShape2D_ayf23")
+
+[node name="GunRange" type="Area2D" parent="."]
+collision_layer = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="GunRange"]
+shape = SubResource("CircleShape2D_vvvoc")
+
+[connection signal="area_entered" from="AttackArea" to="AttackArea" method="_on_area_entered"]

@@ -1,0 +1,24 @@
+[gd_scene load_steps=2 format=3 uid="uid://bkr6w82fpu3kf"]
+
+[sub_resource type="GDScript" id="GDScript_uaewx"]
+script/source = "extends Node2D
+
+
+# Called when the node enters the scene tree for the first time.
+func _ready() -> void:
+	pass # Replace with function body.
+
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(delta: float) -> void:
+	pass
+"
+
+[node name="HitboxComponent" type="Node2D"]
+script = SubResource("GDScript_uaewx")
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 0.2
+one_shot = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

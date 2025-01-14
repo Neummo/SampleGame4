@@ -1,0 +1,21 @@
+[gd_scene load_steps=4 format=3 uid="uid://i74dml20vmx2"]
+
+[ext_resource type="Script" path="res://Pickups/currency.gd" id="1_nfpp2"]
+[ext_resource type="Texture2D" uid="uid://b3py2keg6rnhx" path="res://Assets/glowing_circle.png" id="2_wkhqy"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_tdly8"]
+size = Vector2(6, 6)
+
+[node name="Currency" type="Area2D"]
+collision_layer = 2
+collision_mask = 2
+script = ExtResource("1_nfpp2")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.20339, 0.20339)
+texture = ExtResource("2_wkhqy")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_tdly8")
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]

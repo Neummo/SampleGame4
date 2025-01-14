@@ -20,10 +20,12 @@ func _ready():
 	update_stats()
 
 func update_stats():
-	big_gun_timer.set_wait_time(Values.player_ult_gun_cooldown)
+	big_gun_timer.set_wait_time(Values.player_ult_gun_cooldown / Values.attack_speed_modifier)
 	if Values.ult_gun_pierce_unlocked:
 		big_gun = big_gun_area_beam
 		big_gun.shape.get_shape().size.y = Values.ult_gun_pierce_width
+		big_gun.shape.get_shape().size.x = Values.player_range
+		big_gun.shape.position.x = Values.player_range / 2
 	elif Values.ult_gun_aoe_unlocked:
 		big_gun.is_aoe = true
 		big_gun.aoe_shape.get_shape().radius = Values.ult_gun_aoe_radius
@@ -54,5 +56,4 @@ func get_big_gun():
 			return gun
 
 func _on_big_gun_timer_timeout():
-	
 	cooldown_passed = true
