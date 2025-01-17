@@ -12,7 +12,8 @@ func _ready():
 	})
 	health_component.health = stats.max_health
 	health_component.value = 2
-	health_bar.init_health(stats.max_health) 
+	health_bar.init_health(stats.max_health)
+	timer.wait_time = Values.dot_tick_time
 
 func rotate_to_target(target, delta):
 	var dir = (target.global_position - global_position)

@@ -20,12 +20,12 @@ shader_parameter/flash_value = 0.0
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_h40vo"]
 size = Vector2(92, 86)
 
-[sub_resource type="Curve" id="Curve_rmtvr"]
+[sub_resource type="Curve" id="Curve_f6r30"]
 resource_local_to_scene = true
 _data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
 point_count = 2
 
-[sub_resource type="Curve" id="Curve_m8w61"]
+[sub_resource type="Curve" id="Curve_mr6wr"]
 resource_local_to_scene = true
 _data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
 point_count = 2
@@ -122,10 +122,9 @@ animations = [{
 "speed": 12.0
 }]
 
-[node name="Bounty" type="CharacterBody2D" node_paths=PackedStringArray("shoot_timer", "laser_timer", "health_component", "stats", "health_bar", "body") groups=["Bounty"]]
+[node name="Bounty" type="CharacterBody2D" node_paths=PackedStringArray("laser_timer", "health_component", "stats", "health_bar", "body") groups=["Bounty"]]
 collision_mask = 2
 script = ExtResource("1_3wpkc")
-shoot_timer = NodePath("ShootTimer")
 laser_timer = NodePath("LaserTimer")
 health_component = NodePath("HealthComponent")
 stats = NodePath("EnemyStats")
@@ -173,7 +172,7 @@ position = Vector2(-43, -38)
 
 [node name="MoveTrail" parent="Body/LeftWing" instance=ExtResource("9_r5gar")]
 z_index = -1
-width_curve = SubResource("Curve_rmtvr")
+width_curve = SubResource("Curve_f6r30")
 length = 20
 
 [node name="RightWing" type="Node2D" parent="Body"]
@@ -181,7 +180,7 @@ position = Vector2(-43, 38)
 
 [node name="MoveTrail" parent="Body/RightWing" instance=ExtResource("9_r5gar")]
 z_index = -1
-width_curve = SubResource("Curve_m8w61")
+width_curve = SubResource("Curve_mr6wr")
 length = 20
 
 [node name="Death" type="AnimatedSprite2D" parent="Body"]

@@ -6,7 +6,7 @@ extends Control
 @onready var button_3: TextureButton = $Panel/ItemButton3
 var list_panel: Control
 var player: CharacterBody2D
-var should_unpause: bool = true
+var priced: bool = false
 var salvage_button: UpgradeButton
 var pm: Node2D
 
@@ -17,8 +17,8 @@ func _ready() -> void:
 	pm = get_tree().get_first_node_in_group("pm")
 
 func activate() -> void:
+	Values.cant_unpause = true
 	salvage_button.set_disabled(true)
-	should_unpause = not get_tree().is_paused()
 	button_1.roll_card()
 	button_2.roll_card()
 	button_3.roll_card()
@@ -33,10 +33,15 @@ func deactivate() -> void:
 	panel.set_visible(false)
 	player.set_stats()
 	salvage_button.set_disabled(false)
-	if should_unpause:
-		get_tree().set_deferred("paused", false)
+	if not priced:
+		Values.item_count -= 1
+		if Values.item_count > 0:
+			activate()
+			return
 	else:
+		priced = false
 		pm.select_skill(salvage_button)
+	Values.cant_unpause = false
 
 func _on_item_pressed(id: int, icon: String) -> void:
 	for child in list_panel.list.get_children():

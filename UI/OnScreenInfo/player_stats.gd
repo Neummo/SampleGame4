@@ -42,7 +42,7 @@ func set_stats(stats: Dictionary) -> void:
 	salvage_drop_rate_label.set_text(str(stats.salvage_drop_rate * 100) + "%")
 	part_drop_rate_label.set_text(str(stats.part_drop_rate * 100) + "%")
 	credit_multiplier_label.set_text(str(stats.currency_multiplier * 100) + "%")
-	credits_label.set_text(str(stats.credits))
+	credits_label.set_text(str(snappedf(stats.credits, 0.01)))
 	parts_label.set_text(str(stats.parts))
 	zone.set_text("Danger Level: " + str(stats.zone))
 	refresh_action_bar()

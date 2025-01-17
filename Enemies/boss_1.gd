@@ -1,6 +1,5 @@
 extends Enemy
-
-@export var shoot_timer: Timer
+class_name Boss
 
 var shooting: bool = false
 
@@ -12,11 +11,12 @@ func _ready():
 		"max_speed": Values.enemy_speed / 5,
 		"max_health": Values.enemy_health * 2 * Values.zone
 	})
-	health_component.value = 500
+	health_component.value = 100
 	health_component.health = stats.max_health
 	health_bar.init_health(stats.max_health)
 	shoot_timer.wait_time = maxf(0.5, shoot_timer.wait_time - (Values.zone / 5))
 	body.rotation = body.transform.x.angle_to(player.global_position - global_position)
+	timer.wait_time = Values.dot_tick_time
 
 func shoot():
 	for i in range(0, 3):

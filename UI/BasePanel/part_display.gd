@@ -104,11 +104,11 @@ func _ready() -> void:
 	
 	first_tree.description = "- Increases Acceleration +10%"
 	first_tree.effect = func (): Values.player_acceleration_multiplier += 0.1
-	ft1.description = "- Increases Speed +10%"
-	ft1.effect = func (): Values.player_max_speed_multiplier += 0.1
-	ft2.description = "- Increases Acceleration +10%-nl- Increases Speed +10%"
+	ft1.description = "- Increases Speed +5%"
+	ft1.effect = func (): Values.player_max_speed_multiplier += 0.05
+	ft2.description = "- Increases Acceleration +10%-nl- Increases Speed +5%"
 	ft2.effect = func (): 
-		Values.player_max_speed_multiplier += 0.1
+		Values.player_max_speed_multiplier += 0.05
 		Values.player_acceleration_multiplier += 0.1
 	ft3.description = "- Unlocks Hyper Speed"
 	ft3.effect = func (): Values.lightspeed_unlocked = true
@@ -130,26 +130,26 @@ func _ready() -> void:
 	ft16.effect = func (): Values.radar_range += 200
 	ft17.description = "- Increases Acceleration +10%"
 	ft17.effect = func (): Values.player_acceleration_multiplier += 0.1
-	ft18.description = "- Increases Speed +10%"
-	ft18.effect = func (): Values.player_max_speed_multiplier += 0.1
-	ft19.description = "- Increases Speed +10%"
-	ft19.effect = func (): Values.player_max_speed_multiplier += 0.1
-	ft20.description = "- Increases Speed +10%"
-	ft20.effect = func (): Values.player_max_speed_multiplier += 0.1
-	ft21.description = "- Increases Speed +20%"
-	ft21.effect = func (): Values.player_max_speed_multiplier += 0.2
+	ft18.description = "- Increases Speed +5%"
+	ft18.effect = func (): Values.player_max_speed_multiplier += 0.05
+	ft19.description = "- Increases Speed +5%"
+	ft19.effect = func (): Values.player_max_speed_multiplier += 0.05
+	ft20.description = "- Increases Speed +5%"
+	ft20.effect = func (): Values.player_max_speed_multiplier += 0.05
+	ft21.description = "- Increases Speed +10%"
+	ft21.effect = func (): Values.player_max_speed_multiplier += 0.1
 	ft22.description = "- Increases Acceleration +10%"
 	ft22.effect = func (): Values.player_acceleration_multiplier += 0.1
 	ft23.description = "- Increases Acceleration +10%"
 	ft23.effect = func (): Values.player_acceleration_multiplier += 0.1
 	ft24.description = "- Increases Acceleration +20%"
 	ft24.effect = func (): Values.player_acceleration_multiplier += 0.2
-	ft25.description = "- Decreases Impact Strength when Hit -40%"
-	ft25.effect = func (): Values.push_str -= 4
-	ft26.description = "- Decreases Impact Strength when Hit -40%"
-	ft26.effect = func (): Values.push_str -= 4
-	ft27.description = "- Prevents Impact when Hit"
-	ft27.effect = func (): Values.push_str = 1
+	ft25.description = "- Increases Damage Mitigation Chance +5%"
+	ft25.effect = func (): Values.player_mitigate_chance += 0.05
+	ft26.description = "- Increases Damage Mitigation Chance +5%"
+	ft26.effect = func (): Values.player_mitigate_chance += 0.05
+	ft27.description = "- Increases Damage Mitigation Chance +10%"
+	ft27.effect = func (): Values.player_mitigate_chance += 0.1
 	
 	second_tree.description = "- Increases Magnet Strength +50"
 	second_tree.effect = func (): Values.pickup_speed += 50
@@ -193,12 +193,12 @@ func _ready() -> void:
 	st23.effect = func (): Values.player_range += 20
 	st24.description = "- Increases Weapon Range +50"
 	st24.effect = func (): Values.player_range += 50
-	st25.description = "- Unlocks Asteroid Radar"
-	st25.effect = func (): Values.radar_unlocked = true
-	st26.description = "- Increases Asteroid Radar Range +1000"
-	st26.effect = func (): Values.radar_range += 1000
-	st27.description = "- Increases Asteroid Radar Range +1000"
-	st27.effect = func (): Values.radar_range += 1000
+	st25.description = "- Reduces Damage over Time tick time -10%"
+	st25.effect = func (): Values.dot_tick_time -= 0.1
+	st26.description = "- Reduces Damage over Time tick time -10%"
+	st26.effect = func (): Values.dot_tick_time -= 0.1
+	st27.description = "- Reduces Damage over Time tick time -30%"
+	st27.effect = func (): Values.dot_tick_time -= 0.3
 	
 	third_tree.description = "- Increases Damage +10%"
 	third_tree.effect = func (): Values.player_damage_multiplier += 0.1
@@ -251,12 +251,12 @@ func _ready() -> void:
 	tt27.description = "- Increases Damage over Time +20% of damage dealt"
 	tt27.effect = func ():Values.player_dot_percentage += 0.2
 	
-	fourth_tree.description = "- Increases Shields +100"
-	fourth_tree.effect = func (): Values.player_max_health += 100
-	ht1.description = "- Increases Shields +100"
-	ht1.effect = func (): Values.player_max_health += 100
-	ht2.description = "- Increases Shields +10%"
-	ht2.effect = func (): Values.player_max_health_multiplier += 0.1
+	fourth_tree.description = "- Increases Shields +50"
+	fourth_tree.effect = func (): Values.player_max_health += 50
+	ht1.description = "- Increases Shields +50"
+	ht1.effect = func (): Values.player_max_health += 50
+	ht2.description = "- Increases Shields +5%"
+	ht2.effect = func (): Values.player_max_health_multiplier += 0.05
 	ht3.description = "- Increases Damage Reduction +1-nl- Increases Damage Mitigation Chance +5%"
 	ht3.effect = func ():
 		Values.player_damage_reduction += 1
@@ -277,10 +277,10 @@ func _ready() -> void:
 	ht15.effect = func (): Values.player_damage_reduction += 1
 	ht16.description = "- Increases Damage Reduction +5"
 	ht16.effect = func (): Values.player_damage_reduction += 5
-	ht17.description = "- Increases Shields +100"
-	ht17.effect = func (): Values.player_max_health += 100
-	ht18.description = "- Increases Shields +20%"
-	ht18.effect = func (): Values.player_max_health_multiplier += 0.2
+	ht17.description = "- Increases Shields +50"
+	ht17.effect = func (): Values.player_max_health += 50
+	ht18.description = "- Increases Shields +10%"
+	ht18.effect = func (): Values.player_max_health_multiplier += 0.1
 	ht19.description = "- Increases Shield Regeneration +2/s"
 	ht19.effect = func (): Values.player_hps += 2
 	ht20.description = "- Increases Shield Regeneration +3/s"
@@ -293,12 +293,12 @@ func _ready() -> void:
 	ht23.effect = func (): Values.player_leech_amount += 1
 	ht24.description = "- Increases Shield Recharge from destroyed Enemies +3"
 	ht24.effect = func (): Values.player_leech_amount += 3
-	ht25.description = "- Increases Shields +100"
-	ht25.effect = func (): Values.player_max_health += 100
-	ht26.description = "- Increases Shields +100"
-	ht26.effect = func (): Values.player_max_health += 100
-	ht27.description = "- Increases Shields +20%"
-	ht27.effect = func (): Values.player_max_health_multiplier += 0.2
+	ht25.description = "- Decreases Impact Strength when Hit -40%"
+	ht25.effect = func (): Values.push_str -= 1
+	ht26.description = "- Decreases Impact Strength when Hit -40%"
+	ht26.effect = func (): Values.push_str -= 1
+	ht27.description = "- Prevents Impact when Hit"
+	ht27.effect = func (): Values.push_str = 1
 	
 func check_prices() -> void:
 	var nodes = get_all_children(first_node)

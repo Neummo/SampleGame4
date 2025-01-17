@@ -24,12 +24,13 @@ func check_price() -> void:
 func _process(_delta: float) -> void:
 	if is_instance_valid(bounty):
 		stats.bounty.set_text("[" + str(snapped(bounty.global_position.x * 0.01, 1)) + ":" + str(snapped(bounty.global_position.y * 0.01 * -1, 1)) + "]")
-	else:
-		stats.bounty.set_text("")
-		bountry_price_label.set_text(str(current_price))
-		bounty_active = false
-		check_price()
-		set_process(false)
+
+func disable_bounty() -> void:
+	stats.bounty.set_text("")
+	bountry_price_label.set_text(str(current_price))
+	bounty_active = false
+	check_price()
+	set_process(false)
 
 func _on_pressed() -> void:
 	await spawner.spawn_bounty(int(floor(current_price / 1000)))

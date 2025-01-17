@@ -51,7 +51,7 @@ func load_data() -> Dictionary:
 					"description": "Increases Weapon Range +20",
 					"icon": "res://Assets/aaa.png",
 					"effect": func effect() -> void: Values.player_range += 20,
-					"max": 40,
+					"max": 50,
 					"hits": 0
 				},
 				"5": {
@@ -60,7 +60,7 @@ func load_data() -> Dictionary:
 					"description": "Increases Damage +10%",
 					"icon": "res://Assets/aaa.png",
 					"effect": func effect() -> void: Values.player_damage_multiplier += 0.1,
-					"max": 100,
+					"max": -1,
 					"hits": 0
 				},
 				"6": {
@@ -69,7 +69,7 @@ func load_data() -> Dictionary:
 					"description": "Increases Rate of Fire +10%",
 					"icon": "res://Assets/aaa.png",
 					"effect": func effect() -> void: Values.attack_speed_modifier += 0.1,
-					"max": 100,
+					"max": -1,
 					"hits": 0
 				},
 				"7": {
@@ -78,7 +78,7 @@ func load_data() -> Dictionary:
 					"description": "Increases Projectile Speed +20%",
 					"icon": "res://Assets/aaa.png",
 					"effect": func effect() -> void: Values.projectile_speed_modifier += 0.2,
-					"max": 100,
+					"max": -1,
 					"hits": 0
 				},
 				"8": {
@@ -87,6 +87,15 @@ func load_data() -> Dictionary:
 					"description": "Increases Currency Value +5%",
 					"icon": "res://Assets/aaa.png",
 					"effect": func effect() -> void: Values.currency_multiplier += 0.05,
+					"max": -1,
+					"hits": 0
+				},
+				"9": {
+					"id": 22,
+					"title": "Magnet Maintenance",
+					"description": "Increases Magnet Strengh +20",
+					"icon": "res://Assets/aaa.png",
+					"effect": func effect() -> void: Values.pickup_speed += 20,
 					"max": 100,
 					"hits": 0
 				},
@@ -100,7 +109,7 @@ func load_data() -> Dictionary:
 					"description": "Increased Critical hit Chance +2%",
 					"icon": "res://Assets/kate2.png",
 					"effect": func effect() -> void: Values.player_crit_chance += 0.02,
-					"max": 100,
+					"max": 42,
 					"hits": 0
 				},
 				"1": {
@@ -109,7 +118,7 @@ func load_data() -> Dictionary:
 					"description": "Increases Magnet Strengh +50",
 					"icon": "res://Assets/kate2.png",
 					"effect": func effect() -> void: Values.pickup_speed += 50,
-					"max": 50,
+					"max": 100,
 					"hits": 0
 				},
 				"2": {
@@ -137,7 +146,7 @@ func load_data() -> Dictionary:
 					"description": "Increased Critical hit Damage +20%",
 					"icon": "res://Assets/kate2.png",
 					"effect": func effect() -> void: Values.player_crit_damage += 0.2,
-					"max": 100,
+					"max": -1,
 					"hits": 0
 				},
 				"5": {
@@ -146,7 +155,7 @@ func load_data() -> Dictionary:
 					"description": "Increases Currency Value +10%",
 					"icon": "res://Assets/kate2.png",
 					"effect": func effect() -> void: Values.currency_multiplier += 0.1,
-					"max": 100,
+					"max": -1,
 					"hits": 0
 				},
 			}
@@ -159,7 +168,7 @@ func load_data() -> Dictionary:
 					"description": "Increases Damage Mitigation Chance +2%",
 					"icon": "res://Assets/kate3.png",
 					"effect": func effect() -> void: Values.player_mitigate_chance += 0.02,
-					"max": 10,
+					"max": 20,
 					"hits": 0
 				},
 				"1": {
@@ -177,7 +186,7 @@ func load_data() -> Dictionary:
 					"description": "Increases Asteroid Value +50%",
 					"icon": "res://Assets/kate3.png",
 					"effect": func effect() -> void: Values.currency_multiplier_asteroid += 0.5,
-					"max": 10,
+					"max": -1,
 					"hits": 0
 				},
 				"3": {
@@ -186,7 +195,7 @@ func load_data() -> Dictionary:
 					"description": "Percentage Shields increase +30%",
 					"icon": "res://Assets/kate3.png",
 					"effect": func effect() -> void: Values.player_max_health_multiplier += 0.3,
-					"max": 50,
+					"max": 10,
 					"hits": 0
 				},
 				"4": {
@@ -195,7 +204,7 @@ func load_data() -> Dictionary:
 					"description": "Percentage Speed and Acceleration increase +10%",
 					"icon": "res://Assets/kate3.png",
 					"effect": func effect() -> void: Values.agility(0.1, true),
-					"max": 50,
+					"max": 10,
 					"hits": 0
 				},
 				"5": {
@@ -204,7 +213,7 @@ func load_data() -> Dictionary:
 					"description": "Increases Currency Value +20%",
 					"icon": "res://Assets/kate3.png",
 					"effect": func effect() -> void: Values.currency_multiplier += 0.2,
-					"max": 5,
+					"max": -1,
 					"hits": 0
 				},
 				"6": {

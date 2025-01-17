@@ -12,13 +12,13 @@ class_name Enemy
 @onready var hitbox: HitboxComponent = $Body/HitboxComponent
 @onready var hitbox_shape: CollisionShape2D = $Body/HitboxComponent/CollisionShape2D
 @onready var sprite: Sprite2D = $Body/Sprite
+@onready var shoot_timer: Timer = $ShootTimer
 
 var player: CharacterBody2D
 var arrived: bool = false
 var dying: bool = false
 
 func _physics_process(delta):
-	despawn()
 	move_and_slide()
 	
 	if Values.player_can_dot:
@@ -41,11 +41,6 @@ func tick_dot() -> void:
 		return
 	else:
 		timer.start()
-
-func despawn() -> void:
-	if get_player_distance() > 3000:
-		#Values.enemy_count -= 1
-		queue_free()
 
 func rotate_to_target(_target, _delta):
 	pass
@@ -71,6 +66,8 @@ func arrive(delta: float) -> void:
 func die() -> void:
 	dying = true
 	sprite.set_visible(false)
+	if is_instance_valid(shoot_timer):
+		shoot_timer.stop()
 	health_bar.set_visible(false)
 	set_process(false)
 	set_physics_process(false)

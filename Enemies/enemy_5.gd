@@ -1,6 +1,5 @@
 extends Enemy
 
-@export var shoot_timer: Timer
 @onready var directions: Array
 @onready var laser: EnemyAreaBeam = $Body/EnemyAreaBeam
 
@@ -23,6 +22,7 @@ func _ready():
 	direction = directions[randi() % directions.size()]
 	laser.damage = Values.enemy_damage * 2
 	laser.charge_time = maxf(1.0, float(8 - Values.zone))
+	timer.wait_time = Values.dot_tick_time
 
 func shoot():
 	laser.shoot()
@@ -42,13 +42,13 @@ func behavior(delta: float) -> void:
 			shoot_timer.stop()
 		velocity -= (Vector2(velocity.x, velocity.y) * delta)
 	else:
-		if global_position.distance_to(player.global_position) > Values.enemy_range * 2 and shooting:
+		if global_position.distance_to(player.global_position) > Values.enemy_range * randf_range(1.8, 2.3) and shooting:
 			shooting = false
 			shoot_timer.stop()
 		elif not shooting:
 			shooting = true
 			shoot_timer.start()
-		if global_position.distance_to(player.global_position) <= Values.enemy_range * 2:
+		if global_position.distance_to(player.global_position) <= Values.enemy_range * randf_range(1.8, 2.3):
 			velocity += (Vector2(0, direction).rotated(body.rotation)).normalized() * delta * stats.acceleration
 		else:
 			velocity += (Vector2(stats.acceleration, 0).rotated(body.rotation)).normalized() * delta * stats.acceleration

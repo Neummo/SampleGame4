@@ -6,8 +6,10 @@ class_name WeaponSlot
 @export var weapon_tree_3: BigUpgradeTreeButton 
 @export var weapon_tree_4: BigUpgradeTreeButton
 @export var weapon_tree_5: BigUpgradeTreeButton
-
+@export var id: int
+@onready var label: Label = $Label
 @onready var weapon_list: HBoxContainer = $WeaponList
+
 var weapons: Array
 var trees: Array
 var slot_weapon: BigUpgradeTreeButton

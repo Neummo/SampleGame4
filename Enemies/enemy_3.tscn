@@ -20,12 +20,12 @@ shader_parameter/flash_value = 0.0
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_h40vo"]
 size = Vector2(24, 32)
 
-[sub_resource type="Curve" id="Curve_ml7tv"]
+[sub_resource type="Curve" id="Curve_r6oo1"]
 resource_local_to_scene = true
 _data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
 point_count = 2
 
-[sub_resource type="Curve" id="Curve_nupo6"]
+[sub_resource type="Curve" id="Curve_nfxxw"]
 resource_local_to_scene = true
 _data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
 point_count = 2
@@ -122,10 +122,9 @@ animations = [{
 "speed": 12.0
 }]
 
-[node name="Enemy" type="CharacterBody2D" node_paths=PackedStringArray("shoot_timer", "health_component", "stats", "health_bar", "body") groups=["Grunt"]]
+[node name="Enemy" type="CharacterBody2D" node_paths=PackedStringArray("health_component", "stats", "health_bar", "body") groups=["Grunt"]]
 collision_mask = 2
 script = ExtResource("1_pgjbo")
-shoot_timer = NodePath("Body/ShootTimer")
 health_component = NodePath("HealthComponent")
 stats = NodePath("EnemyStats")
 health_bar = NodePath("HealthBar")
@@ -146,9 +145,6 @@ possesor = "Enemy"
 damage_flash_player = NodePath("../Body/Sprite/DamageFlashPlayer")
 
 [node name="Body" type="Node2D" parent="."]
-
-[node name="ShootTimer" type="Timer" parent="Body"]
-wait_time = 3.0
 
 [node name="Sprite" type="Sprite2D" parent="Body"]
 material = SubResource("ShaderMaterial_wrke3")
@@ -174,7 +170,7 @@ position = Vector2(-11, -16)
 
 [node name="MoveTrail" parent="Body/LeftWing" instance=ExtResource("9_4qea7")]
 z_index = -1
-width_curve = SubResource("Curve_ml7tv")
+width_curve = SubResource("Curve_r6oo1")
 length = 20
 
 [node name="RightWing" type="Node2D" parent="Body"]
@@ -182,7 +178,7 @@ position = Vector2(-11, 16)
 
 [node name="MoveTrail" parent="Body/RightWing" instance=ExtResource("9_4qea7")]
 z_index = -1
-width_curve = SubResource("Curve_nupo6")
+width_curve = SubResource("Curve_nfxxw")
 length = 20
 
 [node name="Death" type="AnimatedSprite2D" parent="Body"]
@@ -191,5 +187,7 @@ animation = &"death"
 
 [node name="Timer" type="Timer" parent="."]
 
-[connection signal="timeout" from="Body/ShootTimer" to="." method="_on_shoot_timer_timeout"]
+[node name="ShootTimer" type="Timer" parent="."]
+
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+[connection signal="timeout" from="ShootTimer" to="." method="_on_shoot_timer_timeout"]

@@ -45,12 +45,21 @@ func sub_damage(attack: Attack, is_player: bool) -> void:
 	Values.display_number(dmg, "",  Vector2(position.x - 10, position.y - 30), "#e7e5d6", self, critical)
 	damage_flash_player.play("damage_flash")
 	if health <= 0:
+		Values.eliminations += 1
 		if Values.player_can_leech and Values.player_leech_amount > 0:
 			player.heali(int(floor(Values.player_leech_amount)))
 		if possesor == 'Neutral':
 			spawn_instance(load("res://Pickups/Currency.tscn"), true)
 			Values.neutral_count -= 1
 		else:
+			if owner is Boss:
+				spawn_instance(load("res://Pickups/Currency.tscn"))
+				return
+			if owner is Bounty:
+				var bounty_track = get_tree().get_first_node_in_group("BountyButton")
+				bounty_track.disable_bounty()
+				spawn_instance(load("res://Pickups/Currency.tscn"))
+				return
 			if spawn_part():
 				spawn_instance(load("res://Pickups/part.tscn"))
 			elif spawn_item():
@@ -70,7 +79,10 @@ func spawn_instance(pickup: Resource, _neutral: bool = false) -> void:
 		owner.die()
 
 func spawn_item() -> bool:
-	return Values.item_spawn_chance >= randf()
+	if Values.item_spawn_chance >= randf():
+		Values.item_spawn_chance = maxf(0.01, Values.item_spawn_chance - 0.001)
+		return true
+	return false
 
 func spawn_part() -> bool:
 	return Values.part_spawn_chance >= randf()

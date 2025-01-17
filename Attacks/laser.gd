@@ -57,7 +57,6 @@ func aoe_damage(impact_position: Vector2):
 	var tween = create_tween()
 	tween.tween_property(range_indicator, "width", 0, clampf(Values.player_ult_gun_cooldown / 2, 0.1, 0.5))
 	aoe.global_position = impact_position
-	await tween.finished
 	
 	var physics_params: PhysicsShapeQueryParameters2D = PhysicsShapeQueryParameters2D.new()
 	var physics_space_state: PhysicsDirectSpaceState2D

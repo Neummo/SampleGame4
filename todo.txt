@@ -7,4 +7,36 @@ intro, tutorial
 weapon basic info labels
 tab disabled when item picked up
 neutral_count remake with groups
-pause
+
+weapon slotas atsirakina nuo killu (FIXED)
+boss drops items and no money? (FIXED)
+dead enemies shoot projectiles (FIXED)
+more magnet str upgrades (FIXED)
+faster enemy types (FIXED)
+area dmg kaina fcked (FIXED)
+seeker nerf (FIXED)
+mitigation cap (FIXED)
+bounty speed lower (FIXED)
+item spawn based on killed enemies sacling up / items less more powerful (FIXED)
+pushback to health tree (FIXED)
+pushback effect less by default, closer in tree (FIXED)
+bounty too much credits (FIXED)
+show health numbers (FIXED)
+too much shield stacking or too less health regen? (FIXED)
+unlock asteroid still in tree (FIXED)
+more unlocks nowhere to put money (FIXED)
+max item values (crit damage?) (FIXED)
+no damage upgrades late damge (FIXED)
+crit chance cap (FIXED)
+rounding float values (FIXED)
+max health regen not working (FIXED)
+check dot on boss (FIXED)
+items do not pause (FIXED)
+
+cap speed (WATCH)
+health baras bugged out (nehealina arba nerodo kad healina kai high hp?) (REDUCED MAX HP SCALING, WATCH)
+bounty scaling too hard, enemy scaling too low? (WATCH)
+seeker sperging out (maybe sees closest enemy) (WATCH)
+3rd or 4th bounty -100 away (PRINTING BOUNTY LEVEL)
+game too easy but not early game (WATCH)
+pause (FIXED)

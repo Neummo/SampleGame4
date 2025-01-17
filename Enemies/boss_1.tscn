@@ -20,12 +20,12 @@ shader_parameter/flash_value = 0.0
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_h40vo"]
 size = Vector2(264, 214)
 
-[sub_resource type="Curve" id="Curve_2gkey"]
+[sub_resource type="Curve" id="Curve_3tfgy"]
 resource_local_to_scene = true
 _data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
 point_count = 2
 
-[sub_resource type="Curve" id="Curve_r5kxj"]
+[sub_resource type="Curve" id="Curve_2d4vf"]
 resource_local_to_scene = true
 _data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
 point_count = 2
@@ -122,10 +122,9 @@ animations = [{
 "speed": 12.0
 }]
 
-[node name="Boss" type="CharacterBody2D" node_paths=PackedStringArray("shoot_timer", "health_component", "stats", "health_bar", "body")]
+[node name="Boss" type="CharacterBody2D" node_paths=PackedStringArray("health_component", "stats", "health_bar", "body")]
 collision_mask = 2
 script = ExtResource("1_sjcp0")
-shoot_timer = NodePath("ShootTimer")
 health_component = NodePath("HealthComponent")
 stats = NodePath("EnemyStats")
 health_bar = NodePath("HealthBar")
@@ -172,7 +171,7 @@ position = Vector2(-79, -102)
 
 [node name="MoveTrail" parent="Body/LeftWing" instance=ExtResource("9_s3pec")]
 z_index = -1
-width_curve = SubResource("Curve_2gkey")
+width_curve = SubResource("Curve_3tfgy")
 length = 20
 
 [node name="RightWing" type="Node2D" parent="Body"]
@@ -180,7 +179,7 @@ position = Vector2(-80, 106)
 
 [node name="MoveTrail" parent="Body/RightWing" instance=ExtResource("9_s3pec")]
 z_index = -1
-width_curve = SubResource("Curve_r5kxj")
+width_curve = SubResource("Curve_2d4vf")
 length = 20
 
 [node name="Death" type="AnimatedSprite2D" parent="Body"]

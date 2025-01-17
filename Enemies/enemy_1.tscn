@@ -20,12 +20,12 @@ shader_parameter/flash_value = 0.0
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_h40vo"]
 size = Vector2(30, 28)
 
-[sub_resource type="Curve" id="Curve_q7af4"]
+[sub_resource type="Curve" id="Curve_fev7i"]
 resource_local_to_scene = true
 _data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
 point_count = 2
 
-[sub_resource type="Curve" id="Curve_t2bdh"]
+[sub_resource type="Curve" id="Curve_xio1q"]
 resource_local_to_scene = true
 _data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
 point_count = 2
@@ -170,7 +170,7 @@ position = Vector2(-12, -3)
 
 [node name="MoveTrail" parent="Body/LeftWing" instance=ExtResource("9_sd6iw")]
 z_index = -1
-width_curve = SubResource("Curve_q7af4")
+width_curve = SubResource("Curve_fev7i")
 length = 20
 
 [node name="RightWing" type="Node2D" parent="Body"]
@@ -178,7 +178,7 @@ position = Vector2(-12, 3)
 
 [node name="MoveTrail" parent="Body/RightWing" instance=ExtResource("9_sd6iw")]
 z_index = -1
-width_curve = SubResource("Curve_t2bdh")
+width_curve = SubResource("Curve_xio1q")
 length = 20
 
 [node name="Death" type="AnimatedSprite2D" parent="Body"]
@@ -188,6 +188,9 @@ frame = 11
 frame_progress = 1.0
 
 [node name="Timer" type="Timer" parent="."]
+
+[node name="ShootTimer" type="Timer" parent="."]
+wait_time = 10.0
 
 [connection signal="area_entered" from="Body/HitboxComponent" to="." method="_on_hitbox_component_area_entered"]
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

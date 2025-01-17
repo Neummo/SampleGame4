@@ -22,7 +22,7 @@ func update_stats() -> void:
 func shoot():
 	if !gun_switch:
 		return
-	while Values.seeker_gun_active_amount < amount and gun_timer.is_stopped():
+	while Values.seeker_gun_active_amount < amount and gun_timer.is_stopped() and is_instance_valid(player.closest_enemy):
 		gun_timer.start()
 		await gun_timer.timeout
 		Values.seeker_gun_active_amount += 1

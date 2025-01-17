@@ -1,4 +1,5 @@
 extends CharacterBody2D
+class_name Player
 
 var acceleration: float
 var max_speed: float
@@ -43,7 +44,7 @@ func _ready():
 	health.health = int(floor(Values.player_max_health * Values.player_max_health_multiplier))
 	return_animator.set_visible(false)
 	return_trail.set_physics_process(false)
-	health_bar.init_health(Values.player_max_health * Values.player_max_health_multiplier)
+	health_bar.init_health(int(floor(Values.player_max_health * Values.player_max_health_multiplier)))
 	set_stats()
 
 func _physics_process(delta):
@@ -81,9 +82,9 @@ func _physics_process(delta):
 			camera.set_zoom(Vector2(0.4, 0.4))
 		else:
 			camera.set_zoom(Vector2(1, 1))
-	#if Input.is_action_just_pressed("money"):
-		#progression_manager.get_currency(1000)
-		#progression_manager.get_parts(1)
+	if Input.is_action_just_pressed("money"):
+		progression_manager.get_currency(100000)
+		progression_manager.get_parts(100)
 	if Input.is_action_just_pressed("switch_menu"):
 		progression_manager.switch_menu()
 	#if Input.is_action_just_pressed("dash") and Values.dash_unlocked:
@@ -180,13 +181,13 @@ func simple_movement(delta: float) -> void:
 
 func heal() -> void:
 	health.health = int(floor(Values.player_max_health * Values.player_max_health_multiplier))
-	health_bar.health = Values.player_max_health * Values.player_max_health_multiplier
+	health_bar.health = int(floor(Values.player_max_health * Values.player_max_health_multiplier))
 
 func heali(hl: int) -> void:
-	if health.health >= Values.player_max_health:
+	if health.health >= int(floor(Values.player_max_health * Values.player_max_health_multiplier)):
 		return
-	if health.health + hl > Values.player_max_health:
-		hl = Values.player_max_health - health.health
+	if health.health + hl > int(floor(Values.player_max_health * Values.player_max_health_multiplier)):
+		hl = int(floor(Values.player_max_health * Values.player_max_health_multiplier)) - health.health
 	health.health += hl
 	health_bar.health += hl
 
@@ -197,7 +198,7 @@ func set_stats() -> void:
 	range_shape.get_shape().set_radius(Values.player_range)
 	#var zoom: float = -0.001 * Values.player_range + 1.4
 	#camera.set_zoom(Vector2(zoom, zoom))
-	health_bar.update_max_health(Values.player_max_health * Values.player_max_health_multiplier)
+	health_bar.update_max_health(int(floor(Values.player_max_health * Values.player_max_health_multiplier)))
 	acceleration = Values.player_acceleration * Values.player_acceleration_multiplier
 	max_speed = Values.player_max_speed * Values.player_max_speed_multiplier
 	
@@ -215,9 +216,9 @@ func set_stats() -> void:
 		regen_timer.stop()
 	
 	stats.set_stats({
-		acceleration = Values.player_acceleration * Values.player_acceleration_multiplier,
-		max_speed = Values.player_max_speed * Values.player_max_speed_multiplier,
-		max_health = Values.player_max_health * Values.player_max_health_multiplier,
+		acceleration = int(floor(Values.player_acceleration * Values.player_acceleration_multiplier)),
+		max_speed = int(floor(Values.player_max_speed * Values.player_max_speed_multiplier)),
+		max_health = int(floor(Values.player_max_health * Values.player_max_health_multiplier)),
 		hps = Values.player_hps,
 		leech = Values.player_leech_amount,
 		damage_reduction = Values.player_damage_reduction,

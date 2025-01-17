@@ -17,6 +17,7 @@ ninth = NodePath("Ninth")
 tenth = NodePath("Tenth")
 
 [node name="SpawnTimer" type="Timer" parent="."]
+wait_time = 2.0
 autostart = true
 
 [node name="BossTimer" type="Timer" parent="."]
@@ -63,5 +64,10 @@ default_color = Color(1, 0.207843, 0, 0.196078)
 width = 2.0
 default_color = Color(1, 0, 0, 0.196078)
 
+[node name="TimeTimer" type="Timer" parent="."]
+wait_time = 60.0
+autostart = true
+
 [connection signal="timeout" from="SpawnTimer" to="." method="_on_spawn_timer_timeout"]
 [connection signal="timeout" from="BossTimer" to="." method="_on_boss_timer_timeout"]
+[connection signal="timeout" from="TimeTimer" to="." method="_on_time_timer_timeout"]

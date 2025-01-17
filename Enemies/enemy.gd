@@ -1,7 +1,5 @@
 extends Enemy
 
-@export var shoot_timer: Timer
-
 @onready var directions: Array
 
 var rotation_speed: float = 10
@@ -12,8 +10,8 @@ func _ready():
 	player = get_tree().get_first_node_in_group("Player")
 	motion_mode = CharacterBody2D.MOTION_MODE_FLOATING
 	stats.set_stats({
-		"acceleration": Values.enemy_acceleration * 3,
-		"max_speed": randf_range(Values.enemy_speed - 50, Values.enemy_speed) * 3,
+		"acceleration": Values.enemy_acceleration * 2,
+		"max_speed": randf_range(Values.enemy_speed - 50, Values.enemy_speed),
 		"max_health": Values.enemy_health
 	})
 	health_component.value = 4
@@ -22,6 +20,7 @@ func _ready():
 	directions = [-stats.acceleration, stats.acceleration]
 	direction = directions[randi() % directions.size()]
 	shoot_timer.wait_time = maxf(0.5, shoot_timer.wait_time - (Values.zone * 0.02))
+	timer.wait_time = Values.dot_tick_time
 
 func shoot():
 	var projectile = load("res://Attacks/enemy_laser_projectile.tscn")
@@ -42,13 +41,14 @@ func behavior(delta: float) -> void:
 			shoot_timer.stop()
 		velocity -= (Vector2(velocity.x, velocity.y) * delta)
 	else:
-		if global_position.distance_to(player.global_position) > Values.player_range * 2 and shooting:
-			shooting = false
-			shoot_timer.stop()
+		if global_position.distance_to(player.global_position) > Values.player_range * randf_range(1.0, 2.0):
+			if shooting:
+				shooting = false
+				shoot_timer.stop()
 		elif not shooting:
 			shooting = true
 			shoot_timer.start()
-		if global_position.distance_to(player.global_position) <= Values.player_range:
+		if global_position.distance_to(player.global_position) <= Values.player_range * randf_range(1.0, 1.2):
 			velocity += (Vector2(0, direction).rotated(body.rotation)).normalized() * delta * stats.acceleration
 		else:
 			velocity += (Vector2(stats.acceleration, 0).rotated(body.rotation)).normalized() * delta * stats.acceleration
@@ -57,7 +57,6 @@ func behavior(delta: float) -> void:
 func _on_shoot_timer_timeout():
 	direction = directions[randi() % directions.size()]
 	shoot()
-
 
 func _on_timer_timeout() -> void:
 	var damage = maxi(1, int(floor(dot_pool * 0.1)))

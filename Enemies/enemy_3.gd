@@ -1,7 +1,5 @@
 extends Enemy
 
-@export var shoot_timer: Timer
-
 @onready var directions: Array
 
 var rotation_speed: float = 2
@@ -11,14 +9,15 @@ func _ready():
 	player = get_tree().get_first_node_in_group("Player")
 	motion_mode = CharacterBody2D.MOTION_MODE_FLOATING
 	stats.set_stats({
-		"acceleration": Values.enemy_acceleration * 10,
-		"max_speed": randf_range(Values.enemy_speed - 50, Values.enemy_speed) * 5,
+		"acceleration": Values.enemy_acceleration * 20,
+		"max_speed": randf_range(Values.enemy_speed - 50, Values.enemy_speed) * 2,
 		"max_health": Values.enemy_health * 0.7
 	})
 	health_component.value = 6
 	health_component.health = stats.max_health
 	health_bar.init_health(stats.max_health)
 	shoot_timer.wait_time = maxf(0.5, shoot_timer.wait_time - (Values.zone * 0.02))
+	timer.wait_time = Values.dot_tick_time
 
 func rotate_to_target(target, delta):
 	var dir = (target.global_position - global_position)
@@ -28,7 +27,7 @@ func rotate_to_target(target, delta):
 func behavior(delta: float) -> void:
 	velocity += (Vector2(stats.acceleration, 0).rotated(body.rotation)).normalized() * delta * stats.acceleration
 	velocity = velocity.limit_length(stats.max_speed)
-	if global_position.distance_to(player.global_position) > Values.player_range and shooting:
+	if global_position.distance_to(player.global_position) > Values.player_range * randf_range(0.7, 1.0) and shooting:
 		shooting = false
 		shoot_timer.stop()
 	elif not shooting:

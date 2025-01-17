@@ -21,12 +21,12 @@ shader_parameter/flash_value = 0.0
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_h40vo"]
 size = Vector2(46, 46)
 
-[sub_resource type="Curve" id="Curve_jpp0n"]
+[sub_resource type="Curve" id="Curve_j4o7a"]
 resource_local_to_scene = true
 _data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
 point_count = 2
 
-[sub_resource type="Curve" id="Curve_g7xrp"]
+[sub_resource type="Curve" id="Curve_fpplr"]
 resource_local_to_scene = true
 _data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
 point_count = 2
@@ -123,10 +123,9 @@ animations = [{
 "speed": 12.0
 }]
 
-[node name="Enemy" type="CharacterBody2D" node_paths=PackedStringArray("shoot_timer", "health_component", "stats", "health_bar", "body") groups=["Grunt"]]
+[node name="Enemy" type="CharacterBody2D" node_paths=PackedStringArray("health_component", "stats", "health_bar", "body") groups=["Grunt"]]
 collision_mask = 2
 script = ExtResource("1_uyhmn")
-shoot_timer = NodePath("Body/ShootTimer")
 health_component = NodePath("HealthComponent")
 stats = NodePath("EnemyStats")
 health_bar = NodePath("HealthBar")
@@ -156,8 +155,6 @@ texture = ExtResource("6_u4ix8")
 
 [node name="DamageFlashPlayer" parent="Body/Sprite" instance=ExtResource("6_ug8oj")]
 
-[node name="ShootTimer" type="Timer" parent="Body"]
-
 [node name="HitboxComponent" type="Area2D" parent="Body" node_paths=PackedStringArray("health_component")]
 collision_mask = 2
 script = ExtResource("8_4t7mh")
@@ -174,7 +171,7 @@ position = Vector2(-14, -23)
 
 [node name="MoveTrail" parent="Body/LeftWing" instance=ExtResource("9_3pl4p")]
 z_index = -1
-width_curve = SubResource("Curve_jpp0n")
+width_curve = SubResource("Curve_j4o7a")
 length = 20
 
 [node name="RightWing" type="Node2D" parent="Body"]
@@ -182,7 +179,7 @@ position = Vector2(-14, 23)
 
 [node name="MoveTrail" parent="Body/RightWing" instance=ExtResource("9_3pl4p")]
 z_index = -1
-width_curve = SubResource("Curve_g7xrp")
+width_curve = SubResource("Curve_fpplr")
 length = 20
 
 [node name="EnemyAreaBeam" parent="Body" instance=ExtResource("10_cwnyq")]
@@ -193,5 +190,7 @@ animation = &"death"
 
 [node name="Timer" type="Timer" parent="."]
 
-[connection signal="timeout" from="Body/ShootTimer" to="." method="_on_shoot_timer_timeout"]
+[node name="ShootTimer" type="Timer" parent="."]
+
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+[connection signal="timeout" from="ShootTimer" to="." method="_on_shoot_timer_timeout"]

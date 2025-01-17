@@ -20,12 +20,12 @@ shader_parameter/flash_value = 0.0
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_h40vo"]
 size = Vector2(26, 30)
 
-[sub_resource type="Curve" id="Curve_2u3il"]
+[sub_resource type="Curve" id="Curve_n077u"]
 resource_local_to_scene = true
 _data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
 point_count = 2
 
-[sub_resource type="Curve" id="Curve_gquhw"]
+[sub_resource type="Curve" id="Curve_j4f73"]
 resource_local_to_scene = true
 _data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
 point_count = 2
@@ -122,10 +122,9 @@ animations = [{
 "speed": 12.0
 }]
 
-[node name="Enemy" type="CharacterBody2D" node_paths=PackedStringArray("shoot_timer", "health_component", "stats", "health_bar", "body") groups=["Grunt"]]
+[node name="Enemy" type="CharacterBody2D" node_paths=PackedStringArray("health_component", "stats", "health_bar", "body") groups=["Grunt"]]
 collision_mask = 2
 script = ExtResource("1_ruyqy")
-shoot_timer = NodePath("Body/ShootTimer")
 health_component = NodePath("HealthComponent")
 stats = NodePath("EnemyStats")
 health_bar = NodePath("HealthBar")
@@ -172,7 +171,7 @@ position = Vector2(-10, -14)
 
 [node name="MoveTrail" parent="Body/LeftWing" instance=ExtResource("7_5m7ei")]
 z_index = -1
-width_curve = SubResource("Curve_2u3il")
+width_curve = SubResource("Curve_n077u")
 length = 20
 
 [node name="RightWing" type="Node2D" parent="Body"]
@@ -180,7 +179,7 @@ position = Vector2(-10, 14)
 
 [node name="MoveTrail" parent="Body/RightWing" instance=ExtResource("7_5m7ei")]
 z_index = -1
-width_curve = SubResource("Curve_gquhw")
+width_curve = SubResource("Curve_j4f73")
 length = 20
 
 [node name="Death" type="AnimatedSprite2D" parent="Body"]
@@ -189,5 +188,9 @@ animation = &"death"
 
 [node name="Timer" type="Timer" parent="."]
 
+[node name="ShootTimer" type="Timer" parent="."]
+wait_time = 3.0
+
 [connection signal="timeout" from="Body/ShootTimer" to="." method="_on_shoot_timer_timeout"]
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+[connection signal="timeout" from="ShootTimer" to="." method="_on_shoot_timer_timeout"]

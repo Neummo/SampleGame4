@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://dtbe3d6tdnt30"]
+[gd_scene load_steps=16 format=3 uid="uid://dtbe3d6tdnt30"]
 
 [ext_resource type="Script" path="res://UI/progression_manager.gd" id="1_boseb"]
 [ext_resource type="PackedScene" uid="uid://dw3btbuscjgyh" path="res://UI/BasePanel/part_display.tscn" id="2_mn78g"]
@@ -9,6 +9,12 @@
 [ext_resource type="PackedScene" uid="uid://e8je7elgras7" path="res://UI/BasePanel/big_upgrade_tree_button.tscn" id="6_ut5g0"]
 [ext_resource type="Script" path="res://UI/BasePanel/display_toggle.gd" id="7_v0e4h"]
 [ext_resource type="Script" path="res://UI/BasePanel/bounty.gd" id="9_h30cn"]
+
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_bmr3p"]
+size = Vector2(25, 25)
+
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_rqkfk"]
+size = Vector2(25, 25)
 
 [sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_xle6s"]
 size = Vector2(40, 40)
@@ -260,7 +266,7 @@ offset_right = 84.0
 offset_bottom = 30.0
 disabled = true
 max_level = 5
-description = "-  Damage Increase +10"
+description = "- Base Damage Increase +5"
 
 [node name="SeekerUpgrade311TreeButton" parent="UpgradeContainer/WeaponDisplay/SeekerUnlockTreeButton/SeekerUpgrade3TreeButton/SeekerUpgrade31TreeButton" instance=ExtResource("6_ut5g0")]
 layout_mode = 0
@@ -402,6 +408,7 @@ anchor_bottom = -5.325
 offset_top = -11.0
 offset_right = 50.0
 offset_bottom = 39.0
+texture_disabled = SubResource("PlaceholderTexture2D_bmr3p")
 weapon_tree = NodePath("../TurretUnlockTreeButton")
 weapon_tree_2 = NodePath("../RocketUnlockTreeButton")
 weapon_tree_3 = NodePath("../LaserUnlockTreeButton")
@@ -409,7 +416,6 @@ weapon_tree_4 = NodePath("../SeekerUnlockTreeButton")
 weapon_tree_5 = NodePath("../FieldUnlockTreeButton")
 
 [node name="WeaponSlot2" parent="UpgradeContainer/WeaponDisplay/WeaponSlot" groups=["Slots"] instance=ExtResource("6_mtkrx")]
-visible = false
 layout_mode = 1
 anchors_preset = -1
 anchor_top = 2.7
@@ -417,6 +423,9 @@ anchor_bottom = 2.7
 offset_top = -35.0
 offset_right = 50.0
 offset_bottom = 15.0
+disabled = true
+texture_disabled = SubResource("PlaceholderTexture2D_rqkfk")
+id = 1
 
 [node name="WeaponSlot3" parent="UpgradeContainer/WeaponDisplay/WeaponSlot" groups=["Slots"] instance=ExtResource("6_mtkrx")]
 visible = false
@@ -426,6 +435,9 @@ anchor_top = 5.0
 anchor_bottom = 5.0
 offset_top = -50.0
 offset_right = 50.0
+disabled = true
+texture_disabled = SubResource("PlaceholderTexture2D_rqkfk")
+id = 2
 
 [node name="WeaponSlot4" parent="UpgradeContainer/WeaponDisplay/WeaponSlot" groups=["Slots"] instance=ExtResource("6_mtkrx")]
 visible = false
@@ -436,6 +448,9 @@ anchor_bottom = 7.3
 offset_top = -65.0
 offset_right = 50.0
 offset_bottom = -15.0
+disabled = true
+texture_disabled = SubResource("PlaceholderTexture2D_rqkfk")
+id = 3
 
 [node name="WeaponSlot5" parent="UpgradeContainer/WeaponDisplay/WeaponSlot" groups=["Slots"] instance=ExtResource("6_mtkrx")]
 visible = false
@@ -446,6 +461,9 @@ anchor_bottom = 9.6
 offset_top = -80.0
 offset_right = 50.0
 offset_bottom = -30.0
+disabled = true
+texture_disabled = SubResource("PlaceholderTexture2D_rqkfk")
+id = 4
 
 [node name="Panel2" type="Panel" parent="UpgradeContainer/WeaponDisplay"]
 layout_mode = 1
@@ -464,8 +482,8 @@ offset_top = -173.0
 offset_right = 271.0
 offset_bottom = -143.0
 disabled = true
-max_level = 10
-description = "-  Base Damage +5"
+max_level = 20
+description = "-  Base Damage +3"
 
 [node name="RateOfFire" parent="UpgradeContainer/WeaponDisplay" instance=ExtResource("6_ut5g0")]
 layout_mode = 0
@@ -474,7 +492,7 @@ offset_top = -173.0
 offset_right = 321.0
 offset_bottom = -143.0
 disabled = true
-max_level = 10
+max_level = 20
 description = "- Rate of Fire +5%"
 
 [node name="ProjectileSpeed" parent="UpgradeContainer/WeaponDisplay" instance=ExtResource("6_ut5g0")]
@@ -484,7 +502,7 @@ offset_top = -173.0
 offset_right = 371.0
 offset_bottom = -143.0
 disabled = true
-max_level = 10
+max_level = 20
 description = "- Projectile Speed +10%"
 
 [node name="BaseShields" parent="UpgradeContainer/WeaponDisplay" instance=ExtResource("6_ut5g0")]
@@ -494,18 +512,18 @@ offset_top = -173.0
 offset_right = 421.0
 offset_bottom = -143.0
 disabled = true
-max_level = 10
+max_level = 20
 description = "- Base Shields +10"
 
-[node name="Damage" parent="UpgradeContainer/WeaponDisplay" instance=ExtResource("6_ut5g0")]
+[node name="Magnet" parent="UpgradeContainer/WeaponDisplay" instance=ExtResource("6_ut5g0")]
 layout_mode = 0
 offset_left = 241.0
 offset_top = -123.0
 offset_right = 271.0
 offset_bottom = -93.0
 disabled = true
-max_level = 10
-description = "- Damage +10%"
+max_level = 20
+description = "- Magnet Strength +10"
 
 [node name="BaseSpeed" parent="UpgradeContainer/WeaponDisplay" instance=ExtResource("6_ut5g0")]
 layout_mode = 0
@@ -514,8 +532,8 @@ offset_top = -123.0
 offset_right = 321.0
 offset_bottom = -93.0
 disabled = true
-max_level = 10
-description = "- Base Speed +10"
+max_level = 20
+description = "- Base Speed +5"
 
 [node name="BaseAcceleration" parent="UpgradeContainer/WeaponDisplay" instance=ExtResource("6_ut5g0")]
 layout_mode = 0
@@ -524,7 +542,7 @@ offset_top = -123.0
 offset_right = 371.0
 offset_bottom = -93.0
 disabled = true
-max_level = 10
+max_level = 20
 description = "- Base Acceleration +10"
 
 [node name="ShieldRegen" parent="UpgradeContainer/WeaponDisplay" instance=ExtResource("6_ut5g0")]
@@ -534,7 +552,7 @@ offset_top = -123.0
 offset_right = 421.0
 offset_bottom = -93.0
 disabled = true
-max_level = 10
+max_level = 20
 description = "- Shield Renegeration +1/s"
 
 [node name="Panel3" type="Panel" parent="UpgradeContainer/WeaponDisplay"]
@@ -610,39 +628,6 @@ text = "0"
 label_settings = ExtResource("2_mp5ci")
 horizontal_alignment = 2
 
-[node name="WeaponSlotBuy" type="TextureButton" parent="UpgradeContainer" node_paths=PackedStringArray("label", "price_label")]
-layout_mode = 0
-offset_left = 535.0
-offset_top = -107.0
-offset_right = 585.0
-offset_bottom = -57.0
-texture_normal = ExtResource("3_llpj6")
-texture_disabled = SubResource("PlaceholderTexture2D_xle6s")
-script = ExtResource("4_75ix6")
-label = NodePath("../WeaponSlotBuyLabel")
-price_label = NodePath("../WeaponSlotBuyPriceLabel")
-
-[node name="WeaponSlotBuyLabel" type="Label" parent="UpgradeContainer"]
-layout_mode = 0
-offset_left = 536.0
-offset_top = -121.0
-offset_right = 597.0
-offset_bottom = -107.0
-text = "Weapon Slot"
-label_settings = ExtResource("2_mp5ci")
-horizontal_alignment = 2
-vertical_alignment = 1
-
-[node name="WeaponSlotBuyPriceLabel" type="Label" parent="UpgradeContainer"]
-layout_mode = 0
-offset_left = 573.0
-offset_top = -107.0
-offset_right = 582.0
-offset_bottom = -93.0
-text = "0"
-label_settings = ExtResource("2_mp5ci")
-horizontal_alignment = 2
-
 [node name="DisplayToggle" type="TextureButton" parent="UpgradeContainer"]
 layout_mode = 0
 offset_left = 535.0
@@ -671,7 +656,7 @@ offset_right = 465.0
 offset_bottom = 311.0
 mouse_filter = 2
 
-[node name="Bounty" type="TextureButton" parent="UpgradeContainer"]
+[node name="Bounty" type="TextureButton" parent="UpgradeContainer" groups=["BountyButton"]]
 layout_mode = 0
 offset_left = 536.0
 offset_top = -35.0
@@ -731,13 +716,12 @@ horizontal_alignment = 2
 [connection signal="pressed" from="UpgradeContainer/WeaponDisplay/RateOfFire" to="." method="_on_rate_of_fire_pressed"]
 [connection signal="pressed" from="UpgradeContainer/WeaponDisplay/ProjectileSpeed" to="." method="_on_projectile_speed_pressed"]
 [connection signal="pressed" from="UpgradeContainer/WeaponDisplay/BaseShields" to="." method="_on_base_shields_pressed"]
-[connection signal="pressed" from="UpgradeContainer/WeaponDisplay/Damage" to="." method="_on_damage_pressed"]
+[connection signal="pressed" from="UpgradeContainer/WeaponDisplay/Magnet" to="." method="_on_damage_pressed"]
 [connection signal="pressed" from="UpgradeContainer/WeaponDisplay/BaseSpeed" to="." method="_on_base_speed_pressed"]
 [connection signal="pressed" from="UpgradeContainer/WeaponDisplay/BaseAcceleration" to="." method="_on_base_acceleration_pressed"]
 [connection signal="pressed" from="UpgradeContainer/WeaponDisplay/ShieldRegen" to="." method="_on_shield_regen_pressed"]
 [connection signal="pressed" from="UpgradeContainer/Repair" to="." method="_on_repair_pressed"]
 [connection signal="pressed" from="UpgradeContainer/Salvage" to="." method="_on_salvage_pressed"]
-[connection signal="pressed" from="UpgradeContainer/WeaponSlotBuy" to="." method="_on_weapon_slot_buy_pressed"]
 [connection signal="pressed" from="UpgradeContainer/DisplayToggle" to="UpgradeContainer/DisplayToggle" method="_on_pressed"]
 [connection signal="pressed" from="UpgradeContainer/Bounty" to="." method="_on_bounty_pressed"]
 [connection signal="pressed" from="UpgradeContainer/Bounty" to="UpgradeContainer/Bounty" method="_on_pressed"]

@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3 uid="uid://cx65mwov3fgjd"]
+[gd_scene load_steps=7 format=3 uid="uid://cx65mwov3fgjd"]
 
 [ext_resource type="Script" path="res://UI/OnScreenInfo/health_bar.gd" id="1_yitxo"]
 
@@ -19,7 +19,15 @@ shadow_offset = Vector2(0, 1)
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_jqofu"]
 bg_color = Color(1, 1, 1, 1)
 
-[node name="HealthBar" type="ProgressBar" node_paths=PackedStringArray("timer", "damage_bar")]
+[sub_resource type="LabelSettings" id="LabelSettings_ii2dk"]
+font_size = 10
+font_color = Color(0.737193, 0.737193, 0.737193, 1)
+outline_size = 5
+outline_color = Color(0, 0, 0, 1)
+shadow_size = 5
+shadow_color = Color(0, 0, 0, 0.615686)
+
+[node name="HealthBar" type="ProgressBar" node_paths=PackedStringArray("timer", "damage_bar", "label")]
 z_index = 1
 anchors_preset = 2
 anchor_top = 1.0
@@ -37,6 +45,7 @@ show_percentage = false
 script = ExtResource("1_yitxo")
 timer = NodePath("Timer")
 damage_bar = NodePath("DamageBar")
+label = NodePath("Label")
 
 [node name="DamageBar" type="ProgressBar" parent="."]
 z_index = -1
@@ -54,5 +63,14 @@ show_percentage = false
 [node name="Timer" type="Timer" parent="."]
 wait_time = 0.4
 one_shot = true
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 0
+offset_left = 4.0
+offset_top = 2.0
+offset_right = 63.0
+offset_bottom = 16.0
+label_settings = SubResource("LabelSettings_ii2dk")
+vertical_alignment = 1
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

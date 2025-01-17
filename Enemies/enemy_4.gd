@@ -1,7 +1,5 @@
 extends Enemy
 
-@export var shoot_timer: Timer
-
 @onready var directions: Array
 
 var rotation_speed: float = 1
@@ -22,6 +20,7 @@ func _ready():
 	directions = [-stats.acceleration, stats.acceleration]
 	direction = directions[randi() % directions.size()]
 	shoot_timer.wait_time = maxf(1, shoot_timer.wait_time - (Values.zone * 0.02))
+	timer.wait_time = Values.dot_tick_time
 
 func shoot():
 	var projectile = load("res://Attacks/enemy_rocket_homing.tscn")
@@ -42,13 +41,13 @@ func behavior(delta: float) -> void:
 			shoot_timer.stop()
 		velocity -= (Vector2(velocity.x, velocity.y) * delta)
 	else:
-		if global_position.distance_to(player.global_position) > Values.enemy_range * 1.5 and shooting:
+		if global_position.distance_to(player.global_position) > Values.enemy_range * randf_range(1.3, 1.8) and shooting:
 			shooting = false
 			shoot_timer.stop()
 		elif not shooting:
 			shooting = true
 			shoot_timer.start()
-		if global_position.distance_to(player.global_position) <= Values.enemy_range * 1.5:
+		if global_position.distance_to(player.global_position) <= Values.enemy_range * randf_range(1.3, 1.8):
 			velocity += (Vector2(0, direction).rotated(body.rotation)).normalized() * delta * stats.acceleration
 		else:
 			velocity += (Vector2(stats.acceleration, 0).rotated(body.rotation)).normalized() * delta * stats.acceleration

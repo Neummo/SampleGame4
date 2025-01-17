@@ -22,10 +22,6 @@ Values="*res://Globals/global.gd"
 StaticData="*res://Data/static_data.gd"
 ItemData="*res://Data/item_data.gd"
 
-[display]
-
-window/size/mode=3
-
 [global_group]
 
 Grunt=""
