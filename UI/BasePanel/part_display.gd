@@ -293,10 +293,10 @@ func _ready() -> void:
 	ht23.effect = func (): Values.player_leech_amount += 1
 	ht24.description = "- Increases Shield Recharge from destroyed Enemies +3"
 	ht24.effect = func (): Values.player_leech_amount += 3
-	ht25.description = "- Decreases Impact Strength when Hit -40%"
-	ht25.effect = func (): Values.push_str -= 1
-	ht26.description = "- Decreases Impact Strength when Hit -40%"
-	ht26.effect = func (): Values.push_str -= 1
+	ht25.description = "- Decreases Impact Strength when Hit -20%"
+	ht25.effect = func (): Values.push_str -= 0.2
+	ht26.description = "- Decreases Impact Strength when Hit -30%"
+	ht26.effect = func (): Values.push_str -= 0.3
 	ht27.description = "- Prevents Impact when Hit"
 	ht27.effect = func (): Values.push_str = 1
 	

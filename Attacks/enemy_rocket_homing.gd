@@ -12,7 +12,7 @@ func _ready():
 	player = get_tree().get_first_node_in_group("Player")
 	target = "Player"
 	damage = Values.enemy_damage * 2
-	speed = Values.enemy_projectile_speed * 2
+	speed = Values.enemy_projectile_speed
 	global_position = spawn_position
 	global_rotation = spawn_rotation
 	lifespan.start()

@@ -62,6 +62,8 @@ func sub_damage(attack: Attack, is_player: bool) -> void:
 				return
 			if spawn_part():
 				spawn_instance(load("res://Pickups/part.tscn"))
+			elif spawn_module():
+				spawn_instance(load("res://Pickups/module.tscn"))
 			elif spawn_item():
 				spawn_instance(load("res://Pickups/Item.tscn"))
 			else:
@@ -81,6 +83,12 @@ func spawn_instance(pickup: Resource, _neutral: bool = false) -> void:
 func spawn_item() -> bool:
 	if Values.item_spawn_chance >= randf():
 		Values.item_spawn_chance = maxf(0.01, Values.item_spawn_chance - 0.001)
+		return true
+	return false
+
+func spawn_module() -> bool:
+	if Values.module_spawn_chance >= randf():
+		Values.module_spawn_chance = maxf(0.01, Values.module_spawn_chance - 0.001)
 		return true
 	return false
 

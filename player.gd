@@ -234,6 +234,7 @@ func set_stats() -> void:
 		currency_multiplier = Values.currency_multiplier,
 		credits = Values.currency,
 		parts = Values.parts,
+		modules = Values.modules,
 		zone = Values.zone
 	})
 

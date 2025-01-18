@@ -2,12 +2,13 @@ extends Node
 
 var low_skill_prices: Array = [10, 20, 50, 100, 250, 500, 1000, 1000, 1000, 1000]
 var base_skill_prices: Array = [10, 20, 50, 100, 250, 500, 1000, 2000, 3000, 4000, 5000, 6000, 7000, 8000, 9000, 10000, 11000, 12000, 13000, 15000]
-var mid_skill_prices: Array = [100, 200, 300, 500, 1000]
+var mid_skill_prices: Array = [1, 1, 1, 1, 1]
 var armory_unlock_price: int = 100000
 var saved_currency: int = 0
 var cant_unpause: bool = false
 
 var item_count: int = 0
+var modules: int = 0
 var dot_tick_time: float = 1.0
 var cluster_leads: Array = []
 var minutes_elapsed: int = 0
@@ -16,6 +17,7 @@ var parts: int = 0
 var pickup_speed: float = 50.0
 var part_spawn_chance: float = 0.01
 var item_spawn_chance: float = 0.1
+var module_spawn_chance: float = 0.05
 var neutral_count: int = 0
 var enemy_count: int = 0
 var eliminations: int = 0
@@ -79,7 +81,7 @@ var enemy_health: int = 100
 var enemy_acceleration: float = 50
 var enemy_speed: float = 500.0
 var enemy_range: float = 300.0
-var enemy_projectile_speed: float = 200.0
+var enemy_projectile_speed: float = 150.0
 var weapon_slots: int = 1
 var bounties_unlocked: bool = false
 var dash_unlocked: bool = false
@@ -87,7 +89,7 @@ var dash_cooldown: float = 10
 var dash_str: float = 1000
 var lightspeed_unlocked: bool = false
 var lightspeed_cooldown: float = 60
-var push_str: float = 5
+var push_str: float = 2.0
 var currency_multiplier: float = 1.0
 var currency_multiplier_asteroid: float = 1.0
 var radar_unlocked: bool = true
@@ -196,6 +198,7 @@ func init_player_stats() -> void:
 	pickup_speed = 50.0
 	part_spawn_chance = 0.01
 	item_spawn_chance = 0.1
+	module_spawn_chance = 0.05
 	neutral_count = 0
 	enemy_count = 0
 	zone = 0
@@ -249,7 +252,7 @@ func init_player_stats() -> void:
 	enemy_acceleration = 50
 	enemy_speed = 500
 	enemy_range = 500.0
-	enemy_projectile_speed = 200.0
+	enemy_projectile_speed = 150.0
 	weapon_slots = 1
 	bounties_unlocked = false
 	dash_unlocked = false
@@ -258,7 +261,7 @@ func init_player_stats() -> void:
 	dash_str = 5000
 	lightspeed_unlocked = false
 	lightspeed_cooldown = 60
-	push_str = 5
+	push_str = 2.0
 	currency_multiplier = 1.0
 	currency_multiplier_asteroid = 1.0
 	radar_unlocked = true
@@ -278,6 +281,7 @@ func init_player_stats() -> void:
 	player_can_hps = true
 	player_can_leech = true
 	item_count = 0
+	modules = 0
 	cluster_leads = []
 	weapons = [
 	{ 

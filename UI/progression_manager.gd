@@ -19,6 +19,8 @@ class_name ProgressionManager
 @export var turret_upgrade1_button: BigUpgradeTreeButton
 @export var turret_upgrade11_button: BigUpgradeTreeButton
 @export var turret_upgrade111_button: BigUpgradeTreeButton
+@export var turret_upgrade211_button: BigUpgradeTreeButton
+@export var turret_upgrade311_button: BigUpgradeTreeButton
 @export var turret_upgrade21_button: BigUpgradeTreeButton
 @export var turret_upgrade31_button: BigUpgradeTreeButton
 
@@ -28,24 +30,31 @@ class_name ProgressionManager
 @export var rocket_upgrade311_button: BigUpgradeTreeButton
 @export var rocket_upgrade32_button: BigUpgradeTreeButton
 @export var rocket_upgrade321_button: BigUpgradeTreeButton
+@export var rocket_upgrade33_button: BigUpgradeTreeButton
+@export var rocket_upgrade34_button: BigUpgradeTreeButton
 
 @export var laser_unlock_button: BigUpgradeTreeButton
 @export var laser_upgrade1_button: BigUpgradeTreeButton
 @export var laser_upgrade11_button: BigUpgradeTreeButton
 @export var laser_upgrade2_button: BigUpgradeTreeButton
 @export var laser_upgrade21_button: BigUpgradeTreeButton
+@export var laser_upgrade3_button: BigUpgradeTreeButton
+@export var laser_upgrade4_button: BigUpgradeTreeButton
 
 @export var field_unlock_button: BigUpgradeTreeButton
 @export var field_upgrade1_button: BigUpgradeTreeButton
 @export var field_upgrade11_button: BigUpgradeTreeButton
 @export var field_upgrade12_button: BigUpgradeTreeButton
 @export var field_upgrade13_button: BigUpgradeTreeButton
+@export var field_upgrade2_button: BigUpgradeTreeButton
+@export var field_upgrade3_button: BigUpgradeTreeButton
 
 @export var seeker_unlock_button: BigUpgradeTreeButton
 @export var seeker_upgrade3_button: BigUpgradeTreeButton
-@export var seeker_upgrade31_button: BigUpgradeTreeButton
 @export var seeker_upgrade311_button: BigUpgradeTreeButton
 @export var seeker_upgrade312_button: BigUpgradeTreeButton
+@export var seeker_upgrade313_button: BigUpgradeTreeButton
+@export var seeker_upgrade314_button: BigUpgradeTreeButton
 
 @onready var base_damage: BigUpgradeTreeButton = $UpgradeContainer/WeaponDisplay/BaseDamage
 @onready var rate_of_fire: BigUpgradeTreeButton = $UpgradeContainer/WeaponDisplay/RateOfFire
@@ -80,7 +89,7 @@ func _ready():
 	
 	pricable = [
 		turret_unlock_button, turret_upgrade1_button, turret_upgrade11_button,
-		turret_upgrade21_button, turret_upgrade31_button, turret_upgrade111_button,
+		turret_upgrade211_button, turret_upgrade311_button, turret_upgrade111_button,
 		
 		rocket_unlock_button, rocket_upgrade3_button, rocket_upgrade31_button,
 		rocket_upgrade311_button, rocket_upgrade32_button, rocket_upgrade321_button,
@@ -91,48 +100,67 @@ func _ready():
 		field_unlock_button, field_upgrade1_button, field_upgrade11_button,
 		field_upgrade12_button, field_upgrade13_button,
 		
-		seeker_unlock_button, seeker_upgrade3_button, seeker_upgrade31_button,
+		seeker_unlock_button, seeker_upgrade3_button, seeker_upgrade313_button,
 		seeker_upgrade311_button, seeker_upgrade312_button,
 		
 		base_damage, rate_of_fire, projectile_speed, base_shields,
 		magnet, base_speed, base_acceleration, shield_regen,
+		
+		turret_upgrade21_button,
+		turret_upgrade31_button,
+		rocket_upgrade33_button,
+		rocket_upgrade34_button,
+		laser_upgrade3_button,
+		laser_upgrade4_button,
+		field_upgrade2_button,
+		field_upgrade3_button,
+		seeker_upgrade314_button,
 	]
 	
 	upgrade_menu.set_visible(false)
 	for button in pricable:
 		button.set_process(false)
 	
-	turret_unlock_button.set_properties(0, null)
-	turret_upgrade1_button.set_properties(500, null)
-	turret_upgrade11_button.set_properties(50, Values.mid_skill_prices)
-	turret_upgrade111_button.set_properties(1000, null)
-	turret_upgrade21_button.set_properties(1000, null)
-	turret_upgrade31_button.set_properties(1000, null)
-	
-	rocket_unlock_button.set_properties(0, null)
-	rocket_upgrade3_button.set_properties(50, null)
-	rocket_upgrade31_button.set_properties(1000, null)
-	rocket_upgrade311_button.set_properties(50, Values.mid_skill_prices)
-	rocket_upgrade32_button.set_properties(1000, null)
-	rocket_upgrade321_button.set_properties(50, Values.mid_skill_prices)
-	
-	laser_unlock_button.set_properties(0, null)
-	laser_upgrade1_button.set_properties(500, null)
-	laser_upgrade11_button.set_properties(50, Values.mid_skill_prices)
-	laser_upgrade2_button.set_properties(500, null)
-	laser_upgrade21_button.set_properties(50, Values.mid_skill_prices)
-	
-	field_unlock_button.set_properties(0, null)
-	field_upgrade1_button.set_properties(500, null)
-	field_upgrade11_button.set_properties(1000, null)
-	field_upgrade12_button.set_properties(1000, null)
-	field_upgrade13_button.set_properties(1000, null)
-	
-	seeker_unlock_button.set_properties(0, null)
-	seeker_upgrade3_button.set_properties(500, null)
-	seeker_upgrade31_button.set_properties(50, Values.mid_skill_prices)
-	seeker_upgrade311_button.set_properties(1000, null)
-	seeker_upgrade312_button.set_properties(1000, null)
+	turret_unlock_button.set_properties(0, null, true)
+	turret_upgrade1_button.set_properties(5, null, true)
+	turret_upgrade11_button.set_properties(1, Values.mid_skill_prices, true)
+	turret_upgrade111_button.set_properties(10, null, true)
+	turret_upgrade211_button.set_properties(10, null, true)
+	turret_upgrade311_button.set_properties(10, null, true)
+	turret_upgrade21_button.set_properties(1, Values.mid_skill_prices, true)
+	turret_upgrade31_button.set_properties(1, Values.mid_skill_prices, true)
+
+	rocket_unlock_button.set_properties(0, null, true)
+	rocket_upgrade3_button.set_properties(1, null, true)
+	rocket_upgrade31_button.set_properties(10, null, true)
+	rocket_upgrade311_button.set_properties(1, Values.mid_skill_prices, true)
+	rocket_upgrade32_button.set_properties(10, null, true)
+	rocket_upgrade321_button.set_properties(1, Values.mid_skill_prices, true)
+	rocket_upgrade33_button.set_properties(1, Values.mid_skill_prices, true)
+	rocket_upgrade34_button.set_properties(1, Values.mid_skill_prices, true)
+
+	laser_unlock_button.set_properties(0, null, true)
+	laser_upgrade1_button.set_properties(5, null, true)
+	laser_upgrade11_button.set_properties(1, Values.mid_skill_prices, true)
+	laser_upgrade2_button.set_properties(5, null, true)
+	laser_upgrade21_button.set_properties(1, Values.mid_skill_prices, true)
+	laser_upgrade3_button.set_properties(1, Values.mid_skill_prices, true)
+	laser_upgrade4_button.set_properties(1, Values.mid_skill_prices, true)
+
+	field_unlock_button.set_properties(0, null, true)
+	field_upgrade1_button.set_properties(5, null, true)
+	field_upgrade11_button.set_properties(10, null, true)
+	field_upgrade12_button.set_properties(10, null, true)
+	field_upgrade13_button.set_properties(10, null, true)
+	field_upgrade2_button.set_properties(1, Values.mid_skill_prices, true)
+	field_upgrade3_button.set_properties(1, Values.mid_skill_prices, true)
+
+	seeker_unlock_button.set_properties(0, null, true)
+	seeker_upgrade3_button.set_properties(5, null, true)
+	seeker_upgrade313_button.set_properties(1, Values.mid_skill_prices, true)
+	seeker_upgrade311_button.set_properties(10, null, true)
+	seeker_upgrade312_button.set_properties(10, null, true)
+	seeker_upgrade314_button.set_properties(1, Values.mid_skill_prices, true)
 
 	base_damage.set_properties(5, Values.base_skill_prices)
 	rate_of_fire.set_properties(5, Values.base_skill_prices)
@@ -158,6 +186,11 @@ func get_parts(value: int) -> void:
 	player.stats.parts_label.set_text(str(Values.parts))
 	check_prices()
 	part_display.check_prices()
+	
+func get_modules(value: int) -> void:
+	Values.modules += value
+	player.stats.modules_label.set_text(str(Values.modules))
+	check_prices()
 
 func select_skill(button) -> void:
 	button.on_select()
@@ -192,13 +225,19 @@ func _on_turret_upgrade_11_tree_button_pressed() -> void:
 func _on_turret_upgrade_111_tree_button_pressed() -> void:
 	Values.melee_gun_homing = true
 	select_skill(turret_upgrade111_button)
-func _on_turret_upgrade_21_tree_button_pressed() -> void:
-	Values.player_melee_gun_damage += 50
+func _on_turret_upgrade_211_tree_button_pressed() -> void:
+	Values.player_melee_gun_damage = int(floor(Values.player_melee_gun_damage * 1.5))
 	Values.turret_calliber_upgrade_unlocked = true
-	select_skill(turret_upgrade21_button)
-func _on_turret_upgrade_31_tree_button_pressed() -> void:
+	select_skill(turret_upgrade211_button)
+func _on_turret_upgrade_311_tree_button_pressed() -> void:
 	Values.turret_second_upgrade_unlocked = true
+	select_skill(turret_upgrade311_button)
+func _on_turret_upgrade_31_tree_button_pressed() -> void:
+	Values.player_melee_gun_cooldown = Values.player_melee_gun_cooldown * 0.9
 	select_skill(turret_upgrade31_button)
+func _on_turret_upgrade_21_tree_button_pressed() -> void:
+	Values.player_melee_gun_damage = int(floor(Values.player_melee_gun_damage * 1.1))
+	select_skill(turret_upgrade21_button)
 
 func _on_rocket_unlock_tree_button_pressed():
 	Values.manual_gun_unlocked = true
@@ -218,6 +257,12 @@ func _on_rocket_upgrade_32_tree_button_pressed() -> void:
 func _on_rocket_upgrade_321_tree_button_pressed() -> void:
 	Values.player_manual_aoe_area += 20
 	select_skill(rocket_upgrade321_button)
+func _on_rocket_upgrade_33_tree_button_pressed() -> void:
+	Values.player_manual_gun_cooldown = Values.player_manual_gun_cooldown * 0.9
+	select_skill(rocket_upgrade33_button)
+func _on_rocket_upgrade_34_tree_button_pressed() -> void:
+	Values.player_manual_gun_damage = int(floor(Values.player_manual_gun_damage * 1.1))
+	select_skill(rocket_upgrade34_button)
 
 func _on_laser_unlock_tree_button_pressed():
 	Values.ult_gun_unlocked = true
@@ -236,12 +281,18 @@ func _on_laser_upgrade_2_tree_button_pressed() -> void:
 func _on_laser_upgrade_21_tree_button_pressed() -> void:
 	Values.ult_gun_pierce_width += 20
 	select_skill(laser_upgrade21_button)
+func _on_laser_upgrade_3_tree_button_pressed() -> void:
+	Values.player_ult_gun_cooldown = Values.player_ult_gun_cooldown * 0.9
+	select_skill(laser_upgrade3_button)
+func _on_laser_upgrade_4_tree_button_pressed() -> void:
+	Values.player_ult_gun_damage = int(floor(Values.player_ult_gun_damage * 1.1))
+	select_skill(laser_upgrade4_button)
 
 func _on_field_unlock_tree_button_pressed() -> void:
 	Values.area_field_unlocked = true
 	select_skill(field_unlock_button)
 func _on_field_upgrade_1_tree_button_pressed() -> void:
-	Values.area_field_range += 100
+	Values.area_field_range += 50
 	select_skill(field_upgrade1_button)
 func _on_field_upgrade_11_tree_button_pressed() -> void:
 	Values.area_field_2x_enter_unlocked = true
@@ -249,7 +300,7 @@ func _on_field_upgrade_11_tree_button_pressed() -> void:
 	field_upgrade13_button.lock("Locked")
 	select_skill(field_upgrade11_button)
 func _on_field_upgrade_12_tree_button_pressed() -> void:
-	Values.area_field_range += 200
+	Values.area_field_range += 50
 	field_upgrade11_button.lock("Locked")
 	field_upgrade13_button.lock("Locked")
 	select_skill(field_upgrade12_button)
@@ -258,6 +309,12 @@ func _on_field_upgrade_13_tree_button_pressed() -> void:
 	field_upgrade11_button.lock("Locked")
 	field_upgrade12_button.lock("Locked")
 	select_skill(field_upgrade13_button)
+func _on_field_upgrade_3_tree_button_pressed() -> void:
+	Values.area_field_range *= 1.1
+	select_skill(field_upgrade3_button)
+func _on_field_upgrade_2_tree_button_pressed() -> void:
+	Values.area_field_damage = int(floor(Values.area_field_damage * 1.1))
+	select_skill(field_upgrade2_button)
 
 func _on_seeker_unlock_tree_button_pressed() -> void:
 	Values.seeker_gun_unlocked = true
@@ -265,15 +322,18 @@ func _on_seeker_unlock_tree_button_pressed() -> void:
 func _on_seeker_upgrade_3_tree_button_pressed() -> void:
 	Values.seeker_gun_speed *= 2
 	select_skill(seeker_upgrade3_button)
-func _on_seeker_upgrade_31_tree_button_pressed() -> void:
-	Values.seeker_gun_damage += 5
-	select_skill(seeker_upgrade31_button)
+func _on_seeker_upgrade_313_tree_button_pressed() -> void:
+	Values.seeker_gun_damage = int(floor(Values.seeker_gun_damage * 1.1))
+	select_skill(seeker_upgrade313_button)
 func _on_seeker_upgrade_311_tree_button_pressed() -> void:
 	Values.seeker_gun_amount += 1
 	select_skill(seeker_upgrade311_button)
 func _on_seeker_upgrade_312_tree_button_pressed() -> void:
 	Values.seeker_gun_no_return_unlocked = true
 	select_skill(seeker_upgrade312_button)
+func _on_seeker_upgrade_314_tree_button_pressed() -> void:
+	Values.seeker_gun_speed *= 1.1
+	select_skill(seeker_upgrade314_button)
 
 func _on_base_damage_pressed() -> void:
 	Values.player_melee_gun_damage += 3

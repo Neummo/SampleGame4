@@ -12,7 +12,7 @@ func _ready() -> void:
 func damage(attack: Attack):
 	if health_component:
 		health_component.damage(attack)
-		if possesor == "Player" and Values.push_str > 1:
+		if possesor == "Player" and Values.push_str > 1 and timer.is_stopped():
 			owner.max_speed /= Values.push_str
 			timer.start()
 			

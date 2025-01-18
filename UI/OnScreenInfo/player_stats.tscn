@@ -4,7 +4,7 @@
 [ext_resource type="LabelSettings" uid="uid://cro6habyr70oa" path="res://Assets/stat_label_font.tres" id="2_qqcyd"]
 [ext_resource type="PackedScene" uid="uid://cn8l6n3cs42gg" path="res://UI/OnScreenInfo/ability_cooldown_visualiser.tscn" id="3_5plx3"]
 
-[node name="PlayerStats" type="Control" node_paths=PackedStringArray("acceleration_label", "max_speed_label", "max_health_label", "hps_label", "leech_label", "damage_reduction_label", "damage_mitigation_label", "range_label", "magnet_strengh_label", "critical_chance_label", "critical_damage_label", "damage_multiplier_label", "as_multiplier_label", "salvage_drop_rate_label", "part_drop_rate_label", "credit_multiplier_label", "credits_label", "parts_label", "dash_cooldown", "hyper_cooldown", "bounty", "coords", "zone")]
+[node name="PlayerStats" type="Control" node_paths=PackedStringArray("acceleration_label", "max_speed_label", "max_health_label", "hps_label", "leech_label", "damage_reduction_label", "damage_mitigation_label", "range_label", "magnet_strengh_label", "critical_chance_label", "critical_damage_label", "damage_multiplier_label", "as_multiplier_label", "salvage_drop_rate_label", "part_drop_rate_label", "credit_multiplier_label", "credits_label", "parts_label", "modules_label", "dash_cooldown", "hyper_cooldown", "bounty", "coords", "zone")]
 layout_mode = 3
 anchors_preset = 0
 script = ExtResource("1_dnerw")
@@ -26,6 +26,7 @@ part_drop_rate_label = NodePath("Base/Values/Container/PartDropRateValue")
 credit_multiplier_label = NodePath("Base/Values/Container/CreditMultiplierValue")
 credits_label = NodePath("Base/Values/Container/CreditsValue")
 parts_label = NodePath("Base/Values/Container/PartsValue")
+modules_label = NodePath("Base/Values/Container/ModulesValue")
 dash_cooldown = NodePath("Values2/DashCooldown")
 hyper_cooldown = NodePath("Values2/HyperCooldown")
 bounty = NodePath("Values3/Title/Bounty")
@@ -139,6 +140,11 @@ layout_mode = 2
 text = "Parts:"
 label_settings = ExtResource("2_qqcyd")
 
+[node name="Modules" type="Label" parent="Base/Names/Sections/Names"]
+layout_mode = 2
+text = "Modules:"
+label_settings = ExtResource("2_qqcyd")
+
 [node name="Values" type="HBoxContainer" parent="Base"]
 layout_mode = 2
 
@@ -231,6 +237,11 @@ text = "0"
 label_settings = ExtResource("2_qqcyd")
 
 [node name="PartsValue" type="Label" parent="Base/Values/Container"]
+layout_mode = 2
+text = "0"
+label_settings = ExtResource("2_qqcyd")
+
+[node name="ModulesValue" type="Label" parent="Base/Values/Container"]
 layout_mode = 2
 text = "0"
 label_settings = ExtResource("2_qqcyd")

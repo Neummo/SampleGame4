@@ -40,3 +40,9 @@ seeker sperging out (maybe sees closest enemy) (WATCH)
 3rd or 4th bounty -100 away (PRINTING BOUNTY LEVEL)
 game too easy but not early game (WATCH)
 pause (FIXED)
+
+bounty button buggy
+early enemies not shooting
+label for module chance
+one big asteroid
+random direction pickup text

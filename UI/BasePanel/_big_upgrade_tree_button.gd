@@ -13,6 +13,8 @@ var unlocked: bool = true
 var price: int
 var prices
 var maxed: bool = false
+var modules: bool = false
+var currency
 var level: int = 0:
 	set(value):
 		level = value
@@ -41,14 +43,22 @@ func check_price() -> void:
 	var parent = get_parent()
 	if parent is BigUpgradeTreeButton and parent.level > 0:
 		visible = true
-	if Values.currency < price or maxed or not unlocked:
+	if modules:
+		currency = Values.modules
+	else:
+		currency = Values.currency
+	if currency < price or maxed or not unlocked:
 		set_disabled(true)
 	else:
 		set_disabled(false)
 
 func on_select() -> void:
-	Values.currency -= price
-	Values.update_saved_currency(price)
+	if modules:
+		Values.modules -= price
+	else:
+		Values.currency -= price
+		Values.update_saved_currency(price)
+	
 	if prices is Array:
 		price = prices[level - 1]
 		price_label.set_text(str(price))
@@ -60,7 +70,8 @@ func lock(_new_label_text: String) -> void:
 	price_label.set_text("")
 	set_disabled(true)
 
-func set_properties(_price: int, _prices) -> void:
+func set_properties(_price: int, _prices, mod: bool = false) -> void:
+	modules = mod
 	price = _price
 	prices = _prices
 	if price == 0:

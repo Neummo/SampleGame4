@@ -19,6 +19,7 @@ class_name PlayerStats
 @export var credit_multiplier_label: Label
 @export var credits_label: Label
 @export var parts_label: Label
+@export var modules_label: Label
 @export var dash_cooldown: TextureRect
 @export var hyper_cooldown: TextureRect
 @export var bounty: Label
@@ -44,6 +45,7 @@ func set_stats(stats: Dictionary) -> void:
 	credit_multiplier_label.set_text(str(stats.currency_multiplier * 100) + "%")
 	credits_label.set_text(str(snappedf(stats.credits, 0.01)))
 	parts_label.set_text(str(stats.parts))
+	modules_label.set_text(str(stats.modules))
 	zone.set_text("Danger Level: " + str(stats.zone))
 	refresh_action_bar()
 
