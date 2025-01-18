@@ -15,6 +15,7 @@ class_name PlayerStats
 @export var damage_multiplier_label: Label
 @export var as_multiplier_label: Label
 @export var salvage_drop_rate_label: Label
+@export var module_drop_rate_label: Label
 @export var part_drop_rate_label: Label
 @export var credit_multiplier_label: Label
 @export var credits_label: Label
@@ -41,6 +42,7 @@ func set_stats(stats: Dictionary) -> void:
 	damage_multiplier_label.set_text(str(stats.damage_multiplier * 100) + "%")
 	as_multiplier_label.set_text(str(stats.as_multiplier * 100) + "%")
 	salvage_drop_rate_label.set_text(str(stats.salvage_drop_rate * 100) + "%")
+	module_drop_rate_label.set_text(str(stats.module_drop_rate * 100) + "%")
 	part_drop_rate_label.set_text(str(stats.part_drop_rate * 100) + "%")
 	credit_multiplier_label.set_text(str(stats.currency_multiplier * 100) + "%")
 	credits_label.set_text(str(snappedf(stats.credits, 0.01)))

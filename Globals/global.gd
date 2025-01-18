@@ -332,9 +332,16 @@ func display_number(val, prefix: String, pos: Vector2, color: String, parent: No
 	number.label_settings.outline_color = "#000000"
 	number.label_settings.outline_size = 3
 	
+	var display_motion: Vector2
 	if parent == null:
+		display_motion = Vector2(randi_range(10, 30), randi_range(10, 30))
+		if randi_range(0, 1) == 0:
+			display_motion.x *= -1
+		if randi_range(0, 1) == 0:
+			display_motion.y *= -1
 		call_deferred("add_child", number)
 	else:
+		display_motion = Vector2(0, number.position.y - 20)
 		parent.call_deferred("add_child", number)
 	
 	await number.resized
@@ -343,7 +350,7 @@ func display_number(val, prefix: String, pos: Vector2, color: String, parent: No
 	var tween = get_tree().create_tween()
 	tween.set_parallel(true)
 	tween.tween_property(
-		number, "position:y", number.position.y - randi_range(15, 25), 0.75
+		number, "position", number.position + display_motion, 0.75
 	).set_ease(Tween.EASE_OUT_IN)
 	#tween.tween_property(
 	#	number, "position:y", number.position.y, 0.5

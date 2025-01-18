@@ -100,7 +100,9 @@ extends Control
 
 func _ready() -> void:
 	first_node.description = "- Unlocks Bounties"
-	first_node.effect = func (): Values.bounties_unlocked = true
+	first_node.effect = func (): 
+		Values.bounties_unlocked = true
+		get_tree().get_first_node_in_group("BountyButton").check_price()
 	
 	first_tree.description = "- Increases Acceleration +10%"
 	first_tree.effect = func (): Values.player_acceleration_multiplier += 0.1

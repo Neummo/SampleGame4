@@ -229,6 +229,7 @@ func set_stats() -> void:
 		critical_damage = Values.player_crit_damage,
 		damage_multiplier = Values.player_damage_multiplier,
 		salvage_drop_rate = Values.item_spawn_chance,
+		module_drop_rate = Values.module_spawn_chance,
 		part_drop_rate = Values.part_spawn_chance,
 		as_multiplier = Values.attack_speed_modifier,
 		currency_multiplier = Values.currency_multiplier,

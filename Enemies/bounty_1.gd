@@ -11,9 +11,9 @@ func _ready():
 	player = get_tree().get_first_node_in_group("Player")
 	motion_mode = CharacterBody2D.MOTION_MODE_FLOATING
 	stats.set_stats({
-		"acceleration": Values.enemy_acceleration,
-		"max_speed": Values.enemy_speed / 2,
-		"max_health": Values.enemy_health * 50 * (Values.zone + 1)
+		"acceleration": Values.enemy_acceleration / 2,
+		"max_speed": Values.enemy_speed * 2,
+		"max_health": Values.enemy_health * 20 * (Values.zone + 1)
 	})
 	health_component.health = stats.max_health
 	health_component.value = 500

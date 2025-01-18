@@ -5,7 +5,7 @@
 [ext_resource type="Texture2D" uid="uid://cts47eo6n4sla" path="res://Assets/Ship_4.png" id="3_4dsbi"]
 [ext_resource type="PackedScene" uid="uid://b58vw44glay4i" path="res://Environment/move_trail.tscn" id="3_h43ih"]
 
-[sub_resource type="Curve" id="Curve_80dnj"]
+[sub_resource type="Curve" id="Curve_gnpd0"]
 resource_local_to_scene = true
 _data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
 point_count = 2
@@ -24,7 +24,7 @@ attack_area = NodePath("AttackArea")
 
 [node name="MoveTrail" parent="Trail" instance=ExtResource("3_h43ih")]
 points = PackedVector2Array(0, 0)
-width_curve = SubResource("Curve_80dnj")
+width_curve = SubResource("Curve_gnpd0")
 default_color = Color(0.729412, 0.956863, 0.243137, 1)
 length = 20
 
@@ -47,4 +47,9 @@ collision_layer = 2
 [node name="CollisionShape2D" type="CollisionShape2D" parent="GunRange"]
 shape = SubResource("CircleShape2D_vvvoc")
 
+[node name="ReturnTimer" type="Timer" parent="."]
+wait_time = 0.2
+one_shot = true
+
 [connection signal="area_entered" from="AttackArea" to="AttackArea" method="_on_area_entered"]
+[connection signal="timeout" from="ReturnTimer" to="." method="_on_return_timer_timeout"]

@@ -41,8 +41,8 @@ seeker sperging out (maybe sees closest enemy) (WATCH)
 game too easy but not early game (WATCH)
 pause (FIXED)
 
-bounty button buggy
-early enemies not shooting
-label for module chance
-one big asteroid
-random direction pickup text
+bounty button buggy (FIXED)
+early enemies not shooting (FIXED)
+label for module chance (FIXED)
+one big asteroid (FIXED)
+random direction pickup text (FIXED)

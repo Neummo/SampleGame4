@@ -26,7 +26,7 @@ func _on_area_entered(area):
 				projectile.queue_free()
 		else:
 			if projectile is Seeker:
-				if projectile.closest_enemy == null:
+				if projectile.closest_enemy == null and projectile.has_to_return:
 					projectile.queue_free()
 					Values.seeker_gun_active_amount -= 1
 					return

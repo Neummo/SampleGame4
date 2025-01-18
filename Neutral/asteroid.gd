@@ -19,9 +19,15 @@ func _ready():
 	sprite.region_rect.position.x = random_index * sprite.region_rect.size.x
 	player = get_tree().get_first_node_in_group("Player")
 	motion_mode = CharacterBody2D.MOTION_MODE_FLOATING
-	health_component.health = Values.enemy_health
-	health_component.value = 10.0 * Values.currency_multiplier_asteroid
-	health_bar.init_health(Values.enemy_health) 
+	if cluster_lead:
+		sprite.apply_scale(Vector2(2, 2))
+		health_component.health = Values.enemy_health * 5
+		health_component.value = 30.0 * Values.currency_multiplier_asteroid
+		health_bar.init_health(Values.enemy_health * 5) 
+	else:
+		health_component.health = Values.enemy_health
+		health_component.value = 5.0 * Values.currency_multiplier_asteroid
+		health_bar.init_health(Values.enemy_health)
 
 func _physics_process(_delta):
 	if Values.radar_unlocked and cluster_lead and get_player_distance() < Values.radar_range and not cluster_leads.has(self):

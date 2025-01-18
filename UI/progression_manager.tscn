@@ -168,6 +168,7 @@ max_level = 5
 description = "- Damage 10%"
 
 [node name="TurretUpgrade211TreeButton" parent="UpgradeContainer/WeaponDisplay/TurretUnlockTreeButton/TurretUpgrade21TreeButton" instance=ExtResource("6_ut5g0")]
+layout_mode = 0
 offset_left = 51.0
 offset_top = 0.0
 offset_right = 81.0
@@ -187,6 +188,7 @@ max_level = 5
 description = "- Rate of Fire +10%"
 
 [node name="TurretUpgrade311TreeButton" parent="UpgradeContainer/WeaponDisplay/TurretUnlockTreeButton/TurretUpgrade31TreeButton" instance=ExtResource("6_ut5g0")]
+layout_mode = 0
 offset_left = 53.0
 offset_top = 0.0
 offset_right = 83.0
@@ -261,6 +263,7 @@ max_level = 5
 description = "- Explosion Area Increase"
 
 [node name="RocketUpgrade33TreeButton" parent="UpgradeContainer/WeaponDisplay/RocketUnlockTreeButton/RocketUpgrade3TreeButton" instance=ExtResource("6_ut5g0")]
+layout_mode = 0
 offset_left = 0.0
 offset_top = -37.0
 offset_right = 30.0
@@ -270,6 +273,7 @@ max_level = 5
 description = "- Rate of Fire +10%"
 
 [node name="RocketUpgrade34TreeButton" parent="UpgradeContainer/WeaponDisplay/RocketUnlockTreeButton/RocketUpgrade3TreeButton" instance=ExtResource("6_ut5g0")]
+layout_mode = 0
 offset_left = 0.0
 offset_top = 39.0
 offset_right = 30.0
@@ -324,6 +328,7 @@ max_level = 1
 description = "- Second Seeker"
 
 [node name="SeekerUpgrade314TreeButton" parent="UpgradeContainer/WeaponDisplay/SeekerUnlockTreeButton/SeekerUpgrade3TreeButton" instance=ExtResource("6_ut5g0")]
+layout_mode = 0
 offset_left = 49.0
 offset_top = 17.0
 offset_right = 79.0
@@ -398,6 +403,7 @@ max_level = 5
 description = "- Beam Size Increase"
 
 [node name="LaserUpgrade3TreeButton" parent="UpgradeContainer/WeaponDisplay/LaserUnlockTreeButton" instance=ExtResource("6_ut5g0")]
+layout_mode = 0
 offset_left = 20.0
 offset_top = 56.0
 offset_right = 50.0
@@ -407,6 +413,7 @@ max_level = 5
 description = "- Rate of Fire +10%"
 
 [node name="LaserUpgrade4TreeButton" parent="UpgradeContainer/WeaponDisplay/LaserUnlockTreeButton" instance=ExtResource("6_ut5g0")]
+layout_mode = 0
 offset_left = 20.0
 offset_top = -55.0
 offset_right = 50.0
@@ -471,6 +478,7 @@ max_level = 1
 description = "- 4x Damage Exiting, No Damage Entering"
 
 [node name="FieldUpgrade2TreeButton" parent="UpgradeContainer/WeaponDisplay/FieldUnlockTreeButton" instance=ExtResource("6_ut5g0")]
+layout_mode = 0
 offset_left = 51.0
 offset_top = -39.0
 offset_right = 81.0
@@ -480,6 +488,7 @@ max_level = 5
 description = "- Damage +10%"
 
 [node name="FieldUpgrade3TreeButton" parent="UpgradeContainer/WeaponDisplay/FieldUnlockTreeButton" instance=ExtResource("6_ut5g0")]
+layout_mode = 0
 offset_left = 51.0
 offset_top = 39.0
 offset_right = 81.0

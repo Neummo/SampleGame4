@@ -23,14 +23,16 @@ func shoot():
 	if !gun_switch:
 		return
 	while Values.seeker_gun_active_amount < amount and gun_timer.is_stopped() and is_instance_valid(player.closest_enemy):
+		var angle = global_position.direction_to(player.closest_enemy.global_position).angle() + 1.57079633
 		gun_timer.start()
 		await gun_timer.timeout
 		Values.seeker_gun_active_amount += 1
-		spawn_projectile()
+		spawn_projectile(angle)
 
-func spawn_projectile():
+func spawn_projectile(angle: float):
 	var projectile = load("res://Attacks/seeker.tscn")
 	var instance = projectile.instantiate()
+	instance.spawn_rotation = angle
 	instance.damage = damage
 	instance.speed = speed
 	instance.no_return = no_return
