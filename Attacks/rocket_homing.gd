@@ -77,7 +77,7 @@ func aoe_damage(impact_position: Vector2):
 	var query_results = physics_space_state.intersect_shape(physics_params)
 	for result in query_results:
 		var area = result.collider
-		if is_instance_valid(area) and not area.owner.dying and area is HitboxComponent and area.possesor == "Enemy":
+		if is_instance_valid(area) and area is HitboxComponent and area.possesor == "Enemy" and not area.owner.dying:
 			var attack: Attack = Attack.new()
 			attack.attack_damage = damage
 			area.damage(attack)

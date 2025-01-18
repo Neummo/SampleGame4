@@ -1,4 +1,5 @@
 extends Enemy
+class_name Enemy5
 
 @onready var directions: Array
 @onready var laser: EnemyAreaBeam = $Body/EnemyAreaBeam

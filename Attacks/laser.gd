@@ -52,10 +52,10 @@ func _physics_process(_delta: float) -> void:
 func aoe_damage(impact_position: Vector2):
 	range_indicator.spawn_position = aoe_shape.global_position
 	range_indicator.radius = Values.ult_gun_aoe_radius
-	range_indicator.width = 2.0
+	range_indicator.width = 3.0
 	range_indicator.draw_range_indicator()
 	var tween = create_tween()
-	tween.tween_property(range_indicator, "width", 0, clampf(Values.player_ult_gun_cooldown / 2, 0.1, 0.5))
+	tween.tween_property(range_indicator, "width", 0, clampf(Values.player_ult_gun_cooldown, 0.1, 0.3))
 	aoe.global_position = impact_position
 	
 	var physics_params: PhysicsShapeQueryParameters2D = PhysicsShapeQueryParameters2D.new()
@@ -90,13 +90,13 @@ func set_is_casting(cast: bool) -> void:
 func appear() -> void:
 	set_physics_process(true)
 	var tween = create_tween()
-	tween.tween_property(line, "width", 5.0, 0.1)
+	tween.tween_property(line, "width", 10.0, 0.1)
 	await tween.finished
 	set_is_casting(false)
 	
 func disappear() -> void:
 	var tween = create_tween()
-	tween.tween_property(line, "width", 0, clampf(Values.player_ult_gun_cooldown / 2, 0.1, 0.4))
+	tween.tween_property(line, "width", 0, clampf(Values.player_ult_gun_cooldown, 0.1, 0.2))
 	await tween.finished
 	set_physics_process(false)
 	damaged = false

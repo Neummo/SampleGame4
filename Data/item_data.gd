@@ -21,9 +21,9 @@ func load_data() -> Dictionary:
 				"1": {
 					"id": 1,
 					"title": "Plate",
-					"description": "Increases Damage Reduction +1",
+					"description": "Increases Damage Reduction +2",
 					"icon": "res://Assets/aaa.png",
-					"effect": func effect() -> void: Values.player_damage_reduction += 1,
+					"effect": func effect() -> void: Values.player_damage_reduction += 2,
 					"max": -1,
 					"hits": 0
 				},
@@ -155,6 +155,15 @@ func load_data() -> Dictionary:
 					"description": "Increases Currency Value +10%",
 					"icon": "res://Assets/kate2.png",
 					"effect": func effect() -> void: Values.currency_multiplier += 0.1,
+					"max": -1,
+					"hits": 0
+				},
+				"6": {
+					"id": 23,
+					"title": "Radar Extension",
+					"description": "Asteroid Radar Range +20",
+					"icon": "res://Assets/kate2.png",
+					"effect": func effect() -> void: Values.radar_range += 20.0,
 					"max": -1,
 					"hits": 0
 				},

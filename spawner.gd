@@ -19,6 +19,7 @@ var pm: Node2D
 var minutes: String
 var seconds: String
 var seconds_int: int
+var count: int = 1
 @onready var time_timer: Timer = $TimeTimer
 @onready var game_start_time: int = Time.get_ticks_msec()
 @onready var zones: Array = [
@@ -57,7 +58,7 @@ func draw_zones() -> void:
 	draw_zone_limit(first, 500)
 	for k in range(1, zones.size() - 1):
 		var line: Line2D = zones[k]
-		draw_zone_limit(line, k * 10000)
+		draw_zone_limit(line, k * 2000)
 
 func draw_zone_limit(line: Line2D, distance: float) -> void:
 	for i in range(0, 361):
@@ -85,20 +86,21 @@ func spawn_enemy(zone: int) -> void:
 		return
 	Values.enemy_acceleration = 100 + zone
 	Values.enemy_speed = 100 + zone
-	Values.enemy_health = int(floor(40 * zone / 2))
-	Values.enemy_damage = int(floor(2 * zone))
+	Values.enemy_health = int(floor(20 * zone))
+	Values.enemy_damage = zone
 	init_neutral(load("res://Neutral/asteroid.tscn"))
-	var viable_enemies: Array = []
-	viable_enemies.append("res://Enemies/enemy_1.tscn")
-	if zone >= 5:
-		viable_enemies.append("res://Enemies/enemy.tscn")
+	init_enemy(load("res://Enemies/enemy_1.tscn"))
+	if zone >= 5 and count % 2 == 0:
+		init_enemy(load("res://Enemies/enemy.tscn"))
 	if zone >= 10:
-		viable_enemies.append("res://Enemies/enemy_3.tscn")
-	if zone >= 20:
-		viable_enemies.append("res://Enemies/enemy_4.tscn")
-	if zone >= 30:
-		viable_enemies.append("res://Enemies/enemy_5.tscn")
-	init_enemy(load(viable_enemies.pick_random()))
+		init_enemy(load("res://Enemies/enemy_3.tscn"))
+	if zone >= 20 and count % 2 == 0:
+		init_enemy(load("res://Enemies/enemy_4.tscn"))
+	if zone >= 30 and count % 5 == 0:
+		init_enemy(load("res://Enemies/enemy_5.tscn"))
+	count += 1
+	if count > 5:
+		count = 1
 
 func init_enemy(enemy_scene: Resource) -> void:
 	var instance = enemy_scene.instantiate()
@@ -158,7 +160,7 @@ func _on_spawn_timer_timeout() -> void:
 	if distance < 500:
 		Values.zone = 0
 		return
-	var zone: int = int(floor(ceil(distance / 10000) + int(floor(Values.minutes_elapsed))))
+	var zone: int = int(floor(ceil(distance / 2000) + int(floor(Values.minutes_elapsed))))
 	spawn_enemy(zone)
 
 func _on_boss_timer_timeout() -> void:

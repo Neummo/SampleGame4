@@ -20,6 +20,7 @@ func _ready():
 
 func shoot():
 	for i in range(0, 3):
+		await get_tree().create_timer(0.5).timeout
 		var projectile = load("res://Attacks/enemy_rocket_homing.tscn")
 		var instance = projectile.instantiate()
 		instance.spawn_position = global_position + Vector2(5, 0).rotated(body.rotation)

@@ -30,13 +30,18 @@ func _ready():
 		health_bar.init_health(Values.enemy_health)
 
 func _physics_process(_delta):
-	if Values.radar_unlocked and cluster_lead and get_player_distance() < Values.radar_range and not cluster_leads.has(self):
+	despawn()
+	if not Values.radar_unlocked or not cluster_lead:
+		return
+	if get_player_distance() < Values.radar_range and not cluster_leads.has(self):
 		cluster_leads.append(self)
 		player.radar.draw_radar_indicator(self)
-	despawn()
+	elif get_player_distance() >= Values.radar_range and cluster_leads.has(self):
+		cluster_leads.erase(self)
+		player.radar.delete_radar_indicator(self)
 
 func despawn() -> void:
-	if get_player_distance() > 6000:
+	if get_player_distance() > 3000:
 		Values.neutral_count -= 1
 		cluster_leads.erase(self)
 		queue_free()

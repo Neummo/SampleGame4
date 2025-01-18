@@ -18,4 +18,4 @@ func damage(attack: Attack):
 			
 
 func _on_timer_timeout() -> void:
-	owner.max_speed = Values.player_max_speed
+	owner.max_speed = Values.player_max_speed * Values.player_max_speed_multiplier

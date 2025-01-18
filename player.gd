@@ -85,6 +85,7 @@ func _physics_process(delta):
 	if Input.is_action_just_pressed("money"):
 		progression_manager.get_currency(100000)
 		progression_manager.get_parts(100)
+		progression_manager.get_modules(1000)
 	if Input.is_action_just_pressed("switch_menu"):
 		progression_manager.switch_menu()
 	#if Input.is_action_just_pressed("dash") and Values.dash_unlocked:

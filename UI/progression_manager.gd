@@ -124,17 +124,17 @@ func _ready():
 	turret_unlock_button.set_properties(0, null, true)
 	turret_upgrade1_button.set_properties(5, null, true)
 	turret_upgrade11_button.set_properties(1, Values.mid_skill_prices, true)
-	turret_upgrade111_button.set_properties(10, null, true)
-	turret_upgrade211_button.set_properties(10, null, true)
-	turret_upgrade311_button.set_properties(10, null, true)
+	turret_upgrade111_button.set_properties(5, null, true)
+	turret_upgrade211_button.set_properties(5, null, true)
+	turret_upgrade311_button.set_properties(5, null, true)
 	turret_upgrade21_button.set_properties(1, Values.mid_skill_prices, true)
 	turret_upgrade31_button.set_properties(1, Values.mid_skill_prices, true)
 
 	rocket_unlock_button.set_properties(0, null, true)
 	rocket_upgrade3_button.set_properties(1, null, true)
-	rocket_upgrade31_button.set_properties(10, null, true)
+	rocket_upgrade31_button.set_properties(5, null, true)
 	rocket_upgrade311_button.set_properties(1, Values.mid_skill_prices, true)
-	rocket_upgrade32_button.set_properties(10, null, true)
+	rocket_upgrade32_button.set_properties(5, null, true)
 	rocket_upgrade321_button.set_properties(1, Values.mid_skill_prices, true)
 	rocket_upgrade33_button.set_properties(1, Values.mid_skill_prices, true)
 	rocket_upgrade34_button.set_properties(1, Values.mid_skill_prices, true)
@@ -149,17 +149,17 @@ func _ready():
 
 	field_unlock_button.set_properties(0, null, true)
 	field_upgrade1_button.set_properties(5, null, true)
-	field_upgrade11_button.set_properties(10, null, true)
-	field_upgrade12_button.set_properties(10, null, true)
-	field_upgrade13_button.set_properties(10, null, true)
+	field_upgrade11_button.set_properties(5, null, true)
+	field_upgrade12_button.set_properties(5, null, true)
+	field_upgrade13_button.set_properties(5, null, true)
 	field_upgrade2_button.set_properties(1, Values.mid_skill_prices, true)
 	field_upgrade3_button.set_properties(1, Values.mid_skill_prices, true)
 
 	seeker_unlock_button.set_properties(0, null, true)
-	seeker_upgrade3_button.set_properties(5, null, true)
+	seeker_upgrade3_button.set_properties(3, null, true)
 	seeker_upgrade313_button.set_properties(1, Values.mid_skill_prices, true)
-	seeker_upgrade311_button.set_properties(10, null, true)
-	seeker_upgrade312_button.set_properties(10, null, true)
+	seeker_upgrade311_button.set_properties(5, null, true)
+	seeker_upgrade312_button.set_properties(5, null, true)
 	seeker_upgrade314_button.set_properties(1, Values.mid_skill_prices, true)
 
 	base_damage.set_properties(5, Values.base_skill_prices)
@@ -320,7 +320,7 @@ func _on_seeker_unlock_tree_button_pressed() -> void:
 	Values.seeker_gun_unlocked = true
 	select_skill(seeker_unlock_button)
 func _on_seeker_upgrade_3_tree_button_pressed() -> void:
-	Values.seeker_gun_speed *= 2
+	Values.seeker_gun_speed *= 1.3
 	select_skill(seeker_upgrade3_button)
 func _on_seeker_upgrade_313_tree_button_pressed() -> void:
 	Values.seeker_gun_damage = int(floor(Values.seeker_gun_damage * 1.1))

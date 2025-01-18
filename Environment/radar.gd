@@ -12,3 +12,8 @@ func draw_radar_indicator(asteroid: CharacterBody2D):
 	sprite.asteroid = asteroid
 	sprite.set_visible(true)
 	add_child(sprite)
+
+func delete_radar_indicator(asteroid: CharacterBody2D):
+	for child in get_children():
+		if child is Sprite2D and child.asteroid == asteroid:
+			child.queue_free()

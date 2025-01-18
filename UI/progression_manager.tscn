@@ -305,7 +305,7 @@ offset_right = 81.0
 offset_bottom = 30.0
 disabled = true
 max_level = 1
-description = "- Double Base Projectile Speed"
+description = "- Base Projectile Speed +30%"
 
 [node name="SeekerUpgrade313TreeButton" parent="UpgradeContainer/WeaponDisplay/SeekerUnlockTreeButton/SeekerUpgrade3TreeButton" instance=ExtResource("6_ut5g0")]
 layout_mode = 0
@@ -756,6 +756,7 @@ offset_bottom = 311.0
 mouse_filter = 2
 
 [node name="Bounty" type="TextureButton" parent="UpgradeContainer" groups=["BountyButton"]]
+process_mode = 3
 layout_mode = 0
 offset_left = 536.0
 offset_top = -35.0

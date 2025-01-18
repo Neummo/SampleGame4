@@ -13,7 +13,7 @@ specular_texture = SubResource("NoiseTexture2D_it728")
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_bifld"]
 size = Vector2(5, 15)
 
-[sub_resource type="Curve" id="Curve_mhe4n"]
+[sub_resource type="Curve" id="Curve_y53ll"]
 resource_local_to_scene = true
 _data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
 point_count = 2
@@ -40,7 +40,7 @@ position = Vector2(0, 7)
 
 [node name="MoveTrail" parent="Trail" instance=ExtResource("3_g1x61")]
 points = PackedVector2Array(0, 0)
-width_curve = SubResource("Curve_mhe4n")
+width_curve = SubResource("Curve_y53ll")
 default_color = Color(1, 0, 0, 1)
 length = 10
 

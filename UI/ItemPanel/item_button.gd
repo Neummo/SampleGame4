@@ -33,7 +33,7 @@ func get_card() -> Dictionary:
 	
 func get_rarity() -> int:
 	var roll: float = randf()
-	if roll <= 0.05:
+	if roll <= 0.03:
 		return 2
 	elif roll <= 0.2:
 		return 1

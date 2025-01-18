@@ -15,7 +15,7 @@ func _ready():
 
 func update_stats() -> void:
 	amount = Values.seeker_gun_amount
-	speed = Values.seeker_gun_speed * Values.projectile_speed_modifier
+	speed =  Values.seeker_gun_speed * (0.8 + (0.2 * Values.projectile_speed_modifier))
 	damage = Values.seeker_gun_damage
 	no_return = Values.seeker_gun_no_return_unlocked
 	

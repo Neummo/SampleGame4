@@ -65,6 +65,8 @@ func arrive(delta: float) -> void:
 
 func die() -> void:
 	dying = true
+	if self is Enemy5 and is_instance_valid(self.laser.laser_tween):
+		self.laser.stop_tweens()
 	sprite.set_visible(false)
 	if is_instance_valid(shoot_timer):
 		shoot_timer.stop()

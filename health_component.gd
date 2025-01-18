@@ -88,7 +88,7 @@ func spawn_item() -> bool:
 
 func spawn_module() -> bool:
 	if Values.module_spawn_chance >= randf():
-		Values.module_spawn_chance = maxf(0.01, Values.module_spawn_chance - 0.001)
+		Values.module_spawn_chance = maxf(0.01, Values.module_spawn_chance - 0.002)
 		return true
 	return false
 

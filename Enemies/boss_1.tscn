@@ -20,12 +20,12 @@ shader_parameter/flash_value = 0.0
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_h40vo"]
 size = Vector2(264, 214)
 
-[sub_resource type="Curve" id="Curve_k6jny"]
+[sub_resource type="Curve" id="Curve_8v6sp"]
 resource_local_to_scene = true
 _data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
 point_count = 2
 
-[sub_resource type="Curve" id="Curve_q5nlu"]
+[sub_resource type="Curve" id="Curve_0j4l6"]
 resource_local_to_scene = true
 _data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
 point_count = 2
@@ -171,7 +171,7 @@ position = Vector2(-79, -102)
 
 [node name="MoveTrail" parent="Body/LeftWing" instance=ExtResource("9_s3pec")]
 z_index = -1
-width_curve = SubResource("Curve_k6jny")
+width_curve = SubResource("Curve_8v6sp")
 length = 20
 
 [node name="RightWing" type="Node2D" parent="Body"]
@@ -179,7 +179,7 @@ position = Vector2(-80, 106)
 
 [node name="MoveTrail" parent="Body/RightWing" instance=ExtResource("9_s3pec")]
 z_index = -1
-width_curve = SubResource("Curve_q5nlu")
+width_curve = SubResource("Curve_0j4l6")
 length = 20
 
 [node name="Death" type="AnimatedSprite2D" parent="Body"]
