@@ -61,6 +61,7 @@ func damage_enemy(area: Area2D, multiplier: int) -> void:
 		var hitbox: HitboxComponent = area
 		var attack: Attack = Attack.new()
 		attack.attack_damage = damage * multiplier
+		attack.attack_type = "Energy"
 		hitbox.damage(attack)
 
 func _on_area_entered(area: Area2D) -> void:

@@ -3,7 +3,6 @@ class_name BigUpgradeTreeButton
 
 @export var price_label: Label
 @export var max_level: int
-@onready var panel: Panel = $Panel
 @onready var label: Label = $MarginContainer/Label
 @onready var line: Line2D = $Line2D
 @export var description: String
@@ -15,6 +14,8 @@ var prices
 var maxed: bool = false
 var modules: bool = false
 var currency
+var icon_path: String
+
 var level: int = 0:
 	set(value):
 		level = value
@@ -66,14 +67,18 @@ func on_select() -> void:
 		lock("Max upgrades")
 
 func lock(_new_label_text: String) -> void:
+	set_texture_disabled(ResourceLoader.load("res://Assets/icons/selected/" + icon_path + ".png/")) 
 	maxed = true
 	price_label.set_text("")
 	set_disabled(true)
 
-func set_properties(_price: int, _prices, mod: bool = false) -> void:
+func set_properties(_price: int, icon: String, _prices, mod: bool = false) -> void:
 	modules = mod
 	price = _price
 	prices = _prices
+	icon_path = icon
+	set_texture_disabled(ResourceLoader.load("res://Assets/icons/locked/" + icon_path + ".png/"))
+	set_texture_normal(ResourceLoader.load("res://Assets/icons/unselected/" + icon_path + ".png/")) 
 	if price == 0:
 		price_label.set_text("")
 	else:
@@ -81,9 +86,7 @@ func set_properties(_price: int, _prices, mod: bool = false) -> void:
 
 func _on_pressed() -> void:
 	level = min(level + 1, max_level)
-	panel.show_behind_parent = true
-	line.default_color = Color(1, 1, 1)
-	
+	line.default_color = Color8(255, 240, 153)
 	var skills = get_children()
 	for skill in skills:
 		if skill is BigUpgradeTreeButton and level == max_level:
@@ -91,7 +94,7 @@ func _on_pressed() -> void:
 
 func _on_mouse_entered() -> void:
 	if unlocked:
-		description_panel.set_text(description)
+		description_panel.set_text(Values.btify_text(description))
 
 func _on_mouse_exited() -> void:
 	description_panel.set_text("")

@@ -1,17 +1,69 @@
-[gd_scene load_steps=2 format=3 uid="uid://cpo6m1qd1idg2"]
+[gd_scene load_steps=5 format=3 uid="uid://cpo6m1qd1idg2"]
 
 [ext_resource type="Script" path="res://UI/OnScreenInfo/item_list.gd" id="1_qa28a"]
+
+[sub_resource type="StyleBoxLine" id="StyleBoxLine_v7lpe"]
+color = Color(0.415686, 0.6, 0.305882, 1)
+grow_begin = 0.0
+grow_end = 0.0
+vertical = true
+
+[sub_resource type="StyleBoxLine" id="StyleBoxLine_l71fd"]
+color = Color(0.196078, 0.458824, 0.917647, 1)
+grow_begin = 0.0
+grow_end = 0.0
+vertical = true
+
+[sub_resource type="StyleBoxLine" id="StyleBoxLine_fkv22"]
+color = Color(1, 0.792157, 0.227451, 1)
+grow_begin = 0.0
+grow_end = 0.0
+vertical = true
 
 [node name="ItemList" type="Control"]
 layout_mode = 3
 anchors_preset = 0
-offset_left = 2.0
-offset_top = -13.0
-offset_right = 324.0
-offset_bottom = 18.0
+offset_right = 322.0
+offset_bottom = 20.0
 script = ExtResource("1_qa28a")
 
-[node name="List" type="HBoxContainer" parent="."]
+[node name="List1" type="HBoxContainer" parent="."]
+layout_direction = 3
 layout_mode = 0
-offset_right = 64.0
-offset_bottom = 23.0
+offset_left = -317.0
+offset_right = -317.0
+offset_bottom = 16.0
+theme_override_constants/separation = 1
+
+[node name="Line1" type="Panel" parent="List1"]
+visible = false
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxLine_v7lpe")
+
+[node name="List2" type="HBoxContainer" parent="."]
+layout_direction = 3
+layout_mode = 0
+offset_left = -317.0
+offset_top = 20.0
+offset_right = -317.0
+offset_bottom = 36.0
+theme_override_constants/separation = 1
+
+[node name="Line2" type="Panel" parent="List2"]
+visible = false
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxLine_l71fd")
+
+[node name="List3" type="HBoxContainer" parent="."]
+layout_direction = 3
+layout_mode = 0
+offset_left = -317.0
+offset_top = 40.0
+offset_right = -317.0
+offset_bottom = 56.0
+theme_override_constants/separation = 1
+
+[node name="Line3" type="Panel" parent="List3"]
+visible = false
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxLine_fkv22")

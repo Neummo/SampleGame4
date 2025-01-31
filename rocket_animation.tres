@@ -1,0 +1,46 @@
+[gd_resource type="SpriteFrames" load_steps=7 format=3 uid="uid://cvqi7nbf58ies"]
+
+[ext_resource type="Texture2D" uid="uid://cx3l5mh2oa71i" path="res://Assets/attacks/rocket.png" id="1_gpqh1"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2nc7v"]
+atlas = ExtResource("1_gpqh1")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_41puv"]
+atlas = ExtResource("1_gpqh1")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_j23gy"]
+atlas = ExtResource("1_gpqh1")
+region = Rect2(0, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pcy6m"]
+atlas = ExtResource("1_gpqh1")
+region = Rect2(16, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_x3y5g"]
+atlas = ExtResource("1_gpqh1")
+region = Rect2(0, 32, 16, 16)
+
+[resource]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2nc7v")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_41puv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_j23gy")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pcy6m")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_x3y5g")
+}],
+"loop": true,
+"name": &"default",
+"speed": 6.0
+}]

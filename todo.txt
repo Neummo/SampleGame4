@@ -58,3 +58,21 @@ less asteroids (FIXED)
 zones closer (FIXED)
 less chance for big items (FIXED)
 bounty position not updating (FIXED)
+
+asteroid hide death (FIXED)
+player die bug 
+sprite for seeker (FIXED)
+bounty currency not updating (FIXED)
+
+background tweaks (FIXED)
+threat increase tweaks (FIXED)
+zone lines ? (FIXED)
+item ux (FIXED)
+colored descriptions (FIXED)
+
+
+
+CREDITS:
+	The Leafy Lemur @ OpenGameArt.org (asteroid)
+	Deep-Fold @ itch.io (planets)
+	(background)

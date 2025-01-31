@@ -1,20 +1,22 @@
-[gd_scene load_steps=4 format=3 uid="uid://blbeuc7e7bpfx"]
+[gd_scene load_steps=5 format=3 uid="uid://blbeuc7e7bpfx"]
 
 [ext_resource type="Script" path="res://Pickups/module.gd" id="1_7yu30"]
-[ext_resource type="Texture2D" uid="uid://b3py2keg6rnhx" path="res://Assets/glowing_circle.png" id="2_e2rpo"]
+[ext_resource type="Material" uid="uid://b4d1gvp1222f1" path="res://smooth.tres" id="2_1uep6"]
+[ext_resource type="Texture2D" uid="uid://bi33t0mbnu5w4" path="res://Assets/picks/07.png" id="3_51vjv"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_tdly8"]
-size = Vector2(6, 6)
+size = Vector2(4, 4)
 
 [node name="Module" type="Area2D"]
-modulate = Color(0.851789, 0.886484, 0.184633, 1)
 collision_layer = 2
 collision_mask = 2
 script = ExtResource("1_7yu30")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-scale = Vector2(0.20339, 0.20339)
-texture = ExtResource("2_e2rpo")
+texture_filter = 2
+material = ExtResource("2_1uep6")
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("3_51vjv")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_tdly8")

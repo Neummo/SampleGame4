@@ -1,19 +1,15 @@
 [gd_scene load_steps=8 format=3 uid="uid://eqepyc06y8ey"]
 
 [ext_resource type="Script" path="res://Attacks/rocket.gd" id="1_i4ptm"]
+[ext_resource type="Material" uid="uid://b4d1gvp1222f1" path="res://smooth.tres" id="2_gwnld"]
 [ext_resource type="Script" path="res://Attacks/Components/attack_area.gd" id="2_kthkf"]
 [ext_resource type="PackedScene" uid="uid://b58vw44glay4i" path="res://Environment/move_trail.tscn" id="3_h3fvp"]
-
-[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_584wa"]
-
-[sub_resource type="CanvasTexture" id="CanvasTexture_13rs4"]
-resource_local_to_scene = true
-specular_texture = SubResource("NoiseTexture2D_584wa")
+[ext_resource type="Texture2D" uid="uid://cx3l5mh2oa71i" path="res://Assets/attacks/rocket.png" id="3_q516d"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_t8834"]
-size = Vector2(5, 15)
+size = Vector2(8, 4)
 
-[sub_resource type="Curve" id="Curve_amcfc"]
+[sub_resource type="Curve" id="Curve_m2tch"]
 resource_local_to_scene = true
 _data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
 point_count = 2
@@ -23,8 +19,10 @@ collision_layer = 4
 script = ExtResource("1_i4ptm")
 
 [node name="Sprite" type="Sprite2D" parent="."]
-scale = Vector2(5, 15)
-texture = SubResource("CanvasTexture_13rs4")
+texture_filter = 2
+material = ExtResource("2_gwnld")
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("3_q516d")
 
 [node name="AttackArea" type="Area2D" parent="." node_paths=PackedStringArray("projectile")]
 collision_layer = 4
@@ -32,13 +30,17 @@ script = ExtResource("2_kthkf")
 projectile = NodePath("..")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="AttackArea"]
+position = Vector2(0, 2)
 shape = SubResource("RectangleShape2D_t8834")
 
 [node name="Trail" type="Node2D" parent="."]
-position = Vector2(0, 7)
+position = Vector2(0, 3)
 
 [node name="MoveTrail" parent="Trail" instance=ExtResource("3_h3fvp")]
 points = PackedVector2Array(0, 0)
-width_curve = SubResource("Curve_amcfc")
+width = 2.0
+width_curve = SubResource("Curve_m2tch")
+default_color = Color(1, 0.952941, 0.678431, 1)
+length = 20
 
 [connection signal="area_entered" from="AttackArea" to="AttackArea" method="_on_area_entered"]

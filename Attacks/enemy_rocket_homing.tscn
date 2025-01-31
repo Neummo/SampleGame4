@@ -1,19 +1,15 @@
 [gd_scene load_steps=8 format=3 uid="uid://dmn85ftastrmo"]
 
 [ext_resource type="Script" path="res://Attacks/enemy_rocket_homing.gd" id="1_d6emv"]
+[ext_resource type="Material" uid="uid://b4d1gvp1222f1" path="res://smooth.tres" id="2_k8vgc"]
 [ext_resource type="Script" path="res://Attacks/Components/attack_area.gd" id="2_mtduv"]
 [ext_resource type="PackedScene" uid="uid://b58vw44glay4i" path="res://Environment/move_trail.tscn" id="3_g1x61"]
-
-[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_it728"]
-
-[sub_resource type="CanvasTexture" id="CanvasTexture_44sr6"]
-resource_local_to_scene = true
-specular_texture = SubResource("NoiseTexture2D_it728")
+[ext_resource type="Texture2D" uid="uid://043k60gt6xju" path="res://Assets/attacks/enemy_rocket.png" id="3_q00tm"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_bifld"]
-size = Vector2(5, 15)
+size = Vector2(8, 4)
 
-[sub_resource type="Curve" id="Curve_y53ll"]
+[sub_resource type="Curve" id="Curve_kg4i2"]
 resource_local_to_scene = true
 _data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
 point_count = 2
@@ -22,9 +18,10 @@ point_count = 2
 script = ExtResource("1_d6emv")
 
 [node name="Sprite" type="Sprite2D" parent="."]
-self_modulate = Color(1, 0, 0, 1)
-scale = Vector2(5, 15)
-texture = SubResource("CanvasTexture_44sr6")
+texture_filter = 2
+material = ExtResource("2_k8vgc")
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("3_q00tm")
 
 [node name="AttackArea" type="Area2D" parent="." node_paths=PackedStringArray("projectile")]
 collision_layer = 4
@@ -33,15 +30,17 @@ script = ExtResource("2_mtduv")
 projectile = NodePath("..")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="AttackArea"]
+position = Vector2(0, 2)
 shape = SubResource("RectangleShape2D_bifld")
 
 [node name="Trail" type="Node2D" parent="."]
-position = Vector2(0, 7)
+position = Vector2(0, 2)
 
 [node name="MoveTrail" parent="Trail" instance=ExtResource("3_g1x61")]
 points = PackedVector2Array(0, 0)
-width_curve = SubResource("Curve_y53ll")
-default_color = Color(1, 0, 0, 1)
+width = 2.0
+width_curve = SubResource("Curve_kg4i2")
+default_color = Color(0.752941, 0.262745, 0.207843, 1)
 length = 10
 
 [node name="Lifespan" type="Timer" parent="."]

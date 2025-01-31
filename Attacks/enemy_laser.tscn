@@ -76,7 +76,7 @@ beam_particles = NodePath("BeamParticles")
 points = PackedVector2Array(0, 0, 24, 0)
 width = 15.0
 width_curve = SubResource("Curve_kk88v")
-default_color = Color(0.980392, 0, 0.235294, 1)
+default_color = Color(0.752941, 0.262745, 0.207843, 1)
 
 [node name="CastingParticles" type="GPUParticles2D" parent="."]
 emitting = false

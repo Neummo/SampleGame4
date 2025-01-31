@@ -1,0 +1,33 @@
+[gd_scene load_steps=6 format=3 uid="uid://dch8nj6rfojrx"]
+
+[ext_resource type="Material" uid="uid://b4d1gvp1222f1" path="res://smooth.tres" id="1_08c18"]
+[ext_resource type="Texture2D" uid="uid://cbtybct2pi1cu" path="res://Assets/planets/base.png" id="1_lt8mf"]
+[ext_resource type="Script" path="res://Neutral/planet.gd" id="2_437rv"]
+[ext_resource type="PackedScene" uid="uid://cg200evxgwx7b" path="res://Environment/range_indicator.tscn" id="3_7lsns"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_3vnri"]
+radius = 50.3587
+
+[node name="Planet" type="Sprite2D"]
+z_index = -1
+texture_filter = 2
+material = ExtResource("1_08c18")
+texture = ExtResource("1_lt8mf")
+script = ExtResource("2_437rv")
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("CircleShape2D_3vnri")
+
+[node name="RangeIndicator" parent="." instance=ExtResource("3_7lsns")]
+width = 10.0
+default_color = Color(0.415686, 0.6, 0.305882, 1)
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 0.1
+one_shot = true
+
+[connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]
+[connection signal="area_exited" from="Area2D" to="." method="_on_area_2d_area_exited"]

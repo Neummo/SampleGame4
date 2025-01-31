@@ -6,8 +6,11 @@ var already_hit: bool = false
 func _on_area_entered(area):
 	if area is HitboxComponent:
 		if projectile.target == area.possesor:
-			if already_hit and projectile is not Seeker:
-				return
+			if already_hit:
+				if projectile is not Seeker and projectile is not LaserProjectile:
+					return
+				if projectile is LaserProjectile and not Values.turret_calliber_upgrade_unlocked:
+					return
 			if projectile is RocketHoming and projectile.is_aoe:
 				projectile.aoe_damage(projectile.global_position)
 				projectile.set_physics_process(false)
@@ -18,10 +21,15 @@ func _on_area_entered(area):
 			else:
 				var hitbox: HitboxComponent = area
 				var attack: Attack = Attack.new()
+				attack.attack_type = projectile.attack_type
 				attack.attack_damage = projectile.damage
 				hitbox.damage(attack)
 				already_hit = true
 				if projectile is Seeker:
+					return
+				if projectile is LaserProjectile and Values.turret_calliber_upgrade_unlocked:
+					projectile.homing = false
+					already_hit
 					return
 				projectile.queue_free()
 		else:

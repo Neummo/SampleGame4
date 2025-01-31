@@ -1,10 +1,9 @@
-[gd_scene load_steps=13 format=3 uid="uid://1370ehbnvt4b"]
+[gd_scene load_steps=12 format=3 uid="uid://1370ehbnvt4b"]
 
 [ext_resource type="Script" path="res://Attacks/area_beam.gd" id="1_7yssc"]
-[ext_resource type="Texture2D" uid="uid://dwvibgl671con" path="res://Assets/white.png" id="2_64aky"]
 
 [sub_resource type="Curve" id="Curve_n04aj"]
-_data = [Vector2(0, 0.678682), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+_data = [Vector2(0, 0.186813), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
 point_count = 2
 
 [sub_resource type="Gradient" id="Gradient_me00n"]
@@ -66,20 +65,20 @@ shape = NodePath("CollisionShape2D")
 [node name="Line2D" type="Line2D" parent="."]
 points = PackedVector2Array(0, 0, 10, 0)
 width_curve = SubResource("Curve_n04aj")
-default_color = Color(1, 0.964706, 1, 1)
+default_color = Color(1, 0.976471, 0.839216, 1)
 
 [node name="CastingParticles" type="GPUParticles2D" parent="."]
+visible = false
 emitting = false
 amount = 16
 process_material = SubResource("ParticleProcessMaterial_abwx2")
-texture = ExtResource("2_64aky")
 lifetime = 0.3
 
 [node name="BeamParticles" type="GPUParticles2D" parent="."]
+visible = false
 emitting = false
 amount = 164
 process_material = SubResource("ParticleProcessMaterial_yjfua")
-texture = ExtResource("2_64aky")
 lifetime = 0.3
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]

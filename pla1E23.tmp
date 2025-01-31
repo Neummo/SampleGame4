@@ -1,0 +1,434 @@
+[gd_scene load_steps=58 format=3 uid="uid://70snqg3xty42"]
+
+[ext_resource type="Script" path="res://player.gd" id="1_b6t1o"]
+[ext_resource type="PackedScene" uid="uid://cg200evxgwx7b" path="res://Environment/range_indicator.tscn" id="2_cibuv"]
+[ext_resource type="Shader" path="res://Shaders/damageFlash.gdshader" id="2_h3i2p"]
+[ext_resource type="PackedScene" uid="uid://celisoatyrp7p" path="res://Attacks/area_field.tscn" id="3_8nvpr"]
+[ext_resource type="Script" path="res://health_component.gd" id="3_mv8ni"]
+[ext_resource type="PackedScene" uid="uid://cgwxiecqthwj2" path="res://Environment/radar.tscn" id="3_sx33q"]
+[ext_resource type="PackedScene" uid="uid://cah7g18jq4v2f" path="res://Guns/seeker_gun.tscn" id="4_0kn3o"]
+[ext_resource type="Script" path="res://hitbox_component.gd" id="4_2d3ll"]
+[ext_resource type="PackedScene" uid="uid://b58vw44glay4i" path="res://Environment/move_trail.tscn" id="5_1rq2q"]
+[ext_resource type="PackedScene" uid="uid://3se37hf2b3nl" path="res://damage_flash_player.tscn" id="5_phtlw"]
+[ext_resource type="PackedScene" uid="uid://c4xqvl6jfb7d0" path="res://Guns/melee_gun.tscn" id="9_4b7n7"]
+[ext_resource type="PackedScene" uid="uid://cuid0d5mm6d8u" path="res://Guns/ranged_gun.tscn" id="10_peajn"]
+[ext_resource type="Texture2D" uid="uid://bc4y4o8dkx05x" path="res://Assets/char_07.png" id="10_tlpt8"]
+[ext_resource type="PackedScene" uid="uid://cegx3mkaarwf6" path="res://Guns/big_gun.tscn" id="11_nhf5f"]
+[ext_resource type="Material" uid="uid://b4d1gvp1222f1" path="res://smooth.tres" id="12_rgefh"]
+[ext_resource type="Texture2D" uid="uid://nkn4lq4wysb8" path="res://Assets/charging_return.png" id="15_vtfyh"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_n21ry"]
+radius = 5000.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_2q0kj"]
+radius = 5000.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_miqcf"]
+resource_local_to_scene = true
+shader = ExtResource("2_h3i2p")
+shader_parameter/flash_color = Color(1, 1, 1, 1)
+shader_parameter/flash_value = 0.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3idnx"]
+size = Vector2(14, 16)
+
+[sub_resource type="Curve" id="Curve_b23p8"]
+resource_local_to_scene = true
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Curve" id="Curve_fcqis"]
+resource_local_to_scene = true
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_oktun"]
+atlas = ExtResource("15_vtfyh")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_i81n4"]
+atlas = ExtResource("15_vtfyh")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_thwgn"]
+atlas = ExtResource("15_vtfyh")
+region = Rect2(128, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7cb2f"]
+atlas = ExtResource("15_vtfyh")
+region = Rect2(192, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_okaok"]
+atlas = ExtResource("15_vtfyh")
+region = Rect2(256, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hhuob"]
+atlas = ExtResource("15_vtfyh")
+region = Rect2(0, 64, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wifht"]
+atlas = ExtResource("15_vtfyh")
+region = Rect2(64, 64, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ulqqt"]
+atlas = ExtResource("15_vtfyh")
+region = Rect2(128, 64, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_am366"]
+atlas = ExtResource("15_vtfyh")
+region = Rect2(192, 64, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_d18eu"]
+atlas = ExtResource("15_vtfyh")
+region = Rect2(256, 64, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_c8cfn"]
+atlas = ExtResource("15_vtfyh")
+region = Rect2(0, 128, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_u6xrh"]
+atlas = ExtResource("15_vtfyh")
+region = Rect2(64, 128, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ff37n"]
+atlas = ExtResource("15_vtfyh")
+region = Rect2(128, 128, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1c6u5"]
+atlas = ExtResource("15_vtfyh")
+region = Rect2(192, 128, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4ixu2"]
+atlas = ExtResource("15_vtfyh")
+region = Rect2(256, 128, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_uvaxm"]
+atlas = ExtResource("15_vtfyh")
+region = Rect2(0, 192, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1y3ck"]
+atlas = ExtResource("15_vtfyh")
+region = Rect2(64, 192, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_om3vx"]
+atlas = ExtResource("15_vtfyh")
+region = Rect2(128, 192, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6lhr8"]
+atlas = ExtResource("15_vtfyh")
+region = Rect2(192, 192, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_or1g0"]
+atlas = ExtResource("15_vtfyh")
+region = Rect2(256, 192, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yeaf7"]
+atlas = ExtResource("15_vtfyh")
+region = Rect2(0, 256, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bq1dq"]
+atlas = ExtResource("15_vtfyh")
+region = Rect2(64, 256, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hbm8n"]
+atlas = ExtResource("15_vtfyh")
+region = Rect2(128, 256, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ibq0i"]
+atlas = ExtResource("15_vtfyh")
+region = Rect2(192, 256, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4ln85"]
+atlas = ExtResource("15_vtfyh")
+region = Rect2(256, 256, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_05jkd"]
+atlas = ExtResource("15_vtfyh")
+region = Rect2(0, 320, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pjd22"]
+atlas = ExtResource("15_vtfyh")
+region = Rect2(64, 320, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_srvqi"]
+atlas = ExtResource("15_vtfyh")
+region = Rect2(128, 320, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_u76ns"]
+atlas = ExtResource("15_vtfyh")
+region = Rect2(192, 320, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_j75ps"]
+atlas = ExtResource("15_vtfyh")
+region = Rect2(256, 320, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rxaoa"]
+atlas = ExtResource("15_vtfyh")
+region = Rect2(192, 192, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_00mgk"]
+atlas = ExtResource("15_vtfyh")
+region = Rect2(64, 192, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vc5ar"]
+atlas = ExtResource("15_vtfyh")
+region = Rect2(0, 256, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wakai"]
+atlas = ExtResource("15_vtfyh")
+region = Rect2(256, 128, 64, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_7cygd"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_oktun")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_i81n4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_thwgn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7cb2f")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_okaok")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hhuob")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wifht")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ulqqt")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_am366")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_d18eu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_c8cfn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_u6xrh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ff37n")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1c6u5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4ixu2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_uvaxm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1y3ck")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_om3vx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6lhr8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_or1g0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yeaf7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bq1dq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hbm8n")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ibq0i")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4ln85")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_05jkd")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pjd22")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_srvqi")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_u76ns")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_j75ps")
+}],
+"loop": false,
+"name": &"charging",
+"speed": 10.0
+}, {
+"frames": [],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rxaoa")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_00mgk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vc5ar")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wakai")
+}],
+"loop": true,
+"name": &"returning",
+"speed": 10.0
+}]
+
+[node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("health", "body", "melee_gun", "melee_gun2", "melee_gun3", "seeker_gun", "ranged_gun", "big_gun", "area_field", "rng", "range_indicator", "radar", "range_shape", "camera", "return_trail") groups=["Player"]]
+collision_layer = 2
+motion_mode = 1
+script = ExtResource("1_b6t1o")
+health = NodePath("HealthComponent")
+body = NodePath("Body")
+melee_gun = NodePath("Body/MeleeGun")
+melee_gun2 = NodePath("Body/MeleeGun2")
+melee_gun3 = NodePath("Body/MeleeGun3")
+seeker_gun = NodePath("SeekerGun")
+ranged_gun = NodePath("RangedGun")
+big_gun = NodePath("BigGun")
+area_field = NodePath("AreaField")
+rng = NodePath("Range")
+range_indicator = NodePath("RangeIndicator")
+radar = NodePath("Radar")
+range_shape = NodePath("Range/CollisionShape2D")
+camera = NodePath("Camera2D")
+return_trail = NodePath("Body/ReturnAnimator/ReturnTrail")
+
+[node name="HealthComponent" type="Node2D" parent="." node_paths=PackedStringArray("damage_flash_player", "inner_sprite")]
+script = ExtResource("3_mv8ni")
+possesor = "Player"
+damage_flash_player = NodePath("../Body/Sprite2/DamageFlashPlayer")
+inner_sprite = NodePath("../Body/Sprite2")
+
+[node name="ReturnTimer" type="Timer" parent="."]
+wait_time = 3.0
+one_shot = true
+
+[node name="Radar" parent="." instance=ExtResource("3_sx33q")]
+
+[node name="RangeIndicator" parent="." instance=ExtResource("2_cibuv")]
+default_color = Color(1, 0.964706, 0.760784, 1)
+
+[node name="Camera2D" type="Camera2D" parent="."]
+process_callback = 0
+limit_smoothed = true
+position_smoothing_enabled = true
+position_smoothing_speed = 10.0
+editor_draw_limits = true
+editor_draw_drag_margin = true
+
+[node name="AreaField" parent="." instance=ExtResource("3_8nvpr")]
+
+[node name="SeekerGun" parent="." instance=ExtResource("4_0kn3o")]
+
+[node name="RangedGun" parent="." instance=ExtResource("10_peajn")]
+
+[node name="BigGun" parent="." instance=ExtResource("11_nhf5f")]
+
+[node name="VisibleRange" type="Area2D" parent="."]
+collision_mask = 15
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="VisibleRange"]
+shape = SubResource("CircleShape2D_n21ry")
+
+[node name="Range" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Range"]
+shape = SubResource("CircleShape2D_2q0kj")
+
+[node name="Body" type="Node2D" parent="."]
+
+[node name="Sprite" type="Sprite2D" parent="Body"]
+texture_filter = 2
+material = ExtResource("12_rgefh")
+texture = ExtResource("10_tlpt8")
+
+[node name="Sprite2" type="Sprite2D" parent="Body"]
+visible = false
+material = SubResource("ShaderMaterial_miqcf")
+texture = ExtResource("10_tlpt8")
+
+[node name="DamageFlashPlayer" parent="Body/Sprite2" instance=ExtResource("5_phtlw")]
+
+[node name="HitboxComponent" type="Area2D" parent="Body" node_paths=PackedStringArray("health_component")]
+collision_layer = 2
+collision_mask = 3
+script = ExtResource("4_2d3ll")
+health_component = NodePath("../../HealthComponent")
+possesor = "Player"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Body/HitboxComponent"]
+shape = SubResource("RectangleShape2D_3idnx")
+
+[node name="Timer" type="Timer" parent="Body/HitboxComponent"]
+wait_time = 0.1
+one_shot = true
+
+[node name="LeftWing" type="Node2D" parent="Body"]
+position = Vector2(-5, -6)
+
+[node name="MoveTrail" parent="Body/LeftWing" instance=ExtResource("5_1rq2q")]
+z_index = -1
+width = 2.0
+width_curve = SubResource("Curve_b23p8")
+length = 20
+
+[node name="RightWing" type="Node2D" parent="Body"]
+position = Vector2(-5, 6)
+
+[node name="MoveTrail" parent="Body/RightWing" instance=ExtResource("5_1rq2q")]
+z_index = -1
+width = 2.0
+width_curve = SubResource("Curve_fcqis")
+length = 20
+
+[node name="ReturnAnimator" type="AnimatedSprite2D" parent="Body"]
+position = Vector2(-8, 2.84217e-14)
+scale = Vector2(0.34375, 0.34375)
+sprite_frames = SubResource("SpriteFrames_7cygd")
+animation = &"charging"
+
+[node name="ReturnTrail" parent="Body/ReturnAnimator" instance=ExtResource("5_1rq2q")]
+position = Vector2(0, 1.03352e-14)
+scale = Vector2(2.90909, 2.90909)
+width = 10.0
+
+[node name="MeleeGun" parent="Body" instance=ExtResource("9_4b7n7")]
+position = Vector2(6, 0)
+
+[node name="MeleeGun2" parent="Body" instance=ExtResource("9_4b7n7")]
+position = Vector2(0, -7)
+
+[node name="MeleeGun3" parent="Body" instance=ExtResource("9_4b7n7")]
+position = Vector2(0, 7)
+
+[node name="RegenTimer" type="Timer" parent="."]
+
+[connection signal="timeout" from="ReturnTimer" to="." method="_on_return_timer_timeout"]
+[connection signal="area_exited" from="VisibleRange" to="." method="_on_visible_range_area_exited"]
+[connection signal="timeout" from="Body/HitboxComponent/Timer" to="Body/HitboxComponent" method="_on_timer_timeout"]
+[connection signal="timeout" from="RegenTimer" to="." method="_on_regen_timer_timeout"]

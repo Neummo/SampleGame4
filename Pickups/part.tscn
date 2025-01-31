@@ -1,10 +1,11 @@
-[gd_scene load_steps=4 format=3 uid="uid://cavrfxvsfdmbl"]
+[gd_scene load_steps=5 format=3 uid="uid://cavrfxvsfdmbl"]
 
 [ext_resource type="Script" path="res://Pickups/part.gd" id="1_waw8a"]
-[ext_resource type="Texture2D" uid="uid://dwvibgl671con" path="res://Assets/white.png" id="2_prlic"]
+[ext_resource type="Material" uid="uid://b4d1gvp1222f1" path="res://smooth.tres" id="2_1i3pj"]
+[ext_resource type="Texture2D" uid="uid://cjw45qar6y1vq" path="res://Assets/picks/08.png" id="3_ssbp3"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_pfk2o"]
-size = Vector2(16, 16)
+size = Vector2(4, 4)
 
 [node name="Part" type="Area2D"]
 collision_layer = 2
@@ -12,8 +13,10 @@ collision_mask = 2
 script = ExtResource("1_waw8a")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-scale = Vector2(0.0133333, 0.0133333)
-texture = ExtResource("2_prlic")
+texture_filter = 2
+material = ExtResource("2_1i3pj")
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("3_ssbp3")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_pfk2o")

@@ -55,7 +55,7 @@ func _process(_delta: float) -> void:
 	time_label.set_text(minutes+":"+seconds)
 
 func draw_zones() -> void:
-	draw_zone_limit(first, 500)
+	draw_zone_limit(first, 250)
 	for k in range(1, zones.size() - 1):
 		var line: Line2D = zones[k]
 		draw_zone_limit(line, k * 2000)
@@ -84,22 +84,22 @@ func spawn_enemy(zone: int) -> void:
 	Values.zone = zone
 	if zone == 0 or get_tree().get_nodes_in_group('Grunt').size() >= 20 + zone:
 		return
-	Values.enemy_acceleration = 100 + zone
-	Values.enemy_speed = 100 + zone
+	Values.enemy_acceleration = 50 + zone
+	Values.enemy_speed = 50 + zone
 	Values.enemy_health = int(floor(20 * zone))
 	Values.enemy_damage = zone
 	init_neutral(load("res://Neutral/asteroid.tscn"))
 	init_enemy(load("res://Enemies/enemy_1.tscn"))
-	if zone >= 5 and count % 2 == 0:
+	if zone >= 5 and count % 5 == 0:
 		init_enemy(load("res://Enemies/enemy.tscn"))
-	if zone >= 10:
+	if zone >= 10 and count % 5 == 0:
 		init_enemy(load("res://Enemies/enemy_3.tscn"))
-	if zone >= 20 and count % 2 == 0:
+	if zone >= 20 and count % 10 == 0:
 		init_enemy(load("res://Enemies/enemy_4.tscn"))
-	if zone >= 30 and count % 5 == 0:
+	if zone >= 30 and count % 15 == 0:
 		init_enemy(load("res://Enemies/enemy_5.tscn"))
 	count += 1
-	if count > 5:
+	if count > 15:
 		count = 1
 
 func init_enemy(enemy_scene: Resource) -> void:
@@ -116,16 +116,16 @@ func init_neutral(scene: Resource) -> void:
 	instance.cluster_lead = true
 	get_tree().current_scene.add_child.call_deferred(instance)
 	instance = scene.instantiate()
-	instance.global_position = asd + Vector2(randi_range(50, 300), randi_range(50, 300))
+	instance.global_position = asd + Vector2(randi_range(25, 150), randi_range(25, 150))
 	get_tree().current_scene.add_child.call_deferred(instance)
 	instance = scene.instantiate()
-	instance.global_position = asd + Vector2(randi_range(50, 300), randi_range(-300, -50))
+	instance.global_position = asd + Vector2(randi_range(25, 150), randi_range(-300, -25))
 	get_tree().current_scene.add_child.call_deferred(instance)
 	instance = scene.instantiate()
-	instance.global_position = asd + Vector2(randi_range(-300, -50), randi_range(50, 300))
+	instance.global_position = asd + Vector2(randi_range(-150, -25), randi_range(25, 150))
 	get_tree().current_scene.add_child.call_deferred(instance)
 	instance = scene.instantiate()
-	instance.global_position = asd + Vector2(randi_range(-300, -50), randi_range(-300, -50))
+	instance.global_position = asd + Vector2(randi_range(-150, -25), randi_range(-150, -25))
 	get_tree().current_scene.add_child.call_deferred(instance)
 	Values.neutral_count += 5
 
@@ -137,9 +137,9 @@ func get_random_position_offscreen(neutral: bool = false, bounty: bool = false, 
 	var randy
 	var screensize
 	if neutral:
-		screensize = get_viewport_rect().size
+		screensize = get_viewport_rect().size * 2
 	elif bounty:
-		screensize = Vector2(bounty_level * 10000, bounty_level * 10000)
+		screensize = Vector2(bounty_level * 1000, bounty_level * 1000)
 	else:
 		screensize = get_viewport_rect().size * 2
 	var rng := RandomNumberGenerator.new()
@@ -157,8 +157,9 @@ func get_random_position_offscreen(neutral: bool = false, bounty: bool = false, 
 
 func _on_spawn_timer_timeout() -> void:
 	var distance: float = get_player_distance()
-	if distance < 500:
+	if distance < 250:
 		Values.zone = 0
+		player.heal()
 		return
 	var zone: int = int(floor(ceil(distance / 2000) + int(floor(Values.minutes_elapsed))))
 	spawn_enemy(zone)

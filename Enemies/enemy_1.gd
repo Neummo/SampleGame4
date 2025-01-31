@@ -27,7 +27,7 @@ func behavior(delta: float) -> void:
 func _on_hitbox_component_area_entered(area: Area2D) -> void:
 	if area is HitboxComponent and area.possesor == "Player":
 		var attack: Attack = Attack.new()
-		attack.attack_damage = Values.enemy_damage * 3
+		attack.attack_damage = Values.enemy_damage
 		area.damage(attack)
 		var self_destruck: Attack = Attack.new()
 		self_destruck.attack_damage = stats.max_health

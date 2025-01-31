@@ -2,39 +2,36 @@
 
 [ext_resource type="Script" path="res://Attacks/rocket_homing.gd" id="1_4g10y"]
 [ext_resource type="Script" path="res://Attacks/Components/attack_area.gd" id="2_rb01w"]
+[ext_resource type="Material" uid="uid://b4d1gvp1222f1" path="res://smooth.tres" id="2_sybmq"]
 [ext_resource type="PackedScene" uid="uid://b58vw44glay4i" path="res://Environment/move_trail.tscn" id="3_clwes"]
+[ext_resource type="Texture2D" uid="uid://cx3l5mh2oa71i" path="res://Assets/attacks/rocket.png" id="3_uxwv7"]
 [ext_resource type="PackedScene" uid="uid://cg200evxgwx7b" path="res://Environment/range_indicator.tscn" id="4_kb2i2"]
 
-[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_it728"]
-
-[sub_resource type="CanvasTexture" id="CanvasTexture_44sr6"]
-resource_local_to_scene = true
-specular_texture = SubResource("NoiseTexture2D_it728")
-
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_bifld"]
-size = Vector2(5, 15)
+size = Vector2(8, 4)
 
-[sub_resource type="Curve" id="Curve_676mb"]
+[sub_resource type="Curve" id="Curve_qwbp8"]
 resource_local_to_scene = true
 _data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
 point_count = 2
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_w3ind"]
-radius = 500.0
+radius = 100.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_j3sdn"]
 
-[node name="RocketHoming" type="CharacterBody2D" node_paths=PackedStringArray("aoe", "aoe_shape", "range_indicator", "gun_range_indicator", "sprite")]
+[node name="RocketHoming" type="CharacterBody2D" node_paths=PackedStringArray("aoe", "aoe_shape", "range_indicator", "gun_range_indicator")]
 script = ExtResource("1_4g10y")
 aoe = NodePath("Aoe")
 aoe_shape = NodePath("Aoe/CollisionShape2D")
 range_indicator = NodePath("Aoe/RangeIndicator")
 gun_range_indicator = NodePath("GunRange")
-sprite = NodePath("Sprite")
 
 [node name="Sprite" type="Sprite2D" parent="."]
-scale = Vector2(5, 15)
-texture = SubResource("CanvasTexture_44sr6")
+texture_filter = 2
+material = ExtResource("2_sybmq")
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("3_uxwv7")
 
 [node name="AttackArea" type="Area2D" parent="." node_paths=PackedStringArray("projectile")]
 collision_layer = 4
@@ -42,14 +39,17 @@ script = ExtResource("2_rb01w")
 projectile = NodePath("..")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="AttackArea"]
+position = Vector2(0, 2)
 shape = SubResource("RectangleShape2D_bifld")
 
 [node name="Trail" type="Node2D" parent="."]
-position = Vector2(0, 7)
+position = Vector2(0, 2)
 
 [node name="MoveTrail" parent="Trail" instance=ExtResource("3_clwes")]
 points = PackedVector2Array(0, 0)
-width_curve = SubResource("Curve_676mb")
+width = 2.0
+width_curve = SubResource("Curve_qwbp8")
+default_color = Color(1, 0.952941, 0.678431, 1)
 length = 20
 
 [node name="GunRange" type="Area2D" parent="."]
@@ -62,7 +62,7 @@ shape = SubResource("CircleShape2D_w3ind")
 collision_layer = 2
 
 [node name="RangeIndicator" parent="Aoe" instance=ExtResource("4_kb2i2")]
-default_color = Color(0.772549, 0.345098, 0.388235, 0.776471)
+default_color = Color(1, 0.952941, 0.678431, 0.764706)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Aoe"]
 shape = SubResource("CircleShape2D_j3sdn")

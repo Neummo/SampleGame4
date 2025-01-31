@@ -9,23 +9,24 @@ size = Vector2(15, 15)
 size = Vector2(10, 10)
 
 [node name="PartUpgradeButton" type="TextureButton"]
+z_index = 1
 texture_normal = SubResource("PlaceholderTexture2D_n041m")
 texture_disabled = SubResource("PlaceholderTexture2D_pppyw")
 script = ExtResource("1_spugg")
 
 [node name="Panel" type="Panel" parent="."]
+show_behind_parent = true
 layout_mode = 0
 offset_left = -1.0
 offset_top = -1.0
-offset_right = 16.0
-offset_bottom = 16.0
+offset_right = 17.0
+offset_bottom = 17.0
 mouse_filter = 2
 
 [node name="Line2D" type="Line2D" parent="."]
 top_level = true
-z_index = -1
 width = 3.0
-default_color = Color(0.237539, 0.237539, 0.237539, 1)
+default_color = Color(0.180392, 0.207843, 0.196078, 1)
 
 [connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
 [connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]

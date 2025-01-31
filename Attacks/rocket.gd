@@ -4,6 +4,7 @@ class_name Rocket
 var acceleration: float = 200
 
 func _ready():
+	attack_type = "Physical"
 	target = "Enemy"
 	damage = Values.player_manual_gun_damage
 	speed = Values.player_manual_gun_speed * Values.projectile_speed_modifier

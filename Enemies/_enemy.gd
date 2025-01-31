@@ -11,7 +11,7 @@ class_name Enemy
 @onready var death: AnimatedSprite2D = $Body/Death
 @onready var hitbox: HitboxComponent = $Body/HitboxComponent
 @onready var hitbox_shape: CollisionShape2D = $Body/HitboxComponent/CollisionShape2D
-@onready var sprite: Sprite2D = $Body/Sprite
+@onready var sprite = $Body/Sprite
 @onready var shoot_timer: Timer = $ShootTimer
 
 var player: CharacterBody2D
@@ -75,6 +75,7 @@ func die() -> void:
 	set_physics_process(false)
 	hitbox.set_deferred("monitorable", false)
 	hitbox.set_deferred("monitoring", false)
+	death.set_visible(true)
 	death.play("death")
 	await death.animation_finished
 	queue_free()

@@ -10,15 +10,13 @@ var accel: Vector2
 @export var shape: CollisionShape2D
 
 func _ready():
+	attack_type = "Energy"
 	damage = Values.player_melee_gun_damage
-	speed = Values.player_melee_gun_speed * 20 * Values.projectile_speed_modifier
+	speed = Values.player_melee_gun_speed * 15 * (0.8 + (0.2 * Values.projectile_speed_modifier))
 	player = get_tree().get_first_node_in_group("Player")
 	global_position = spawn_position
 	global_rotation = spawn_rotation
 	target = "Enemy"
-	if Values.turret_calliber_upgrade_unlocked:
-		sprite.set_scale(Vector2(4, 40))
-		shape.get_shape().set_size(Vector2(4, 40))
 
 func _physics_process(_delta):
 	if homing:

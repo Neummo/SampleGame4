@@ -1,4 +1,4 @@
-[gd_scene load_steps=57 format=3 uid="uid://70snqg3xty42"]
+[gd_scene load_steps=58 format=3 uid="uid://70snqg3xty42"]
 
 [ext_resource type="Script" path="res://player.gd" id="1_b6t1o"]
 [ext_resource type="PackedScene" uid="uid://cg200evxgwx7b" path="res://Environment/range_indicator.tscn" id="2_cibuv"]
@@ -10,10 +10,11 @@
 [ext_resource type="Script" path="res://hitbox_component.gd" id="4_2d3ll"]
 [ext_resource type="PackedScene" uid="uid://b58vw44glay4i" path="res://Environment/move_trail.tscn" id="5_1rq2q"]
 [ext_resource type="PackedScene" uid="uid://3se37hf2b3nl" path="res://damage_flash_player.tscn" id="5_phtlw"]
-[ext_resource type="Texture2D" uid="uid://b507vmtrwmkcs" path="res://Assets/Main Ship - Base - Full health.png" id="8_7fnv4"]
 [ext_resource type="PackedScene" uid="uid://c4xqvl6jfb7d0" path="res://Guns/melee_gun.tscn" id="9_4b7n7"]
+[ext_resource type="Texture2D" uid="uid://cqn736rha7wj5" path="res://Assets/entities/char_3200.png" id="10_2ko75"]
 [ext_resource type="PackedScene" uid="uid://cuid0d5mm6d8u" path="res://Guns/ranged_gun.tscn" id="10_peajn"]
 [ext_resource type="PackedScene" uid="uid://cegx3mkaarwf6" path="res://Guns/big_gun.tscn" id="11_nhf5f"]
+[ext_resource type="Material" uid="uid://b4d1gvp1222f1" path="res://smooth.tres" id="12_rgefh"]
 [ext_resource type="Texture2D" uid="uid://nkn4lq4wysb8" path="res://Assets/charging_return.png" id="15_vtfyh"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_n21ry"]
@@ -29,14 +30,14 @@ shader_parameter/flash_color = Color(1, 1, 1, 1)
 shader_parameter/flash_value = 0.0
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_3idnx"]
-size = Vector2(26, 30)
+size = Vector2(24, 26)
 
-[sub_resource type="Curve" id="Curve_rt1ea"]
+[sub_resource type="Curve" id="Curve_kj8m7"]
 resource_local_to_scene = true
 _data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
 point_count = 2
 
-[sub_resource type="Curve" id="Curve_xlc3v"]
+[sub_resource type="Curve" id="Curve_7se8k"]
 resource_local_to_scene = true
 _data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
 point_count = 2
@@ -306,9 +307,9 @@ body = NodePath("Body")
 melee_gun = NodePath("Body/MeleeGun")
 melee_gun2 = NodePath("Body/MeleeGun2")
 melee_gun3 = NodePath("Body/MeleeGun3")
-seeker_gun = NodePath("SeekerGun")
-ranged_gun = NodePath("RangedGun")
-big_gun = NodePath("BigGun")
+seeker_gun = NodePath("Body/SeekerGun")
+ranged_gun = NodePath("Body/RangedGun")
+big_gun = NodePath("Body/BigGun")
 area_field = NodePath("AreaField")
 rng = NodePath("Range")
 range_indicator = NodePath("RangeIndicator")
@@ -317,10 +318,11 @@ range_shape = NodePath("Range/CollisionShape2D")
 camera = NodePath("Camera2D")
 return_trail = NodePath("Body/ReturnAnimator/ReturnTrail")
 
-[node name="HealthComponent" type="Node2D" parent="." node_paths=PackedStringArray("damage_flash_player")]
+[node name="HealthComponent" type="Node2D" parent="." node_paths=PackedStringArray("damage_flash_player", "inner_sprite")]
 script = ExtResource("3_mv8ni")
 possesor = "Player"
-damage_flash_player = NodePath("../Body/Sprite/DamageFlashPlayer")
+damage_flash_player = NodePath("../Body/Sprite2/DamageFlashPlayer")
+inner_sprite = NodePath("../Body/Sprite2")
 
 [node name="ReturnTimer" type="Timer" parent="."]
 wait_time = 3.0
@@ -329,6 +331,7 @@ one_shot = true
 [node name="Radar" parent="." instance=ExtResource("3_sx33q")]
 
 [node name="RangeIndicator" parent="." instance=ExtResource("2_cibuv")]
+default_color = Color(1, 0.964706, 0.760784, 1)
 
 [node name="Camera2D" type="Camera2D" parent="."]
 process_callback = 0
@@ -339,12 +342,6 @@ editor_draw_limits = true
 editor_draw_drag_margin = true
 
 [node name="AreaField" parent="." instance=ExtResource("3_8nvpr")]
-
-[node name="SeekerGun" parent="." instance=ExtResource("4_0kn3o")]
-
-[node name="RangedGun" parent="." instance=ExtResource("10_peajn")]
-
-[node name="BigGun" parent="." instance=ExtResource("11_nhf5f")]
 
 [node name="VisibleRange" type="Area2D" parent="."]
 collision_mask = 15
@@ -359,11 +356,37 @@ shape = SubResource("CircleShape2D_2q0kj")
 
 [node name="Body" type="Node2D" parent="."]
 
-[node name="Sprite" type="Sprite2D" parent="Body"]
-material = SubResource("ShaderMaterial_miqcf")
-texture = ExtResource("8_7fnv4")
+[node name="MeleeGun" parent="Body" instance=ExtResource("9_4b7n7")]
+position = Vector2(1, 0)
 
-[node name="DamageFlashPlayer" parent="Body/Sprite" instance=ExtResource("5_phtlw")]
+[node name="MeleeGun2" parent="Body" instance=ExtResource("9_4b7n7")]
+position = Vector2(0, -6)
+
+[node name="MeleeGun3" parent="Body" instance=ExtResource("9_4b7n7")]
+position = Vector2(0, 6)
+
+[node name="SeekerGun" parent="Body" instance=ExtResource("4_0kn3o")]
+position = Vector2(1, 0)
+
+[node name="RangedGun" parent="Body" instance=ExtResource("10_peajn")]
+position = Vector2(1, 0)
+
+[node name="BigGun" parent="Body" instance=ExtResource("11_nhf5f")]
+position = Vector2(1, 0)
+
+[node name="Sprite" type="Sprite2D" parent="Body"]
+texture_filter = 2
+material = ExtResource("12_rgefh")
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("10_2ko75")
+
+[node name="Sprite2" type="Sprite2D" parent="Body"]
+visible = false
+material = SubResource("ShaderMaterial_miqcf")
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("10_2ko75")
+
+[node name="DamageFlashPlayer" parent="Body/Sprite2" instance=ExtResource("5_phtlw")]
 
 [node name="HitboxComponent" type="Area2D" parent="Body" node_paths=PackedStringArray("health_component")]
 collision_layer = 2
@@ -380,23 +403,25 @@ wait_time = 0.1
 one_shot = true
 
 [node name="LeftWing" type="Node2D" parent="Body"]
-position = Vector2(-10, -14)
+position = Vector2(-3, -5)
 
 [node name="MoveTrail" parent="Body/LeftWing" instance=ExtResource("5_1rq2q")]
 z_index = -1
-width_curve = SubResource("Curve_rt1ea")
-length = 100
+width_curve = SubResource("Curve_kj8m7")
+default_color = Color(1, 0.952941, 0.678431, 1)
+length = 20
 
 [node name="RightWing" type="Node2D" parent="Body"]
-position = Vector2(-10, 14)
+position = Vector2(-3, 5)
 
 [node name="MoveTrail" parent="Body/RightWing" instance=ExtResource("5_1rq2q")]
 z_index = -1
-width_curve = SubResource("Curve_xlc3v")
-length = 100
+width_curve = SubResource("Curve_7se8k")
+default_color = Color(1, 0.952941, 0.678431, 1)
+length = 20
 
 [node name="ReturnAnimator" type="AnimatedSprite2D" parent="Body"]
-position = Vector2(-18, -3.55271e-15)
+position = Vector2(-12, -5.96046e-08)
 scale = Vector2(0.34375, 0.34375)
 sprite_frames = SubResource("SpriteFrames_7cygd")
 animation = &"charging"
@@ -405,14 +430,6 @@ animation = &"charging"
 position = Vector2(0, 1.03352e-14)
 scale = Vector2(2.90909, 2.90909)
 width = 10.0
-
-[node name="MeleeGun" parent="Body" instance=ExtResource("9_4b7n7")]
-
-[node name="MeleeGun2" parent="Body" instance=ExtResource("9_4b7n7")]
-position = Vector2(-5, -14)
-
-[node name="MeleeGun3" parent="Body" instance=ExtResource("9_4b7n7")]
-position = Vector2(-5, 14)
 
 [node name="RegenTimer" type="Timer" parent="."]
 

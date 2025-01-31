@@ -36,6 +36,7 @@ func _physics_process(_delta: float) -> void:
 				aoe_damage(collider.global_position)
 			else:
 				var attack: Attack = Attack.new()
+				attack.attack_type = "Energy"
 				attack.attack_damage = damage
 				collider.damage(attack)
 			damaged = true
@@ -74,6 +75,7 @@ func aoe_damage(impact_position: Vector2):
 		if area is HitboxComponent and area.possesor == "Enemy":
 			var attack: Attack = Attack.new()
 			attack.attack_damage = damage
+			attack.attack_type = "Energy"
 			area.damage(attack)
 
 func set_is_casting(cast: bool) -> void:

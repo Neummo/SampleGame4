@@ -1,47 +1,78 @@
-[gd_scene load_steps=4 format=3 uid="uid://c5oqvny0hdlbc"]
+[gd_scene load_steps=7 format=3 uid="uid://c5oqvny0hdlbc"]
 
+[ext_resource type="Texture2D" uid="uid://duiwdl74v3med" path="res://Assets/panel/item_panel_button_1_normal.png" id="1_b02pn"]
 [ext_resource type="Script" path="res://UI/ItemPanel/item_button.gd" id="1_lvij1"]
-[ext_resource type="Texture2D" uid="uid://crrx5d7pj3l0d" path="res://Assets/aaa.png" id="2_qp8xt"]
-
-[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_isitr"]
-size = Vector2(140, 200)
+[ext_resource type="Texture2D" uid="uid://dtdbl26g22it" path="res://Assets/panel/item_panel_button_1_hover.png" id="2_ol7k2"]
+[ext_resource type="FontFile" uid="uid://c861shwg03bic" path="res://Assets/fonts/Jersey10-Regular.ttf" id="4_6nf4m"]
+[ext_resource type="Texture2D" uid="uid://c6pp4qjgmwi3n" path="res://Assets/icons/selected/06.png" id="5_08d2e"]
+[ext_resource type="Texture2D" uid="uid://cfmlnd5issu4l" path="res://Assets/panel/tier_3_trim.png" id="6_jtk3u"]
 
 [node name="ItemButton" type="TextureButton"]
 offset_left = 86.0
 offset_top = 111.0
-offset_right = 226.0
-offset_bottom = 311.0
-texture_normal = SubResource("PlaceholderTexture2D_isitr")
+offset_right = 225.0
+offset_bottom = 138.0
+texture_normal = ExtResource("1_b02pn")
+texture_hover = ExtResource("2_ol7k2")
 script = ExtResource("1_lvij1")
 
-[node name="Title" type="Label" parent="."]
+[node name="Title" type="RichTextLabel" parent="."]
 layout_mode = 0
-offset_top = 19.0
-offset_right = 139.0
-offset_bottom = 50.0
-theme_override_font_sizes/font_size = 14
+offset_left = 39.0
+offset_top = 1.0
+offset_right = 135.0
+offset_bottom = 11.0
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+theme_override_fonts/normal_font = ExtResource("4_6nf4m")
+theme_override_font_sizes/normal_font_size = 8
+bbcode_enabled = true
 text = "Communicator"
-horizontal_alignment = 1
-vertical_alignment = 1
+scroll_active = false
+shortcut_keys_enabled = false
+meta_underlined = false
+hint_underlined = false
+deselect_on_focus_loss_enabled = false
+drag_and_drop_selection_enabled = false
 
-[node name="Description" type="Label" parent="."]
+[node name="Description" type="RichTextLabel" parent="."]
 layout_mode = 0
-offset_left = 10.0
-offset_top = 109.0
-offset_right = 134.0
-offset_bottom = 198.0
-theme_override_font_sizes/font_size = 11
-text = "Range increase and some other stuff"
-vertical_alignment = 1
-autowrap_mode = 3
+offset_left = 38.0
+offset_top = 9.0
+offset_right = 136.0
+offset_bottom = 26.0
+theme_override_colors/default_color = Color(0.792157, 0.823529, 0.807843, 1)
+theme_override_constants/line_separation = -2
+theme_override_fonts/normal_font = ExtResource("4_6nf4m")
+theme_override_font_sizes/normal_font_size = 7
+bbcode_enabled = true
+text = "Range increase and some other stuffdf dffdfdfdf df df df df "
+scroll_active = false
+meta_underlined = false
+hint_underlined = false
+deselect_on_focus_loss_enabled = false
+drag_and_drop_selection_enabled = false
 
 [node name="Icon" type="TextureRect" parent="."]
 layout_mode = 0
-offset_left = 38.0
-offset_top = 60.0
-offset_right = 102.0
-offset_bottom = 124.0
-texture = ExtResource("2_qp8xt")
-expand_mode = 1
+offset_left = 10.0
+offset_top = 5.0
+offset_right = 26.0
+offset_bottom = 21.0
+texture = ExtResource("5_08d2e")
+stretch_mode = 2
+
+[node name="Panel" type="Panel" parent="Icon"]
+show_behind_parent = true
+layout_mode = 0
+offset_left = -2.0
+offset_top = -2.0
+offset_right = 18.0
+offset_bottom = 18.0
+
+[node name="Trim" type="TextureRect" parent="."]
+layout_mode = 0
+offset_right = 139.0
+offset_bottom = 27.0
+texture = ExtResource("6_jtk3u")
 
 [connection signal="pressed" from="." to="." method="_on_pressed"]

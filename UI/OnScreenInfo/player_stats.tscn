@@ -1,10 +1,18 @@
-[gd_scene load_steps=4 format=3 uid="uid://ccasosye1po2m"]
+[gd_scene load_steps=12 format=3 uid="uid://ccasosye1po2m"]
 
 [ext_resource type="Script" path="res://UI/OnScreenInfo/player_stats.gd" id="1_dnerw"]
+[ext_resource type="LabelSettings" uid="uid://oviud57gcaq1" path="res://Assets/5px_font.tres" id="2_owgkm"]
 [ext_resource type="LabelSettings" uid="uid://cro6habyr70oa" path="res://Assets/stat_label_font.tres" id="2_qqcyd"]
 [ext_resource type="PackedScene" uid="uid://cn8l6n3cs42gg" path="res://UI/OnScreenInfo/ability_cooldown_visualiser.tscn" id="3_5plx3"]
+[ext_resource type="LabelSettings" uid="uid://0a8eht6jtaea" path="res://Assets/light_7px.tres" id="4_4gxp8"]
+[ext_resource type="LabelSettings" uid="uid://cbyo72brkko77" path="res://Assets/currency_7px.tres" id="4_qbktv"]
+[ext_resource type="Texture2D" uid="uid://bdcc53t3qpe77" path="res://Assets/icons/selected/24.png" id="5_ji6i3"]
+[ext_resource type="LabelSettings" uid="uid://71w4hd07ikv7" path="res://Assets/parts_7px.tres" id="5_mjeoy"]
+[ext_resource type="LabelSettings" uid="uid://cpybqx3ghv7k4" path="res://Assets/bounty_label.tres" id="6_i6hpu"]
+[ext_resource type="LabelSettings" uid="uid://dv626jjtnkm51" path="res://Assets/modules_7px.tres" id="6_q0ofg"]
+[ext_resource type="LabelSettings" uid="uid://bot2uh2delsdl" path="res://Assets/yellow_7px.tres" id="6_rccbm"]
 
-[node name="PlayerStats" type="Control" node_paths=PackedStringArray("acceleration_label", "max_speed_label", "max_health_label", "hps_label", "leech_label", "damage_reduction_label", "damage_mitigation_label", "range_label", "magnet_strengh_label", "critical_chance_label", "critical_damage_label", "damage_multiplier_label", "as_multiplier_label", "salvage_drop_rate_label", "module_drop_rate_label", "part_drop_rate_label", "credit_multiplier_label", "credits_label", "parts_label", "modules_label", "dash_cooldown", "hyper_cooldown", "bounty", "coords", "zone")]
+[node name="PlayerStats" type="Control" node_paths=PackedStringArray("acceleration_label", "max_speed_label", "max_health_label", "hps_label", "leech_label", "damage_reduction_label", "damage_mitigation_label", "range_label", "magnet_strengh_label", "critical_chance_label", "critical_damage_label", "damage_multiplier_label", "as_multiplier_label", "salvage_drop_rate_label", "module_drop_rate_label", "part_drop_rate_label", "credit_multiplier_label", "credits_label", "parts_label", "modules_label", "hyper_cooldown", "bounty", "coords", "zone", "energy_damage_multiplier_value", "physical_damage_multiplier_value")]
 layout_mode = 3
 anchors_preset = 0
 script = ExtResource("1_dnerw")
@@ -25,24 +33,25 @@ salvage_drop_rate_label = NodePath("Base/Values/Container/SalvageDropRateValue")
 module_drop_rate_label = NodePath("Base/Values/Container/ModuleDropRateValue")
 part_drop_rate_label = NodePath("Base/Values/Container/PartDropRateValue")
 credit_multiplier_label = NodePath("Base/Values/Container/CreditMultiplierValue")
-credits_label = NodePath("Base/Values/Container/CreditsValue")
-parts_label = NodePath("Base/Values/Container/PartsValue")
-modules_label = NodePath("Base/Values/Container/ModulesValue")
-dash_cooldown = NodePath("Values2/DashCooldown")
-hyper_cooldown = NodePath("Values2/HyperCooldown")
+credits_label = NodePath("CreditsValue")
+parts_label = NodePath("PartsValue")
+modules_label = NodePath("ModulesValue")
+hyper_cooldown = NodePath("HyperCooldown")
 bounty = NodePath("Values3/Title/Bounty")
 coords = NodePath("Values3/Title/Coords")
-zone = NodePath("Values3/Title/Zone")
+zone = NodePath("Zone")
+energy_damage_multiplier_value = NodePath("Base/Values/Container/EnergyDamageMultiplierValue")
+physical_damage_multiplier_value = NodePath("Base/Values/Container/PhysicalDamageMultiplierValue")
 
 [node name="Base" type="HBoxContainer" parent="."]
 layout_mode = 0
-offset_left = 10.0
-offset_top = 262.0
-offset_right = 120.0
-offset_bottom = 566.0
+offset_left = 4.0
+offset_top = 95.0
+offset_right = 66.0
+offset_bottom = 274.0
+theme_override_constants/separation = 3
 
 [node name="Names" type="HBoxContainer" parent="Base"]
-custom_minimum_size = Vector2(100, 0)
 layout_mode = 2
 
 [node name="Sections" type="VBoxContainer" parent="Base/Names"]
@@ -50,11 +59,13 @@ layout_mode = 2
 
 [node name="Names" type="VBoxContainer" parent="Base/Names/Sections"]
 layout_mode = 2
+theme_override_constants/separation = 1
 
 [node name="MaxHealth" type="Label" parent="Base/Names/Sections/Names"]
+visible = false
 layout_mode = 2
 text = "Shield:"
-label_settings = ExtResource("2_qqcyd")
+label_settings = ExtResource("2_owgkm")
 
 [node name="Hps" type="Label" parent="Base/Names/Sections/Names"]
 layout_mode = 2
@@ -76,6 +87,10 @@ layout_mode = 2
 text = "Leech:"
 label_settings = ExtResource("2_qqcyd")
 
+[node name="Empty" type="Label" parent="Base/Names/Sections/Names"]
+layout_mode = 2
+label_settings = ExtResource("2_qqcyd")
+
 [node name="Acceleration" type="Label" parent="Base/Names/Sections/Names"]
 layout_mode = 2
 text = "Acceleration:"
@@ -88,12 +103,16 @@ label_settings = ExtResource("2_qqcyd")
 
 [node name="MagnetStrengh" type="Label" parent="Base/Names/Sections/Names"]
 layout_mode = 2
-text = "Magnet Strengh:"
+text = "Magnet Strength:"
 label_settings = ExtResource("2_qqcyd")
 
 [node name="Range" type="Label" parent="Base/Names/Sections/Names"]
 layout_mode = 2
 text = "Range:"
+label_settings = ExtResource("2_qqcyd")
+
+[node name="Empty3" type="Label" parent="Base/Names/Sections/Names"]
+layout_mode = 2
 label_settings = ExtResource("2_qqcyd")
 
 [node name="CriticalChance" type="Label" parent="Base/Names/Sections/Names"]
@@ -111,22 +130,40 @@ layout_mode = 2
 text = "Damage Multiplier:"
 label_settings = ExtResource("2_qqcyd")
 
+[node name="EnergyDamageMultiplier" type="Label" parent="Base/Names/Sections/Names"]
+layout_mode = 2
+text = "Energy Damage Multiplier:"
+label_settings = ExtResource("2_qqcyd")
+
+[node name="PhysicalDamageMultiplier" type="Label" parent="Base/Names/Sections/Names"]
+layout_mode = 2
+text = "Physical Damage Multiplier:"
+label_settings = ExtResource("2_qqcyd")
+
 [node name="ASMultiplier" type="Label" parent="Base/Names/Sections/Names"]
 layout_mode = 2
 text = "Rate of Fire Multiplier:"
 label_settings = ExtResource("2_qqcyd")
 
+[node name="Empty5" type="Label" parent="Base/Names/Sections/Names"]
+visible = false
+layout_mode = 2
+label_settings = ExtResource("2_qqcyd")
+
 [node name="SalvageDropRate" type="Label" parent="Base/Names/Sections/Names"]
+visible = false
 layout_mode = 2
 text = "Salvage Drop Rate:"
 label_settings = ExtResource("2_qqcyd")
 
 [node name="ModuleDropRate" type="Label" parent="Base/Names/Sections/Names"]
+visible = false
 layout_mode = 2
 text = "Module Drop Rate:"
 label_settings = ExtResource("2_qqcyd")
 
 [node name="Part Drop Rate" type="Label" parent="Base/Names/Sections/Names"]
+visible = false
 layout_mode = 2
 text = "Part Drop Rate:"
 label_settings = ExtResource("2_qqcyd")
@@ -136,35 +173,22 @@ layout_mode = 2
 text = "Credit Multiplier:"
 label_settings = ExtResource("2_qqcyd")
 
-[node name="Credits" type="Label" parent="Base/Names/Sections/Names"]
-layout_mode = 2
-text = "Credits:"
-label_settings = ExtResource("2_qqcyd")
-
-[node name="Parts" type="Label" parent="Base/Names/Sections/Names"]
-layout_mode = 2
-text = "Parts:"
-label_settings = ExtResource("2_qqcyd")
-
-[node name="Modules" type="Label" parent="Base/Names/Sections/Names"]
-layout_mode = 2
-text = "Modules:"
-label_settings = ExtResource("2_qqcyd")
-
 [node name="Values" type="HBoxContainer" parent="Base"]
 layout_mode = 2
 
 [node name="Container" type="VBoxContainer" parent="Base/Values"]
 layout_mode = 2
+theme_override_constants/separation = 1
 
 [node name="MaxHealthValue" type="Label" parent="Base/Values/Container"]
+visible = false
 layout_mode = 2
 text = "0"
 label_settings = ExtResource("2_qqcyd")
 
 [node name="HpsValue" type="Label" parent="Base/Values/Container"]
 layout_mode = 2
-text = "0:"
+text = "0"
 label_settings = ExtResource("2_qqcyd")
 
 [node name="DamageReductionValue" type="Label" parent="Base/Values/Container"]
@@ -180,6 +204,10 @@ label_settings = ExtResource("2_qqcyd")
 [node name="LeechValue" type="Label" parent="Base/Values/Container"]
 layout_mode = 2
 text = "0"
+label_settings = ExtResource("2_qqcyd")
+
+[node name="Empty" type="Label" parent="Base/Values/Container"]
+layout_mode = 2
 label_settings = ExtResource("2_qqcyd")
 
 [node name="AccelerationValue" type="Label" parent="Base/Values/Container"]
@@ -202,6 +230,10 @@ layout_mode = 2
 text = "0"
 label_settings = ExtResource("2_qqcyd")
 
+[node name="Empty3" type="Label" parent="Base/Values/Container"]
+layout_mode = 2
+label_settings = ExtResource("2_qqcyd")
+
 [node name="CriticalChanceValue" type="Label" parent="Base/Values/Container"]
 layout_mode = 2
 text = "0"
@@ -217,22 +249,40 @@ layout_mode = 2
 text = "0"
 label_settings = ExtResource("2_qqcyd")
 
+[node name="EnergyDamageMultiplierValue" type="Label" parent="Base/Values/Container"]
+layout_mode = 2
+text = "0"
+label_settings = ExtResource("2_qqcyd")
+
+[node name="PhysicalDamageMultiplierValue" type="Label" parent="Base/Values/Container"]
+layout_mode = 2
+text = "0"
+label_settings = ExtResource("2_qqcyd")
+
 [node name="ASMultiplierValue" type="Label" parent="Base/Values/Container"]
 layout_mode = 2
 text = "0"
 label_settings = ExtResource("2_qqcyd")
 
+[node name="Empty5" type="Label" parent="Base/Values/Container"]
+visible = false
+layout_mode = 2
+label_settings = ExtResource("2_qqcyd")
+
 [node name="SalvageDropRateValue" type="Label" parent="Base/Values/Container"]
+visible = false
 layout_mode = 2
 text = "0"
 label_settings = ExtResource("2_qqcyd")
 
 [node name="ModuleDropRateValue" type="Label" parent="Base/Values/Container"]
+visible = false
 layout_mode = 2
 text = "0"
 label_settings = ExtResource("2_qqcyd")
 
 [node name="PartDropRateValue" type="Label" parent="Base/Values/Container"]
+visible = false
 layout_mode = 2
 text = "0"
 label_settings = ExtResource("2_qqcyd")
@@ -242,60 +292,126 @@ layout_mode = 2
 text = "0"
 label_settings = ExtResource("2_qqcyd")
 
-[node name="CreditsValue" type="Label" parent="Base/Values/Container"]
+[node name="Credits" type="Label" parent="."]
 layout_mode = 2
-text = "0"
-label_settings = ExtResource("2_qqcyd")
+offset_left = 21.0
+offset_top = 3.0
+offset_right = 86.0
+offset_bottom = 19.0
+text = "Credits:"
+label_settings = ExtResource("4_qbktv")
 
-[node name="PartsValue" type="Label" parent="Base/Values/Container"]
+[node name="Parts" type="Label" parent="."]
 layout_mode = 2
-text = "0"
-label_settings = ExtResource("2_qqcyd")
+offset_left = 211.0
+offset_top = 3.0
+offset_right = 276.0
+offset_bottom = 19.0
+text = "Parts:"
+label_settings = ExtResource("5_mjeoy")
 
-[node name="ModulesValue" type="Label" parent="Base/Values/Container"]
+[node name="Modules" type="Label" parent="."]
 layout_mode = 2
-text = "0"
-label_settings = ExtResource("2_qqcyd")
+offset_left = 111.0
+offset_top = 3.0
+offset_right = 176.0
+offset_bottom = 19.0
+text = "Modules:"
+label_settings = ExtResource("6_q0ofg")
 
-[node name="VBoxContainer" type="VBoxContainer" parent="Base"]
+[node name="CreditsValue" type="Label" parent="."]
 layout_mode = 2
+offset_left = 62.0
+offset_top = 3.0
+offset_right = 68.0
+offset_bottom = 19.0
+text = "0"
+label_settings = ExtResource("4_qbktv")
+
+[node name="PartsValue" type="Label" parent="."]
+layout_mode = 2
+offset_left = 244.0
+offset_top = 3.0
+offset_right = 250.0
+offset_bottom = 19.0
+text = "0"
+label_settings = ExtResource("5_mjeoy")
+
+[node name="ModulesValue" type="Label" parent="."]
+layout_mode = 2
+offset_left = 156.0
+offset_top = 3.0
+offset_right = 162.0
+offset_bottom = 19.0
+text = "0"
+label_settings = ExtResource("6_q0ofg")
+
+[node name="Zone" type="Label" parent="."]
+layout_mode = 2
+offset_left = 291.0
+offset_right = 354.0
+offset_bottom = 22.0
+theme_override_colors/font_color = Color(0.768627, 0.270588, 0.211765, 1)
+theme_override_font_sizes/font_size = 20
+text = "asdasd"
+label_settings = ExtResource("6_rccbm")
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="Values3" type="HBoxContainer" parent="."]
 layout_mode = 2
-offset_left = 14.0
-offset_top = 104.0
-offset_right = 31.0
-offset_bottom = 241.0
+offset_left = 4.0
+offset_top = 51.0
+offset_right = 89.0
+offset_bottom = 83.0
+
+[node name="Title2" type="VBoxContainer" parent="Values3"]
+layout_mode = 2
+
+[node name="CoordsLabel" type="Label" parent="Values3/Title2"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.964706, 0.760784, 1)
+theme_override_font_sizes/font_size = 20
+text = "Coords"
+label_settings = ExtResource("4_4gxp8")
+
+[node name="BountyLabel" type="Label" parent="Values3/Title2"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.346577, 0.280009, 1)
+text = "Target Coords"
+label_settings = ExtResource("6_i6hpu")
 
 [node name="Title" type="VBoxContainer" parent="Values3"]
 layout_mode = 2
 
 [node name="Coords" type="Label" parent="Values3/Title"]
 layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.964706, 0.760784, 1)
 theme_override_font_sizes/font_size = 20
 text = "0"
+label_settings = ExtResource("4_4gxp8")
 
 [node name="Bounty" type="Label" parent="Values3/Title"]
 layout_mode = 2
 theme_override_colors/font_color = Color(1, 0.346577, 0.280009, 1)
-theme_override_font_sizes/font_size = 20
+text = "-"
+label_settings = ExtResource("6_i6hpu")
 
-[node name="Zone" type="Label" parent="Values3/Title"]
-layout_mode = 2
-theme_override_font_sizes/font_size = 20
-text = "0"
-
-[node name="Values2" type="HBoxContainer" parent="."]
-layout_mode = 2
-offset_left = 11.0
-offset_top = 27.0
-offset_right = 323.0
-offset_bottom = 77.0
-
-[node name="DashCooldown" parent="Values2" instance=ExtResource("3_5plx3")]
+[node name="HyperCooldown" parent="." instance=ExtResource("3_5plx3")]
 visible = false
 layout_mode = 2
+offset_left = 303.0
+offset_top = 324.0
+offset_right = 319.0
+offset_bottom = 340.0
+texture = ExtResource("5_ji6i3")
 
-[node name="HyperCooldown" parent="Values2" instance=ExtResource("3_5plx3")]
-visible = false
-layout_mode = 2
+[node name="Panel" type="Panel" parent="."]
+modulate = Color(1, 1, 1, 0.117647)
+show_behind_parent = true
+layout_mode = 0
+offset_left = -22.0
+offset_top = 48.0
+offset_right = 110.0
+offset_bottom = 254.0
+mouse_filter = 2

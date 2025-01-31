@@ -16,6 +16,7 @@ var start_seeking: bool = false
 @onready var timer: Timer = $Timer
 
 func _ready():
+	attack_type = "Physical"
 	player = get_tree().get_first_node_in_group("Player")
 	target = "Enemy"
 	damage = Values.player_manual_gun_damage
@@ -80,6 +81,7 @@ func aoe_damage(impact_position: Vector2):
 		if is_instance_valid(area) and area is HitboxComponent and area.possesor == "Enemy" and not area.owner.dying:
 			var attack: Attack = Attack.new()
 			attack.attack_damage = damage
+			attack.attack_type = "Physical"
 			area.damage(attack)
 
 func _on_timer_timeout() -> void:

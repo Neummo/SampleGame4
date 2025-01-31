@@ -1,7 +1,8 @@
-[gd_scene load_steps=24 format=3 uid="uid://dups4dou6tfm"]
+[gd_scene load_steps=25 format=3 uid="uid://dups4dou6tfm"]
 
 [ext_resource type="Script" path="res://Neutral/asteroid.gd" id="1_mjl3h"]
 [ext_resource type="PackedScene" uid="uid://cx65mwov3fgjd" path="res://UI/OnScreenInfo/health_bar.tscn" id="2_cgc7n"]
+[ext_resource type="Material" uid="uid://b4d1gvp1222f1" path="res://smooth.tres" id="3_5rm07"]
 [ext_resource type="Texture2D" uid="uid://d1sf262dsssmd" path="res://Assets/asteroids.png" id="4_2lods"]
 [ext_resource type="Shader" path="res://Shaders/damageFlash.gdshader" id="4_ne1ii"]
 [ext_resource type="PackedScene" uid="uid://3se37hf2b3nl" path="res://damage_flash_player.tscn" id="6_im2h3"]
@@ -16,7 +17,7 @@ shader_parameter/flash_color = Color(1, 1, 1, 1)
 shader_parameter/flash_value = 0.0
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_h40vo"]
-size = Vector2(44, 54)
+size = Vector2(24, 30)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_2j7i3"]
 atlas = ExtResource("8_tc8og")
@@ -117,26 +118,36 @@ health_component = NodePath("Body/HealthComponent")
 health_bar = NodePath("HealthBar")
 
 [node name="HealthBar" parent="." instance=ExtResource("2_cgc7n")]
-offset_left = -24.0
-offset_top = -35.0
-offset_right = 26.0
-offset_bottom = -31.0
+offset_left = -10.0
+offset_top = -24.0
+offset_right = 12.0
 
 [node name="Body" type="Node2D" parent="."]
 
+[node name="Sprite2" type="Sprite2D" parent="Body"]
+texture_filter = 2
+material = ExtResource("3_5rm07")
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("4_2lods")
+region_enabled = true
+region_rect = Rect2(0, 0, 64, 64)
+
 [node name="Sprite" type="Sprite2D" parent="Body"]
+visible = false
 material = SubResource("ShaderMaterial_wrke3")
+scale = Vector2(0.5, 0.5)
 texture = ExtResource("4_2lods")
 region_enabled = true
 region_rect = Rect2(0, 0, 64, 64)
 
 [node name="DamageFlashPlayer" parent="Body/Sprite" instance=ExtResource("6_im2h3")]
 
-[node name="HealthComponent" type="Node2D" parent="Body" node_paths=PackedStringArray("health_bar", "damage_flash_player")]
+[node name="HealthComponent" type="Node2D" parent="Body" node_paths=PackedStringArray("health_bar", "damage_flash_player", "inner_sprite")]
 script = ExtResource("7_h37iv")
 health_bar = NodePath("../../HealthBar")
 possesor = "Neutral"
 damage_flash_player = NodePath("../Sprite/DamageFlashPlayer")
+inner_sprite = NodePath("../Sprite")
 
 [node name="HitboxComponent" type="Area2D" parent="Body" node_paths=PackedStringArray("health_component")]
 position = Vector2(0, -1)
@@ -146,8 +157,12 @@ health_component = NodePath("../HealthComponent")
 possesor = "Enemy"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Body/HitboxComponent"]
+position = Vector2(0, 1)
 shape = SubResource("RectangleShape2D_h40vo")
 
 [node name="Death" type="AnimatedSprite2D" parent="Body"]
+visible = false
+texture_filter = 2
+material = ExtResource("3_5rm07")
 sprite_frames = SubResource("SpriteFrames_upb6k")
 animation = &"death"

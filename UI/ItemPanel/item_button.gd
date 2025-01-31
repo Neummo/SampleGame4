@@ -1,15 +1,20 @@
 extends TextureButton
 
-@onready var title: Label = $Title
-@onready var description: Label = $Description
+@onready var title: RichTextLabel = $Title
+@onready var description: RichTextLabel = $Description
 @onready var icon: TextureRect = $Icon
 
 var id: int = 9999
 var title_text: String
 var description_text: String
 var icon_path: String
+var rarity: int
 var on_click
 var card: Dictionary
+@export var number: int
+var normal
+var hover
+@onready var trim: TextureRect = $Trim
 
 func roll_card() -> void:
 	card = get_card()
@@ -20,11 +25,19 @@ func roll_card() -> void:
 	on_click = card["effect"]
 	
 	title.text = title_text
-	description.text = description_text
+	description.text = Values.btify_text(description_text)
 	icon.texture = ResourceLoader.load(icon_path)
+	
+	normal = ResourceLoader.load("res://Assets/panel/item_panel_button_" + str(number) + "_normal.png")
+	hover = ResourceLoader.load("res://Assets/panel/item_panel_button_" + str(number) + "_hover.png")
+	texture_normal = normal
+	texture_pressed = normal
+	texture_hover = hover
 
 func get_card() -> Dictionary:
-	var rarity_data: Dictionary = ItemData.item_data[str(get_rarity())]["data"]
+	rarity = get_rarity()
+	trim.set_texture(ResourceLoader.load("res://Assets/panel/tier_" + str(rarity + 1) + "_trim.png"))
+	var rarity_data: Dictionary = ItemData.item_data[str(rarity)]["data"]
 	var rand_index: int = randi_range(0, rarity_data.size() - 1)
 	if rarity_data[str(rand_index)]["max"] == rarity_data[str(rand_index)]["hits"]:
 		return get_card()

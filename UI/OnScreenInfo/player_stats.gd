@@ -26,6 +26,8 @@ class_name PlayerStats
 @export var bounty: Label
 @export var coords: Label
 @export var zone: Label
+@export var energy_damage_multiplier_value: Label
+@export var physical_damage_multiplier_value: Label
 
 func set_stats(stats: Dictionary) -> void:
 	acceleration_label.set_text(str(stats.acceleration))
@@ -40,6 +42,8 @@ func set_stats(stats: Dictionary) -> void:
 	critical_chance_label.set_text(str(stats.critical_chance * 100) + "%")
 	critical_damage_label.set_text(str(stats.critical_damage * 100) + "%")
 	damage_multiplier_label.set_text(str(stats.damage_multiplier * 100) + "%")
+	energy_damage_multiplier_value.set_text(str(stats.energy_modifier * 100) + "%")
+	physical_damage_multiplier_value.set_text(str(stats.physical_modifier * 100) + "%")
 	as_multiplier_label.set_text(str(stats.as_multiplier * 100) + "%")
 	salvage_drop_rate_label.set_text(str(stats.salvage_drop_rate * 100) + "%")
 	module_drop_rate_label.set_text(str(stats.module_drop_rate * 100) + "%")
@@ -48,7 +52,7 @@ func set_stats(stats: Dictionary) -> void:
 	credits_label.set_text(str(snappedf(stats.credits, 0.01)))
 	parts_label.set_text(str(stats.parts))
 	modules_label.set_text(str(stats.modules))
-	zone.set_text("Danger Level: " + str(stats.zone))
+	zone.set_text("THREAT: " + str(stats.zone))
 	refresh_action_bar()
 
 func refresh_action_bar() -> void:

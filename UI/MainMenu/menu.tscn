@@ -28,7 +28,7 @@ follow_viewport_enabled = true
 
 [node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer"]
 position = Vector2(-43, -50)
-scale = Vector2(0.7315, 0.7315)
+scale = Vector2(0.245667, 0.2255)
 texture = ExtResource("2_dmk1x")
 centered = false
 
@@ -71,10 +71,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = 336.0
-offset_top = 132.0
-offset_right = 834.0
-offset_bottom = 467.0
+offset_left = 230.0
+offset_top = 297.0
+offset_right = 603.0
+offset_bottom = 619.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("3_tym80")
@@ -169,10 +169,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = 336.0
-offset_top = 132.0
-offset_right = 834.0
-offset_bottom = 467.0
+offset_left = 224.0
+offset_top = 298.0
+offset_right = 615.0
+offset_bottom = 628.0
 grow_horizontal = 2
 grow_vertical = 2
 
@@ -188,7 +188,7 @@ text = "Master Volume"
 layout_mode = 0
 offset_left = 0.0
 offset_top = 34.0
-offset_right = 421.0
+offset_right = 334.0
 offset_bottom = 50.0
 tick_count = 10
 ticks_on_borders = false

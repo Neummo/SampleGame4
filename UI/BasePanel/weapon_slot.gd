@@ -7,12 +7,12 @@ class_name WeaponSlot
 @export var weapon_tree_4: BigUpgradeTreeButton
 @export var weapon_tree_5: BigUpgradeTreeButton
 @export var id: int
-@onready var label: Label = $Label
 @onready var weapon_list: HBoxContainer = $WeaponList
 
 var weapons: Array
 var trees: Array
 var slot_weapon: BigUpgradeTreeButton
+var elimination_count: Array = [50, 550, 1550, 3550]
 
 func init() -> void:
 	for child in weapon_list.get_children():
@@ -35,3 +35,9 @@ func init() -> void:
 func _on_pressed() -> void:
 	if slot_weapon == null:
 		weapon_list.visible = not weapon_list.visible
+
+func _on_mouse_entered(description: RichTextLabel) -> void:
+	description.set_text("Unlocks in " + str(elimination_count[Values.weapon_slots - 1] - Values.eliminations) + " eliminations")
+	
+func _on_mouse_exited(description: RichTextLabel) -> void:
+	description.set_text("")

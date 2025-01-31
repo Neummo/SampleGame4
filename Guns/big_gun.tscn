@@ -1,7 +1,8 @@
-[gd_scene load_steps=4 format=3 uid="uid://cegx3mkaarwf6"]
+[gd_scene load_steps=5 format=3 uid="uid://cegx3mkaarwf6"]
 
 [ext_resource type="Script" path="res://Guns/big_gun.gd" id="1_0sf07"]
 [ext_resource type="PackedScene" uid="uid://m24wltpp2rb" path="res://Attacks/laser.tscn" id="2_btnrn"]
+[ext_resource type="Material" uid="uid://b4d1gvp1222f1" path="res://smooth.tres" id="3_dkeyk"]
 [ext_resource type="PackedScene" uid="uid://1370ehbnvt4b" path="res://Attacks/area_beam.tscn" id="4_vjv5i"]
 
 [node name="BigGun" type="Node2D" node_paths=PackedStringArray("big_gun_area_beam", "big_gun_laser", "big_gun_timer")]
@@ -13,7 +14,11 @@ big_gun_timer = NodePath("BigGunTimer")
 [node name="BigGunTimer" type="Timer" parent="."]
 
 [node name="Laser" parent="." instance=ExtResource("2_btnrn")]
+texture_filter = 2
+material = ExtResource("3_dkeyk")
 
 [node name="AreaBeam" parent="." instance=ExtResource("4_vjv5i")]
+texture_filter = 2
+material = ExtResource("3_dkeyk")
 
 [connection signal="timeout" from="BigGunTimer" to="." method="_on_big_gun_timer_timeout"]

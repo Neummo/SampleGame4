@@ -1,41 +1,490 @@
-[gd_scene load_steps=16 format=3 uid="uid://dtbe3d6tdnt30"]
+[gd_scene load_steps=89 format=3 uid="uid://dtbe3d6tdnt30"]
 
 [ext_resource type="Script" path="res://UI/progression_manager.gd" id="1_boseb"]
+[ext_resource type="Texture2D" uid="uid://cnaj26c015sci" path="res://Assets/panel/panel.png" id="2_jrvq1"]
 [ext_resource type="PackedScene" uid="uid://dw3btbuscjgyh" path="res://UI/BasePanel/part_display.tscn" id="2_mn78g"]
 [ext_resource type="LabelSettings" uid="uid://cro6habyr70oa" path="res://Assets/stat_label_font.tres" id="2_mp5ci"]
-[ext_resource type="Texture2D" uid="uid://co0a622mi6nqh" path="res://Assets/placeholder_button.tres" id="3_llpj6"]
 [ext_resource type="Script" path="res://Attacks/Components/_upgrade_button.gd" id="4_75ix6"]
+[ext_resource type="Texture2D" uid="uid://bmf3qedlnp5gd" path="res://Assets/icons/selected/26.png" id="5_wj8un"]
 [ext_resource type="PackedScene" uid="uid://ckk0snomqtyae" path="res://UI/BasePanel/weapon_slot.tscn" id="6_mtkrx"]
+[ext_resource type="Texture2D" uid="uid://jlotsla4h1ep" path="res://Assets/icons/locked/26.png" id="6_nvxcb"]
 [ext_resource type="PackedScene" uid="uid://e8je7elgras7" path="res://UI/BasePanel/big_upgrade_tree_button.tscn" id="6_ut5g0"]
 [ext_resource type="Script" path="res://UI/BasePanel/display_toggle.gd" id="7_v0e4h"]
 [ext_resource type="Script" path="res://UI/BasePanel/bounty.gd" id="9_h30cn"]
+[ext_resource type="Texture2D" uid="uid://chpx7ojltvaoa" path="res://Assets/icons/selected/16.png" id="9_htrrp"]
+[ext_resource type="Texture2D" uid="uid://bg5ql4fdcgku0" path="res://Assets/icons/selected/29.png" id="10_tn1cp"]
+[ext_resource type="Texture2D" uid="uid://bea0e7nc4fdo8" path="res://Assets/icons/locked/16.png" id="10_yl0bo"]
+[ext_resource type="LabelSettings" uid="uid://330kwteli2sf" path="res://Assets/7px_font.tres" id="11_ew2e1"]
+[ext_resource type="LabelSettings" uid="uid://br4w54qev3d1k" path="res://Assets/10px_font.tres" id="12_q2ynf"]
+[ext_resource type="Texture2D" uid="uid://ces5stvgbqdw3" path="res://Assets/icons/selected/33.png" id="13_y40hc"]
+[ext_resource type="Texture2D" uid="uid://bgtshxbt4tdmo" path="res://Assets/icons/selected/32.png" id="14_7xa0n"]
+[ext_resource type="Texture2D" uid="uid://dw30ylprm00dl" path="res://Assets/icons/selected/34.png" id="15_0f2mr"]
+[ext_resource type="Texture2D" uid="uid://bsl80pbye304v" path="res://Assets/icons/selected/31.png" id="15_sg1r7"]
+[ext_resource type="Texture2D" uid="uid://elajppibf8oy" path="res://Assets/panel/appear.png" id="17_dwafg"]
+[ext_resource type="FontFile" uid="uid://c861shwg03bic" path="res://Assets/fonts/Jersey10-Regular.ttf" id="17_oqu1u"]
+[ext_resource type="Texture2D" uid="uid://cfqdvk33a7smx" path="res://Assets/panel/disappear.png" id="18_mgh6l"]
 
-[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_bmr3p"]
-size = Vector2(25, 25)
-
-[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_rqkfk"]
-size = Vector2(25, 25)
-
-[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_xle6s"]
-size = Vector2(40, 40)
+[sub_resource type="SpriteFrames" id="SpriteFrames_gkwni"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_jrvq1")
+}],
+"loop": false,
+"name": &"default",
+"speed": 1.0
+}]
 
 [sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_x3gql"]
-size = Vector2(50, 50)
+size = Vector2(30, 30)
 
 [sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_va2n2"]
-size = Vector2(50, 50)
+size = Vector2(30, 30)
 
 [sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_67qvi"]
 size = Vector2(40, 40)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_gsc11"]
+atlas = ExtResource("17_dwafg")
+region = Rect2(0, 0, 384, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hiuao"]
+atlas = ExtResource("17_dwafg")
+region = Rect2(384, 0, 384, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dhlar"]
+atlas = ExtResource("17_dwafg")
+region = Rect2(768, 0, 384, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gktvc"]
+atlas = ExtResource("17_dwafg")
+region = Rect2(1152, 0, 384, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fgcr3"]
+atlas = ExtResource("17_dwafg")
+region = Rect2(0, 256, 384, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ox6i7"]
+atlas = ExtResource("17_dwafg")
+region = Rect2(384, 256, 384, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rn2qe"]
+atlas = ExtResource("17_dwafg")
+region = Rect2(768, 256, 384, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1t4ia"]
+atlas = ExtResource("17_dwafg")
+region = Rect2(1152, 256, 384, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tonyp"]
+atlas = ExtResource("17_dwafg")
+region = Rect2(0, 512, 384, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vphpd"]
+atlas = ExtResource("17_dwafg")
+region = Rect2(384, 512, 384, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_o317y"]
+atlas = ExtResource("17_dwafg")
+region = Rect2(768, 512, 384, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_43ydl"]
+atlas = ExtResource("17_dwafg")
+region = Rect2(1152, 512, 384, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2pdi5"]
+atlas = ExtResource("17_dwafg")
+region = Rect2(0, 768, 384, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bbcvq"]
+atlas = ExtResource("17_dwafg")
+region = Rect2(384, 768, 384, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2n6vx"]
+atlas = ExtResource("17_dwafg")
+region = Rect2(768, 768, 384, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0te3w"]
+atlas = ExtResource("17_dwafg")
+region = Rect2(1152, 768, 384, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ou7lm"]
+atlas = ExtResource("17_dwafg")
+region = Rect2(0, 1024, 384, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pwia3"]
+atlas = ExtResource("17_dwafg")
+region = Rect2(384, 1024, 384, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5p5sx"]
+atlas = ExtResource("17_dwafg")
+region = Rect2(768, 1024, 384, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mimek"]
+atlas = ExtResource("17_dwafg")
+region = Rect2(1152, 1024, 384, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_corjr"]
+atlas = ExtResource("17_dwafg")
+region = Rect2(0, 1280, 384, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1g54e"]
+atlas = ExtResource("17_dwafg")
+region = Rect2(384, 1280, 384, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sldmu"]
+atlas = ExtResource("17_dwafg")
+region = Rect2(768, 1280, 384, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ic2sf"]
+atlas = ExtResource("17_dwafg")
+region = Rect2(1152, 1280, 384, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gxtwi"]
+atlas = ExtResource("17_dwafg")
+region = Rect2(0, 1536, 384, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_60dhx"]
+atlas = ExtResource("17_dwafg")
+region = Rect2(384, 1536, 384, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rlkf1"]
+atlas = ExtResource("17_dwafg")
+region = Rect2(768, 1536, 384, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vfm34"]
+atlas = ExtResource("17_dwafg")
+region = Rect2(1152, 1536, 384, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jjnrj"]
+atlas = ExtResource("17_dwafg")
+region = Rect2(0, 1792, 384, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7rbsx"]
+atlas = ExtResource("17_dwafg")
+region = Rect2(384, 1792, 384, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fnltq"]
+atlas = ExtResource("18_mgh6l")
+region = Rect2(0, 0, 384, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nyrhf"]
+atlas = ExtResource("18_mgh6l")
+region = Rect2(384, 0, 384, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_oemrc"]
+atlas = ExtResource("18_mgh6l")
+region = Rect2(768, 0, 384, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cpslx"]
+atlas = ExtResource("18_mgh6l")
+region = Rect2(1152, 0, 384, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_s28y4"]
+atlas = ExtResource("18_mgh6l")
+region = Rect2(0, 256, 384, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tfjpr"]
+atlas = ExtResource("18_mgh6l")
+region = Rect2(384, 256, 384, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_d888w"]
+atlas = ExtResource("18_mgh6l")
+region = Rect2(768, 256, 384, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_s06sd"]
+atlas = ExtResource("18_mgh6l")
+region = Rect2(1152, 256, 384, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bsju5"]
+atlas = ExtResource("18_mgh6l")
+region = Rect2(0, 512, 384, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_32ifg"]
+atlas = ExtResource("18_mgh6l")
+region = Rect2(384, 512, 384, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_p0kvd"]
+atlas = ExtResource("18_mgh6l")
+region = Rect2(768, 512, 384, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sjhfm"]
+atlas = ExtResource("18_mgh6l")
+region = Rect2(1152, 512, 384, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sftka"]
+atlas = ExtResource("18_mgh6l")
+region = Rect2(0, 768, 384, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_o741n"]
+atlas = ExtResource("18_mgh6l")
+region = Rect2(384, 768, 384, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gye61"]
+atlas = ExtResource("18_mgh6l")
+region = Rect2(768, 768, 384, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3f1jh"]
+atlas = ExtResource("18_mgh6l")
+region = Rect2(1152, 768, 384, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bx0mm"]
+atlas = ExtResource("18_mgh6l")
+region = Rect2(0, 1024, 384, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_h1cnt"]
+atlas = ExtResource("18_mgh6l")
+region = Rect2(384, 1024, 384, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jxh6g"]
+atlas = ExtResource("18_mgh6l")
+region = Rect2(768, 1024, 384, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ogwsa"]
+atlas = ExtResource("18_mgh6l")
+region = Rect2(1152, 1024, 384, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4sivd"]
+atlas = ExtResource("18_mgh6l")
+region = Rect2(0, 1280, 384, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jfkco"]
+atlas = ExtResource("18_mgh6l")
+region = Rect2(384, 1280, 384, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dch42"]
+atlas = ExtResource("18_mgh6l")
+region = Rect2(768, 1280, 384, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mu60u"]
+atlas = ExtResource("18_mgh6l")
+region = Rect2(1152, 1280, 384, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3w41n"]
+atlas = ExtResource("18_mgh6l")
+region = Rect2(0, 1536, 384, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8yggy"]
+atlas = ExtResource("18_mgh6l")
+region = Rect2(384, 1536, 384, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_r1v61"]
+atlas = ExtResource("18_mgh6l")
+region = Rect2(768, 1536, 384, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lsovq"]
+atlas = ExtResource("18_mgh6l")
+region = Rect2(1152, 1536, 384, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8pts5"]
+atlas = ExtResource("18_mgh6l")
+region = Rect2(0, 1792, 384, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_t8b2g"]
+atlas = ExtResource("18_mgh6l")
+region = Rect2(384, 1792, 384, 256)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_5fvbs"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gsc11")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hiuao")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dhlar")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gktvc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fgcr3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ox6i7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rn2qe")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1t4ia")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tonyp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vphpd")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_o317y")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_43ydl")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2pdi5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bbcvq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2n6vx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0te3w")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ou7lm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pwia3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5p5sx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mimek")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_corjr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1g54e")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_sldmu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ic2sf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gxtwi")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_60dhx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rlkf1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vfm34")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jjnrj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7rbsx")
+}],
+"loop": false,
+"name": &"appear",
+"speed": 120.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fnltq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nyrhf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_oemrc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cpslx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_s28y4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tfjpr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_d888w")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_s06sd")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bsju5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_32ifg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_p0kvd")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_sjhfm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_sftka")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_o741n")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gye61")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3f1jh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bx0mm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_h1cnt")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jxh6g")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ogwsa")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4sivd")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jfkco")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dch42")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mu60u")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3w41n")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8yggy")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_r1v61")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lsovq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8pts5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_t8b2g")
+}],
+"loop": false,
+"name": &"disappear",
+"speed": 120.0
+}]
+
 [node name="ProgressionManager" type="Node2D" node_paths=PackedStringArray("part_display", "upgrade_menu", "repair_button", "salvage_button", "turret_unlock_button", "turret_upgrade1_button", "turret_upgrade11_button", "turret_upgrade111_button", "turret_upgrade211_button", "turret_upgrade311_button", "turret_upgrade21_button", "turret_upgrade31_button", "rocket_unlock_button", "rocket_upgrade3_button", "rocket_upgrade31_button", "rocket_upgrade311_button", "rocket_upgrade32_button", "rocket_upgrade321_button", "rocket_upgrade33_button", "rocket_upgrade34_button", "laser_unlock_button", "laser_upgrade1_button", "laser_upgrade11_button", "laser_upgrade2_button", "laser_upgrade21_button", "laser_upgrade3_button", "laser_upgrade4_button", "field_unlock_button", "field_upgrade1_button", "field_upgrade11_button", "field_upgrade12_button", "field_upgrade13_button", "field_upgrade2_button", "field_upgrade3_button", "seeker_unlock_button", "seeker_upgrade3_button", "seeker_upgrade311_button", "seeker_upgrade312_button", "seeker_upgrade313_button", "seeker_upgrade314_button") groups=["pm"]]
 process_mode = 2
-position = Vector2(1, -1)
+position = Vector2(10, -16)
 script = ExtResource("1_boseb")
 part_display = NodePath("UpgradeContainer/PartDisplay")
 upgrade_menu = NodePath("UpgradeContainer")
-repair_button = NodePath("UpgradeContainer/Repair")
-salvage_button = NodePath("UpgradeContainer/Salvage")
+repair_button = NodePath("UpgradeContainer/UpgradeDisplay/Repair")
+salvage_button = NodePath("UpgradeContainer/UpgradeDisplay/Salvage")
 turret_unlock_button = NodePath("UpgradeContainer/WeaponDisplay/TurretUnlockTreeButton")
 turret_upgrade1_button = NodePath("UpgradeContainer/WeaponDisplay/TurretUnlockTreeButton/TurretUpgrade11TreeButton/TurretUpgrade1TreeButton")
 turret_upgrade11_button = NodePath("UpgradeContainer/WeaponDisplay/TurretUnlockTreeButton/TurretUpgrade11TreeButton")
@@ -76,715 +525,1100 @@ seeker_upgrade314_button = NodePath("UpgradeContainer/WeaponDisplay/SeekerUnlock
 [node name="UpgradeContainer" type="Control" parent="."]
 layout_mode = 3
 anchors_preset = 0
-offset_left = -219.0
-offset_right = -179.0
-offset_bottom = 40.0
+offset_left = -440.0
+offset_top = -159.0
+offset_right = -400.0
+offset_bottom = -119.0
 
-[node name="Panel" type="Panel" parent="UpgradeContainer"]
-layout_mode = 1
-anchors_preset = -1
-offset_left = -144.0
-offset_top = -314.0
+[node name="Panel" type="AnimatedSprite2D" parent="UpgradeContainer"]
+show_behind_parent = true
+z_index = -1
+use_parent_material = true
+position = Vector2(452, 178)
+sprite_frames = SubResource("SpriteFrames_gkwni")
+
+[node name="UpgradeDisplay" type="Control" parent="UpgradeContainer"]
+visible = false
+use_parent_material = true
+anchors_preset = 0
+offset_top = 24.0
+offset_right = 40.0
+offset_bottom = 64.0
+
+[node name="BaseDamage" parent="UpgradeContainer/UpgradeDisplay" instance=ExtResource("6_ut5g0")]
+use_parent_material = true
+layout_mode = 0
+offset_left = 342.0
+offset_top = 60.0
+offset_right = 358.0
+offset_bottom = 76.0
+disabled = true
+max_level = 20
+description = "- Base Damage +3"
+
+[node name="Damage" parent="UpgradeContainer/UpgradeDisplay/BaseDamage" instance=ExtResource("6_ut5g0")]
+use_parent_material = true
+layout_mode = 0
+offset_left = 98.0
+offset_top = 0.0
+offset_right = 114.0
+offset_bottom = 16.0
+disabled = true
+max_level = 20
+description = "- Damage +10%"
+
+[node name="DamageB" parent="UpgradeContainer/UpgradeDisplay/BaseDamage/Damage" instance=ExtResource("6_ut5g0")]
+use_parent_material = true
+layout_mode = 0
+offset_left = 98.0
+offset_top = 0.0
+offset_right = 114.0
+offset_bottom = 16.0
+disabled = true
+max_level = 20
+description = "- Damage +20%"
+
+[node name="RateOfFire" parent="UpgradeContainer/UpgradeDisplay" instance=ExtResource("6_ut5g0")]
+use_parent_material = true
+layout_mode = 0
+offset_left = 342.0
+offset_top = 84.0
+offset_right = 358.0
+offset_bottom = 100.0
+disabled = true
+max_level = 20
+description = "- Rate of Fire +5%"
+
+[node name="DamageAL" parent="UpgradeContainer/UpgradeDisplay" instance=ExtResource("6_ut5g0")]
+use_parent_material = true
+layout_mode = 0
+offset_left = 440.0
+offset_top = 84.0
+offset_right = 456.0
+offset_bottom = 100.0
+disabled = true
+max_level = 5
+description = "- Damage +100%-nl- Speed and Acceleration - 25%"
+
+[node name="DamagePS" parent="UpgradeContainer/UpgradeDisplay" instance=ExtResource("6_ut5g0")]
+use_parent_material = true
+layout_mode = 0
+offset_left = 440.0
+offset_top = 107.0
+offset_right = 456.0
+offset_bottom = 123.0
+disabled = true
+max_level = 5
+description = "- Damage +100%-nl- Projectile Speed - 5%"
+
+[node name="ProjectileSpeed" parent="UpgradeContainer/UpgradeDisplay" instance=ExtResource("6_ut5g0")]
+use_parent_material = true
+layout_mode = 0
+offset_left = 342.0
+offset_top = 107.0
+offset_right = 358.0
+offset_bottom = 123.0
+disabled = true
+max_level = 20
+description = "- Projectile Speed +10%"
+
+[node name="BaseShields" parent="UpgradeContainer/UpgradeDisplay" instance=ExtResource("6_ut5g0")]
+use_parent_material = true
+layout_mode = 0
+offset_left = 342.0
+offset_top = 130.0
+offset_right = 358.0
+offset_bottom = 146.0
+disabled = true
+max_level = 20
+description = "- Base Shield +10"
+
+[node name="Shields" parent="UpgradeContainer/UpgradeDisplay/BaseShields" instance=ExtResource("6_ut5g0")]
+use_parent_material = true
+layout_mode = 0
+offset_left = 98.0
+offset_top = 0.0
+offset_right = 114.0
+offset_bottom = 16.0
+disabled = true
+max_level = 20
+description = "- Shield +10%"
+
+[node name="Magnet" parent="UpgradeContainer/UpgradeDisplay" instance=ExtResource("6_ut5g0")]
+use_parent_material = true
+layout_mode = 0
+offset_left = 342.0
+offset_top = 152.0
+offset_right = 358.0
+offset_bottom = 168.0
+disabled = true
+max_level = 20
+description = "- Magnet Strength +1"
+
+[node name="MagnetP" parent="UpgradeContainer/UpgradeDisplay/Magnet" instance=ExtResource("6_ut5g0")]
+use_parent_material = true
+layout_mode = 0
+offset_left = 98.0
+offset_top = 0.0
+offset_right = 114.0
+offset_bottom = 16.0
+disabled = true
+max_level = 20
+description = "- Magnet Strength +5"
+
+[node name="MagnetI" parent="UpgradeContainer/UpgradeDisplay/Magnet/MagnetP" instance=ExtResource("6_ut5g0")]
+use_parent_material = true
+layout_mode = 0
+offset_left = 98.0
+offset_top = 0.0
+offset_right = 114.0
+offset_bottom = 16.0
+disabled = true
+max_level = 1
+description = "- Teleports Pick-ups"
+
+[node name="BaseSpeed" parent="UpgradeContainer/UpgradeDisplay" instance=ExtResource("6_ut5g0")]
+use_parent_material = true
+layout_mode = 0
+offset_left = 342.0
+offset_top = 174.0
+offset_right = 358.0
+offset_bottom = 190.0
+disabled = true
+max_level = 20
+description = "- Base Speed +2"
+
+[node name="BaseAcceleration" parent="UpgradeContainer/UpgradeDisplay" instance=ExtResource("6_ut5g0")]
+use_parent_material = true
+layout_mode = 0
+offset_left = 342.0
+offset_top = 196.0
+offset_right = 358.0
+offset_bottom = 212.0
+disabled = true
+max_level = 20
+description = "- Base Acceleration +5"
+
+[node name="ShieldRegen" parent="UpgradeContainer/UpgradeDisplay" instance=ExtResource("6_ut5g0")]
+use_parent_material = true
+layout_mode = 0
+offset_left = 342.0
+offset_top = 218.0
+offset_right = 358.0
+offset_bottom = 234.0
+disabled = true
+max_level = 20
+description = "- Shield Regeneration +1/s"
+
+[node name="DamageRed" parent="UpgradeContainer/UpgradeDisplay/ShieldRegen" instance=ExtResource("6_ut5g0")]
+use_parent_material = true
+layout_mode = 0
+offset_left = 98.0
+offset_top = 0.0
+offset_right = 114.0
+offset_bottom = 16.0
+disabled = true
+max_level = 20
+description = "- Damage Reduction +1"
+
+[node name="DamageRedB" parent="UpgradeContainer/UpgradeDisplay/ShieldRegen/DamageRed" instance=ExtResource("6_ut5g0")]
+use_parent_material = true
+layout_mode = 0
+offset_left = 98.0
+offset_top = 0.0
+offset_right = 114.0
+offset_bottom = 16.0
+disabled = true
+max_level = 20
+description = "- Damage Reduction +5"
+
+[node name="Repair" type="TextureButton" parent="UpgradeContainer/UpgradeDisplay" node_paths=PackedStringArray("label", "price_label")]
+visible = false
+use_parent_material = true
+layout_mode = 0
+offset_left = 279.0
+offset_top = 39.0
+offset_right = 309.0
+offset_bottom = 69.0
+texture_normal = ExtResource("5_wj8un")
+texture_disabled = ExtResource("6_nvxcb")
+script = ExtResource("4_75ix6")
+label = NodePath("../RPLBL")
+price_label = NodePath("../RPPLBL")
+
+[node name="RPLBL" type="Label" parent="UpgradeContainer/UpgradeDisplay"]
+visible = false
+use_parent_material = true
+layout_mode = 0
+offset_left = 554.0
+offset_top = 44.0
+offset_right = 570.0
+offset_bottom = 52.0
+label_settings = ExtResource("2_mp5ci")
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="RPPLBL" type="Label" parent="UpgradeContainer/UpgradeDisplay"]
+visible = false
+use_parent_material = true
+layout_mode = 0
+offset_left = 554.0
+offset_top = 70.0
+offset_right = 559.0
+offset_bottom = 78.0
+label_settings = ExtResource("2_mp5ci")
+horizontal_alignment = 2
+
+[node name="Salvage" type="TextureButton" parent="UpgradeContainer/UpgradeDisplay" node_paths=PackedStringArray("label", "price_label") groups=["SalvageButton"]]
+visible = false
+use_parent_material = true
+layout_mode = 0
+offset_left = 585.0
+offset_top = 51.0
 offset_right = 615.0
-offset_bottom = 333.0
-grow_horizontal = 2
-grow_vertical = 2
+offset_bottom = 81.0
+texture_normal = ExtResource("9_htrrp")
+texture_disabled = ExtResource("10_yl0bo")
+script = ExtResource("4_75ix6")
+label = NodePath("../SalvageLabel")
+price_label = NodePath("../SalvagePriceLabel")
+
+[node name="SalvageLabel" type="Label" parent="UpgradeContainer/UpgradeDisplay"]
+visible = false
+use_parent_material = true
+layout_mode = 0
+offset_left = 583.0
+offset_top = 38.0
+offset_right = 603.0
+offset_bottom = 51.0
+text = "sd"
+label_settings = ExtResource("2_mp5ci")
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="SalvagePriceLabel" type="Label" parent="UpgradeContainer/UpgradeDisplay"]
+visible = false
+use_parent_material = true
+layout_mode = 0
+offset_left = 591.0
+offset_top = 68.0
+offset_right = 600.0
+offset_bottom = 82.0
+text = "0"
+label_settings = ExtResource("2_mp5ci")
+horizontal_alignment = 2
+
+[node name="Currency" type="Sprite2D" parent="UpgradeContainer/UpgradeDisplay"]
+use_parent_material = true
+position = Vector2(587, 255)
+texture = ExtResource("10_tn1cp")
+
+[node name="CurrencyLabel" type="Label" parent="UpgradeContainer/UpgradeDisplay/Currency"]
+use_parent_material = true
+offset_left = 8.0
+offset_top = -3.0
+offset_right = 39.0
+offset_bottom = 11.0
+label_settings = ExtResource("11_ew2e1")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="CurrencyLabel2" type="Label" parent="UpgradeContainer/UpgradeDisplay/Currency"]
+use_parent_material = true
+offset_left = 10.0
+offset_top = -10.0
+offset_right = 39.0
+text = "Currency"
+label_settings = ExtResource("11_ew2e1")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label" type="Label" parent="UpgradeContainer/UpgradeDisplay"]
+use_parent_material = true
+layout_mode = 0
+offset_left = 415.0
+offset_top = 34.0
+offset_right = 480.0
+offset_bottom = 49.0
+text = "Upgrade Research"
+label_settings = ExtResource("12_q2ynf")
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="PartDisplay" parent="UpgradeContainer" instance=ExtResource("2_mn78g")]
 visible = false
-offset_left = 219.0
-offset_top = 1.0
-offset_right = 259.0
-offset_bottom = 41.0
+use_parent_material = true
+offset_left = 492.0
+offset_top = 196.0
+offset_right = 532.0
+offset_bottom = 236.0
+
+[node name="Parts" type="Sprite2D" parent="UpgradeContainer/PartDisplay"]
+use_parent_material = true
+position = Vector2(95, 83)
+texture = ExtResource("14_7xa0n")
+
+[node name="PartsLabel" type="Label" parent="UpgradeContainer/PartDisplay/Parts"]
+use_parent_material = true
+offset_left = 10.0
+offset_top = -1.0
+offset_right = 40.0
+offset_bottom = 9.0
+label_settings = ExtResource("11_ew2e1")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="PartsLabel2" type="Label" parent="UpgradeContainer/PartDisplay/Parts"]
+use_parent_material = true
+offset_left = 16.0
+offset_top = -10.0
+offset_right = 35.0
+text = "Parts"
+label_settings = ExtResource("11_ew2e1")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label" type="Label" parent="UpgradeContainer/PartDisplay"]
+use_parent_material = true
+layout_mode = 0
+offset_left = -74.0
+offset_top = -138.0
+offset_right = -10.0
+offset_bottom = -123.0
+text = "Part Modifications"
+label_settings = ExtResource("12_q2ynf")
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="WeaponDisplay" type="Control" parent="UpgradeContainer"]
+use_parent_material = true
 anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
+offset_left = 292.0
+offset_top = 176.0
+offset_right = 332.0
+offset_bottom = 216.0
 
-[node name="Panel" type="Panel" parent="UpgradeContainer/WeaponDisplay"]
-layout_mode = 1
-anchors_preset = -1
-offset_left = -123.0
-offset_top = -298.0
-offset_right = 473.0
-offset_bottom = 318.0
-grow_horizontal = 2
-grow_vertical = 2
+[node name="Label" type="Label" parent="UpgradeContainer/WeaponDisplay"]
+use_parent_material = true
+layout_mode = 0
+offset_left = 130.0
+offset_top = -118.0
+offset_right = 186.0
+offset_bottom = -103.0
+text = "Weapon Arsenal"
+label_settings = ExtResource("12_q2ynf")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label2" type="Label" parent="UpgradeContainer/WeaponDisplay"]
+use_parent_material = true
+layout_mode = 0
+offset_left = 51.0
+offset_top = -98.0
+offset_right = 81.0
+offset_bottom = -83.0
+text = "Slot #2"
+label_settings = ExtResource("12_q2ynf")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label3" type="Label" parent="UpgradeContainer/WeaponDisplay"]
+use_parent_material = true
+layout_mode = 0
+offset_left = 119.0
+offset_top = -97.0
+offset_right = 147.0
+offset_bottom = -84.0
+text = "Slot #3"
+label_settings = ExtResource("12_q2ynf")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label4" type="Label" parent="UpgradeContainer/WeaponDisplay"]
+use_parent_material = true
+layout_mode = 0
+offset_left = 187.0
+offset_top = -98.0
+offset_right = 217.0
+offset_bottom = -83.0
+text = "Slot #4"
+label_settings = ExtResource("12_q2ynf")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label5" type="Label" parent="UpgradeContainer/WeaponDisplay"]
+use_parent_material = true
+layout_mode = 0
+offset_left = 253.0
+offset_top = -97.0
+offset_right = 283.0
+offset_bottom = -84.0
+text = "Slot #5"
+label_settings = ExtResource("12_q2ynf")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label6" type="Label" parent="UpgradeContainer/WeaponDisplay"]
+use_parent_material = true
+layout_mode = 0
+offset_left = -14.0
+offset_top = -98.0
+offset_right = 14.0
+offset_bottom = -83.0
+text = "Slot #1"
+label_settings = ExtResource("12_q2ynf")
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="TurretUnlockTreeButton" parent="UpgradeContainer/WeaponDisplay" instance=ExtResource("6_ut5g0")]
 visible = false
+use_parent_material = true
 layout_mode = 1
 anchors_preset = -1
 anchor_left = -1.075
 anchor_top = -5.275
 anchor_right = -1.075
 anchor_bottom = -5.275
-offset_left = 0.0
-offset_top = -1.0
-offset_right = 30.0
-offset_bottom = 29.0
+offset_left = 57.0
+offset_top = 111.0
+offset_right = 73.0
+offset_bottom = 127.0
 max_level = 1
-description = "- Unlock laser turret"
+description = "- Unlock Gattling Gun"
 
 [node name="TurretUpgrade11TreeButton" parent="UpgradeContainer/WeaponDisplay/TurretUnlockTreeButton" instance=ExtResource("6_ut5g0")]
+use_parent_material = true
 layout_mode = 0
-offset_left = 51.0
-offset_top = -44.0
-offset_right = 81.0
-offset_bottom = -14.0
+offset_left = -25.0
+offset_top = 26.0
+offset_right = -9.0
+offset_bottom = 42.0
 disabled = true
 max_level = 5
 description = "- Projectile Speed Increase"
 
 [node name="TurretUpgrade1TreeButton" parent="UpgradeContainer/WeaponDisplay/TurretUnlockTreeButton/TurretUpgrade11TreeButton" instance=ExtResource("6_ut5g0")]
+use_parent_material = true
 layout_mode = 0
-offset_left = 54.0
-offset_top = 0.0
-offset_right = 84.0
-offset_bottom = 30.0
+offset_left = 0.0
+offset_top = 37.0
+offset_right = 16.0
+offset_bottom = 53.0
 disabled = true
 max_level = 1
 description = "- Double Projectile Base Speed"
 
 [node name="TurretUpgrade111TreeButton" parent="UpgradeContainer/WeaponDisplay/TurretUnlockTreeButton/TurretUpgrade11TreeButton/TurretUpgrade1TreeButton" instance=ExtResource("6_ut5g0")]
+use_parent_material = true
 layout_mode = 0
-offset_left = 52.0
-offset_top = 0.0
-offset_right = 82.0
-offset_bottom = 30.0
+offset_left = 0.0
+offset_top = 39.0
+offset_right = 16.0
+offset_bottom = 55.0
 disabled = true
 max_level = 1
 description = "- Homing Projectiles"
 
 [node name="TurretUpgrade21TreeButton" parent="UpgradeContainer/WeaponDisplay/TurretUnlockTreeButton" instance=ExtResource("6_ut5g0")]
+use_parent_material = true
 layout_mode = 0
-offset_left = 51.0
-offset_top = 0.0
-offset_right = 81.0
-offset_bottom = 30.0
+offset_left = 0.0
+offset_top = 45.0
+offset_right = 16.0
+offset_bottom = 61.0
 disabled = true
 max_level = 5
-description = "- Damage 10%"
+description = "- Damage +10%"
 
 [node name="TurretUpgrade211TreeButton" parent="UpgradeContainer/WeaponDisplay/TurretUnlockTreeButton/TurretUpgrade21TreeButton" instance=ExtResource("6_ut5g0")]
+use_parent_material = true
 layout_mode = 0
-offset_left = 51.0
-offset_top = 0.0
-offset_right = 81.0
-offset_bottom = 30.0
+offset_left = 0.0
+offset_top = 36.0
+offset_right = 16.0
+offset_bottom = 52.0
 disabled = true
 max_level = 1
-description = "- Projectile Size +50% and Damage +50%"
+description = "- Projectiles Pierce"
 
 [node name="TurretUpgrade31TreeButton" parent="UpgradeContainer/WeaponDisplay/TurretUnlockTreeButton" instance=ExtResource("6_ut5g0")]
+use_parent_material = true
 layout_mode = 0
-offset_left = 51.0
-offset_top = 44.0
-offset_right = 81.0
-offset_bottom = 74.0
+offset_left = 25.0
+offset_top = 26.0
+offset_right = 41.0
+offset_bottom = 42.0
 disabled = true
 max_level = 5
 description = "- Rate of Fire +10%"
 
 [node name="TurretUpgrade311TreeButton" parent="UpgradeContainer/WeaponDisplay/TurretUnlockTreeButton/TurretUpgrade31TreeButton" instance=ExtResource("6_ut5g0")]
+use_parent_material = true
 layout_mode = 0
-offset_left = 53.0
-offset_top = 0.0
-offset_right = 83.0
-offset_bottom = 30.0
+offset_left = 0.0
+offset_top = 37.0
+offset_right = 16.0
+offset_bottom = 53.0
 disabled = true
 max_level = 1
 description = "- Second Laser Turret"
 
 [node name="RocketUnlockTreeButton" parent="UpgradeContainer/WeaponDisplay" instance=ExtResource("6_ut5g0")]
 visible = false
+use_parent_material = true
 layout_mode = 1
 anchors_preset = -1
 anchor_left = -1.075
 anchor_top = -5.275
 anchor_right = -1.075
 anchor_bottom = -5.275
-offset_left = 0.0
-offset_top = -1.0
-offset_right = 30.0
-offset_bottom = 29.0
+offset_left = 57.0
+offset_top = 111.0
+offset_right = 73.0
+offset_bottom = 127.0
 max_level = 1
-description = "- Unlock Rockets"
+description = "- Unlock Rocket Launcher"
 
 [node name="RocketUpgrade3TreeButton" parent="UpgradeContainer/WeaponDisplay/RocketUnlockTreeButton" instance=ExtResource("6_ut5g0")]
+use_parent_material = true
 layout_mode = 0
-offset_left = 51.0
-offset_top = 0.0
-offset_right = 81.0
-offset_bottom = 30.0
+offset_left = 0.0
+offset_top = 35.0
+offset_right = 16.0
+offset_bottom = 51.0
 disabled = true
 max_level = 1
 description = "- Rockets become homing"
 
 [node name="RocketUpgrade31TreeButton" parent="UpgradeContainer/WeaponDisplay/RocketUnlockTreeButton/RocketUpgrade3TreeButton" instance=ExtResource("6_ut5g0")]
+use_parent_material = true
 layout_mode = 0
-offset_left = 54.0
-offset_top = 19.0
-offset_right = 84.0
-offset_bottom = 49.0
+offset_left = -24.0
+offset_top = 25.0
+offset_right = -8.0
+offset_bottom = 41.0
 disabled = true
 max_level = 1
 description = "- Double Base Projectile Speed"
 
 [node name="RocketUpgrade311TreeButton" parent="UpgradeContainer/WeaponDisplay/RocketUnlockTreeButton/RocketUpgrade3TreeButton/RocketUpgrade31TreeButton" instance=ExtResource("6_ut5g0")]
+use_parent_material = true
 layout_mode = 0
-offset_left = 54.0
-offset_top = 0.0
-offset_right = 84.0
-offset_bottom = 30.0
+offset_left = 0.0
+offset_top = 38.0
+offset_right = 16.0
+offset_bottom = 54.0
 disabled = true
 max_level = 5
 description = "- Projectile Speed Increase"
 
 [node name="RocketUpgrade32TreeButton" parent="UpgradeContainer/WeaponDisplay/RocketUnlockTreeButton/RocketUpgrade3TreeButton" instance=ExtResource("6_ut5g0")]
+use_parent_material = true
 layout_mode = 0
-offset_left = 54.0
-offset_top = -20.0
-offset_right = 84.0
-offset_bottom = 10.0
+offset_left = 24.0
+offset_top = 25.0
+offset_right = 40.0
+offset_bottom = 41.0
 disabled = true
 max_level = 1
 description = "- Impact Explodes"
 
 [node name="RocketUpgrade321TreeButton" parent="UpgradeContainer/WeaponDisplay/RocketUnlockTreeButton/RocketUpgrade3TreeButton/RocketUpgrade32TreeButton" instance=ExtResource("6_ut5g0")]
+use_parent_material = true
 layout_mode = 0
-offset_left = 54.0
-offset_top = 0.0
-offset_right = 84.0
-offset_bottom = 30.0
+offset_left = 0.0
+offset_top = 38.0
+offset_right = 16.0
+offset_bottom = 54.0
 disabled = true
 max_level = 5
 description = "- Explosion Area Increase"
 
 [node name="RocketUpgrade33TreeButton" parent="UpgradeContainer/WeaponDisplay/RocketUnlockTreeButton/RocketUpgrade3TreeButton" instance=ExtResource("6_ut5g0")]
+use_parent_material = true
 layout_mode = 0
-offset_left = 0.0
-offset_top = -37.0
-offset_right = 30.0
-offset_bottom = -7.0
+offset_left = -11.0
+offset_top = 93.0
+offset_right = 5.0
+offset_bottom = 109.0
 disabled = true
 max_level = 5
 description = "- Rate of Fire +10%"
 
 [node name="RocketUpgrade34TreeButton" parent="UpgradeContainer/WeaponDisplay/RocketUnlockTreeButton/RocketUpgrade3TreeButton" instance=ExtResource("6_ut5g0")]
+use_parent_material = true
 layout_mode = 0
-offset_left = 0.0
-offset_top = 39.0
-offset_right = 30.0
-offset_bottom = 69.0
+offset_left = 13.0
+offset_top = 93.0
+offset_right = 29.0
+offset_bottom = 109.0
 disabled = true
 max_level = 5
 description = "- Damage +10%"
 
 [node name="SeekerUnlockTreeButton" parent="UpgradeContainer/WeaponDisplay" instance=ExtResource("6_ut5g0")]
 visible = false
+use_parent_material = true
 layout_mode = 1
 anchors_preset = -1
 anchor_left = -1.075
 anchor_top = -5.275
 anchor_right = -1.075
 anchor_bottom = -5.275
-offset_left = 0.0
-offset_top = -1.0
-offset_right = 30.0
-offset_bottom = 29.0
+offset_left = 57.0
+offset_top = 111.0
+offset_right = 73.0
+offset_bottom = 127.0
 max_level = 1
-description = "- Unlock Seeker"
+description = "- Unlock Seeker Drone"
 
 [node name="SeekerUpgrade3TreeButton" parent="UpgradeContainer/WeaponDisplay/SeekerUnlockTreeButton" instance=ExtResource("6_ut5g0")]
+use_parent_material = true
 layout_mode = 0
-offset_left = 51.0
-offset_top = 0.0
-offset_right = 81.0
-offset_bottom = 30.0
+offset_left = 1.0
+offset_top = 39.0
+offset_right = 17.0
+offset_bottom = 55.0
 disabled = true
 max_level = 1
 description = "- Base Projectile Speed +30%"
 
 [node name="SeekerUpgrade313TreeButton" parent="UpgradeContainer/WeaponDisplay/SeekerUnlockTreeButton/SeekerUpgrade3TreeButton" instance=ExtResource("6_ut5g0")]
+use_parent_material = true
 layout_mode = 0
-offset_left = 49.0
-offset_top = -22.0
-offset_right = 79.0
-offset_bottom = 8.0
+offset_left = -20.0
+offset_top = 28.0
+offset_right = -4.0
+offset_bottom = 44.0
 disabled = true
 max_level = 5
 description = "- Damage +10%"
 
 [node name="SeekerUpgrade311TreeButton" parent="UpgradeContainer/WeaponDisplay/SeekerUnlockTreeButton/SeekerUpgrade3TreeButton/SeekerUpgrade313TreeButton" instance=ExtResource("6_ut5g0")]
+use_parent_material = true
 layout_mode = 0
-offset_left = 52.0
-offset_top = 0.0
-offset_right = 82.0
-offset_bottom = 30.0
+offset_left = 0.0
+offset_top = 38.0
+offset_right = 16.0
+offset_bottom = 54.0
 disabled = true
 max_level = 1
 description = "- Second Seeker"
 
 [node name="SeekerUpgrade314TreeButton" parent="UpgradeContainer/WeaponDisplay/SeekerUnlockTreeButton/SeekerUpgrade3TreeButton" instance=ExtResource("6_ut5g0")]
+use_parent_material = true
 layout_mode = 0
-offset_left = 49.0
-offset_top = 17.0
-offset_right = 79.0
-offset_bottom = 47.0
+offset_left = 20.0
+offset_top = 28.0
+offset_right = 36.0
+offset_bottom = 44.0
 disabled = true
 max_level = 5
 description = "- Projectile Speed +10%"
 
 [node name="SeekerUpgrade312TreeButton" parent="UpgradeContainer/WeaponDisplay/SeekerUnlockTreeButton/SeekerUpgrade3TreeButton/SeekerUpgrade314TreeButton" instance=ExtResource("6_ut5g0")]
+use_parent_material = true
 layout_mode = 0
-offset_left = 53.0
-offset_top = 0.0
-offset_right = 83.0
-offset_bottom = 30.0
+offset_left = 0.0
+offset_top = 38.0
+offset_right = 16.0
+offset_bottom = 54.0
 disabled = true
 max_level = 1
 description = "- Seekers do not return"
 
 [node name="LaserUnlockTreeButton" parent="UpgradeContainer/WeaponDisplay" instance=ExtResource("6_ut5g0")]
 visible = false
+use_parent_material = true
 layout_mode = 1
 anchors_preset = -1
 anchor_left = -1.075
 anchor_top = -5.275
 anchor_right = -1.075
 anchor_bottom = -5.275
-offset_left = 0.0
-offset_top = -1.0
-offset_right = 30.0
-offset_bottom = 29.0
+offset_left = 57.0
+offset_top = 111.0
+offset_right = 73.0
+offset_bottom = 127.0
 max_level = 1
-description = "- Unlock laser beam"
+description = "- Unlock Laser Cannon"
 
 [node name="LaserUpgrade1TreeButton" parent="UpgradeContainer/WeaponDisplay/LaserUnlockTreeButton" instance=ExtResource("6_ut5g0")]
+use_parent_material = true
 layout_mode = 0
-offset_left = 51.0
-offset_top = -20.0
-offset_right = 81.0
-offset_bottom = 10.0
+offset_left = -11.0
+offset_top = 63.0
+offset_right = 5.0
+offset_bottom = 79.0
 disabled = true
 max_level = 1
 description = "- Impact Explodes"
 
 [node name="LaserUpgrade11TreeButton" parent="UpgradeContainer/WeaponDisplay/LaserUnlockTreeButton/LaserUpgrade1TreeButton" instance=ExtResource("6_ut5g0")]
+use_parent_material = true
 layout_mode = 0
-offset_left = 54.0
-offset_top = 0.0
-offset_right = 84.0
-offset_bottom = 30.0
+offset_left = 0.0
+offset_top = 37.0
+offset_right = 16.0
+offset_bottom = 53.0
 disabled = true
 max_level = 5
 description = "- Explosion Area Increase"
 
 [node name="LaserUpgrade2TreeButton" parent="UpgradeContainer/WeaponDisplay/LaserUnlockTreeButton" instance=ExtResource("6_ut5g0")]
+use_parent_material = true
 layout_mode = 0
-offset_left = 51.0
-offset_top = 20.0
-offset_right = 81.0
-offset_bottom = 50.0
+offset_left = 13.0
+offset_top = 63.0
+offset_right = 29.0
+offset_bottom = 79.0
 disabled = true
 max_level = 1
 description = "- Laser Beam Becomes Piercing"
 
 [node name="LaserUpgrade21TreeButton" parent="UpgradeContainer/WeaponDisplay/LaserUnlockTreeButton/LaserUpgrade2TreeButton" instance=ExtResource("6_ut5g0")]
+use_parent_material = true
 layout_mode = 0
-offset_left = 54.0
-offset_top = 0.0
-offset_right = 84.0
-offset_bottom = 30.0
+offset_left = 0.0
+offset_top = 37.0
+offset_right = 16.0
+offset_bottom = 53.0
 disabled = true
 max_level = 5
 description = "- Beam Size Increase"
 
 [node name="LaserUpgrade3TreeButton" parent="UpgradeContainer/WeaponDisplay/LaserUnlockTreeButton" instance=ExtResource("6_ut5g0")]
+use_parent_material = true
 layout_mode = 0
-offset_left = 20.0
-offset_top = 56.0
-offset_right = 50.0
-offset_bottom = 86.0
+offset_left = -25.0
+offset_top = 29.0
+offset_right = -9.0
+offset_bottom = 45.0
 disabled = true
 max_level = 5
 description = "- Rate of Fire +10%"
 
 [node name="LaserUpgrade4TreeButton" parent="UpgradeContainer/WeaponDisplay/LaserUnlockTreeButton" instance=ExtResource("6_ut5g0")]
+use_parent_material = true
 layout_mode = 0
-offset_left = 20.0
-offset_top = -55.0
-offset_right = 50.0
-offset_bottom = -25.0
+offset_left = 26.0
+offset_top = 29.0
+offset_right = 42.0
+offset_bottom = 45.0
 disabled = true
 max_level = 5
 description = "- Damage +10%"
 
 [node name="FieldUnlockTreeButton" parent="UpgradeContainer/WeaponDisplay" instance=ExtResource("6_ut5g0")]
 visible = false
+use_parent_material = true
 layout_mode = 1
 anchors_preset = -1
 anchor_left = -1.075
 anchor_top = -5.275
 anchor_right = -1.075
 anchor_bottom = -5.275
-offset_left = 0.0
-offset_top = -1.0
-offset_right = 30.0
-offset_bottom = 29.0
+offset_left = 57.0
+offset_top = 111.0
+offset_right = 73.0
+offset_bottom = 127.0
 max_level = 1
-description = "- Unlock static field"
+description = "- Unlock Static Field"
 
 [node name="FieldUpgrade1TreeButton" parent="UpgradeContainer/WeaponDisplay/FieldUnlockTreeButton" instance=ExtResource("6_ut5g0")]
+use_parent_material = true
 layout_mode = 0
-offset_left = 51.0
-offset_top = 0.0
-offset_right = 81.0
-offset_bottom = 30.0
+offset_left = 0.0
+offset_top = 36.0
+offset_right = 16.0
+offset_bottom = 52.0
 disabled = true
 max_level = 1
 description = "- Base Range +50%"
 
 [node name="FieldUpgrade11TreeButton" parent="UpgradeContainer/WeaponDisplay/FieldUnlockTreeButton/FieldUpgrade1TreeButton" instance=ExtResource("6_ut5g0")]
+use_parent_material = true
 layout_mode = 0
-offset_left = 54.0
-offset_top = -39.0
-offset_right = 84.0
-offset_bottom = -9.0
+offset_left = -27.0
+offset_top = 35.0
+offset_right = -11.0
+offset_bottom = 51.0
 disabled = true
 max_level = 1
 description = "- 2x Damage Entering, No Damage Exiting"
 
 [node name="FieldUpgrade12TreeButton" parent="UpgradeContainer/WeaponDisplay/FieldUnlockTreeButton/FieldUpgrade1TreeButton" instance=ExtResource("6_ut5g0")]
+use_parent_material = true
 layout_mode = 0
-offset_left = 54.0
-offset_top = 0.0
-offset_right = 84.0
-offset_bottom = 30.0
+offset_left = 0.0
+offset_top = 35.0
+offset_right = 16.0
+offset_bottom = 51.0
 disabled = true
 max_level = 1
 description = "- Base Range +50%"
 
 [node name="FieldUpgrade13TreeButton" parent="UpgradeContainer/WeaponDisplay/FieldUnlockTreeButton/FieldUpgrade1TreeButton" instance=ExtResource("6_ut5g0")]
+use_parent_material = true
 layout_mode = 0
-offset_left = 54.0
-offset_top = 39.0
-offset_right = 84.0
-offset_bottom = 69.0
+offset_left = 29.0
+offset_top = 35.0
+offset_right = 45.0
+offset_bottom = 51.0
 disabled = true
 max_level = 1
 description = "- 4x Damage Exiting, No Damage Entering"
 
 [node name="FieldUpgrade2TreeButton" parent="UpgradeContainer/WeaponDisplay/FieldUnlockTreeButton" instance=ExtResource("6_ut5g0")]
+use_parent_material = true
 layout_mode = 0
-offset_left = 51.0
-offset_top = -39.0
-offset_right = 81.0
-offset_bottom = -9.0
+offset_left = -27.0
+offset_top = 36.0
+offset_right = -11.0
+offset_bottom = 52.0
 disabled = true
 max_level = 5
 description = "- Damage +10%"
 
 [node name="FieldUpgrade3TreeButton" parent="UpgradeContainer/WeaponDisplay/FieldUnlockTreeButton" instance=ExtResource("6_ut5g0")]
+use_parent_material = true
 layout_mode = 0
-offset_left = 51.0
-offset_top = 39.0
-offset_right = 81.0
-offset_bottom = 69.0
+offset_left = 29.0
+offset_top = 36.0
+offset_right = 45.0
+offset_bottom = 52.0
 disabled = true
 max_level = 5
 description = "- Range +10%"
 
 [node name="WeaponSlot" parent="UpgradeContainer/WeaponDisplay" node_paths=PackedStringArray("weapon_tree", "weapon_tree_2", "weapon_tree_3", "weapon_tree_4", "weapon_tree_5") groups=["Slots"] instance=ExtResource("6_mtkrx")]
+use_parent_material = true
 layout_mode = 1
 anchors_preset = -1
 anchor_left = -2.625
 anchor_top = -5.325
 anchor_right = -2.625
 anchor_bottom = -5.325
-offset_top = -11.0
-offset_right = 50.0
-offset_bottom = 39.0
-texture_disabled = SubResource("PlaceholderTexture2D_bmr3p")
+offset_left = 119.0
+offset_top = 114.0
+offset_right = 135.0
+offset_bottom = 130.0
 weapon_tree = NodePath("../TurretUnlockTreeButton")
 weapon_tree_2 = NodePath("../RocketUnlockTreeButton")
 weapon_tree_3 = NodePath("../LaserUnlockTreeButton")
 weapon_tree_4 = NodePath("../SeekerUnlockTreeButton")
 weapon_tree_5 = NodePath("../FieldUnlockTreeButton")
 
-[node name="WeaponSlot2" parent="UpgradeContainer/WeaponDisplay/WeaponSlot" groups=["Slots"] instance=ExtResource("6_mtkrx")]
+[node name="WeaponSlot2" parent="UpgradeContainer/WeaponDisplay" groups=["Slots"] instance=ExtResource("6_mtkrx")]
+use_parent_material = true
 layout_mode = 1
 anchors_preset = -1
 anchor_top = 2.7
 anchor_bottom = 2.7
-offset_top = -35.0
-offset_right = 50.0
-offset_bottom = 15.0
+offset_left = 81.0
+offset_top = -207.0
+offset_right = 97.0
+offset_bottom = -191.0
 disabled = true
-texture_disabled = SubResource("PlaceholderTexture2D_rqkfk")
 id = 1
 
-[node name="WeaponSlot3" parent="UpgradeContainer/WeaponDisplay/WeaponSlot" groups=["Slots"] instance=ExtResource("6_mtkrx")]
-visible = false
+[node name="WeaponSlot3" parent="UpgradeContainer/WeaponDisplay" groups=["Slots"] instance=ExtResource("6_mtkrx")]
+use_parent_material = true
 layout_mode = 1
 anchors_preset = -1
 anchor_top = 5.0
 anchor_bottom = 5.0
-offset_top = -50.0
-offset_right = 50.0
+offset_left = 147.0
+offset_top = -299.0
+offset_right = 163.0
+offset_bottom = -283.0
 disabled = true
-texture_disabled = SubResource("PlaceholderTexture2D_rqkfk")
 id = 2
 
-[node name="WeaponSlot4" parent="UpgradeContainer/WeaponDisplay/WeaponSlot" groups=["Slots"] instance=ExtResource("6_mtkrx")]
-visible = false
+[node name="WeaponSlot4" parent="UpgradeContainer/WeaponDisplay" groups=["Slots"] instance=ExtResource("6_mtkrx")]
+use_parent_material = true
 layout_mode = 1
 anchors_preset = -1
 anchor_top = 7.3
 anchor_bottom = 7.3
-offset_top = -65.0
-offset_right = 50.0
-offset_bottom = -15.0
+offset_left = 217.0
+offset_top = -391.0
+offset_right = 233.0
+offset_bottom = -375.0
 disabled = true
-texture_disabled = SubResource("PlaceholderTexture2D_rqkfk")
 id = 3
 
-[node name="WeaponSlot5" parent="UpgradeContainer/WeaponDisplay/WeaponSlot" groups=["Slots"] instance=ExtResource("6_mtkrx")]
-visible = false
+[node name="WeaponSlot5" parent="UpgradeContainer/WeaponDisplay" groups=["Slots"] instance=ExtResource("6_mtkrx")]
+use_parent_material = true
 layout_mode = 1
 anchors_preset = -1
 anchor_top = 9.6
 anchor_bottom = 9.6
-offset_top = -80.0
-offset_right = 50.0
-offset_bottom = -30.0
+offset_left = 283.0
+offset_top = -483.0
+offset_right = 299.0
+offset_bottom = -467.0
 disabled = true
-texture_disabled = SubResource("PlaceholderTexture2D_rqkfk")
 id = 4
 
-[node name="Panel2" type="Panel" parent="UpgradeContainer/WeaponDisplay"]
-layout_mode = 1
-anchors_preset = -1
-offset_left = 184.0
-offset_top = -298.0
-offset_right = 473.0
-offset_bottom = 318.0
-grow_horizontal = 2
-grow_vertical = 2
+[node name="Modules" type="Sprite2D" parent="UpgradeContainer/WeaponDisplay"]
+use_parent_material = true
+position = Vector2(295, 103)
+texture = ExtResource("15_sg1r7")
 
-[node name="BaseDamage" parent="UpgradeContainer/WeaponDisplay" instance=ExtResource("6_ut5g0")]
-layout_mode = 0
-offset_left = 241.0
-offset_top = -173.0
-offset_right = 271.0
-offset_bottom = -143.0
-disabled = true
-max_level = 20
-description = "-  Base Damage +3"
-
-[node name="RateOfFire" parent="UpgradeContainer/WeaponDisplay" instance=ExtResource("6_ut5g0")]
-layout_mode = 0
-offset_left = 291.0
-offset_top = -173.0
-offset_right = 321.0
-offset_bottom = -143.0
-disabled = true
-max_level = 20
-description = "- Rate of Fire +5%"
-
-[node name="ProjectileSpeed" parent="UpgradeContainer/WeaponDisplay" instance=ExtResource("6_ut5g0")]
-layout_mode = 0
-offset_left = 341.0
-offset_top = -173.0
-offset_right = 371.0
-offset_bottom = -143.0
-disabled = true
-max_level = 20
-description = "- Projectile Speed +10%"
-
-[node name="BaseShields" parent="UpgradeContainer/WeaponDisplay" instance=ExtResource("6_ut5g0")]
-layout_mode = 0
-offset_left = 391.0
-offset_top = -173.0
-offset_right = 421.0
-offset_bottom = -143.0
-disabled = true
-max_level = 20
-description = "- Base Shields +10"
-
-[node name="Magnet" parent="UpgradeContainer/WeaponDisplay" instance=ExtResource("6_ut5g0")]
-layout_mode = 0
-offset_left = 241.0
-offset_top = -123.0
-offset_right = 271.0
-offset_bottom = -93.0
-disabled = true
-max_level = 20
-description = "- Magnet Strength +10"
-
-[node name="BaseSpeed" parent="UpgradeContainer/WeaponDisplay" instance=ExtResource("6_ut5g0")]
-layout_mode = 0
-offset_left = 291.0
-offset_top = -123.0
-offset_right = 321.0
-offset_bottom = -93.0
-disabled = true
-max_level = 20
-description = "- Base Speed +5"
-
-[node name="BaseAcceleration" parent="UpgradeContainer/WeaponDisplay" instance=ExtResource("6_ut5g0")]
-layout_mode = 0
-offset_left = 341.0
-offset_top = -123.0
-offset_right = 371.0
-offset_bottom = -93.0
-disabled = true
-max_level = 20
-description = "- Base Acceleration +10"
-
-[node name="ShieldRegen" parent="UpgradeContainer/WeaponDisplay" instance=ExtResource("6_ut5g0")]
-layout_mode = 0
-offset_left = 391.0
-offset_top = -123.0
-offset_right = 421.0
-offset_bottom = -93.0
-disabled = true
-max_level = 20
-description = "- Shield Renegeration +1/s"
-
-[node name="Panel3" type="Panel" parent="UpgradeContainer/WeaponDisplay"]
-layout_mode = 1
-anchors_preset = -1
-offset_left = 184.0
-offset_top = -1.0
-offset_right = 473.0
-offset_bottom = 318.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="Repair" type="TextureButton" parent="UpgradeContainer" node_paths=PackedStringArray("label", "price_label")]
-layout_mode = 0
-offset_left = 535.0
-offset_top = -250.0
-offset_right = 585.0
-offset_bottom = -200.0
-texture_normal = ExtResource("3_llpj6")
-texture_disabled = SubResource("PlaceholderTexture2D_xle6s")
-script = ExtResource("4_75ix6")
-label = NodePath("../RPLBL")
-price_label = NodePath("../RPPLBL")
-
-[node name="RPLBL" type="Label" parent="UpgradeContainer"]
-layout_mode = 0
-offset_left = 536.0
-offset_top = -264.0
-offset_right = 552.0
-offset_bottom = -250.0
-label_settings = ExtResource("2_mp5ci")
-horizontal_alignment = 2
+[node name="ModuleLabel" type="Label" parent="UpgradeContainer/WeaponDisplay/Modules"]
+use_parent_material = true
+offset_left = 9.0
+offset_top = -2.0
+offset_right = 41.0
+offset_bottom = 9.0
+label_settings = ExtResource("11_ew2e1")
+horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="RPPLBL" type="Label" parent="UpgradeContainer"]
-layout_mode = 0
-offset_left = 573.0
-offset_top = -250.0
-offset_right = 582.0
-offset_bottom = -236.0
-label_settings = ExtResource("2_mp5ci")
-horizontal_alignment = 2
-
-[node name="Salvage" type="TextureButton" parent="UpgradeContainer" node_paths=PackedStringArray("label", "price_label") groups=["SalvageButton"]]
-layout_mode = 0
-offset_left = 535.0
-offset_top = -178.0
-offset_right = 585.0
-offset_bottom = -128.0
-texture_normal = ExtResource("3_llpj6")
-texture_disabled = SubResource("PlaceholderTexture2D_xle6s")
-script = ExtResource("4_75ix6")
-label = NodePath("../SalvageLabel")
-price_label = NodePath("../SalvagePriceLabel")
-
-[node name="SalvageLabel" type="Label" parent="UpgradeContainer"]
-layout_mode = 0
-offset_left = 536.0
-offset_top = -192.0
-offset_right = 552.0
-offset_bottom = -178.0
-label_settings = ExtResource("2_mp5ci")
-horizontal_alignment = 2
+[node name="ModuleLabel2" type="Label" parent="UpgradeContainer/WeaponDisplay/Modules"]
+use_parent_material = true
+offset_left = 9.0
+offset_top = -11.0
+offset_right = 42.0
+offset_bottom = -1.0
+text = "Modules"
+label_settings = ExtResource("11_ew2e1")
+horizontal_alignment = 1
 vertical_alignment = 1
-
-[node name="SalvagePriceLabel" type="Label" parent="UpgradeContainer"]
-layout_mode = 0
-offset_left = 573.0
-offset_top = -178.0
-offset_right = 582.0
-offset_bottom = -164.0
-text = "0"
-label_settings = ExtResource("2_mp5ci")
-horizontal_alignment = 2
 
 [node name="DisplayToggle" type="TextureButton" parent="UpgradeContainer"]
+visible = false
+use_parent_material = true
 layout_mode = 0
-offset_left = 535.0
-offset_top = 221.0
-offset_right = 585.0
-offset_bottom = 271.0
+offset_left = 715.0
+offset_top = 290.0
+offset_right = 745.0
+offset_bottom = 320.0
 texture_normal = SubResource("PlaceholderTexture2D_x3gql")
 script = ExtResource("7_v0e4h")
 
 [node name="DisplayToggleLabel" type="Label" parent="UpgradeContainer"]
+visible = false
+use_parent_material = true
 layout_mode = 0
-offset_left = 535.0
-offset_top = 206.0
-offset_right = 604.0
-offset_bottom = 220.0
+offset_left = 712.0
+offset_top = 279.0
+offset_right = 749.0
+offset_bottom = 291.0
 text = "Part Upgrades"
 label_settings = ExtResource("2_mp5ci")
 horizontal_alignment = 2
 vertical_alignment = 1
 
 [node name="Description" type="RichTextLabel" parent="UpgradeContainer" groups=["Description"]]
+use_parent_material = true
 layout_mode = 0
-offset_left = 194.0
-offset_top = 206.0
-offset_right = 465.0
-offset_bottom = 311.0
+offset_left = 287.0
+offset_top = 303.0
+offset_right = 483.0
+offset_bottom = 343.0
 mouse_filter = 2
+theme_override_colors/default_color = Color(0.791467, 0.822286, 0.808161, 1)
+theme_override_colors/font_outline_color = Color(0.568627, 0.615686, 0.592157, 1)
+theme_override_fonts/normal_font = ExtResource("17_oqu1u")
+theme_override_font_sizes/normal_font_size = 8
+bbcode_enabled = true
+scroll_active = false
+deselect_on_focus_loss_enabled = false
+drag_and_drop_selection_enabled = false
 
 [node name="Bounty" type="TextureButton" parent="UpgradeContainer" groups=["BountyButton"]]
 process_mode = 3
+visible = false
+use_parent_material = true
 layout_mode = 0
-offset_left = 536.0
-offset_top = -35.0
-offset_right = 586.0
-offset_bottom = 15.0
+offset_left = 715.0
+offset_top = 103.0
+offset_right = 745.0
+offset_bottom = 133.0
 texture_normal = SubResource("PlaceholderTexture2D_va2n2")
 texture_disabled = SubResource("PlaceholderTexture2D_67qvi")
 script = ExtResource("9_h30cn")
 
 [node name="BountyLabel" type="Label" parent="UpgradeContainer/Bounty"]
+use_parent_material = true
 layout_mode = 0
-offset_left = -1.0
-offset_top = -14.0
-offset_right = 60.0
+offset_left = 5.0
+offset_top = -12.0
+offset_right = 36.0
+offset_bottom = 1.0
 text = "Bounty"
 label_settings = ExtResource("2_mp5ci")
 vertical_alignment = 1
 
 [node name="BountryPriceLabel" type="Label" parent="UpgradeContainer/Bounty"]
+use_parent_material = true
 layout_mode = 0
-offset_left = 37.0
-offset_top = 4.0
-offset_right = 46.0
-offset_bottom = 18.0
+offset_left = 21.0
+offset_top = 30.0
+offset_right = 30.0
+offset_bottom = 44.0
 text = "0"
 label_settings = ExtResource("2_mp5ci")
 horizontal_alignment = 2
 
+[node name="Timer" type="Timer" parent="UpgradeContainer/Bounty"]
+wait_time = 60.0
+one_shot = true
+
+[node name="WeaponsTab" type="TextureButton" parent="UpgradeContainer"]
+use_parent_material = true
+layout_mode = 0
+offset_left = 422.0
+offset_top = 31.0
+offset_right = 438.0
+offset_bottom = 47.0
+texture_normal = ExtResource("13_y40hc")
+
+[node name="PassiveTab" type="TextureButton" parent="UpgradeContainer"]
+use_parent_material = true
+layout_mode = 0
+offset_left = 456.0
+offset_top = 31.0
+offset_right = 472.0
+offset_bottom = 47.0
+texture_normal = ExtResource("14_7xa0n")
+
+[node name="UpgradeTab" type="TextureButton" parent="UpgradeContainer"]
+use_parent_material = true
+layout_mode = 0
+offset_left = 439.0
+offset_top = 31.0
+offset_right = 455.0
+offset_bottom = 47.0
+texture_normal = ExtResource("15_0f2mr")
+
+[node name="PanelTransitions" type="AnimatedSprite2D" parent="."]
+z_index = 10
+position = Vector2(11, 14)
+sprite_frames = SubResource("SpriteFrames_5fvbs")
+animation = &"appear"
+
+[connection signal="pressed" from="UpgradeContainer/UpgradeDisplay/BaseDamage" to="." method="_on_base_damage_pressed"]
+[connection signal="pressed" from="UpgradeContainer/UpgradeDisplay/BaseDamage/Damage" to="." method="_on_damage_pressed"]
+[connection signal="pressed" from="UpgradeContainer/UpgradeDisplay/BaseDamage/Damage/DamageB" to="." method="_on_damage_b_pressed"]
+[connection signal="pressed" from="UpgradeContainer/UpgradeDisplay/RateOfFire" to="." method="_on_rate_of_fire_pressed"]
+[connection signal="pressed" from="UpgradeContainer/UpgradeDisplay/DamageAL" to="." method="_on_damage_al_pressed"]
+[connection signal="pressed" from="UpgradeContainer/UpgradeDisplay/DamagePS" to="." method="_on_damage_ps_pressed"]
+[connection signal="pressed" from="UpgradeContainer/UpgradeDisplay/ProjectileSpeed" to="." method="_on_projectile_speed_pressed"]
+[connection signal="pressed" from="UpgradeContainer/UpgradeDisplay/BaseShields" to="." method="_on_base_shields_pressed"]
+[connection signal="pressed" from="UpgradeContainer/UpgradeDisplay/BaseShields/Shields" to="." method="_on_shields_pressed"]
+[connection signal="pressed" from="UpgradeContainer/UpgradeDisplay/Magnet" to="." method="_on_magnet_pressed"]
+[connection signal="pressed" from="UpgradeContainer/UpgradeDisplay/Magnet/MagnetP" to="." method="_on_magnet_p_pressed"]
+[connection signal="pressed" from="UpgradeContainer/UpgradeDisplay/Magnet/MagnetP/MagnetI" to="." method="_on_magnet_i_pressed"]
+[connection signal="pressed" from="UpgradeContainer/UpgradeDisplay/BaseSpeed" to="." method="_on_base_speed_pressed"]
+[connection signal="pressed" from="UpgradeContainer/UpgradeDisplay/BaseAcceleration" to="." method="_on_base_acceleration_pressed"]
+[connection signal="pressed" from="UpgradeContainer/UpgradeDisplay/ShieldRegen" to="." method="_on_shield_regen_pressed"]
+[connection signal="pressed" from="UpgradeContainer/UpgradeDisplay/ShieldRegen/DamageRed" to="." method="_on_damage_red_pressed"]
+[connection signal="pressed" from="UpgradeContainer/UpgradeDisplay/ShieldRegen/DamageRed/DamageRedB" to="." method="_on_damage_red_b_pressed"]
+[connection signal="pressed" from="UpgradeContainer/UpgradeDisplay/Repair" to="." method="_on_repair_pressed"]
+[connection signal="pressed" from="UpgradeContainer/UpgradeDisplay/Salvage" to="." method="_on_salvage_pressed"]
 [connection signal="pressed" from="UpgradeContainer/WeaponDisplay/TurretUnlockTreeButton" to="." method="_on_turret_unlock_tree_button_pressed"]
 [connection signal="pressed" from="UpgradeContainer/WeaponDisplay/TurretUnlockTreeButton/TurretUpgrade11TreeButton" to="." method="_on_turret_upgrade_11_tree_button_pressed"]
 [connection signal="pressed" from="UpgradeContainer/WeaponDisplay/TurretUnlockTreeButton/TurretUpgrade11TreeButton/TurretUpgrade1TreeButton" to="." method="_on_turret_upgrade_1_tree_button_pressed"]
@@ -821,16 +1655,8 @@ horizontal_alignment = 2
 [connection signal="pressed" from="UpgradeContainer/WeaponDisplay/FieldUnlockTreeButton/FieldUpgrade1TreeButton/FieldUpgrade13TreeButton" to="." method="_on_field_upgrade_13_tree_button_pressed"]
 [connection signal="pressed" from="UpgradeContainer/WeaponDisplay/FieldUnlockTreeButton/FieldUpgrade2TreeButton" to="." method="_on_field_upgrade_2_tree_button_pressed"]
 [connection signal="pressed" from="UpgradeContainer/WeaponDisplay/FieldUnlockTreeButton/FieldUpgrade3TreeButton" to="." method="_on_field_upgrade_3_tree_button_pressed"]
-[connection signal="pressed" from="UpgradeContainer/WeaponDisplay/BaseDamage" to="." method="_on_base_damage_pressed"]
-[connection signal="pressed" from="UpgradeContainer/WeaponDisplay/RateOfFire" to="." method="_on_rate_of_fire_pressed"]
-[connection signal="pressed" from="UpgradeContainer/WeaponDisplay/ProjectileSpeed" to="." method="_on_projectile_speed_pressed"]
-[connection signal="pressed" from="UpgradeContainer/WeaponDisplay/BaseShields" to="." method="_on_base_shields_pressed"]
-[connection signal="pressed" from="UpgradeContainer/WeaponDisplay/Magnet" to="." method="_on_damage_pressed"]
-[connection signal="pressed" from="UpgradeContainer/WeaponDisplay/BaseSpeed" to="." method="_on_base_speed_pressed"]
-[connection signal="pressed" from="UpgradeContainer/WeaponDisplay/BaseAcceleration" to="." method="_on_base_acceleration_pressed"]
-[connection signal="pressed" from="UpgradeContainer/WeaponDisplay/ShieldRegen" to="." method="_on_shield_regen_pressed"]
-[connection signal="pressed" from="UpgradeContainer/Repair" to="." method="_on_repair_pressed"]
-[connection signal="pressed" from="UpgradeContainer/Salvage" to="." method="_on_salvage_pressed"]
 [connection signal="pressed" from="UpgradeContainer/DisplayToggle" to="UpgradeContainer/DisplayToggle" method="_on_pressed"]
-[connection signal="pressed" from="UpgradeContainer/Bounty" to="." method="_on_bounty_pressed"]
-[connection signal="pressed" from="UpgradeContainer/Bounty" to="UpgradeContainer/Bounty" method="_on_pressed"]
+[connection signal="timeout" from="UpgradeContainer/Bounty/Timer" to="UpgradeContainer/Bounty" method="_on_timer_timeout"]
+[connection signal="pressed" from="UpgradeContainer/WeaponsTab" to="." method="_on_weapons_tab_pressed"]
+[connection signal="pressed" from="UpgradeContainer/PassiveTab" to="." method="_on_passive_tab_pressed"]
+[connection signal="pressed" from="UpgradeContainer/UpgradeTab" to="." method="_on_upgrade_tab_pressed"]

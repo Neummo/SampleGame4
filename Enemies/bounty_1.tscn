@@ -1,34 +1,16 @@
-[gd_scene load_steps=28 format=3 uid="uid://ct31my6k01xyh"]
+[gd_scene load_steps=29 format=3 uid="uid://ct31my6k01xyh"]
 
 [ext_resource type="Script" path="res://Enemies/bounty_1.gd" id="1_3wpkc"]
 [ext_resource type="Script" path="res://health_component.gd" id="2_wqkl3"]
 [ext_resource type="PackedScene" uid="uid://cx65mwov3fgjd" path="res://UI/OnScreenInfo/health_bar.tscn" id="3_ut44i"]
 [ext_resource type="PackedScene" uid="uid://cbdpjw3txwo5h" path="res://Enemies/enemy_stats.tscn" id="4_yq3dr"]
 [ext_resource type="Shader" path="res://Shaders/damageFlash.gdshader" id="5_qf84c"]
-[ext_resource type="Texture2D" uid="uid://cts47eo6n4sla" path="res://Assets/Ship_4.png" id="6_ct6f8"]
+[ext_resource type="Material" uid="uid://b4d1gvp1222f1" path="res://smooth.tres" id="6_epks5"]
 [ext_resource type="PackedScene" uid="uid://3se37hf2b3nl" path="res://damage_flash_player.tscn" id="7_mnp15"]
+[ext_resource type="Texture2D" uid="uid://sy1hyg6royup" path="res://Assets/entities/char_3209.png" id="7_nmp86"]
 [ext_resource type="Script" path="res://hitbox_component.gd" id="8_gptsw"]
 [ext_resource type="PackedScene" uid="uid://b58vw44glay4i" path="res://Environment/move_trail.tscn" id="9_r5gar"]
 [ext_resource type="Texture2D" uid="uid://cfy8mw22pj3df" path="res://Assets/Free Smoke Fx  Pixel 06.png" id="10_ej3mu"]
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_wrke3"]
-resource_local_to_scene = true
-shader = ExtResource("5_qf84c")
-shader_parameter/flash_color = Color(1, 1, 1, 1)
-shader_parameter/flash_value = 0.0
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_h40vo"]
-size = Vector2(92, 86)
-
-[sub_resource type="Curve" id="Curve_anytu"]
-resource_local_to_scene = true
-_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
-point_count = 2
-
-[sub_resource type="Curve" id="Curve_s6b1j"]
-resource_local_to_scene = true
-_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
-point_count = 2
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_2j7i3"]
 atlas = ExtResource("10_ej3mu")
@@ -122,6 +104,25 @@ animations = [{
 "speed": 12.0
 }]
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_wrke3"]
+resource_local_to_scene = true
+shader = ExtResource("5_qf84c")
+shader_parameter/flash_color = Color(1, 1, 1, 1)
+shader_parameter/flash_value = 0.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_h40vo"]
+size = Vector2(14, 16)
+
+[sub_resource type="Curve" id="Curve_lq72c"]
+resource_local_to_scene = true
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Curve" id="Curve_vxtua"]
+resource_local_to_scene = true
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 2
+
 [node name="Bounty" type="CharacterBody2D" node_paths=PackedStringArray("laser_timer", "health_component", "stats", "health_bar", "body") groups=["Bounty"]]
 collision_mask = 2
 script = ExtResource("1_3wpkc")
@@ -131,29 +132,41 @@ stats = NodePath("EnemyStats")
 health_bar = NodePath("HealthBar")
 body = NodePath("Body")
 
-[node name="HealthComponent" type="Node2D" parent="." node_paths=PackedStringArray("health_bar", "damage_flash_player")]
+[node name="HealthComponent" type="Node2D" parent="." node_paths=PackedStringArray("health_bar", "damage_flash_player", "inner_sprite")]
 script = ExtResource("2_wqkl3")
 health_bar = NodePath("../HealthBar")
 possesor = "Enemy"
-damage_flash_player = NodePath("../Body/Sprite/DamageFlashPlayer")
+damage_flash_player = NodePath("../Body/Sprite2/DamageFlashPlayer")
+inner_sprite = NodePath("../Body/Sprite2")
 
 [node name="HealthBar" parent="." instance=ExtResource("3_ut44i")]
-offset_left = -80.0
-offset_top = -77.0
-offset_right = 81.0
-offset_bottom = -57.0
+offset_left = -20.0
+offset_top = -16.0
+offset_right = 19.0
+offset_bottom = -12.0
 
 [node name="EnemyStats" parent="." instance=ExtResource("4_yq3dr")]
 
 [node name="Body" type="Node2D" parent="."]
 
-[node name="Sprite" type="Sprite2D" parent="Body"]
-material = SubResource("ShaderMaterial_wrke3")
-rotation = 1.5708
-scale = Vector2(2.82043, 2.82043)
-texture = ExtResource("6_ct6f8")
+[node name="Death" type="AnimatedSprite2D" parent="Body"]
+visible = false
+sprite_frames = SubResource("SpriteFrames_71adn")
+animation = &"death"
 
-[node name="DamageFlashPlayer" parent="Body/Sprite" instance=ExtResource("7_mnp15")]
+[node name="Sprite" type="Sprite2D" parent="Body"]
+texture_filter = 2
+material = ExtResource("6_epks5")
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("7_nmp86")
+
+[node name="Sprite2" type="Sprite2D" parent="Body"]
+visible = false
+material = SubResource("ShaderMaterial_wrke3")
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("7_nmp86")
+
+[node name="DamageFlashPlayer" parent="Body/Sprite2" instance=ExtResource("7_mnp15")]
 
 [node name="HitboxComponent" type="Area2D" parent="Body" node_paths=PackedStringArray("health_component")]
 collision_mask = 2
@@ -162,30 +175,28 @@ health_component = NodePath("../../HealthComponent")
 possesor = "Enemy"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Body/HitboxComponent"]
-position = Vector2(-3, 3)
+position = Vector2(-1, 0)
 shape = SubResource("RectangleShape2D_h40vo")
 
 [node name="Timer" type="Timer" parent="Body/HitboxComponent"]
 
 [node name="LeftWing" type="Node2D" parent="Body"]
-position = Vector2(-43, -38)
+position = Vector2(-6, -4)
 
 [node name="MoveTrail" parent="Body/LeftWing" instance=ExtResource("9_r5gar")]
 z_index = -1
-width_curve = SubResource("Curve_anytu")
-length = 20
+width_curve = SubResource("Curve_lq72c")
+default_color = Color(0.752941, 0.262745, 0.207843, 1)
+length = 10
 
 [node name="RightWing" type="Node2D" parent="Body"]
-position = Vector2(-43, 38)
+position = Vector2(-6, 4)
 
 [node name="MoveTrail" parent="Body/RightWing" instance=ExtResource("9_r5gar")]
 z_index = -1
-width_curve = SubResource("Curve_s6b1j")
-length = 20
-
-[node name="Death" type="AnimatedSprite2D" parent="Body"]
-sprite_frames = SubResource("SpriteFrames_71adn")
-animation = &"death"
+width_curve = SubResource("Curve_vxtua")
+default_color = Color(0.752941, 0.262745, 0.207843, 1)
+length = 10
 
 [node name="ShootTimer" type="Timer" parent="."]
 wait_time = 10.0

@@ -11,8 +11,8 @@ func _ready():
 	motion_mode = CharacterBody2D.MOTION_MODE_FLOATING
 	stats.set_stats({
 		"acceleration": Values.enemy_acceleration * 2,
-		"max_speed": randf_range(Values.enemy_speed - 50, Values.enemy_speed) * 2,
-		"max_health": Values.enemy_health
+		"max_speed": randf_range(Values.enemy_speed - 50, Values.enemy_speed),
+		"max_health": Values.enemy_health * 2
 	})
 	health_component.value = 4
 	health_component.health = stats.max_health
@@ -41,7 +41,7 @@ func behavior(delta: float) -> void:
 			shoot_timer.stop()
 		velocity -= (Vector2(velocity.x, velocity.y) * delta)
 	else:
-		if global_position.distance_to(player.global_position) > Values.player_range * randf_range(1.1, 2.0):
+		if global_position.distance_to(player.global_position) > Values.player_range * randf_range(1.6, 2.0):
 			if shooting:
 				shooting = false
 				shoot_timer.stop()

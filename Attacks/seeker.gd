@@ -10,10 +10,12 @@ var player: CharacterBody2D
 var no_return: bool
 var scanning: bool = false
 var has_to_return: bool = false
+
 @onready var return_timer: Timer = $ReturnTimer
 
 func _ready():
 	player = get_tree().get_first_node_in_group("Player")
+	attack_type = "Physical"
 	target = "Enemy"
 	global_position = spawn_position
 	global_rotation = spawn_rotation
@@ -24,7 +26,7 @@ func _physics_process(_delta):
 	steer_force = (speed * 0.01) ** 4
 	velocity += acceleration * _delta
 	velocity = velocity.limit_length(speed)
-	rotation = velocity.angle() + 1.57079633
+	rotation = velocity.angle()
 	move_and_slide()
 
 func seek():

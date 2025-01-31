@@ -1,59 +1,90 @@
-[gd_scene load_steps=13 format=3 uid="uid://ch3bfb2jxxujv"]
+[gd_scene load_steps=22 format=3 uid="uid://ch3bfb2jxxujv"]
 
 [ext_resource type="Script" path="res://world.gd" id="1_w8vvu"]
 [ext_resource type="PackedScene" uid="uid://70snqg3xty42" path="res://player.tscn" id="1_xg6cr"]
+[ext_resource type="Material" uid="uid://b4d1gvp1222f1" path="res://smooth.tres" id="2_i81d4"]
+[ext_resource type="Texture2D" uid="uid://xif8gku52tbu" path="res://Assets/background/Space Background background.png" id="2_k3gxd"]
 [ext_resource type="PackedScene" uid="uid://cosl5ticiw0ni" path="res://spawner.tscn" id="3_f7sdh"]
-[ext_resource type="Texture2D" uid="uid://qtrb1xq1yyom" path="res://Assets/icon.svg" id="3_jsug4"]
-[ext_resource type="Texture2D" uid="uid://delsvcw1mb0qu" path="res://Assets/1760677435.png" id="4_gkeib"]
+[ext_resource type="Texture2D" uid="uid://cfjxc52iifwu1" path="res://Assets/background/Space Background nebulashadow.png" id="3_r4hps"]
+[ext_resource type="Texture2D" uid="uid://cdx3jt0ohkn8v" path="res://Assets/background/Space Background nebulas.png" id="4_c601e"]
+[ext_resource type="Texture2D" uid="uid://cerwgc1qorkfh" path="res://Assets/background/Space Background stars.png" id="5_be3se"]
+[ext_resource type="LabelSettings" uid="uid://0a8eht6jtaea" path="res://Assets/light_7px.tres" id="6_2jksn"]
 [ext_resource type="PackedScene" uid="uid://dtbe3d6tdnt30" path="res://UI/progression_manager.tscn" id="6_l78pr"]
+[ext_resource type="Texture2D" uid="uid://dm8468a530neq" path="res://Assets/background/Space Background planets small.png" id="6_n74va"]
 [ext_resource type="PackedScene" uid="uid://ccasosye1po2m" path="res://UI/OnScreenInfo/player_stats.tscn" id="7_d3gyq"]
 [ext_resource type="PackedScene" uid="uid://cx65mwov3fgjd" path="res://UI/OnScreenInfo/health_bar.tscn" id="8_qmn7d"]
 [ext_resource type="PackedScene" uid="uid://dqeqcj3v4gf3a" path="res://UI/ItemPanel/ItemSelect.tscn" id="9_g7ex8"]
 [ext_resource type="PackedScene" uid="uid://cpo6m1qd1idg2" path="res://UI/OnScreenInfo/item_list.tscn" id="9_w43ie"]
+[ext_resource type="Texture2D" uid="uid://cbtybct2pi1cu" path="res://Assets/planets/base.png" id="10_tpgul"]
+[ext_resource type="Texture2D" uid="uid://dw30ylprm00dl" path="res://Assets/icons/selected/34.png" id="12_nvr6x"]
+[ext_resource type="LabelSettings" uid="uid://oviud57gcaq1" path="res://Assets/5px_font.tres" id="13_1kbf0"]
+[ext_resource type="Texture2D" uid="uid://bsl80pbye304v" path="res://Assets/icons/selected/31.png" id="14_666rs"]
+[ext_resource type="PackedScene" uid="uid://dch8nj6rfojrx" path="res://Neutral/planet.tscn" id="20_klia1"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_7aek3"]
-radius = 500.0
-
-[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_comxj"]
-size = Vector2(50, 50)
+radius = 250.0
 
 [node name="World" type="Node2D"]
 script = ExtResource("1_w8vvu")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
+[node name="Parallax2D" type="Parallax2D" parent="."]
 show_behind_parent = true
-z_index = -5
-position = Vector2(239.5, 155.5)
-scale = Vector2(1.39844, 1.22656)
-texture = ExtResource("3_jsug4")
+scroll_scale = Vector2(0, 0)
 
-[node name="Sprite2D2" type="Sprite2D" parent="."]
-show_behind_parent = true
+[node name="Sprite2D" type="Sprite2D" parent="Parallax2D"]
 z_index = -5
-position = Vector2(522, 512)
-scale = Vector2(0.984375, 1)
-texture = ExtResource("3_jsug4")
+texture_filter = 2
+material = ExtResource("2_i81d4")
+position = Vector2(320, 180)
+texture = ExtResource("2_k3gxd")
 
-[node name="Sprite2D3" type="Sprite2D" parent="."]
+[node name="Parallax2D2" type="Parallax2D" parent="."]
 show_behind_parent = true
-z_index = -5
-position = Vector2(1104, 573)
-scale = Vector2(1.48437, 1.32813)
-texture = ExtResource("3_jsug4")
+scroll_scale = Vector2(0.11, 0.11)
+repeat_size = Vector2(1000, 500)
 
-[node name="Sprite2D4" type="Sprite2D" parent="."]
-show_behind_parent = true
+[node name="Sprite2D" type="Sprite2D" parent="Parallax2D2"]
 z_index = -5
-position = Vector2(244, 471)
-scale = Vector2(0.625, 0.640625)
-texture = ExtResource("3_jsug4")
+texture_filter = 2
+material = ExtResource("2_i81d4")
+position = Vector2(320, 180)
+scale = Vector2(0.7, 0.7)
+texture = ExtResource("3_r4hps")
 
-[node name="Sprite2D5" type="Sprite2D" parent="."]
-show_behind_parent = true
+[node name="Sprite2D2" type="Sprite2D" parent="Parallax2D2"]
 z_index = -5
-position = Vector2(1028, 93)
-scale = Vector2(0.640625, 0.59375)
-texture = ExtResource("3_jsug4")
+texture_filter = 2
+material = ExtResource("2_i81d4")
+position = Vector2(320, 180)
+scale = Vector2(0.7, 0.7)
+texture = ExtResource("4_c601e")
+
+[node name="Parallax2D3" type="Parallax2D" parent="."]
+show_behind_parent = true
+scroll_scale = Vector2(0.1, 0.1)
+repeat_size = Vector2(800, 400)
+
+[node name="Sprite2D" type="Sprite2D" parent="Parallax2D3"]
+z_index = -5
+texture_filter = 2
+material = ExtResource("2_i81d4")
+position = Vector2(320, 180)
+scale = Vector2(0.7, 0.7)
+texture = ExtResource("5_be3se")
+
+[node name="Parallax2D4" type="Parallax2D" parent="."]
+show_behind_parent = true
+scroll_scale = Vector2(0.12, 0.12)
+repeat_size = Vector2(1280, 640)
+autoscroll = Vector2(2, 1)
+
+[node name="Sprite2D" type="Sprite2D" parent="Parallax2D4"]
+z_index = -5
+texture_filter = 2
+material = ExtResource("2_i81d4")
+position = Vector2(320, 180)
+scale = Vector2(0.7, 0.7)
+texture = ExtResource("6_n74va")
 
 [node name="Player" parent="." instance=ExtResource("1_xg6cr")]
 position = Vector2(0, 55)
@@ -62,7 +93,9 @@ position = Vector2(0, 55)
 
 [node name="Base" type="Sprite2D" parent="." groups=["Base"]]
 z_index = -1
-texture = ExtResource("4_gkeib")
+texture_filter = 2
+material = ExtResource("2_i81d4")
+texture = ExtResource("10_tpgul")
 
 [node name="Atmosphere" type="Area2D" parent="Base"]
 collision_layer = 4
@@ -77,11 +110,13 @@ shape = SubResource("CircleShape2D_7aek3")
 anchors_preset = 2
 anchor_top = 1.0
 anchor_bottom = 1.0
-offset_left = 26.0
-offset_top = -32.0
-offset_right = 176.0
-offset_bottom = -9.0
+offset_left = 16.0
+offset_top = -26.0
+offset_right = 88.0
+offset_bottom = -3.0
 grow_vertical = 0
+theme_override_colors/font_color = Color(1, 0.964706, 0.760784, 1)
+label_settings = ExtResource("6_2jksn")
 
 [node name="CenterContainer" type="CenterContainer" parent="CanvasLayer"]
 anchors_preset = 8
@@ -99,6 +134,7 @@ grow_vertical = 2
 [node name="ProgressionManager" parent="CanvasLayer/CenterContainer" groups=["ProgressionManager"] instance=ExtResource("6_l78pr")]
 
 [node name="ItemSelect" parent="CanvasLayer/CenterContainer" groups=["ItemSelect"] instance=ExtResource("9_g7ex8")]
+visible = false
 layout_mode = 2
 
 [node name="CenterContainer2" type="CenterContainer" parent="CanvasLayer"]
@@ -127,20 +163,16 @@ size_flags_vertical = 3
 use_top_left = true
 
 [node name="HealthBar" parent="CanvasLayer" groups=["HealthBar"] instance=ExtResource("8_qmn7d")]
-offset_left = 26.0
-offset_top = -50.0
-offset_right = 277.0
-offset_bottom = -32.0
+offset_left = 17.0
+offset_top = -39.0
+offset_right = 122.0
+offset_bottom = -29.0
 
 [node name="ItemList" parent="CanvasLayer" groups=["ItemList"] instance=ExtResource("9_w43ie")]
-anchors_preset = 2
-anchor_top = 1.0
-anchor_bottom = 1.0
-offset_left = 26.0
-offset_top = -76.0
-offset_right = 26.0
-offset_bottom = -76.0
-grow_vertical = 0
+offset_left = 310.0
+offset_top = 9.0
+offset_right = 310.0
+offset_bottom = 9.0
 
 [node name="ProgressionPanel" type="TextureButton" parent="CanvasLayer"]
 process_mode = 3
@@ -150,26 +182,75 @@ anchor_left = 1.0
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -114.0
-offset_top = -96.0
-offset_right = -64.0
-offset_bottom = -46.0
+offset_left = -40.0
+offset_top = -37.0
+offset_right = -24.0
+offset_bottom = -21.0
 grow_horizontal = 0
 grow_vertical = 0
-texture_normal = SubResource("PlaceholderTexture2D_comxj")
+texture_normal = ExtResource("12_nvr6x")
 
-[node name="TimeLabel" type="Label" parent="CanvasLayer/ProgressionPanel" groups=["TimeLabel"]]
+[node name="TimeLabel" type="Label" parent="CanvasLayer/ProgressionPanel"]
 layout_mode = 1
 anchors_preset = 2
 anchor_top = 1.0
 anchor_bottom = 1.0
-offset_left = 9.0
-offset_top = -71.0
-offset_right = 49.0
-offset_bottom = -48.0
+offset_left = 4.0
+offset_right = 14.0
+offset_bottom = 8.0
 grow_vertical = 0
 text = "Tab"
+label_settings = ExtResource("13_1kbf0")
+
+[node name="ProgressionPanel2" type="TextureButton" parent="CanvasLayer" groups=["item_button"]]
+process_mode = 3
+visible = false
+top_level = true
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -41.0
+offset_top = -8.0
+offset_right = -25.0
+offset_bottom = 8.0
+grow_horizontal = 0
+grow_vertical = 2
+scale = Vector2(2, 2)
+texture_normal = ExtResource("14_666rs")
+
+[node name="TimeLabel" type="Label" parent="CanvasLayer/ProgressionPanel2"]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 1.0
+offset_right = 16.0
+offset_bottom = 8.0
+grow_vertical = 0
+text = "Space"
+label_settings = ExtResource("13_1kbf0")
+
+[node name="Count" type="Label" parent="CanvasLayer/ProgressionPanel2" groups=["item_button_count"]]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = -1.0
+offset_top = -15.5
+offset_right = 14.0
+offset_bottom = -7.5
+grow_vertical = 0
+text = "0"
+label_settings = ExtResource("13_1kbf0")
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="Planet" parent="." instance=ExtResource("20_klia1")]
+position = Vector2(-116, 155)
 
 [connection signal="area_entered" from="Base/Atmosphere" to="Player" method="_on_atmosphere_area_entered"]
 [connection signal="area_exited" from="Base/Atmosphere" to="Player" method="_on_atmosphere_area_exited"]
 [connection signal="pressed" from="CanvasLayer/ProgressionPanel" to="CanvasLayer/CenterContainer/ProgressionManager" method="_on_progression_panel_pressed"]
+[connection signal="pressed" from="CanvasLayer/ProgressionPanel2" to="CanvasLayer/CenterContainer/ProgressionManager" method="_on_progression_panel_2_pressed"]

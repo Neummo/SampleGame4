@@ -18,13 +18,12 @@ func _physics_process(_delta: float) -> void:
 	var cast_point: Vector2 = Vector2(Values.player_range, 0)
 	if not damaged:
 		for area in get_overlapping_areas():
-			if not is_instance_valid(area):
-				continue
-			if area.owner.dying:
-				continue
-			if area is HitboxComponent and area.possesor == "Enemy":
+			if is_instance_valid(area) and area is HitboxComponent and area.possesor == "Enemy":
+				if area.owner.dying:
+					return
 				var attack: Attack = Attack.new()
 				attack.attack_damage = damage
+				attack.attack_type = "Energy"
 				area.damage(attack)
 		damaged = true
 	line.points[1] = cast_point

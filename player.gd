@@ -48,8 +48,8 @@ func _ready():
 	set_stats()
 
 func _physics_process(delta):
-	stats.coords.set_text("[" + str(snapped(global_position.x * 0.01, 1)) + ":" + str(snapped(global_position.y * 0.01 * -1, 1)) + "]")
-	stats.zone.set_text("Danger Level: " + str(Values.zone))
+	stats.coords.set_text("[ " + str(snapped(global_position.x * 0.01, 1)) +  " : " + str(snapped(global_position.y * 0.01 * -1, 1)) + " ]")
+	stats.zone.set_text("THREAT " + str(Values.zone))
 	if charging_return:
 		return_movement(delta)
 	else:
@@ -88,6 +88,9 @@ func _physics_process(delta):
 		progression_manager.get_modules(1000)
 	if Input.is_action_just_pressed("switch_menu"):
 		progression_manager.switch_menu()
+	if Input.is_action_just_pressed("item"):
+		if Values.item_count > 0:
+			item_select.activate()
 	#if Input.is_action_just_pressed("dash") and Values.dash_unlocked:
 		#if returning:
 			#return
@@ -229,6 +232,8 @@ func set_stats() -> void:
 		critical_chance = Values.player_crit_chance,
 		critical_damage = Values.player_crit_damage,
 		damage_multiplier = Values.player_damage_multiplier,
+		energy_modifier = Values.energy_modifier,
+		physical_modifier = Values.physical_modifier,
 		salvage_drop_rate = Values.item_spawn_chance,
 		module_drop_rate = Values.module_spawn_chance,
 		part_drop_rate = Values.part_spawn_chance,

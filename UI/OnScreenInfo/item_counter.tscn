@@ -1,21 +1,24 @@
-[gd_scene load_steps=3 format=3 uid="uid://dy34tffuy5cnn"]
+[gd_scene load_steps=4 format=3 uid="uid://dy34tffuy5cnn"]
 
 [ext_resource type="Script" path="res://UI/OnScreenInfo/item_counter.gd" id="1_8c4oa"]
-[ext_resource type="Texture2D" uid="uid://btgu04c78sn0g" path="res://Assets/asfdgAds_1ss.png" id="1_kgpb7"]
+[ext_resource type="Texture2D" uid="uid://ctlpbvjlisyov" path="res://Assets/icons/selected/00.png" id="1_77yop"]
+[ext_resource type="LabelSettings" uid="uid://cexvjs7p731dl" path="res://Assets/red_7px.tres" id="3_4rmsy"]
 
 [node name="ItemCounter" type="TextureRect"]
-offset_right = 20.0
-offset_bottom = 20.0
-texture = ExtResource("1_kgpb7")
-expand_mode = 2
+offset_right = 16.0
+offset_bottom = 16.0
+texture = ExtResource("1_77yop")
+stretch_mode = 2
 script = ExtResource("1_8c4oa")
 
 [node name="Label" type="Label" parent="."]
 layout_mode = 0
-offset_left = -2.0
+offset_left = 2.0
 offset_top = 7.0
-offset_right = 19.0
-offset_bottom = 23.0
+offset_right = 13.0
+offset_bottom = 15.0
 theme_override_font_sizes/font_size = 11
 text = "0"
+label_settings = ExtResource("3_4rmsy")
 horizontal_alignment = 2
+vertical_alignment = 2

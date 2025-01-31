@@ -1,24 +1,24 @@
 [gd_scene load_steps=4 format=3 uid="uid://cn8l6n3cs42gg"]
 
 [ext_resource type="Script" path="res://UI/OnScreenInfo/ability_cooldown_visualiser.gd" id="1_m0oe5"]
-[ext_resource type="Texture2D" uid="uid://diuemsks5ttgx" path="res://Assets/white_blank.png" id="2_vt38y"]
+[ext_resource type="Texture2D" uid="uid://cyb5th2su3j6q" path="res://Assets/blank16.png" id="2_nxqpf"]
 
 [sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_wng11"]
-size = Vector2(50, 50)
+size = Vector2(16, 16)
 
 [node name="SkillCooldown" type="TextureRect"]
-offset_right = 50.0
-offset_bottom = 50.0
+offset_right = 16.0
+offset_bottom = 16.0
 texture = SubResource("PlaceholderTexture2D_wng11")
 script = ExtResource("1_m0oe5")
 
 [node name="Cooldown" type="TextureProgressBar" parent="."]
 layout_mode = 0
-offset_right = 40.0
-offset_bottom = 40.0
+offset_right = 16.0
+offset_bottom = 16.0
 step = 0.1
 fill_mode = 5
-texture_progress = ExtResource("2_vt38y")
+texture_progress = ExtResource("2_nxqpf")
 tint_progress = Color(0.203922, 0.203922, 0.203922, 0.698039)
 
 [node name="Timer" type="Timer" parent="."]

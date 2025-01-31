@@ -10,8 +10,8 @@ func _ready():
 	motion_mode = CharacterBody2D.MOTION_MODE_FLOATING
 	stats.set_stats({
 		"acceleration": Values.enemy_acceleration * 20,
-		"max_speed": randf_range(Values.enemy_speed - 50, Values.enemy_speed) * 3,
-		"max_health": Values.enemy_health * 0.7
+		"max_speed": randf_range(Values.enemy_speed - 50, Values.enemy_speed) * 2,
+		"max_health": Values.enemy_health * 3
 	})
 	health_component.value = 6
 	health_component.health = stats.max_health

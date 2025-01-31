@@ -11,6 +11,7 @@ script = ExtResource("1_oomub")
 [node name="Line2D" type="Line2D" parent="."]
 closed = true
 width = 3.0
+default_color = Color(1, 0.976471, 0.839216, 1)
 
 [node name="FieldArea" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_akg5p")

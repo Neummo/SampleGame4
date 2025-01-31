@@ -1,15 +1,15 @@
 extends Node2D
 
-var radius: float = 50.0
-
 func draw_radar_indicator(asteroid: CharacterBody2D):
 	var sprite: Sprite2D = Sprite2D.new()
-	var texture: Resource = load("res://Assets/Ship_4.png")
+	var texture: Resource = load("res://Assets/entities/char_3202.png")
+	sprite.scale = Vector2(0.5, 0.5)
 	var script: Resource = load("res://Environment/indicator.gd")
 	sprite.texture = texture
-	sprite.scale = Vector2(0.2, 0.2)
 	sprite.set_script(script)
 	sprite.asteroid = asteroid
+	var mat: Resource = load("res://smooth.tres")
+	sprite.material = mat
 	sprite.set_visible(true)
 	add_child(sprite)
 

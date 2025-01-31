@@ -14,7 +14,7 @@ func _ready():
 	stats.set_stats({
 		"acceleration": Values.enemy_acceleration / 2,
 		"max_speed": Values.enemy_speed,
-		"max_health": Values.enemy_health
+		"max_health": Values.enemy_health * 3
 	})
 	health_component.value = 10
 	health_component.health = stats.max_health
@@ -43,13 +43,13 @@ func behavior(delta: float) -> void:
 			shoot_timer.stop()
 		velocity -= (Vector2(velocity.x, velocity.y) * delta)
 	else:
-		if global_position.distance_to(player.global_position) > Values.enemy_range * randf_range(1.8, 2.3) and shooting:
+		if global_position.distance_to(player.global_position) > Values.player_range * randf_range(1.8, 2.1) and shooting:
 			shooting = false
 			shoot_timer.stop()
 		elif not shooting:
 			shooting = true
 			shoot_timer.start()
-		if global_position.distance_to(player.global_position) <= Values.enemy_range * randf_range(1.8, 2.3):
+		if global_position.distance_to(player.global_position) <= Values.player_range * randf_range(2.1, 2.3):
 			velocity += (Vector2(0, direction).rotated(body.rotation)).normalized() * delta * stats.acceleration
 		else:
 			velocity += (Vector2(stats.acceleration, 0).rotated(body.rotation)).normalized() * delta * stats.acceleration

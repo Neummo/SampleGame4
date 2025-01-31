@@ -1,0 +1,9 @@
+[gd_resource type="LabelSettings" load_steps=2 format=3 uid="uid://br4w54qev3d1k"]
+
+[ext_resource type="FontFile" uid="uid://c861shwg03bic" path="res://Assets/fonts/Jersey10-Regular.ttf" id="1_gha5e"]
+
+[resource]
+font = ExtResource("1_gha5e")
+font_size = 10
+font_color = Color(0.180392, 0.207843, 0.196078, 1)
+outline_color = Color(0, 0, 0, 1)

@@ -14,11 +14,11 @@ var laser_tween
 func _ready():
 	set_physics_process(false)
 	line.points[1] = Vector2.ZERO
-	shape.get_shape().size = Vector2(Values.enemy_range * 2, Values.zone + 10)
+	shape.get_shape().size = Vector2(Values.player_range * 2, Values.zone + 5)
 	shape.position.x = shape.get_shape().size.x / 2
 
 func _physics_process(_delta: float) -> void:
-	var cast_point: Vector2 = Vector2(Values.enemy_range * 2, 0)
+	var cast_point: Vector2 = Vector2(Values.player_range * 2, 0)
 	if not damaged and is_casting:
 		for area in get_overlapping_areas():
 			if area is HitboxComponent and area.possesor == "Player":
@@ -35,16 +35,16 @@ func shoot() -> void:
 
 func indicate() -> void:
 	set_physics_process(true)
-	line.default_color = Color8(255, 135, 135, 100)
+	line.default_color = Color8(233, 181, 174, 60)
 	laser_tween = create_tween()
-	laser_tween.tween_property(line, "width", 15.0, 3.0)
+	laser_tween.tween_property(line, "width", shape.get_shape().size.y, 3.0)
 	await laser_tween.finished
 	set_is_casting(true)
 
 func set_is_casting(cast: bool) -> void:
 	line.width = 0
 	is_casting = cast
-	line.default_color = Color8(250, 0, 60, 255)
+	line.default_color = Color8(192, 67, 53, 255)
 	if is_casting:
 		appear()
 	else:

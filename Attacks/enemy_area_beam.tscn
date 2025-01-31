@@ -21,7 +21,7 @@ shape = NodePath("CollisionShape2D")
 points = PackedVector2Array(0, 0, 10, 0)
 width = 15.0
 width_curve = SubResource("Curve_n04aj")
-default_color = Color(1, 0.261655, 0.445993, 1)
+default_color = Color(0.752941, 0.262745, 0.207843, 1)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(250, 0)

@@ -12,11 +12,11 @@ func _ready():
 	motion_mode = CharacterBody2D.MOTION_MODE_FLOATING
 	stats.set_stats({
 		"acceleration": Values.enemy_acceleration / 2,
-		"max_speed": Values.enemy_speed * 2,
+		"max_speed": Values.enemy_speed,
 		"max_health": Values.enemy_health * 20 * (Values.zone + 1)
 	})
 	health_component.health = stats.max_health
-	health_component.value = 500
+	health_component.value = 1000
 	health_bar.init_health(stats.max_health)
 	shoot_timer.wait_time = maxf(0.5, shoot_timer.wait_time - (Values.zone / 5))
 	body.rotation = body.transform.x.angle_to(player.global_position - global_position)
