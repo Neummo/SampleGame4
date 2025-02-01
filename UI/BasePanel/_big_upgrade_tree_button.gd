@@ -93,8 +93,7 @@ func _on_pressed() -> void:
 			skill.unlocked = true
 
 func _on_mouse_entered() -> void:
-	if unlocked:
-		description_panel.set_text(Values.btify_text(description))
+	description_panel.set_text(Values.btify_text(description))
 
 func _on_mouse_exited() -> void:
 	description_panel.set_text("")
