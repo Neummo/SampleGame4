@@ -274,6 +274,7 @@ func _on_salvage_pressed() -> void:
 
 func _on_turret_unlock_tree_button_pressed():
 	Values.melee_gun_unlocked = true
+	turret_unlock_button.description = turret_unlock_button.description.replace("Press to Unlock. ", "")
 	select_skill(turret_unlock_button)
 func _on_turret_upgrade_1_tree_button_pressed():
 	Values.player_melee_gun_speed *= 2
@@ -299,6 +300,7 @@ func _on_turret_upgrade_21_tree_button_pressed() -> void:
 
 func _on_rocket_unlock_tree_button_pressed():
 	Values.manual_gun_unlocked = true
+	rocket_unlock_button.description = rocket_unlock_button.description.replace("Press to Unlock. ", "")
 	select_skill(rocket_unlock_button)
 func _on_rocket_upgrade_3_tree_button_pressed() -> void:
 	Values.manual_gun_homing = true
@@ -324,6 +326,7 @@ func _on_rocket_upgrade_34_tree_button_pressed() -> void:
 
 func _on_laser_unlock_tree_button_pressed():
 	Values.ult_gun_unlocked = true
+	laser_unlock_button.description = laser_unlock_button.description.replace("Press to Unlock. ", "")
 	select_skill(laser_unlock_button)
 func _on_laser_upgrade_1_tree_button_pressed():
 	Values.ult_gun_aoe_unlocked = true
@@ -348,6 +351,7 @@ func _on_laser_upgrade_4_tree_button_pressed() -> void:
 
 func _on_field_unlock_tree_button_pressed() -> void:
 	Values.area_field_unlocked = true
+	field_unlock_button.description = field_unlock_button.description.replace("Press to Unlock. ", "")
 	select_skill(field_unlock_button)
 func _on_field_upgrade_1_tree_button_pressed() -> void:
 	Values.area_field_range += 25
@@ -376,6 +380,7 @@ func _on_field_upgrade_2_tree_button_pressed() -> void:
 
 func _on_seeker_unlock_tree_button_pressed() -> void:
 	Values.seeker_gun_unlocked = true
+	seeker_unlock_button.description = seeker_unlock_button.description.replace("Press to Unlock. ", "")
 	select_skill(seeker_unlock_button)
 func _on_seeker_upgrade_3_tree_button_pressed() -> void:
 	Values.seeker_gun_speed *= 1.3

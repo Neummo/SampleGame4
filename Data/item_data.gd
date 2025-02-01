@@ -282,7 +282,7 @@ func load_data() -> Dictionary:
 				"8": {
 					"id": 27,
 					"title": "[center][color=#ffca3a]Big Boom[/color][/center]",
-					"description": "nPhysical Damage +50%\nEnergy Damage -25%",
+					"description": "Physical Damage +50%\nEnergy Damage -25%",
 					"icon": "res://Assets/icons/selected/21.png",
 					"effect": func effect() -> void:
 						Values.physical_modifier += 0.5

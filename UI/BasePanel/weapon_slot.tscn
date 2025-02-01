@@ -1,12 +1,14 @@
-[gd_scene load_steps=4 format=3 uid="uid://ckk0snomqtyae"]
+[gd_scene load_steps=5 format=3 uid="uid://ckk0snomqtyae"]
 
 [ext_resource type="Script" path="res://UI/BasePanel/weapon_slot.gd" id="1_3p8h3"]
+[ext_resource type="Texture2D" uid="uid://bfydu1ij5cjeq" path="res://Assets/icons/unselected/33.png" id="1_g7e5p"]
 [ext_resource type="Texture2D" uid="uid://ces5stvgbqdw3" path="res://Assets/icons/selected/33.png" id="1_iq8uq"]
 [ext_resource type="Texture2D" uid="uid://dnt1u7nsdr5it" path="res://Assets/icons/locked/33.png" id="2_ly60t"]
 
 [node name="WeaponSlot" type="TextureButton"]
 toggle_mode = true
-texture_normal = ExtResource("1_iq8uq")
+texture_normal = ExtResource("1_g7e5p")
+texture_hover = ExtResource("1_iq8uq")
 texture_disabled = ExtResource("2_ly60t")
 script = ExtResource("1_3p8h3")
 

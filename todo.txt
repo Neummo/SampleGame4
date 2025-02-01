@@ -70,8 +70,41 @@ zone lines ? (FIXED)
 item ux (FIXED)
 colored descriptions (FIXED)
 
+item alignments (FIXED)
+item spelling(FIXED)
+weapon slot squishes icons (FIXED)
+enemy 3 way too slow (FIXED)
 
+sounds 
+more weapons
+weapon trees alignments
+more bounties
+last boss via black hole portal at 9999 -9999
+balance
+crashes
+	if is_instance_valid(enemy):
+	enemy.do_something()
+	
+	enemy.queue_free()
+	await get_tree().process_frame  # Wait for a frame before further access
 
+	if enemy.is_connected("health_depleted", Callable(self, "_on_enemy_death")):
+		enemy.disconnect("health_depleted", Callable(self, "_on_enemy_death"))
+	enemy.queue_free()
+
+	var enemy_ref = weakref(enemy)  # Store a weak reference
+
+	# Later, before using the node:
+	var enemy = enemy_ref.get_ref()
+	if enemy:
+		enemy.do_something()
+	
+	enemy.call_deferred("queue_free")
+
+	enemy.queue_free()
+	enemy = null  # Prevents future access
+	
+	
 CREDITS:
 	The Leafy Lemur @ OpenGameArt.org (asteroid)
 	Deep-Fold @ itch.io (planets)

@@ -235,9 +235,9 @@ func btify_text(text: String) -> String:
 	text = text.replace("Regeneration", "[color=#FFC933]Regeneration[/color]")
 	text = text.replace("Reduction", "[color=#FFC933]Reduction[/color]")
 	text = text.replace("Mitigation", "[color=#FFC933]Mitigation[/color]")
-	text = text.replace("Range", "[color=#FEF6C9]Range[/color]")
-	text = text.replace("Weapon Range", "[color=#FEF6C9]Weapon Range[/color]")
-	text = text.replace("Currency", "[color=#FEF6C9]Currency[/color]")
+	text = text.replace("Range", "[color=#6a994e]Range[/color]")
+	text = text.replace("Weapon Range", "[color=#6a994e]Weapon Range[/color]")
+	text = text.replace("Currency", "[color=#6a994e]Currency[/color]")
 	
 	text = text.replace("Energy", "[color=#42CAFD]Energy[/color]")
 	text = text.replace("Physical", "[color=#f3663f]Physical[/color]")

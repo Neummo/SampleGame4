@@ -6,7 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://b58vw44glay4i" path="res://Environment/move_trail.tscn" id="3_h43ih"]
 [ext_resource type="Texture2D" uid="uid://u3gliwrcgve6" path="res://Assets/entities/char_3201.png" id="4_sg0bx"]
 
-[sub_resource type="Curve" id="Curve_r8622"]
+[sub_resource type="Curve" id="Curve_44bmk"]
 resource_local_to_scene = true
 _data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
 point_count = 2
@@ -27,7 +27,7 @@ position = Vector2(-1, 0)
 
 [node name="MoveTrail" parent="Trail" instance=ExtResource("3_h43ih")]
 points = PackedVector2Array(0, 0)
-width_curve = SubResource("Curve_r8622")
+width_curve = SubResource("Curve_44bmk")
 default_color = Color(1, 0.976471, 0.839216, 1)
 length = 10
 

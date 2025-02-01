@@ -7,11 +7,11 @@ func _on_area_entered(area):
 	if area is HitboxComponent:
 		if projectile.target == area.possesor:
 			if already_hit:
-				if projectile is not Seeker and projectile is not LaserProjectile:
+				if is_instance_valid(projectile) and projectile is not Seeker and projectile is not LaserProjectile:
 					return
-				if projectile is LaserProjectile and not Values.turret_calliber_upgrade_unlocked:
+				if is_instance_valid(projectile) and projectile is LaserProjectile and not Values.turret_calliber_upgrade_unlocked:
 					return
-			if projectile is RocketHoming and projectile.is_aoe:
+			if is_instance_valid(projectile) and projectile is RocketHoming and projectile.is_aoe:
 				projectile.aoe_damage(projectile.global_position)
 				projectile.set_physics_process(false)
 				projectile.sprite.set_visible(false)

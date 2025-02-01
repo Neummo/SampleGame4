@@ -3,6 +3,7 @@
 [ext_resource type="Script" path="res://world.gd" id="1_w8vvu"]
 [ext_resource type="PackedScene" uid="uid://70snqg3xty42" path="res://player.tscn" id="1_xg6cr"]
 [ext_resource type="Material" uid="uid://b4d1gvp1222f1" path="res://smooth.tres" id="2_i81d4"]
+[ext_resource type="PackedScene" uid="uid://b8sd8mb7ar44u" path="res://UI/OnScreenInfo/tutorial.tscn" id="2_imycx"]
 [ext_resource type="Texture2D" uid="uid://xif8gku52tbu" path="res://Assets/background/Space Background background.png" id="2_k3gxd"]
 [ext_resource type="PackedScene" uid="uid://cosl5ticiw0ni" path="res://spawner.tscn" id="3_f7sdh"]
 [ext_resource type="Texture2D" uid="uid://cfjxc52iifwu1" path="res://Assets/background/Space Background nebulashadow.png" id="3_r4hps"]
@@ -19,7 +20,6 @@
 [ext_resource type="Texture2D" uid="uid://dw30ylprm00dl" path="res://Assets/icons/selected/34.png" id="12_nvr6x"]
 [ext_resource type="LabelSettings" uid="uid://oviud57gcaq1" path="res://Assets/5px_font.tres" id="13_1kbf0"]
 [ext_resource type="Texture2D" uid="uid://bsl80pbye304v" path="res://Assets/icons/selected/31.png" id="14_666rs"]
-[ext_resource type="PackedScene" uid="uid://dch8nj6rfojrx" path="res://Neutral/planet.tscn" id="20_klia1"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_7aek3"]
 radius = 250.0
@@ -105,6 +105,13 @@ collision_mask = 2
 shape = SubResource("CircleShape2D_7aek3")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Tutorial" parent="CanvasLayer" instance=ExtResource("2_imycx")]
+visible = false
+offset_left = -3.0
+offset_top = -1.0
+offset_right = -3.0
+offset_bottom = -1.0
 
 [node name="TimeLabel" type="Label" parent="CanvasLayer" groups=["TimeLabel"]]
 anchors_preset = 2
@@ -246,9 +253,6 @@ text = "0"
 label_settings = ExtResource("13_1kbf0")
 horizontal_alignment = 2
 vertical_alignment = 1
-
-[node name="Planet" parent="." instance=ExtResource("20_klia1")]
-position = Vector2(-116, 155)
 
 [connection signal="area_entered" from="Base/Atmosphere" to="Player" method="_on_atmosphere_area_entered"]
 [connection signal="area_exited" from="Base/Atmosphere" to="Player" method="_on_atmosphere_area_exited"]

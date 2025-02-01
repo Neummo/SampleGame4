@@ -41,6 +41,7 @@ func _ready():
 	time_label = get_tree().get_first_node_in_group("TimeLabel")
 	pm = get_tree().get_first_node_in_group("pm")
 	draw_zones()
+	draw_planets()
 
 func _process(_delta: float) -> void:
 	if Values.minutes_elapsed < 10:
@@ -68,6 +69,16 @@ func draw_zone_limit(line: Line2D, distance: float) -> void:
 		var radius: float = distance
 		var point: Vector2 = Vector2(s * radius, c * radius)
 		line.add_point(point)
+
+func draw_planets() -> void:
+	for i in range(200):
+		spawn_planet(i + 2)
+
+func spawn_planet(level: int) -> void:
+	var scene = load("res://Neutral/planet.tscn")
+	var instance = scene.instantiate()
+	instance.global_position = get_random_position_offscreen(false, true, level)
+	get_tree().current_scene.add_child.call_deferred(instance)
 
 func spawn_bounty(level: int) -> void:
 	var scene = load("res://Enemies/bounty_1.tscn")

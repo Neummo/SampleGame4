@@ -1,15 +1,33 @@
-[gd_scene load_steps=11 format=3 uid="uid://cwdxxuaq47cbl"]
+[gd_scene load_steps=29 format=3 uid="uid://cwdxxuaq47cbl"]
 
 [ext_resource type="Script" path="res://UI/MainMenu/menu.gd" id="1_73rd5"]
-[ext_resource type="Texture2D" uid="uid://3y6r70xv5jd7" path="res://Assets/3137991.jpg" id="2_dmk1x"]
-[ext_resource type="Texture2D" uid="uid://c6b1uq55qw2ob" path="res://Assets/Ship_1.png" id="3_23i6j"]
-[ext_resource type="PackedScene" uid="uid://cqot74uybmmas" path="res://UI/MainMenu/volume_slider.tscn" id="3_expyy"]
+[ext_resource type="Material" uid="uid://b4d1gvp1222f1" path="res://smooth.tres" id="2_4a4tb"]
+[ext_resource type="Texture2D" uid="uid://xif8gku52tbu" path="res://Assets/background/Space Background background.png" id="3_l2hxr"]
 [ext_resource type="Script" path="res://UI/MainMenu/armory_panel.gd" id="3_tym80"]
-[ext_resource type="Texture2D" uid="uid://iatrcxfqkrue" path="res://Assets/Ship_2.png" id="4_gccxr"]
-[ext_resource type="Script" path="res://UI/MainMenu/volume_slider.gd" id="4_ogc24"]
-[ext_resource type="Texture2D" uid="uid://rkyd75b4w6cr" path="res://Assets/Ship_3.png" id="5_dejmv"]
-[ext_resource type="Texture2D" uid="uid://cts47eo6n4sla" path="res://Assets/Ship_4.png" id="6_7fwmh"]
-[ext_resource type="Texture2D" uid="uid://gg2hm1r6438k" path="res://Assets/Ship_5.png" id="7_cwnx5"]
+[ext_resource type="Texture2D" uid="uid://cfjxc52iifwu1" path="res://Assets/background/Space Background nebulashadow.png" id="4_a81po"]
+[ext_resource type="Texture2D" uid="uid://cdx3jt0ohkn8v" path="res://Assets/background/Space Background nebulas.png" id="5_3i7ao"]
+[ext_resource type="Texture2D" uid="uid://cerwgc1qorkfh" path="res://Assets/background/Space Background stars.png" id="6_ctc75"]
+[ext_resource type="Texture2D" uid="uid://dm8468a530neq" path="res://Assets/background/Space Background planets small.png" id="7_v2l6v"]
+[ext_resource type="Texture2D" uid="uid://txtu72h40x8j" path="res://Assets/panel/menu_button.png" id="8_rqvay"]
+[ext_resource type="Texture2D" uid="uid://coo1vhc2mocjg" path="res://Assets/panel/menu_button_hover.png" id="9_yyeyq"]
+[ext_resource type="LabelSettings" uid="uid://bot2uh2delsdl" path="res://Assets/yellow_7px.tres" id="10_7ebxt"]
+[ext_resource type="Texture2D" uid="uid://bn6d75uu4n5tb" path="res://Assets/panel/panel_armory.png" id="11_rs2qn"]
+[ext_resource type="Texture2D" uid="uid://ov46ggn6sqvr" path="res://Assets/icons/unselected/00.png" id="13_ky6jw"]
+[ext_resource type="Texture2D" uid="uid://cpm3h1hd6nd5q" path="res://Assets/icons/locked/00.png" id="14_gbjtk"]
+[ext_resource type="Texture2D" uid="uid://ctlpbvjlisyov" path="res://Assets/icons/selected/00.png" id="14_pg1is"]
+[ext_resource type="LabelSettings" uid="uid://cbyo72brkko77" path="res://Assets/currency_7px.tres" id="15_cykl2"]
+[ext_resource type="Texture2D" uid="uid://c5elxfx5skqva" path="res://Assets/icons/unselected/01.png" id="16_7nu1e"]
+[ext_resource type="Texture2D" uid="uid://gdcbwshnudm4" path="res://Assets/icons/locked/01.png" id="17_qe1p2"]
+[ext_resource type="Texture2D" uid="uid://q3ul5lckooms" path="res://Assets/icons/selected/01.png" id="18_g1bqj"]
+[ext_resource type="Texture2D" uid="uid://bilm1nyw4abu1" path="res://Assets/icons/unselected/02.png" id="18_maar6"]
+[ext_resource type="Texture2D" uid="uid://dm6w6navo8b1n" path="res://Assets/icons/locked/02.png" id="19_luifd"]
+[ext_resource type="Texture2D" uid="uid://cp3hvjcmogbv4" path="res://Assets/icons/unselected/03.png" id="20_njkhs"]
+[ext_resource type="Texture2D" uid="uid://daxso52o52kwk" path="res://Assets/icons/locked/03.png" id="21_j7pod"]
+[ext_resource type="Texture2D" uid="uid://bn3ks1b3tbogd" path="res://Assets/icons/selected/02.png" id="21_jih16"]
+[ext_resource type="Texture2D" uid="uid://bo57cy1gh2dgj" path="res://Assets/icons/unselected/04.png" id="22_th3sa"]
+[ext_resource type="Texture2D" uid="uid://dvl4wqwse7igy" path="res://Assets/icons/locked/04.png" id="23_m6ej1"]
+[ext_resource type="Texture2D" uid="uid://ds4f1jogcng7e" path="res://Assets/icons/selected/03.png" id="24_wtvxb"]
+[ext_resource type="Texture2D" uid="uid://cn0lbraccyc0x" path="res://Assets/icons/selected/04.png" id="27_vs3lm"]
 
 [node name="Menu" type="Control"]
 layout_mode = 3
@@ -21,49 +39,139 @@ offset_bottom = -648.0
 grow_vertical = 0
 script = ExtResource("1_73rd5")
 
-[node name="ParallaxBackground" type="ParallaxBackground" parent="."]
-follow_viewport_enabled = true
+[node name="Parallax2D" type="Parallax2D" parent="."]
+show_behind_parent = true
+scroll_scale = Vector2(0, 0)
+scroll_offset = Vector2(360, 493)
 
-[node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground"]
+[node name="Sprite2D" type="Sprite2D" parent="Parallax2D"]
+z_index = -5
+texture_filter = 2
+material = ExtResource("2_4a4tb")
+texture = ExtResource("3_l2hxr")
 
-[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer"]
-position = Vector2(-43, -50)
-scale = Vector2(0.245667, 0.2255)
-texture = ExtResource("2_dmk1x")
-centered = false
+[node name="Parallax2D2" type="Parallax2D" parent="."]
+show_behind_parent = true
+scroll_scale = Vector2(0.4, 0.4)
+repeat_size = Vector2(1000, 500)
+autoscroll = Vector2(-1, -3)
+repeat_times = 5
+
+[node name="Sprite2D" type="Sprite2D" parent="Parallax2D2"]
+z_index = -5
+texture_filter = 2
+material = ExtResource("2_4a4tb")
+texture = ExtResource("4_a81po")
+
+[node name="Sprite2D2" type="Sprite2D" parent="Parallax2D2"]
+z_index = -5
+texture_filter = 2
+material = ExtResource("2_4a4tb")
+texture = ExtResource("5_3i7ao")
+
+[node name="Parallax2D3" type="Parallax2D" parent="."]
+show_behind_parent = true
+scroll_scale = Vector2(0.2, 0.2)
+repeat_size = Vector2(800, 400)
+autoscroll = Vector2(1, -2)
+repeat_times = 5
+
+[node name="Sprite2D" type="Sprite2D" parent="Parallax2D3"]
+z_index = -5
+texture_filter = 2
+material = ExtResource("2_4a4tb")
+texture = ExtResource("6_ctc75")
+
+[node name="Parallax2D4" type="Parallax2D" parent="."]
+show_behind_parent = true
+scroll_scale = Vector2(6, 6)
+repeat_size = Vector2(800, 400)
+autoscroll = Vector2(5, 6)
+repeat_times = 5
+
+[node name="Sprite2D" type="Sprite2D" parent="Parallax2D4"]
+z_index = -5
+texture_filter = 2
+material = ExtResource("2_4a4tb")
+texture = ExtResource("7_v2l6v")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
 layout_mode = 1
 anchors_preset = 2
 anchor_top = 1.0
 anchor_bottom = 1.0
-offset_left = 77.0
-offset_top = 440.0
-offset_right = 216.0
-offset_bottom = 578.0
+offset_left = 36.0
+offset_top = 488.0
+offset_right = 100.0
+offset_bottom = 636.0
 grow_vertical = 0
-theme_override_constants/separation = 10
+theme_override_constants/separation = 8
 alignment = 1
 
-[node name="Start" type="Button" parent="VBoxContainer"]
+[node name="Start" type="TextureButton" parent="VBoxContainer"]
 layout_mode = 2
 focus_neighbor_top = NodePath("../Quit")
-text = "New Game"
+texture_normal = ExtResource("8_rqvay")
+texture_hover = ExtResource("9_yyeyq")
 
-[node name="Armory" type="Button" parent="VBoxContainer"]
+[node name="Label" type="Label" parent="VBoxContainer/Start"]
+layout_mode = 0
+offset_left = 8.0
+offset_top = 3.0
+offset_right = 57.0
+offset_bottom = 19.0
+text = "DEPART"
+label_settings = ExtResource("10_7ebxt")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Armory" type="TextureButton" parent="VBoxContainer"]
 layout_mode = 2
-text = "Armory"
+texture_normal = ExtResource("8_rqvay")
+texture_hover = ExtResource("9_yyeyq")
 
-[node name="Options" type="Button" parent="VBoxContainer"]
+[node name="Label" type="Label" parent="VBoxContainer/Armory"]
+offset_left = 6.0
+offset_top = 3.0
+offset_right = 59.0
+offset_bottom = 19.0
+text = "ARSENAL"
+label_settings = ExtResource("10_7ebxt")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Options" type="TextureButton" parent="VBoxContainer"]
 layout_mode = 2
-text = "Options"
+texture_normal = ExtResource("8_rqvay")
+texture_hover = ExtResource("9_yyeyq")
 
-[node name="Quit" type="Button" parent="VBoxContainer"]
+[node name="Label" type="Label" parent="VBoxContainer/Options"]
+offset_left = 6.0
+offset_top = 3.0
+offset_right = 60.0
+offset_bottom = 20.0
+text = "SETTINGS"
+label_settings = ExtResource("10_7ebxt")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Quit" type="TextureButton" parent="VBoxContainer"]
 layout_mode = 2
 focus_neighbor_bottom = NodePath("../Start")
-text = "Quit"
+texture_normal = ExtResource("8_rqvay")
+texture_hover = ExtResource("9_yyeyq")
 
-[node name="ArmoryPanel" type="Panel" parent="."]
+[node name="Label" type="Label" parent="VBoxContainer/Quit"]
+offset_left = 7.0
+offset_top = 3.0
+offset_right = 59.0
+offset_bottom = 19.0
+text = "EXIT"
+label_settings = ExtResource("10_7ebxt")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ArmoryPanel" type="TextureRect" parent="."]
 visible = false
 layout_mode = 1
 anchors_preset = 8
@@ -71,97 +179,115 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = 230.0
-offset_top = 297.0
-offset_right = 603.0
-offset_bottom = 619.0
+offset_left = 139.0
+offset_top = 278.0
+offset_right = 523.0
+offset_bottom = 662.0
 grow_horizontal = 2
 grow_vertical = 2
+texture = ExtResource("11_rs2qn")
 script = ExtResource("3_tym80")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="ArmoryPanel"]
 layout_mode = 0
-offset_left = 46.0
-offset_top = 55.0
-offset_right = 86.0
-offset_bottom = 95.0
+offset_left = 57.0
+offset_top = 122.0
+offset_right = 97.0
+offset_bottom = 282.0
+theme_override_constants/separation = 20
 
 [node name="WeaponUnlockButton" type="TextureButton" parent="ArmoryPanel/VBoxContainer"]
 layout_mode = 2
-texture_normal = ExtResource("3_23i6j")
-texture_disabled = ExtResource("3_23i6j")
+texture_normal = ExtResource("13_ky6jw")
+texture_hover = ExtResource("14_pg1is")
+texture_disabled = ExtResource("14_gbjtk")
 
 [node name="Description" type="Label" parent="ArmoryPanel/VBoxContainer/WeaponUnlockButton"]
 layout_mode = 0
-offset_left = 38.0
-offset_top = 3.0
-offset_right = 300.0
-offset_bottom = 26.0
-text = "Laser projectile emitter - 100.000┌"
+offset_left = 20.0
+offset_top = -3.0
+offset_right = 282.0
+offset_bottom = 20.0
+text = "Gattling Gun - FREE"
+label_settings = ExtResource("15_cykl2")
+vertical_alignment = 1
 
 [node name="WeaponUnlockButton2" type="TextureButton" parent="ArmoryPanel/VBoxContainer"]
 layout_mode = 2
-texture_normal = ExtResource("4_gccxr")
-texture_disabled = ExtResource("4_gccxr")
+texture_normal = ExtResource("16_7nu1e")
+texture_hover = ExtResource("18_g1bqj")
+texture_disabled = ExtResource("17_qe1p2")
 
 [node name="Description" type="Label" parent="ArmoryPanel/VBoxContainer/WeaponUnlockButton2"]
 layout_mode = 0
-offset_left = 38.0
-offset_top = 3.0
-offset_right = 300.0
-offset_bottom = 26.0
-text = "Missile launcher - 100.000┌"
+offset_left = 20.0
+offset_top = -3.0
+offset_right = 282.0
+offset_bottom = 20.0
+text = "Rocket Launcher - 1000"
+label_settings = ExtResource("15_cykl2")
+vertical_alignment = 1
 
 [node name="WeaponUnlockButton3" type="TextureButton" parent="ArmoryPanel/VBoxContainer"]
 layout_mode = 2
-texture_normal = ExtResource("5_dejmv")
-texture_disabled = ExtResource("5_dejmv")
+texture_normal = ExtResource("18_maar6")
+texture_hover = ExtResource("21_jih16")
+texture_disabled = ExtResource("19_luifd")
 
 [node name="Description" type="Label" parent="ArmoryPanel/VBoxContainer/WeaponUnlockButton3"]
 layout_mode = 0
-offset_left = 38.0
-offset_top = 3.0
-offset_right = 300.0
-offset_bottom = 26.0
-text = "Heavy duty laser beam - 100.000┌"
+offset_left = 20.0
+offset_top = -3.0
+offset_right = 282.0
+offset_bottom = 20.0
+text = "Laser Cannon - 5000"
+label_settings = ExtResource("15_cykl2")
+vertical_alignment = 1
 
 [node name="WeaponUnlockButton4" type="TextureButton" parent="ArmoryPanel/VBoxContainer"]
 layout_mode = 2
-texture_normal = ExtResource("6_7fwmh")
-texture_disabled = ExtResource("6_7fwmh")
+texture_normal = ExtResource("20_njkhs")
+texture_hover = ExtResource("24_wtvxb")
+texture_disabled = ExtResource("21_j7pod")
 
 [node name="Description" type="Label" parent="ArmoryPanel/VBoxContainer/WeaponUnlockButton4"]
 layout_mode = 0
-offset_left = 38.0
-offset_top = 3.0
-offset_right = 300.0
-offset_bottom = 26.0
-text = "Seeker drone - 100.000┌"
+offset_left = 20.0
+offset_top = -3.0
+offset_right = 282.0
+offset_bottom = 20.0
+text = "Seeker Drone - 10000"
+label_settings = ExtResource("15_cykl2")
+vertical_alignment = 1
 
 [node name="WeaponUnlockButton5" type="TextureButton" parent="ArmoryPanel/VBoxContainer"]
 layout_mode = 2
-texture_normal = ExtResource("7_cwnx5")
-texture_disabled = ExtResource("7_cwnx5")
+texture_normal = ExtResource("22_th3sa")
+texture_hover = ExtResource("27_vs3lm")
+texture_disabled = ExtResource("23_m6ej1")
 
 [node name="Description" type="Label" parent="ArmoryPanel/VBoxContainer/WeaponUnlockButton5"]
 layout_mode = 0
-offset_left = 38.0
-offset_top = 3.0
-offset_right = 300.0
-offset_bottom = 26.0
-text = "Area field generator- 100.000┌"
+offset_left = 20.0
+offset_top = -3.0
+offset_right = 282.0
+offset_bottom = 20.0
+text = "Static Field - 10000"
+label_settings = ExtResource("15_cykl2")
+vertical_alignment = 1
 
 [node name="Currency" type="Label" parent="ArmoryPanel"]
 layout_mode = 0
-offset_left = 169.0
-offset_top = 18.0
-offset_right = 239.0
-offset_bottom = 41.0
+offset_left = 16.0
+offset_top = 74.0
+offset_right = 86.0
+offset_bottom = 97.0
 text = "Balance: "
+label_settings = ExtResource("10_7ebxt")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="OptionsPanel" type="Panel" parent="."]
+[node name="OptionsPanel" type="TextureRect" parent="."]
 visible = false
 layout_mode = 1
 anchors_preset = 8
@@ -169,53 +295,13 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = 224.0
-offset_top = 298.0
-offset_right = 615.0
-offset_bottom = 628.0
+offset_left = 139.0
+offset_top = 278.0
+offset_right = 530.0
+offset_bottom = 662.0
 grow_horizontal = 2
 grow_vertical = 2
-
-[node name="MasterVolume" type="Label" parent="OptionsPanel"]
-layout_mode = 0
-offset_left = 28.0
-offset_top = 37.0
-offset_right = 68.0
-offset_bottom = 60.0
-text = "Master Volume"
-
-[node name="VolumeSlider" parent="OptionsPanel/MasterVolume" instance=ExtResource("3_expyy")]
-layout_mode = 0
-offset_left = 0.0
-offset_top = 34.0
-offset_right = 334.0
-offset_bottom = 50.0
-tick_count = 10
-ticks_on_borders = false
-script = ExtResource("4_ogc24")
-
-[node name="Controls" type="Label" parent="OptionsPanel"]
-layout_mode = 0
-offset_left = 30.0
-offset_top = 121.0
-offset_right = 148.0
-offset_bottom = 144.0
-text = "Controls"
-
-[node name="VBoxContainer" type="VBoxContainer" parent="OptionsPanel/Controls"]
-layout_mode = 0
-offset_left = 13.0
-offset_top = 32.0
-offset_right = 79.0
-offset_bottom = 82.0
-
-[node name="Controls2" type="Label" parent="OptionsPanel/Controls/VBoxContainer"]
-layout_mode = 2
-text = "W - Propel in the aimed direction"
-
-[node name="Controls3" type="Label" parent="OptionsPanel/Controls/VBoxContainer"]
-layout_mode = 2
-text = "S - Proceed to come to a stop"
+texture = ExtResource("11_rs2qn")
 
 [connection signal="pressed" from="VBoxContainer/Start" to="." method="_on_start_pressed"]
 [connection signal="pressed" from="VBoxContainer/Armory" to="." method="_on_armory_pressed"]

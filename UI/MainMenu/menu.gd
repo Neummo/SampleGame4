@@ -1,8 +1,8 @@
 extends Control
 
-@onready var start: Button = $VBoxContainer/Start
-@onready var armory_panel: Panel = $ArmoryPanel
-@onready var options_panel: Panel = $OptionsPanel
+@onready var start: TextureButton = $VBoxContainer/Start
+@onready var armory_panel: TextureRect = $ArmoryPanel
+@onready var options_panel: TextureRect = $OptionsPanel
 
 func _ready() -> void:
 	get_tree().set_deferred("paused", false)

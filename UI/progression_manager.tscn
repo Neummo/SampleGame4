@@ -984,7 +984,7 @@ offset_top = 111.0
 offset_right = 73.0
 offset_bottom = 127.0
 max_level = 1
-description = "- Unlock Gattling Gun"
+description = "- Press to Unlock. Scales with: Energy, Projectile Speed, Rate of Fire, Weapon Range"
 
 [node name="TurretUpgrade11TreeButton" parent="UpgradeContainer/WeaponDisplay/TurretUnlockTreeButton" instance=ExtResource("6_ut5g0")]
 use_parent_material = true
@@ -1077,7 +1077,7 @@ offset_top = 111.0
 offset_right = 73.0
 offset_bottom = 127.0
 max_level = 1
-description = "- Unlock Rocket Launcher"
+description = "- Press to Unlock. Scales with: Physical, Projectile Speed, Rate of Fire, Weapon Range"
 
 [node name="RocketUpgrade3TreeButton" parent="UpgradeContainer/WeaponDisplay/RocketUnlockTreeButton" instance=ExtResource("6_ut5g0")]
 use_parent_material = true
@@ -1170,7 +1170,7 @@ offset_top = 111.0
 offset_right = 73.0
 offset_bottom = 127.0
 max_level = 1
-description = "- Unlock Seeker Drone"
+description = "- Press to Unlock. Scales with: Physical, Projectile Speed, Weapon Range"
 
 [node name="SeekerUpgrade3TreeButton" parent="UpgradeContainer/WeaponDisplay/SeekerUnlockTreeButton" instance=ExtResource("6_ut5g0")]
 use_parent_material = true
@@ -1241,7 +1241,7 @@ offset_top = 111.0
 offset_right = 73.0
 offset_bottom = 127.0
 max_level = 1
-description = "- Unlock Laser Cannon"
+description = "- Press to Unlock. Scales with: Energy, Rate of Fire, Weapon Range"
 
 [node name="LaserUpgrade1TreeButton" parent="UpgradeContainer/WeaponDisplay/LaserUnlockTreeButton" instance=ExtResource("6_ut5g0")]
 use_parent_material = true
@@ -1323,7 +1323,7 @@ offset_top = 111.0
 offset_right = 73.0
 offset_bottom = 127.0
 max_level = 1
-description = "- Unlock Static Field"
+description = "- Press to Unlock. Scales with: Energy"
 
 [node name="FieldUpgrade1TreeButton" parent="UpgradeContainer/WeaponDisplay/FieldUnlockTreeButton" instance=ExtResource("6_ut5g0")]
 use_parent_material = true

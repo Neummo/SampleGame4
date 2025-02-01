@@ -113,12 +113,12 @@ shader_parameter/flash_value = 0.0
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_h40vo"]
 size = Vector2(10, 14)
 
-[sub_resource type="Curve" id="Curve_bjstb"]
+[sub_resource type="Curve" id="Curve_efatx"]
 resource_local_to_scene = true
 _data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
 point_count = 2
 
-[sub_resource type="Curve" id="Curve_q258y"]
+[sub_resource type="Curve" id="Curve_lnv20"]
 resource_local_to_scene = true
 _data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
 point_count = 2
@@ -184,7 +184,7 @@ position = Vector2(-4, -5)
 
 [node name="MoveTrail" parent="Body/LeftWing" instance=ExtResource("9_4qea7")]
 z_index = -1
-width_curve = SubResource("Curve_bjstb")
+width_curve = SubResource("Curve_efatx")
 default_color = Color(0.752941, 0.262745, 0.207843, 1)
 length = 10
 
@@ -193,7 +193,7 @@ position = Vector2(-4, 5)
 
 [node name="MoveTrail" parent="Body/RightWing" instance=ExtResource("9_4qea7")]
 z_index = -1
-width_curve = SubResource("Curve_q258y")
+width_curve = SubResource("Curve_lnv20")
 default_color = Color(0.752941, 0.262745, 0.207843, 1)
 length = 10
 
