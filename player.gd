@@ -261,7 +261,7 @@ func _on_return_timer_timeout() -> void:
 
 func _on_visible_range_area_exited(area: Area2D) -> void:
 	if area.get_parent() is Projectile:
-		area.get_parent().queue_free()
+		area.get_parent().call_deferred("queue_free")
 
 func _on_regen_timer_timeout() -> void:
 	heali(Values.player_hps)

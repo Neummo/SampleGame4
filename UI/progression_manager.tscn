@@ -488,7 +488,7 @@ salvage_button = NodePath("UpgradeContainer/UpgradeDisplay/Salvage")
 turret_unlock_button = NodePath("UpgradeContainer/WeaponDisplay/TurretUnlockTreeButton")
 turret_upgrade1_button = NodePath("UpgradeContainer/WeaponDisplay/TurretUnlockTreeButton/TurretUpgrade11TreeButton/TurretUpgrade1TreeButton")
 turret_upgrade11_button = NodePath("UpgradeContainer/WeaponDisplay/TurretUnlockTreeButton/TurretUpgrade11TreeButton")
-turret_upgrade111_button = NodePath("UpgradeContainer/WeaponDisplay/TurretUnlockTreeButton/TurretUpgrade11TreeButton/TurretUpgrade1TreeButton/TurretUpgrade111TreeButton")
+turret_upgrade111_button = NodePath("UpgradeContainer/WeaponDisplay/TurretUnlockTreeButton/TurretUpgrade11TreeButton/TurretUpgrade111TreeButton")
 turret_upgrade211_button = NodePath("UpgradeContainer/WeaponDisplay/TurretUnlockTreeButton/TurretUpgrade21TreeButton/TurretUpgrade211TreeButton")
 turret_upgrade311_button = NodePath("UpgradeContainer/WeaponDisplay/TurretUnlockTreeButton/TurretUpgrade31TreeButton/TurretUpgrade311TreeButton")
 turret_upgrade21_button = NodePath("UpgradeContainer/WeaponDisplay/TurretUnlockTreeButton/TurretUpgrade21TreeButton")
@@ -998,6 +998,7 @@ max_level = 5
 description = "- Projectile Speed Increase"
 
 [node name="TurretUpgrade1TreeButton" parent="UpgradeContainer/WeaponDisplay/TurretUnlockTreeButton/TurretUpgrade11TreeButton" instance=ExtResource("6_ut5g0")]
+visible = false
 use_parent_material = true
 layout_mode = 0
 offset_left = 0.0
@@ -1008,13 +1009,13 @@ disabled = true
 max_level = 1
 description = "- Double Projectile Base Speed"
 
-[node name="TurretUpgrade111TreeButton" parent="UpgradeContainer/WeaponDisplay/TurretUnlockTreeButton/TurretUpgrade11TreeButton/TurretUpgrade1TreeButton" instance=ExtResource("6_ut5g0")]
+[node name="TurretUpgrade111TreeButton" parent="UpgradeContainer/WeaponDisplay/TurretUnlockTreeButton/TurretUpgrade11TreeButton" instance=ExtResource("6_ut5g0")]
 use_parent_material = true
 layout_mode = 0
 offset_left = 0.0
-offset_top = 39.0
+offset_top = 37.0
 offset_right = 16.0
-offset_bottom = 55.0
+offset_bottom = 53.0
 disabled = true
 max_level = 1
 description = "- Homing Projectiles"
@@ -1622,7 +1623,7 @@ animation = &"appear"
 [connection signal="pressed" from="UpgradeContainer/WeaponDisplay/TurretUnlockTreeButton" to="." method="_on_turret_unlock_tree_button_pressed"]
 [connection signal="pressed" from="UpgradeContainer/WeaponDisplay/TurretUnlockTreeButton/TurretUpgrade11TreeButton" to="." method="_on_turret_upgrade_11_tree_button_pressed"]
 [connection signal="pressed" from="UpgradeContainer/WeaponDisplay/TurretUnlockTreeButton/TurretUpgrade11TreeButton/TurretUpgrade1TreeButton" to="." method="_on_turret_upgrade_1_tree_button_pressed"]
-[connection signal="pressed" from="UpgradeContainer/WeaponDisplay/TurretUnlockTreeButton/TurretUpgrade11TreeButton/TurretUpgrade1TreeButton/TurretUpgrade111TreeButton" to="." method="_on_turret_upgrade_111_tree_button_pressed"]
+[connection signal="pressed" from="UpgradeContainer/WeaponDisplay/TurretUnlockTreeButton/TurretUpgrade11TreeButton/TurretUpgrade111TreeButton" to="." method="_on_turret_upgrade_111_tree_button_pressed"]
 [connection signal="pressed" from="UpgradeContainer/WeaponDisplay/TurretUnlockTreeButton/TurretUpgrade21TreeButton" to="." method="_on_turret_upgrade_21_tree_button_pressed"]
 [connection signal="pressed" from="UpgradeContainer/WeaponDisplay/TurretUnlockTreeButton/TurretUpgrade21TreeButton/TurretUpgrade211TreeButton" to="." method="_on_turret_upgrade_211_tree_button_pressed"]
 [connection signal="pressed" from="UpgradeContainer/WeaponDisplay/TurretUnlockTreeButton/TurretUpgrade31TreeButton" to="." method="_on_turret_upgrade_31_tree_button_pressed"]

@@ -8,7 +8,7 @@ func _on_area_entered(area: Area2D) -> void:
 		player.progression_manager.get_salvages(value)
 		die()
 		await Values.display_number(value, "Salvage +",  Vector2(position.x, position.y), "#6A994E", null, false)
-		queue_free()
+		call_deferred("queue_free")
 	if area is Item and self is Item and not instant and uuid > area.uuid:
 		area.value += value
-		queue_free()
+		call_deferred("queue_free")

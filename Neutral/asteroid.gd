@@ -54,7 +54,7 @@ func despawn() -> void:
 	if get_player_distance() > 1500:
 		Values.neutral_count -= 1
 		cluster_leads.erase(self)
-		queue_free()
+		call_deferred("queue_free")
 
 func get_player_distance() -> float:
 	return snapped(global_position.distance_to(player.global_position), 1)
@@ -70,4 +70,4 @@ func die() -> void:
 	death.set_visible(true)
 	death.play("death")
 	await death.animation_finished
-	queue_free()
+	call_deferred("queue_free")

@@ -80,7 +80,7 @@ more weapons
 weapon trees alignments
 more bounties
 last boss via black hole portal at 9999 -9999
-balance
+balance 
 crashes
 	if is_instance_valid(enemy):
 	enemy.do_something()

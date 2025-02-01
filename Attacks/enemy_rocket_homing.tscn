@@ -9,7 +9,7 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_bifld"]
 size = Vector2(8, 4)
 
-[sub_resource type="Curve" id="Curve_2yq1f"]
+[sub_resource type="Curve" id="Curve_ejtdh"]
 resource_local_to_scene = true
 _data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
 point_count = 2
@@ -39,7 +39,7 @@ position = Vector2(0, 2)
 [node name="MoveTrail" parent="Trail" instance=ExtResource("3_g1x61")]
 points = PackedVector2Array(0, 0)
 width = 2.0
-width_curve = SubResource("Curve_2yq1f")
+width_curve = SubResource("Curve_ejtdh")
 default_color = Color(0.752941, 0.262745, 0.207843, 1)
 length = 10
 

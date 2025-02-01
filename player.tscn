@@ -32,12 +32,12 @@ shader_parameter/flash_value = 0.0
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_3idnx"]
 size = Vector2(24, 26)
 
-[sub_resource type="Curve" id="Curve_dbx0g"]
+[sub_resource type="Curve" id="Curve_bbv44"]
 resource_local_to_scene = true
 _data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
 point_count = 2
 
-[sub_resource type="Curve" id="Curve_kmyh4"]
+[sub_resource type="Curve" id="Curve_eqq47"]
 resource_local_to_scene = true
 _data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
 point_count = 2
@@ -309,7 +309,7 @@ melee_gun2 = NodePath("Body/MeleeGun2")
 melee_gun3 = NodePath("Body/MeleeGun3")
 seeker_gun = NodePath("Body/SeekerGun")
 ranged_gun = NodePath("Body/RangedGun")
-big_gun = NodePath("Body/BigGun")
+big_gun = NodePath("BigGun")
 area_field = NodePath("AreaField")
 rng = NodePath("Range")
 range_indicator = NodePath("RangeIndicator")
@@ -354,6 +354,9 @@ shape = SubResource("CircleShape2D_n21ry")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Range"]
 shape = SubResource("CircleShape2D_2q0kj")
 
+[node name="BigGun" parent="." instance=ExtResource("11_nhf5f")]
+position = Vector2(1, 0)
+
 [node name="Body" type="Node2D" parent="."]
 
 [node name="MeleeGun" parent="Body" instance=ExtResource("9_4b7n7")]
@@ -369,9 +372,6 @@ position = Vector2(0, 6)
 position = Vector2(1, 0)
 
 [node name="RangedGun" parent="Body" instance=ExtResource("10_peajn")]
-position = Vector2(1, 0)
-
-[node name="BigGun" parent="Body" instance=ExtResource("11_nhf5f")]
 position = Vector2(1, 0)
 
 [node name="Sprite" type="Sprite2D" parent="Body"]
@@ -407,7 +407,7 @@ position = Vector2(-3, -5)
 
 [node name="MoveTrail" parent="Body/LeftWing" instance=ExtResource("5_1rq2q")]
 z_index = -1
-width_curve = SubResource("Curve_dbx0g")
+width_curve = SubResource("Curve_bbv44")
 default_color = Color(1, 0.952941, 0.678431, 1)
 length = 20
 
@@ -416,7 +416,7 @@ position = Vector2(-3, 5)
 
 [node name="MoveTrail" parent="Body/RightWing" instance=ExtResource("5_1rq2q")]
 z_index = -1
-width_curve = SubResource("Curve_kmyh4")
+width_curve = SubResource("Curve_eqq47")
 default_color = Color(1, 0.952941, 0.678431, 1)
 length = 20
 

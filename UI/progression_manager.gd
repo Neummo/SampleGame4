@@ -276,9 +276,9 @@ func _on_turret_unlock_tree_button_pressed():
 	Values.melee_gun_unlocked = true
 	turret_unlock_button.description = turret_unlock_button.description.replace("Press to Unlock. ", "")
 	select_skill(turret_unlock_button)
-func _on_turret_upgrade_1_tree_button_pressed():
-	Values.player_melee_gun_speed *= 2
-	select_skill(turret_upgrade1_button)
+#func _on_turret_upgrade_1_tree_button_pressed():
+	#Values.player_melee_gun_speed *= 2
+	#select_skill(turret_upgrade1_button)
 func _on_turret_upgrade_11_tree_button_pressed() -> void:
 	Values.player_melee_gun_speed += 50
 	select_skill(turret_upgrade11_button)

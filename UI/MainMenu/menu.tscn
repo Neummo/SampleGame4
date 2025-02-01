@@ -131,6 +131,7 @@ texture_normal = ExtResource("8_rqvay")
 texture_hover = ExtResource("9_yyeyq")
 
 [node name="Label" type="Label" parent="VBoxContainer/Armory"]
+layout_mode = 0
 offset_left = 6.0
 offset_top = 3.0
 offset_right = 59.0
@@ -146,6 +147,7 @@ texture_normal = ExtResource("8_rqvay")
 texture_hover = ExtResource("9_yyeyq")
 
 [node name="Label" type="Label" parent="VBoxContainer/Options"]
+layout_mode = 0
 offset_left = 6.0
 offset_top = 3.0
 offset_right = 60.0
@@ -162,6 +164,7 @@ texture_normal = ExtResource("8_rqvay")
 texture_hover = ExtResource("9_yyeyq")
 
 [node name="Label" type="Label" parent="VBoxContainer/Quit"]
+layout_mode = 0
 offset_left = 7.0
 offset_top = 3.0
 offset_right = 59.0

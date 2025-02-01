@@ -147,7 +147,7 @@ var enemy_health: int = 100
 var enemy_acceleration: float = 25
 var enemy_speed: float = 250.0
 var enemy_range: float = 150.0
-var enemy_projectile_speed: float = 75.0
+var enemy_projectile_speed: float = 50.0
 var weapon_slots: int = 1
 var bounties_unlocked: bool = false
 var dash_unlocked: bool = false
@@ -320,7 +320,7 @@ func init_player_stats() -> void:
 	enemy_acceleration = 25
 	enemy_speed = 250
 	enemy_range = 150.0
-	enemy_projectile_speed = 75.0
+	enemy_projectile_speed = 50.0
 	weapon_slots = 1
 	bounties_unlocked = false
 	dash_unlocked = false
@@ -348,7 +348,7 @@ func init_player_stats() -> void:
 	player_hps = 0
 	player_can_hps = true
 	player_can_leech = true
-	item_count = 10
+	item_count = 0
 	modules = 0
 	cluster_leads = []
 	weapons = weapons_default
@@ -399,5 +399,5 @@ func display_number(val, prefix: String, pos: Vector2, color: String, parent: No
 	#).set_ease(Tween.EASE_IN).set_delay(0.5)
 	await tween.finished
 	if is_instance_valid(number):
-		number.queue_free()
+		number.call_deferred("queue_free")
 	return true

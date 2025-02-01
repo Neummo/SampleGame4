@@ -78,4 +78,4 @@ func die() -> void:
 	death.set_visible(true)
 	death.play("death")
 	await death.animation_finished
-	queue_free()
+	call_deferred("queue_free")

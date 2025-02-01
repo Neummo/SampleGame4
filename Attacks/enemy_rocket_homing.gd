@@ -33,7 +33,7 @@ func seek():
 	return steer
 
 func _on_lifespan_timeout() -> void:
-	queue_free()
+	call_deferred("queue_free")
 
 func _on_timer_timeout() -> void:
 	start_seeking = true

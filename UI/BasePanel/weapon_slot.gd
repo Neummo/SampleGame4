@@ -17,7 +17,7 @@ var elimination_count: Array = [50, 550, 1550, 3550]
 func init() -> void:
 	for child in weapon_list.get_children():
 		weapon_list.remove_child(child)
-		child.queue_free()
+		child.call_deferred("queue_free")
 	trees = [
 		weapon_tree, weapon_tree_2, weapon_tree_3,
 		weapon_tree_4, weapon_tree_5,

@@ -16,4 +16,4 @@ func draw_radar_indicator(asteroid: CharacterBody2D):
 func delete_radar_indicator(asteroid: CharacterBody2D):
 	for child in get_children():
 		if child is Sprite2D and child.asteroid == asteroid:
-			child.queue_free()
+			child.call_deferred("queue_free")

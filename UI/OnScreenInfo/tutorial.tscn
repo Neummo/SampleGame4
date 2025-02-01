@@ -53,6 +53,7 @@ meta_underlined = false
 hint_underlined = false
 
 [node name="Label2" type="RichTextLabel" parent="Panel2/Panel"]
+layout_mode = 0
 offset_left = 35.0
 offset_top = 115.0
 offset_right = 359.0
@@ -68,6 +69,7 @@ meta_underlined = false
 hint_underlined = false
 
 [node name="Label3" type="RichTextLabel" parent="Panel2/Panel"]
+layout_mode = 0
 offset_left = 35.0
 offset_top = 135.0
 offset_right = 359.0
@@ -83,6 +85,7 @@ meta_underlined = false
 hint_underlined = false
 
 [node name="Label4" type="RichTextLabel" parent="Panel2/Panel"]
+layout_mode = 0
 offset_left = 35.0
 offset_top = 155.0
 offset_right = 359.0
@@ -98,6 +101,7 @@ meta_underlined = false
 hint_underlined = false
 
 [node name="Label5" type="RichTextLabel" parent="Panel2/Panel"]
+layout_mode = 0
 offset_left = 35.0
 offset_top = 175.0
 offset_right = 359.0
@@ -113,6 +117,7 @@ meta_underlined = false
 hint_underlined = false
 
 [node name="Label6" type="RichTextLabel" parent="Panel2/Panel"]
+layout_mode = 0
 offset_left = 35.0
 offset_top = 195.0
 offset_right = 359.0
@@ -128,6 +133,7 @@ meta_underlined = false
 hint_underlined = false
 
 [node name="Label7" type="RichTextLabel" parent="Panel2/Panel"]
+layout_mode = 0
 offset_left = 35.0
 offset_top = 215.0
 offset_right = 359.0
@@ -143,6 +149,7 @@ meta_underlined = false
 hint_underlined = false
 
 [node name="Label8" type="RichTextLabel" parent="Panel2/Panel"]
+layout_mode = 0
 offset_left = 35.0
 offset_top = 235.0
 offset_right = 359.0

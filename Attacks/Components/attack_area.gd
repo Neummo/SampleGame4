@@ -16,7 +16,7 @@ func _on_area_entered(area):
 				projectile.set_physics_process(false)
 				projectile.sprite.set_visible(false)
 				await projectile.tween.finished
-				projectile.queue_free()
+				projectile.call_deferred("queue_free")
 				already_hit = true
 			else:
 				var hitbox: HitboxComponent = area
@@ -31,13 +31,13 @@ func _on_area_entered(area):
 					projectile.homing = false
 					already_hit
 					return
-				projectile.queue_free()
+				projectile.call_deferred("queue_free")
 		else:
 			if projectile is Seeker:
 				if projectile.closest_enemy == null and projectile.has_to_return:
-					projectile.queue_free()
+					projectile.call_deferred("queue_free")
 					Values.seeker_gun_active_amount -= 1
 					return
 				if not projectile.no_return and already_hit:
-					projectile.queue_free()
+					projectile.call_deferred("queue_free")
 					Values.seeker_gun_active_amount -= 1
