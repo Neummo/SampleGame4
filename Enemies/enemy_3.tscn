@@ -113,12 +113,12 @@ shader_parameter/flash_value = 0.0
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_h40vo"]
 size = Vector2(10, 14)
 
-[sub_resource type="Curve" id="Curve_v1tqt"]
+[sub_resource type="Curve" id="Curve_b4ddo"]
 resource_local_to_scene = true
 _data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
 point_count = 2
 
-[sub_resource type="Curve" id="Curve_wh3gl"]
+[sub_resource type="Curve" id="Curve_i5pji"]
 resource_local_to_scene = true
 _data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
 point_count = 2
@@ -162,7 +162,6 @@ texture = ExtResource("7_i8j8j")
 [node name="Sprite2" type="Sprite2D" parent="Body"]
 visible = false
 material = SubResource("ShaderMaterial_wrke3")
-position = Vector2(-1, 0)
 scale = Vector2(0.5, 0.5)
 texture = ExtResource("7_i8j8j")
 
@@ -184,7 +183,7 @@ position = Vector2(-4, -5)
 
 [node name="MoveTrail" parent="Body/LeftWing" instance=ExtResource("9_4qea7")]
 z_index = -1
-width_curve = SubResource("Curve_v1tqt")
+width_curve = SubResource("Curve_b4ddo")
 default_color = Color(0.752941, 0.262745, 0.207843, 1)
 length = 10
 
@@ -193,7 +192,7 @@ position = Vector2(-4, 5)
 
 [node name="MoveTrail" parent="Body/RightWing" instance=ExtResource("9_4qea7")]
 z_index = -1
-width_curve = SubResource("Curve_wh3gl")
+width_curve = SubResource("Curve_i5pji")
 default_color = Color(0.752941, 0.262745, 0.207843, 1)
 length = 10
 

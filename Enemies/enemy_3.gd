@@ -2,7 +2,7 @@ extends Enemy
 
 @onready var directions: Array
 
-var rotation_speed: float = 2
+var rotation_speed: float = 2.5
 var shooting: bool = false
  
 func _ready():
@@ -10,7 +10,7 @@ func _ready():
 	motion_mode = CharacterBody2D.MOTION_MODE_FLOATING
 	stats.set_stats({
 		"acceleration": Values.enemy_acceleration * 20,
-		"max_speed": randf_range(Values.enemy_speed - 50, Values.enemy_speed) * 2,
+		"max_speed": randf_range(Values.enemy_speed - 25, Values.enemy_speed) * 2,
 		"max_health": Values.enemy_health * 3
 	})
 	health_component.value = 6

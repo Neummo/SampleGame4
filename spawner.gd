@@ -20,6 +20,7 @@ var minutes: String
 var seconds: String
 var seconds_int: int
 var count: int = 1
+var bounty_index: int = -1
 @onready var time_timer: Timer = $TimeTimer
 @onready var game_start_time: int = Time.get_ticks_msec()
 @onready var zones: Array = [
@@ -81,7 +82,12 @@ func spawn_planet(level: int) -> void:
 	get_tree().current_scene.add_child.call_deferred(instance)
 
 func spawn_bounty(level: int) -> void:
-	var scene = load("res://Enemies/bounty_1.tscn")
+	var bounty: int = randi_range(1, 5)
+	for i in 5:
+		if bounty != bounty_index:
+			break
+		bounty = randi_range(1, 5)
+	var scene = load("res://Enemies/bounty_" + str(bounty) + ".tscn")
 	var instance = scene.instantiate()
 	instance.global_position = get_random_position_offscreen(false, true, level)
 	get_tree().current_scene.add_child.call_deferred(instance)
@@ -174,9 +180,6 @@ func _on_spawn_timer_timeout() -> void:
 		return
 	var zone: int = int(floor(ceil(distance / 2000) + int(floor(Values.minutes_elapsed))))
 	spawn_enemy(zone)
-
-func _on_boss_timer_timeout() -> void:
-	spawn_boss(Values.zone)
 
 func _on_time_timer_timeout() -> void:
 	Values.minutes_elapsed += 1

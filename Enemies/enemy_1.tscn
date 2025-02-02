@@ -112,12 +112,12 @@ shader_parameter/flash_value = 0.0
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_h40vo"]
 size = Vector2(13, 12)
 
-[sub_resource type="Curve" id="Curve_3f13a"]
+[sub_resource type="Curve" id="Curve_3px6s"]
 resource_local_to_scene = true
 _data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
 point_count = 2
 
-[sub_resource type="Curve" id="Curve_g1qqh"]
+[sub_resource type="Curve" id="Curve_jun4j"]
 resource_local_to_scene = true
 _data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
 point_count = 2
@@ -140,8 +140,8 @@ offset_bottom = -10.0
 
 [node name="HealthComponent" type="Node2D" parent="." node_paths=PackedStringArray("health_bar", "damage_flash_player", "inner_sprite")]
 script = ExtResource("7_6n767")
-health_bar = NodePath("../HealthBar")
 possesor = "Enemy"
+health_bar = NodePath("../HealthBar")
 damage_flash_player = NodePath("../Body/Sprite2D/DamageFlashPlayer")
 inner_sprite = NodePath("../Body/Sprite2D")
 
@@ -186,7 +186,7 @@ position = Vector2(-4, -5)
 
 [node name="MoveTrail" parent="Body/LeftWing" instance=ExtResource("9_sd6iw")]
 z_index = -1
-width_curve = SubResource("Curve_3f13a")
+width_curve = SubResource("Curve_3px6s")
 default_color = Color(0.752941, 0.262745, 0.207843, 1)
 length = 10
 
@@ -195,7 +195,7 @@ position = Vector2(-4, 5)
 
 [node name="MoveTrail" parent="Body/RightWing" instance=ExtResource("9_sd6iw")]
 z_index = -1
-width_curve = SubResource("Curve_g1qqh")
+width_curve = SubResource("Curve_jun4j")
 default_color = Color(0.752941, 0.262745, 0.207843, 1)
 length = 10
 

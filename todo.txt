@@ -75,12 +75,12 @@ item spelling(FIXED)
 weapon slot squishes icons (FIXED)
 enemy 3 way too slow (FIXED)
 
-sounds 
+sounds
 more weapons
 weapon trees alignments
 more bounties
 last boss via black hole portal at 9999 -9999
-balance 
+balance
 crashes
 	if is_instance_valid(enemy):
 	enemy.do_something()

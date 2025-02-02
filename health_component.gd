@@ -58,10 +58,7 @@ func sub_damage(attack: Attack, is_player: bool) -> void:
 			spawn_instance(load("res://Pickups/Currency.tscn"), true)
 			Values.neutral_count -= 1
 		else:
-			if owner is Boss:
-				spawn_instance(load("res://Pickups/Currency.tscn"))
-				return
-			if owner is Bounty:
+			if owner is Bounty1 or owner is Bounty2 or owner is Bounty3 or owner is Bounty4 or owner is Bounty5:
 				var bounty_track = get_tree().get_first_node_in_group("BountyButton")
 				bounty_track.disable_bounty()
 				spawn_instance(load("res://Pickups/Currency.tscn"))

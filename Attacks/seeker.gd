@@ -28,6 +28,10 @@ func _physics_process(_delta):
 	velocity = velocity.limit_length(speed)
 	rotation = velocity.angle()
 	move_and_slide()
+	if global_position.distance_to(player.global_position) >= Values.player_range * 10:
+		Values.seeker_gun_active_amount -= 1
+		set_physics_process(false)
+		call_deferred("queue_free")
 
 func seek():
 	var steer: Vector2 = Vector2(0, -speed)
